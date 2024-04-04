@@ -1,9 +1,9 @@
 ## MVP
 
-1. [ ] Commands
-2. [ ] Terminal like actions (up,down key)
-3. [ ] Terminal title bar buttons.
-4. [ ] Real time Date-Time in header.
+1. [x] Real time Date-Time in header.
+2. [ ] Commands
+3. [ ] Terminal like actions (up,down key)
+4. [ ] Terminal title bar buttons.
 5. [ ] Footer zoom effect
 6. [ ] SEO
 
