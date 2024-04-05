@@ -9,7 +9,7 @@ export default function TerminalBody() {
         </p>
         <div className="w-full h-fit">
           <div className="w-2/12 bg-emerald-500">akshat-garg</div>
-          <input
+          {/* <input
             className="w-10/12 bg-white"
             type="text"
             onChange={(event) => {
@@ -19,7 +19,10 @@ export default function TerminalBody() {
               console.log("key->", event.key);
               console.log("value->", event.target.value);
             }}
-          />
+          /> */}
+          <div id="editable-div" contenteditable="true">
+            Click to edit
+          </div>
         </div>
       </div>
     </>
