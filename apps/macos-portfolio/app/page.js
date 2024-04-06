@@ -1,4 +1,4 @@
-import { DateTime } from "./_components/Date-Time";
+import DateTime from "./_components/Date-Time";
 
 export default function Home() {
   return (
