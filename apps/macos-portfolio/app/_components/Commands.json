@@ -1,0 +1,50 @@
+[
+  {
+    "name": "clear",
+    "message": "clear the screen"
+  },
+  {
+    "name": "help",
+    "message": "list all the commands"
+  },
+  {
+    "name": "about",
+    "message": "about Akshat Garg"
+  },
+  {
+    "name": "skills",
+    "message": "show skills"
+  },
+  {
+    "name": "education",
+    "message": "show education"
+  },
+  {
+    "name": "experience",
+    "message": "show experience"
+  },
+  {
+    "name": "projects",
+    "message": "show projects"
+  },
+  {
+    "name": "resume",
+    "message": "download resume"
+  },
+  {
+    "name": "github",
+    "message": "open github"
+  },
+  {
+    "name": "linkedin",
+    "message": "open linkedin"
+  },
+  {
+    "name": "x(twitter)",
+    "message": "open x(twitter)"
+  },
+  {
+    "name": "e-mail",
+    "message": "show e-mail"
+  }
+]

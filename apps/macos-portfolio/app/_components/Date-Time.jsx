@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export const DateTime = () => {
+export default function DateTime() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const options = {
     weekday: "long",
@@ -24,4 +24,4 @@ export const DateTime = () => {
     };
   }, []);
   return <>{currentDate.toLocaleString("en-US", options)}</>;
-};
+}

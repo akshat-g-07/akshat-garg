@@ -1,4 +1,5 @@
-import { DateTime } from "./_components/Date-Time";
+import DateTime from "./_components/Date-Time";
+import Terminal from "./_components/Terminal";
 
 export default function Home() {
   return (
@@ -6,7 +7,9 @@ export default function Home() {
       <header className="h-[5%] bg-blue-500 rounded-t-md w-full">
         <DateTime />
       </header>
-      <div className="h-[95%] w-full bg-green-500"></div>
+      <div className="h-[95%] w-full bg-green-500">
+        <Terminal />
+      </div>
       <footer className="absolute h-12 w-5/6 bottom-0 left-1/2 -translate-x-1/2 bg-yellow-500"></footer>
     </main>
   );
