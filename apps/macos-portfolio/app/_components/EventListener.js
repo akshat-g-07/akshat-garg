@@ -20,12 +20,33 @@ export default function OnKeyDown(event) {
     }
     const parentElement = document.getElementById("terminal-body");
     parentElement.appendChild(commandOutputNode);
+
     const terminalNode = document.createElement("div");
-    terminalNode.classList.add("w-[98%]");
-    terminalNode.classList.add("bg-green-500");
-    terminalNode.classList.add("h-fit");
-    terminalNode.classList.add("flex");
-    terminalNode.classList.add("terminal-command-line");
+    terminalNode.classList = "w-[98%] bg-green-500 h-fit flex flex-start";
+    terminalNode.innerHTML = `
+    <div class="w-fit bg-red-500 flex items-center pl-3">
+      <div class="w-fit bg-yellow-400 pr-2">akshat-garg</div>
+      <div class="h-6 w-5 bg-white relative">
+        <img src="/triangle.png" fill={true} alt="Terminal Triangle" />
+      </div>
+    </div>
+    <input
+      class="w-4/5 bg-white focus:outline-none border-none"
+      type="text"
+         />
+ `;
+
+    const terminalNodeInput = terminalNode.querySelector("input");
+    terminalNodeInput.onkeydown = (event) => {
+      OnKeyDown(event);
+    };
+
+    document.querySelectorAll("input").forEach((item) => {
+      item.readOnly = true;
+    });
+
     parentElement.appendChild(terminalNode);
+    terminalNode.scrollIntoView();
+    terminalNodeInput.focus();
   }
 }
