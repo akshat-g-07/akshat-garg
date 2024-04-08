@@ -1,18 +1,19 @@
-import { HelpCommand, AboutCommand } from "./Command-Values";
+import { Help, About, Skills } from "./Command-Values";
 
 export default function OnKeyDown(event) {
-  console.log("from function", event.key, event.target.value);
-
   if (event.key === "Enter") {
     event.preventDefault();
 
     const commandOutputNode = document.createElement("div");
     switch (event.target.value) {
       case "help":
-        commandOutputNode.innerText = HelpCommand();
+        commandOutputNode.innerText = Help();
         break;
       case "about":
-        commandOutputNode.innerText = AboutCommand();
+        commandOutputNode.innerText = About();
+        break;
+      case "skills":
+        commandOutputNode.appendChild(Skills());
         break;
 
       default:
@@ -24,7 +25,7 @@ export default function OnKeyDown(event) {
     const terminalNode = document.createElement("div");
     terminalNode.classList = "w-[98%] bg-green-500 h-fit flex flex-start";
     terminalNode.innerHTML = `
-    <div class="w-fit bg-red-500 flex items-center pl-3">
+    <div class="w-fit bg-red-500 flex items-center px-2">
       <div class="w-fit bg-yellow-400 pr-2">akshat-garg</div>
       <div class="h-6 w-5 bg-white relative">
         <img src="/triangle.png" fill={true} alt="Terminal Triangle" />
