@@ -11,17 +11,13 @@ export default function TerminalBody() {
     <>
       <div
         id="terminal-body"
-        className="h-[92.5%] w-full bg-blue-500 overflow-y-auto"
-        style={{
-          scrollbarColor: "rgb(75 85 99) rgb(31 41 55)", // thumb color track color
-          scrollbarWidth: "thin",
-        }}
+        className="h-[92.5%] w-full bg-blue-500 overflow-y-auto pb-5"
       >
         <p className="w-full h-fit">
           Type "help" to show a list of available commands.
         </p>
-        <div className="w-[98%] bg-green-500 h-fit flex terminal-command-line">
-          <div className="w-1/5 bg-red-500 flex items-center pl-3">
+        <div className="w-[98%] bg-green-500 h-fit flex flex-start">
+          <div className="w-fit bg-red-500 flex items-center px-2">
             <div className="w-fit bg-yellow-400 pr-2">akshat-garg</div>
             <div className="h-6 w-5 bg-white relative">
               <Image src="/triangle.png" fill={true} alt="Terminal Triangle" />
@@ -32,42 +28,6 @@ export default function TerminalBody() {
             type="text"
             onKeyDown={(event) => {
               OnKeyDown(event);
-              //   console.log("key->", event.key);
-              //   console.log("value->", event.target.value);
-              //   if (event.key === "Enter") {
-              //     event.preventDefault();
-
-              //     const node = document.createElement("div");
-              //     switch (event.target.value) {
-              //       case "help":
-              //         node.innerText = HelpCommand();
-              //         break;
-              //       case "about":
-              //         node.innerText = AboutCommand();
-
-              //         break;
-
-              //       default:
-              //         break;
-              //     }
-              //     document.getElementById("terminal-body").appendChild(node);
-              //     const clone = document
-              //       .getElementsByClassName("terminal-command-line")[0]
-              //       .cloneNode(true);
-
-              //     clone.querySelector("input").value = "";
-              //     clone
-              //       .querySelector("input")
-              //       .addEventListener("keydown", (event) => {
-              //         console.log(
-              //           "-------->key down clone",
-              //           event.target.value,
-              //           event.key
-              //         );
-              //       });
-
-              //     document.getElementById("terminal-body").appendChild(clone);
-              //   }
             }}
           />
         </div>
