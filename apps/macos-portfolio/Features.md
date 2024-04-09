@@ -1,7 +1,7 @@
 ## MVP
 
 1. [x] Real time Date-Time in header.
-2. [ ] Commands
+2. [x] Commands
 3. [ ] Terminal like actions (up,down key)
 4. [ ] Terminal title bar buttons.
 5. [ ] Footer zoom effect
