@@ -1,12 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import CommandsList from "./CommandsList.json";
-import { HelpCommand, AboutCommand } from "./Command-Values";
 import OnKeyDown from "./EventListener";
 
 export default function TerminalBody() {
-  console.log(CommandsList);
   return (
     <>
       <div
@@ -26,6 +23,7 @@ export default function TerminalBody() {
           <input
             className="w-4/5 bg-white focus:outline-none border-none"
             type="text"
+            autoFocus
             onKeyDown={(event) => {
               OnKeyDown(event);
             }}
