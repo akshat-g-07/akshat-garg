@@ -13,7 +13,7 @@ export default function TerminalBody() {
         <p className="w-full h-fit">
           Type "help" to show a list of available commands.
         </p>
-        <div className="w-[98%] bg-green-500 h-fit flex flex-start">
+        <div className="w-[98%] bg-green-500 h-fit flex flex-start py-2">
           <div className="w-fit bg-red-500 flex items-center px-2">
             <div className="w-fit bg-yellow-400 pr-2">akshat-garg</div>
             <div className="h-6 w-5 bg-white relative">
