@@ -17,12 +17,10 @@ export default function OnKeyDown(event) {
 
     const inputElements = parentElement.querySelectorAll("input");
 
-    let commandsArr = [];
-    let commandIndx = 0;
-    if (sessionStorage.getItem("commandsHistory")) {
-      commandsArr = [...JSON.parse(sessionStorage.getItem("commandsHistory"))];
-      commandIndx = commandsArr.length;
-    }
+    let commandsArr = sessionStorage.getItem("commandsHistory")
+      ? [...JSON.parse(sessionStorage.getItem("commandsHistory"))]
+      : [];
+    let commandIndx = commandsArr.length;
     commandsArr.push(inputElements[inputElements.length - 1].value);
     commandIndx += 1;
 
@@ -112,44 +110,39 @@ export default function OnKeyDown(event) {
     terminalNode.scrollIntoView();
     terminalNodeInput.focus();
   } else if (event.key === "ArrowUp") {
-    if (parseInt(sessionStorage.getItem("commandIndx")) > 0) {
+    const commandIndx = parseInt(sessionStorage.getItem("commandIndx"));
+    const commandsHistory = JSON.parse(
+      sessionStorage.getItem("commandsHistory")
+    );
+    if (commandIndx > 0) {
       const inputElements = document
         .getElementById("terminal-body")
         .querySelectorAll("input");
-      if (
-        parseInt(sessionStorage.getItem("commandIndx")) ===
-        JSON.parse(sessionStorage.getItem("commandsHistory")).length
-      ) {
+
+      if (commandIndx === commandsHistory.length) {
         sessionStorage.setItem(
           "currentCommand",
           inputElements[inputElements.length - 1].value
         );
       }
-      inputElements[inputElements.length - 1].value = JSON.parse(
-        sessionStorage.getItem("commandsHistory")
-      )[parseInt(sessionStorage.getItem("commandIndx")) - 1];
-      sessionStorage.setItem(
-        "commandIndx",
-        parseInt(sessionStorage.getItem("commandIndx")) - 1
-      );
+      inputElements[inputElements.length - 1].value =
+        commandsHistory[commandIndx - 1];
+      sessionStorage.setItem("commandIndx", commandIndx - 1);
     }
   } else if (event.key === "ArrowDown") {
-    if (
-      parseInt(sessionStorage.getItem("commandIndx")) <
-      JSON.parse(sessionStorage.getItem("commandsHistory")).length
-    ) {
+    const commandIndx = parseInt(sessionStorage.getItem("commandIndx"));
+    const commandsHistory = JSON.parse(
+      sessionStorage.getItem("commandsHistory")
+    );
+    if (commandIndx < commandsHistory?.length && commandIndx) {
       const inputElements = document
         .getElementById("terminal-body")
         .querySelectorAll("input");
 
       inputElements[inputElements.length - 1].value =
-        JSON.parse(sessionStorage.getItem("commandsHistory"))[
-          parseInt(sessionStorage.getItem("commandIndx")) + 1
-        ] || sessionStorage.getItem("currentCommand");
-      sessionStorage.setItem(
-        "commandIndx",
-        parseInt(sessionStorage.getItem("commandIndx")) + 1
-      );
+        commandsHistory[commandIndx + 1] ||
+        sessionStorage.getItem("currentCommand");
+      sessionStorage.setItem("commandIndx", commandIndx + 1);
     }
   }
 }
