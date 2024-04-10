@@ -78,6 +78,7 @@ export default function OnKeyDown(event) {
         break;
 
       default:
+        commandOutputNode.innerText = `Command not found. Type "help" to show a list of available commands.`;
         break;
     }
     parentElement.appendChild(commandOutputNode);
