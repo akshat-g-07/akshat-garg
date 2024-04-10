@@ -15,6 +15,20 @@ export default function OnKeyDown(event) {
 
     const parentElement = document.getElementById("terminal-body");
 
+    const inputElements = parentElement.querySelectorAll("input");
+
+    let commandsArr = [];
+    let commandIndx = 0;
+    if (sessionStorage.getItem("commandsHistory")) {
+      commandsArr = [...JSON.parse(sessionStorage.getItem("commandsHistory"))];
+      commandIndx = commandsArr.length;
+    }
+    commandsArr.push(inputElements[inputElements.length - 1].value);
+    commandIndx += 1;
+
+    sessionStorage.setItem("commandsHistory", JSON.stringify(commandsArr));
+    sessionStorage.setItem("commandIndx", commandIndx);
+
     const commandOutputNode = document.createElement("div");
     switch (event.target.value) {
       case "clear":
@@ -97,5 +111,45 @@ export default function OnKeyDown(event) {
     parentElement.appendChild(terminalNode);
     terminalNode.scrollIntoView();
     terminalNodeInput.focus();
+  } else if (event.key === "ArrowUp") {
+    if (parseInt(sessionStorage.getItem("commandIndx")) > 0) {
+      const inputElements = document
+        .getElementById("terminal-body")
+        .querySelectorAll("input");
+      if (
+        parseInt(sessionStorage.getItem("commandIndx")) ===
+        JSON.parse(sessionStorage.getItem("commandsHistory")).length
+      ) {
+        sessionStorage.setItem(
+          "currentCommand",
+          inputElements[inputElements.length - 1].value
+        );
+      }
+      inputElements[inputElements.length - 1].value = JSON.parse(
+        sessionStorage.getItem("commandsHistory")
+      )[parseInt(sessionStorage.getItem("commandIndx")) - 1];
+      sessionStorage.setItem(
+        "commandIndx",
+        parseInt(sessionStorage.getItem("commandIndx")) - 1
+      );
+    }
+  } else if (event.key === "ArrowDown") {
+    if (
+      parseInt(sessionStorage.getItem("commandIndx")) <
+      JSON.parse(sessionStorage.getItem("commandsHistory")).length
+    ) {
+      const inputElements = document
+        .getElementById("terminal-body")
+        .querySelectorAll("input");
+
+      inputElements[inputElements.length - 1].value =
+        JSON.parse(sessionStorage.getItem("commandsHistory"))[
+          parseInt(sessionStorage.getItem("commandIndx")) + 1
+        ] || sessionStorage.getItem("currentCommand");
+      sessionStorage.setItem(
+        "commandIndx",
+        parseInt(sessionStorage.getItem("commandIndx")) + 1
+      );
+    }
   }
 }
