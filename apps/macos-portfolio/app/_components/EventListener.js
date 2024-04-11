@@ -15,6 +15,18 @@ export default function OnKeyDown(event) {
 
     const parentElement = document.getElementById("terminal-body");
 
+    const inputElements = parentElement.querySelectorAll("input");
+
+    let commandsArr = sessionStorage.getItem("commandsHistory")
+      ? [...JSON.parse(sessionStorage.getItem("commandsHistory"))]
+      : [];
+    let commandIndx = commandsArr.length;
+    commandsArr.push(inputElements[inputElements.length - 1].value);
+    commandIndx += 1;
+
+    sessionStorage.setItem("commandsHistory", JSON.stringify(commandsArr));
+    sessionStorage.setItem("commandIndx", commandIndx);
+
     const commandOutputNode = document.createElement("div");
     switch (event.target.value) {
       case "clear":
@@ -66,6 +78,7 @@ export default function OnKeyDown(event) {
         break;
 
       default:
+        commandOutputNode.innerText = `Command not found. Type "help" to show a list of available commands.`;
         break;
     }
     parentElement.appendChild(commandOutputNode);
@@ -97,5 +110,40 @@ export default function OnKeyDown(event) {
     parentElement.appendChild(terminalNode);
     terminalNode.scrollIntoView();
     terminalNodeInput.focus();
+  } else if (event.key === "ArrowUp") {
+    const commandIndx = parseInt(sessionStorage.getItem("commandIndx"));
+    const commandsHistory = JSON.parse(
+      sessionStorage.getItem("commandsHistory")
+    );
+    if (commandIndx > 0) {
+      const inputElements = document
+        .getElementById("terminal-body")
+        .querySelectorAll("input");
+
+      if (commandIndx === commandsHistory.length) {
+        sessionStorage.setItem(
+          "currentCommand",
+          inputElements[inputElements.length - 1].value
+        );
+      }
+      inputElements[inputElements.length - 1].value =
+        commandsHistory[commandIndx - 1];
+      sessionStorage.setItem("commandIndx", commandIndx - 1);
+    }
+  } else if (event.key === "ArrowDown") {
+    const commandIndx = parseInt(sessionStorage.getItem("commandIndx"));
+    const commandsHistory = JSON.parse(
+      sessionStorage.getItem("commandsHistory")
+    );
+    if (commandIndx < commandsHistory?.length && commandIndx) {
+      const inputElements = document
+        .getElementById("terminal-body")
+        .querySelectorAll("input");
+
+      inputElements[inputElements.length - 1].value =
+        commandsHistory[commandIndx + 1] ||
+        sessionStorage.getItem("currentCommand");
+      sessionStorage.setItem("commandIndx", commandIndx + 1);
+    }
   }
 }
