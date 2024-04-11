@@ -14,7 +14,27 @@ export default function TerminalTitle() {
               sessionStorage.removeItem("currentCommand");
             }}
           />
-          <div className="rounded-full cursor-pointer bg-yellow-500 size-3" />
+          <div
+            className="rounded-full cursor-pointer bg-yellow-500 size-3"
+            onClick={() => {
+              const terminalbody = document.getElementById("terminal-body");
+              if (terminalbody.classList.contains("MINIMIZED")) {
+                terminalbody.classList.remove("MINIMIZED");
+                terminalbody.classList.remove("h-0");
+                terminalbody.classList.remove("overflow-y-hidden");
+                terminalbody.classList.add("h-[92.5%]");
+                terminalbody.classList.add("pb-5");
+                terminalbody.classList.add("overflow-y-auto");
+              } else {
+                terminalbody.classList.add("MINIMIZED");
+                terminalbody.classList.add("h-0");
+                terminalbody.classList.add("overflow-y-hidden");
+                terminalbody.classList.remove("h-[92.5%]");
+                terminalbody.classList.remove("pb-5");
+                terminalbody.classList.remove("overflow-y-auto");
+              }
+            }}
+          />
           <div
             className="rounded-full cursor-pointer bg-green-500 size-3"
             onClick={() => {
