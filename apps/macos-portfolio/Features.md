@@ -3,7 +3,7 @@
 1. [x] Real time Date-Time in header.
 2. [x] Commands
 3. [x] Terminal like actions (up,down key)
-4. [ ] Terminal title bar buttons.
+4. [x] Terminal title bar buttons.
 5. [ ] Footer zoom effect
 6. [ ] SEO
 
