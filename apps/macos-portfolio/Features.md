@@ -4,7 +4,7 @@
 2. [x] Commands
 3. [x] Terminal like actions (up,down key)
 4. [x] Terminal title bar buttons.
-5. [ ] Footer zoom effect
+5. [ ] Footer
 6. [ ] SEO
 
 ## Enhancements
