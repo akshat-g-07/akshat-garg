@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { createRoot } from "react-dom/client";
+import Terminal from "./Terminal";
 
 export default function Footer() {
   return (
@@ -8,7 +12,32 @@ export default function Footer() {
         className="h-full w-fit flex items-center *:px-2 *:h-fit *:w-fit *:cursor-pointer *:duration-200
       "
       >
-        <div className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom">
+        <div
+          className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom"
+          onClick={async (event) => {
+            const terminal = document.getElementById("terminal");
+            if (terminal) {
+              terminal.remove();
+              sessionStorage.removeItem("commandIndx");
+              sessionStorage.removeItem("commandsHistory");
+              sessionStorage.removeItem("currentCommand");
+            } else {
+              await new Promise((resolve) => {
+                event.target.classList.add("animate-bounce");
+                setTimeout(() => {
+                  resolve();
+                }, 1500);
+              });
+              event.target.classList.remove("animate-bounce");
+              const terminalParent = document.getElementById("terminalParent");
+              const root = createRoot(terminalParent);
+              root.render(<Terminal />);
+            }
+          }}
+        >
+          <span className="absolute scale-0 bottom-20 font-semibold mb-1">
+            Terminal
+          </span>
           <Image
             src={"/footer/terminal.png"}
             width={42.5}
@@ -16,7 +45,22 @@ export default function Footer() {
             alt="Terminal"
           />
         </div>
-        <div className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom">
+        <div
+          className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom"
+          onClick={async (event) => {
+            await new Promise((resolve) => {
+              event.target.classList.add("animate-bounce");
+              setTimeout(() => {
+                resolve();
+              }, 1500);
+            });
+            event.target.classList.remove("animate-bounce");
+            window.open("https://www.google.com/", "_blank");
+          }}
+        >
+          <span className="absolute scale-0 bottom-20 font-semibold mb-1">
+            Chrome
+          </span>
           <Image
             src={"/footer/chrome.png"}
             width={37.5}
@@ -25,9 +69,30 @@ export default function Footer() {
           />
         </div>
         <div className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom">
+          <span className="absolute scale-0 bottom-20 font-semibold mb-1">
+            Notes
+          </span>
           <Image src={"/footer/notes.png"} width={40} height={40} alt="Notes" />
         </div>
-        <div className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom">
+        <div
+          className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom"
+          onClick={async (event) => {
+            await new Promise((resolve) => {
+              event.target.classList.add("animate-bounce");
+              setTimeout(() => {
+                resolve();
+              }, 1500);
+            });
+            event.target.classList.remove("animate-bounce");
+            window.open(
+              "https://www.linkedin.com/in/akshat-garg-580322241/",
+              "_blank"
+            );
+          }}
+        >
+          <span className="absolute scale-0 bottom-20 font-semibold mb-1">
+            LinkedIn
+          </span>
           <Image
             src={"/footer/linkedin.png"}
             width={40}
@@ -35,7 +100,22 @@ export default function Footer() {
             alt="LinkedIn"
           />
         </div>
-        <div className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom">
+        <div
+          className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom"
+          onClick={async (event) => {
+            await new Promise((resolve) => {
+              event.target.classList.add("animate-bounce");
+              setTimeout(() => {
+                resolve();
+              }, 1500);
+            });
+            event.target.classList.remove("animate-bounce");
+            window.open("https://twitter.com/akku_g__", "_blank");
+          }}
+        >
+          <span className="absolute scale-0 bottom-20 font-semibold mb-1">
+            X(Twitter)
+          </span>
           <Image
             src={"/footer/x.png"}
             width={42.5}
@@ -43,7 +123,22 @@ export default function Footer() {
             alt="X(Twitter)"
           />
         </div>
-        <div className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom">
+        <div
+          className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom"
+          onClick={async (event) => {
+            await new Promise((resolve) => {
+              event.target.classList.add("animate-bounce");
+              setTimeout(() => {
+                resolve();
+              }, 1500);
+            });
+            event.target.classList.remove("animate-bounce");
+            window.open("https://github.com/akshat-g-07", "_blank");
+          }}
+        >
+          <span className="absolute scale-0 bottom-20 font-semibold mb-1">
+            Github
+          </span>
           <Image
             src={"/footer/github.png"}
             width={40}
@@ -51,13 +146,23 @@ export default function Footer() {
             alt="Github"
           />
         </div>
-        <div className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom">
-          <Image
-            src={"/footer/gmail.png"}
-            width={47.5}
-            height={47.5}
-            alt="Gmail"
-          />
+        <div
+          className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom"
+          onClick={async (event) => {
+            await new Promise((resolve) => {
+              event.target.classList.add("animate-bounce");
+              setTimeout(() => {
+                resolve();
+              }, 1500);
+            });
+            event.target.classList.remove("animate-bounce");
+            window.open("mailto:dummy@mail.com", "_blank");
+          }}
+        >
+          <span className="absolute scale-0 bottom-20 font-semibold mb-1">
+            G-Mail
+          </span>
+          <Image src={"/footer/gmail.png"} width={45} height={45} alt="Gmail" />
         </div>
       </div>
     </>
