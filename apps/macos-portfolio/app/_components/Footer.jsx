@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { createRoot } from "react-dom/client";
 import Terminal from "./Terminal";
+import Notes from "./Notes";
 
 export default function Footer() {
   return (
@@ -21,6 +22,9 @@ export default function Footer() {
               sessionStorage.removeItem("commandIndx");
               sessionStorage.removeItem("commandsHistory");
               sessionStorage.removeItem("currentCommand");
+              if (document.getElementById("notes")) {
+                document.getElementById("notesParent").classList.remove("z-10");
+              }
             } else {
               await new Promise((resolve) => {
                 event.target.classList.add("animate-bounce");
@@ -30,6 +34,9 @@ export default function Footer() {
               });
               event.target.classList.remove("animate-bounce");
               const terminalParent = document.getElementById("terminalParent");
+              if (document.getElementById("notes")) {
+                terminalParent.classList.add("z-10");
+              }
               const root = createRoot(terminalParent);
               root.render(<Terminal />);
             }
@@ -68,7 +75,34 @@ export default function Footer() {
             alt="Picture of the author"
           />
         </div>
-        <div className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom">
+        <div
+          className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom"
+          onClick={async (event) => {
+            const notes = document.getElementById("notes");
+            if (notes) {
+              notes.remove();
+              if (document.getElementById("terminal")) {
+                document
+                  .getElementById("terminalParent")
+                  .classList.remove("z-10");
+              }
+            } else {
+              await new Promise((resolve) => {
+                event.target.classList.add("animate-bounce");
+                setTimeout(() => {
+                  resolve();
+                }, 1500);
+              });
+              event.target.classList.remove("animate-bounce");
+              const notesParent = document.getElementById("notesParent");
+              if (document.getElementById("terminal")) {
+                notesParent.classList.add("z-10");
+              }
+              const root = createRoot(notesParent);
+              root.render(<Notes />);
+            }
+          }}
+        >
           <span className="absolute scale-0 bottom-20 font-semibold mb-1">
             Notes
           </span>

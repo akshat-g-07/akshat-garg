@@ -15,7 +15,7 @@ export default function TerminalBody() {
         </p>
         <div className="w-[98%] bg-green-500 h-fit flex flex-start py-2">
           <div className="w-fit bg-red-500 flex items-center px-2">
-            <div className="w-fit bg-yellow-400 pr-2">akshat-garg</div>
+            <div className="w-fit min-w-28 bg-yellow-400 pr-2">akshat-garg</div>
             <div className="h-6 w-5 bg-white relative">
               <Image src="/triangle.png" fill={true} alt="Terminal Triangle" />
             </div>
