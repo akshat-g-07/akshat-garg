@@ -3,8 +3,8 @@
 export default function TerminalTitle() {
   return (
     <>
-      <div className="h-[7.5%] w-full flex bg-lime-300 rounded-t-md">
-        <div className="flex w-1/12 h-full items-center justify-evenly bg-black">
+      <div className="h-[7.5%] w-full flex bg-gray-500 rounded-t-md">
+        <div className="flex w-1/12 h-full items-center justify-evenly">
           <div
             className="rounded-full cursor-pointer bg-red-500 size-3"
             onClick={() => {

@@ -22,7 +22,7 @@ export const metadata = {
     "Next",
     "Frontend",
     "Full Stack",
-    "Next.js",
+    "Nextjs",
     "React",
     "JavaScript",
   ],
