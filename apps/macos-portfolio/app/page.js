@@ -1,6 +1,5 @@
 import DateTime from "./_components/Date-Time";
 import Footer from "./_components/Footer";
-import Notes from "./_components/Notes";
 import Terminal from "./_components/Terminal";
 
 export default function Home() {
