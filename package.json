@@ -4,7 +4,7 @@
   "scripts": {
     "build:macos-portfolio": "turbo run build --filter=macos-portfolio",
     "build": "turbo build",
-    "dev:macos-portfolio": "turbo dev",
+    "dev:macos-portfolio": "turbo dev --filter=macos-portfolio",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
