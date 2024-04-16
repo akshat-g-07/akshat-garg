@@ -3,16 +3,16 @@
 export default function NotesTitle() {
   return (
     <>
-      <div className="h-[7.5%] w-full flex bg-lime-300 rounded-t-md">
-        <div className="flex w-1/12 h-full items-center justify-evenly bg-black">
+      <div className="h-[7.5%] w-full flex bg-slate-300 rounded-t-md items-center border-b-2 border-black">
+        <div className="flex w-1/12 h-full items-center justify-evenly">
           <div
-            className="rounded-full cursor-pointer bg-red-500 size-3"
+            className="rounded-full cursor-pointer bg-red-500 size-4"
             onClick={() => {
               document.getElementById("notes").remove();
             }}
           />
           <div
-            className="rounded-full cursor-pointer bg-yellow-500 size-3"
+            className="rounded-full cursor-pointer bg-yellow-500 size-4"
             onClick={() => {
               const notesbody = document.getElementById("notes-body");
               if (notesbody.classList.contains("MINIMIZED")) {
@@ -31,7 +31,7 @@ export default function NotesTitle() {
             }}
           />
           <div
-            className="rounded-full cursor-pointer bg-green-500 size-3"
+            className="rounded-full cursor-pointer bg-green-500 size-4"
             onClick={() => {
               const notes = document.getElementById("notes");
               if (notes.classList.contains("MAX_SIZE")) {
@@ -39,22 +39,24 @@ export default function NotesTitle() {
                 notes.classList.remove("w-full");
                 notes.classList.remove("h-full");
                 notes.classList.add("w-4/6");
-                notes.classList.add("h-3/4");
-                notes.classList.add("translate-x-1/4");
-                notes.classList.add("translate-y-[10%]");
+                notes.classList.add("h-2/3");
+                notes.classList.add("translate-x-1/3");
+                notes.classList.add("translate-y-[20%]");
               } else {
                 notes.classList.add("MAX_SIZE");
                 notes.classList.add("w-full");
                 notes.classList.add("h-full");
                 notes.classList.remove("w-4/6");
-                notes.classList.remove("h-3/4");
-                notes.classList.remove("translate-x-1/4");
-                notes.classList.remove("translate-y-[10%]");
+                notes.classList.remove("h-2/3");
+                notes.classList.remove("translate-x-1/3");
+                notes.classList.remove("translate-y-[20%]");
               }
             }}
           />
         </div>
-        <p className="text-center h-full w-11/12">Projects of Akshat Garg</p>
+        <h1 className="cursor-default text-center h-fit w-11/12 font-bold text-xl">
+          Projects of Akshat Garg
+        </h1>
       </div>
     </>
   );

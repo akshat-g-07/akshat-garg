@@ -9,14 +9,11 @@ export default function NotesBody() {
   const [projectToShow, setProjectToShow] = useState();
   return (
     <>
-      <div
-        id="notes-body"
-        className="h-[92.5%] w-full bg-blue-500 overflow-y-auto flex"
-      >
-        <div className="h-full w-1/3 bg-red-500">
+      <div id="notes-body" className="h-[92.5%] w-full overflow-y-auto flex">
+        <div className="h-full w-1/3 bg-gray-200 pl-4 border-black border-r py-2">
           <div
             id="treklicious"
-            className="border-b-2 w-full h-fit py-2 cursor-pointer"
+            className="border-black border-b w-full h-fit p-2 cursor-pointer"
             onClick={(event) => {
               document
                 .getElementById("ratventure")
@@ -30,14 +27,14 @@ export default function NotesBody() {
               setProjectToShow("treklicious");
             }}
           >
-            <p className="text-xl font-semibold">TrekLicious</p>
+            <p className="text-xl mb-1 font-semibold">TrekLicious</p>
             <p className="text-xs">
               ReactJS | NodeJS | Express | MongoDB | MUI
             </p>
           </div>
           <div
             id="ratventure"
-            className="border-b-2 w-full h-fit py-2 cursor-pointer"
+            className="border-black border-b w-full h-fit p-2 cursor-pointer"
             onClick={(event) => {
               document
                 .getElementById("treklicious")
@@ -51,12 +48,12 @@ export default function NotesBody() {
               setProjectToShow("ratventure");
             }}
           >
-            <p className="text-xl font-semibold">RatVenture</p>
+            <p className="text-xl mb-1 font-semibold">RatVenture</p>
             <p className="text-xs">ReactJs | NodeJS | Express | Javascript</p>
           </div>
           <div
             id="grillzilla"
-            className="border-b-2 w-full h-fit py-2 cursor-pointer"
+            className="border-black border-b w-full h-fit p-2 cursor-pointer"
             onClick={(event) => {
               document
                 .getElementById("treklicious")
@@ -70,11 +67,11 @@ export default function NotesBody() {
               setProjectToShow("grillzilla");
             }}
           >
-            <p className="text-xl font-semibold">GrillZilla</p>
+            <p className="text-xl mb-1 font-semibold">GrillZilla</p>
             <p className="text-xs">ReactJs | API | Axios</p>
           </div>
         </div>
-        <div className="h-full w-2/3 bg-amber-500">
+        <div className="h-full w-2/3 bg-white p-4">
           {projectToShow === "treklicious" ? (
             <Treklicious />
           ) : projectToShow === "ratventure" ? (

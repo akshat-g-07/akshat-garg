@@ -8,20 +8,22 @@ export default function TerminalBody() {
     <>
       <div
         id="terminal-body"
-        className="h-[92.5%] w-full bg-blue-500 overflow-y-auto pb-5"
+        className="h-[92.5%] w-full bg-slate-700 overflow-y-auto p-5 text-white font-extralight"
       >
-        <p className="w-full h-fit">
+        <p className="w-full h-fit mb-2">
           Type "help" to show a list of available commands.
         </p>
-        <div className="w-[98%] bg-green-500 h-fit flex flex-start py-2">
-          <div className="w-fit bg-red-500 flex items-center px-2">
-            <div className="w-fit min-w-28 bg-yellow-400 pr-2">akshat-garg</div>
-            <div className="h-6 w-5 bg-white relative">
+        <div className="w-[98%] h-fit flex flex-start py-2">
+          <div className="w-fit flex items-center mr-4">
+            <div className="w-fit min-w-28 text-black bg-yellow-400 px-2 font-semibold">
+              akshat-garg
+            </div>
+            <div className="h-6 w-5 relative">
               <Image src="/triangle.png" fill={true} alt="Terminal Triangle" />
             </div>
           </div>
           <input
-            className="w-4/5 bg-white focus:outline-none border-none"
+            className="w-4/5 bg-slate-700 focus:outline-none border-none text-green-500 font-normal"
             type="text"
             autoFocus
             onKeyDown={(event) => {

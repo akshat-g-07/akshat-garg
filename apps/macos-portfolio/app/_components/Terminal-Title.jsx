@@ -3,10 +3,15 @@
 export default function TerminalTitle() {
   return (
     <>
-      <div className="h-[7.5%] w-full flex bg-gray-500 rounded-t-md">
+      <div
+        className="h-[7.5%] w-full flex items-center rounded-t-md"
+        style={{
+          background: "linear-gradient(180deg,#e6e6e6 0,#a3a3a3)",
+        }}
+      >
         <div className="flex w-1/12 h-full items-center justify-evenly">
           <div
-            className="rounded-full cursor-pointer bg-red-500 size-3"
+            className="rounded-full cursor-pointer bg-red-500 size-4"
             onClick={() => {
               document.getElementById("terminal").remove();
               sessionStorage.removeItem("commandIndx");
@@ -15,7 +20,7 @@ export default function TerminalTitle() {
             }}
           />
           <div
-            className="rounded-full cursor-pointer bg-yellow-500 size-3"
+            className="rounded-full cursor-pointer bg-yellow-500 size-4"
             onClick={() => {
               const terminalbody = document.getElementById("terminal-body");
               if (terminalbody.classList.contains("MINIMIZED")) {
@@ -23,20 +28,20 @@ export default function TerminalTitle() {
                 terminalbody.classList.remove("h-0");
                 terminalbody.classList.remove("overflow-y-hidden");
                 terminalbody.classList.add("h-[92.5%]");
-                terminalbody.classList.add("pb-5");
+                terminalbody.classList.add("p-5");
                 terminalbody.classList.add("overflow-y-auto");
               } else {
                 terminalbody.classList.add("MINIMIZED");
                 terminalbody.classList.add("h-0");
                 terminalbody.classList.add("overflow-y-hidden");
                 terminalbody.classList.remove("h-[92.5%]");
-                terminalbody.classList.remove("pb-5");
+                terminalbody.classList.remove("p-5");
                 terminalbody.classList.remove("overflow-y-auto");
               }
             }}
           />
           <div
-            className="rounded-full cursor-pointer bg-green-500 size-3"
+            className="rounded-full cursor-pointer bg-green-500 size-4"
             onClick={() => {
               const terminal = document.getElementById("terminal");
               if (terminal.classList.contains("MAX_SIZE")) {
@@ -59,7 +64,9 @@ export default function TerminalTitle() {
             }}
           />
         </div>
-        <p className="text-center h-full w-11/12">Akshat Garg</p>
+        <h1 className="cursor-default text-center h-fit w-11/12 font-bold text-xl">
+          Akshat Garg
+        </h1>
       </div>
     </>
   );
