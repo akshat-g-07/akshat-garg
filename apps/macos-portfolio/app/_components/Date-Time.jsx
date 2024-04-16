@@ -23,5 +23,11 @@ export default function DateTime() {
       clearInterval(intervalId);
     };
   }, []);
-  return <>{currentDate.toLocaleString("en-US", options)}</>;
+  return (
+    <>
+      <p className="text-white">
+        {currentDate.toLocaleString("en-US", options)}
+      </p>
+    </>
+  );
 }

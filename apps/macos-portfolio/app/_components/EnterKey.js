@@ -33,7 +33,7 @@ export default function EnterKey(event) {
       }
       break;
     case "help":
-      commandOutputNode.innerText = Help();
+      commandOutputNode.innerHTML = Help();
       break;
     case "about":
       commandOutputNode.innerText = About();
@@ -48,7 +48,7 @@ export default function EnterKey(event) {
       commandOutputNode.innerText = Experience();
       break;
     case "projects":
-      commandOutputNode.innerHTML = Projects();
+      commandOutputNode.appendChild(Projects());
       break;
     case "achievements":
       commandOutputNode.innerText = Achievements();
@@ -82,16 +82,16 @@ export default function EnterKey(event) {
   parentElement.appendChild(commandOutputNode);
 
   const terminalNode = document.createElement("div");
-  terminalNode.classList = "w-[98%] bg-green-500 h-fit flex flex-start py-2";
+  terminalNode.classList = "w-[98%] h-fit flex flex-start py-2";
   terminalNode.innerHTML = `
-    <div class="w-fit bg-red-500 flex items-center px-2">
-      <div class="w-fit bg-yellow-400 pr-2">akshat-garg</div>
-      <div class="h-6 w-5 bg-white relative">
+    <div class="w-fit flex items-center mr-4">
+      <div class="w-fit min-w-28 text-black bg-yellow-400 px-2 font-semibold">akshat-garg</div>
+      <div class="h-6 w-5 relative">
         <img src="/triangle.png" fill={true} alt="Terminal Triangle" />
       </div>
     </div>
     <input
-      class="w-4/5 bg-white focus:outline-none border-none"
+      class="w-4/5 bg-slate-700 focus:outline-none border-none text-green-500 font-normal"
       type="text"
          />
  `;

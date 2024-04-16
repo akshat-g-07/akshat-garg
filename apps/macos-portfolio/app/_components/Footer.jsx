@@ -190,7 +190,7 @@ export default function Footer() {
               }, 1500);
             });
             event.target.classList.remove("animate-bounce");
-            window.open("mailto:dummy@mail.com", "_blank");
+            window.open("mailto:akshatg805@gmail.com", "_blank");
           }}
         >
           <span className="absolute scale-0 bottom-20 font-semibold mb-1">
