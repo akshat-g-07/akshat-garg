@@ -9,7 +9,7 @@
 
 ## Enhancements
 
-1. [ ] Resizeable Terminal Window.
+1. [x] Resizeable Terminal & Notes Window.
 2. [ ] Terminal draggable using title bar.
 3. [ ] Custom Mouse Cursor
 4. [ ] Lock Screen
