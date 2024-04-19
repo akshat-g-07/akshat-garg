@@ -11,7 +11,20 @@ export default function NotesTitle() {
           <div
             className="rounded-full cursor-pointer bg-red-500 size-4"
             onClick={() => {
-              document.getElementById("notes").remove();
+              const notesParent = document.getElementById("notesParent");
+              const notes = notesParent.querySelector("#notes");
+              const terminalParent = document.getElementById("terminalParent");
+              const terminal = terminalParent.querySelector("#terminal");
+
+              notes.remove();
+
+              notesParent.classList.remove("z-10");
+              notesParent.classList.remove("z-0");
+              notesParent.classList.add("-z-10");
+              if (terminal) {
+                terminalParent.classList.remove("z-0");
+                terminalParent.classList.add("z-10");
+              }
             }}
           />
           <div
@@ -47,7 +60,7 @@ export default function NotesTitle() {
               const notes = document.getElementById("notes");
               if (notes.classList.contains("MAX_SIZE")) {
                 notes.classList.remove("MAX_SIZE");
-                notes.style.height = "67%";
+                notes.style.height = "75%";
                 notes.style.width = "67%";
               } else {
                 notes.classList.add("MAX_SIZE");

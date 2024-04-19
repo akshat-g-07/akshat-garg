@@ -16,14 +16,27 @@ export default function Footer() {
         <div
           className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom"
           onClick={async (event) => {
-            const terminal = document.getElementById("terminal");
-            if (terminal) {
+            const notesParent = document.getElementById("notesParent");
+            const notes = notesParent.querySelector("#notes");
+            const terminalParent = document.getElementById("terminalParent");
+            const terminal = terminalParent.querySelector("#terminal");
+            if (notes && terminal && terminalParent.classList.contains("z-0")) {
+              terminalParent.classList.remove("z-0");
+              terminalParent.classList.add("z-10");
+              notesParent.classList.remove("z-10");
+              notesParent.classList.add("z-0");
+            } else if (terminal) {
               terminal.remove();
               sessionStorage.removeItem("commandIndx");
               sessionStorage.removeItem("commandsHistory");
               sessionStorage.removeItem("currentCommand");
-              if (document.getElementById("notes")) {
-                document.getElementById("notesParent").classList.remove("z-10");
+
+              terminalParent.classList.remove("z-10");
+              terminalParent.classList.remove("z-0");
+              terminalParent.classList.add("-z-10");
+              if (notes) {
+                notesParent.classList.remove("z-0");
+                notesParent.classList.add("z-10");
               }
             } else {
               await new Promise((resolve) => {
@@ -33,10 +46,12 @@ export default function Footer() {
                 }, 1500);
               });
               event.target.classList.remove("animate-bounce");
-              const terminalParent = document.getElementById("terminalParent");
-              if (document.getElementById("notes")) {
-                terminalParent.classList.add("z-10");
+              if (notes) {
+                notesParent.classList.remove("z-10");
+                notesParent.classList.add("z-0");
               }
+              terminalParent.classList.remove("-z-10");
+              terminalParent.classList.add("z-10");
               const root = createRoot(terminalParent);
               root.render(<Terminal />);
             }
@@ -78,13 +93,23 @@ export default function Footer() {
         <div
           className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom"
           onClick={async (event) => {
-            const notes = document.getElementById("notes");
-            if (notes) {
+            const notesParent = document.getElementById("notesParent");
+            const notes = notesParent.querySelector("#notes");
+            const terminalParent = document.getElementById("terminalParent");
+            const terminal = terminalParent.querySelector("#terminal");
+            if (notes && terminal && notesParent.classList.contains("z-0")) {
+              notesParent.classList.remove("z-0");
+              notesParent.classList.add("z-10");
+              terminalParent.classList.remove("z-10");
+              terminalParent.classList.add("z-0");
+            } else if (notes) {
               notes.remove();
-              if (document.getElementById("terminal")) {
-                document
-                  .getElementById("terminalParent")
-                  .classList.remove("z-10");
+              notesParent.classList.remove("z-10");
+              notesParent.classList.remove("z-0");
+              notesParent.classList.add("-z-10");
+              if (terminal) {
+                terminalParent.classList.remove("z-0");
+                terminalParent.classList.add("z-10");
               }
             } else {
               await new Promise((resolve) => {
@@ -94,10 +119,12 @@ export default function Footer() {
                 }, 1500);
               });
               event.target.classList.remove("animate-bounce");
-              const notesParent = document.getElementById("notesParent");
-              if (document.getElementById("terminal")) {
-                notesParent.classList.add("z-10");
+              if (terminal) {
+                terminalParent.classList.remove("z-10");
+                terminalParent.classList.add("z-0");
               }
+              notesParent.classList.remove("-z-10");
+              notesParent.classList.add("z-10");
               const root = createRoot(notesParent);
               root.render(<Notes />);
             }
