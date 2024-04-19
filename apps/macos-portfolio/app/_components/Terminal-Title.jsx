@@ -14,10 +14,23 @@ export default function TerminalTitle() {
           <div
             className="rounded-full cursor-pointer bg-red-500 size-4"
             onClick={() => {
-              document.getElementById("terminal").remove();
+              const notesParent = document.getElementById("notesParent");
+              const notes = notesParent.querySelector("#notes");
+              const terminalParent = document.getElementById("terminalParent");
+              const terminal = terminalParent.querySelector("#terminal");
+
               sessionStorage.removeItem("commandIndx");
               sessionStorage.removeItem("commandsHistory");
               sessionStorage.removeItem("currentCommand");
+
+              terminal.remove();
+              terminalParent.classList.remove("z-10");
+              terminalParent.classList.remove("z-0");
+              terminalParent.classList.add("-z-10");
+              if (notes) {
+                notesParent.classList.remove("z-0");
+                notesParent.classList.add("z-10");
+              }
             }}
           />
           <div

@@ -16,7 +16,7 @@ export default function Notes() {
         >
           <div
             id="notes"
-            className="max-h-full max-w-full rounded-md min-h-10 min-w-64 w-4/6 h-2/3 drop-shadow-lg resize overflow-auto bg-white"
+            className="max-h-full max-w-full rounded-md min-h-10 min-w-64 w-4/6 h-3/4 drop-shadow-lg resize overflow-auto bg-white"
           >
             <NotesTitle />
             <NotesBody />
