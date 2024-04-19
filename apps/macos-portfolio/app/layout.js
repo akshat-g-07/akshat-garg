@@ -12,7 +12,13 @@ export const metadata = {
   metadataBase: new URL("https://akshat-garg.com"),
   authors: [{ name: "Akshat Garg", url: "https://akshat-garg.com" }],
   openGraph: {
-    images: "/favicon.ico",
+    images: "/opengraph-image.png",
+  },
+  alternates: {
+    canonical: "https://akshat-garg.com",
+    languages: {
+      "en-US": "https://akshat-garg.com/en-US",
+    },
   },
   keywords: [
     "Akshat",
