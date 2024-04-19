@@ -4,6 +4,7 @@ export default function TerminalTitle() {
   return (
     <>
       <div
+        id="terminal-title"
         className="h-[7.5%] w-full flex items-center rounded-t-md"
         style={{
           background: "linear-gradient(180deg,#e6e6e6 0,#a3a3a3)",
@@ -46,20 +47,15 @@ export default function TerminalTitle() {
               const terminal = document.getElementById("terminal");
               if (terminal.classList.contains("MAX_SIZE")) {
                 terminal.classList.remove("MAX_SIZE");
-                terminal.classList.remove("w-full");
-                terminal.classList.remove("h-full");
-                terminal.classList.add("w-4/6");
-                terminal.classList.add("h-3/4");
-                terminal.classList.add("translate-x-1/4");
-                terminal.classList.add("translate-y-[10%]");
+                terminal.style.height = "75%";
+                terminal.style.width = "67%";
               } else {
                 terminal.classList.add("MAX_SIZE");
-                terminal.classList.add("w-full");
-                terminal.classList.add("h-full");
-                terminal.classList.remove("w-4/6");
-                terminal.classList.remove("h-3/4");
-                terminal.classList.remove("translate-x-1/4");
-                terminal.classList.remove("translate-y-[10%]");
+                terminal.style.height = "100%";
+                terminal.style.width = "100%";
+                document
+                  .getElementById("terminalParent")
+                  .querySelector("div").style.transform = "none";
               }
             }}
           />
