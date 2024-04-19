@@ -28,8 +28,14 @@ export default function Home() {
           backgroundPosition: "center",
         }}
       >
-        <div id="notesParent" className="h-[95%] absolute w-full"></div>
-        <div id="terminalParent" className="h-[95%] absolute w-full">
+        <div
+          id="notesParent"
+          className="h-[95%] absolute w-full overflow-hidden"
+        ></div>
+        <div
+          id="terminalParent"
+          className="h-[95%] absolute w-full overflow-hidden"
+        >
           <Terminal />
         </div>
       </div>

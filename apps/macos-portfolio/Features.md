@@ -10,7 +10,7 @@
 ## Enhancements
 
 1. [x] Resizeable Terminal & Notes Window.
-2. [ ] Terminal draggable using title bar.
+2. [x] Terminal & Notes draggable using title bar.
 3. [ ] Custom Mouse Cursor
 4. [ ] Lock Screen
 5. [ ] Dynamic Wallpapers
