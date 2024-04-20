@@ -5,10 +5,18 @@ import { useState } from "react";
 
 export default function LockScreen() {
   const [userName, setUserName] = useState("");
+  const [error, setError] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!userName.length) {
+      setError(true);
+      return;
+    }
+
     console.log("user input", userName);
+    // implement a strategy to let me knw who is here!
+
     const lockScreen = document.getElementById("lock-screen");
     lockScreen.style.transform = "translate(0px,-100%)";
     setTimeout(() => {
@@ -45,6 +53,11 @@ export default function LockScreen() {
           placeholder="Enter your name"
           className="flex h-9 w-full rounded-md border border-input bg-white px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
         />
+        {error && (
+          <span className="text-[#d32f2f] bg-[#ffffff8a] my-2 rounded-sm p-1 mx-auto font-semibold text-sm">
+            Please Enter Your Name.
+          </span>
+        )}
         <button
           type="submit"
           className="bg-zinc-300 text-black h-9 px-4 py-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 w-fit mx-auto my-3 shadow hover:bg-zinc-300/90"
