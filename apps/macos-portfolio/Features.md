@@ -11,8 +11,8 @@
 
 1. [x] Resizeable Terminal & Notes Window.
 2. [x] Terminal & Notes draggable using title bar.
-3. [ ] Custom Mouse Cursor
-4. [ ] Lock Screen
+3. [ ] Lock Screen
+4. [ ] Custom Mouse Cursor
 5. [ ] Dynamic Wallpapers
 6. [ ] Debounce Throttle
 7. [ ] Home Screen Files
