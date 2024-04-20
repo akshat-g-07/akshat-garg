@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export default function LockScreen() {
+export default function LockScreen({ setUnocked }) {
   const [userName, setUserName] = useState("");
   const [error, setError] = useState(false);
 
@@ -19,9 +19,10 @@ export default function LockScreen() {
 
     const lockScreen = document.getElementById("lock-screen");
     lockScreen.style.transform = "translate(0px,-100%)";
+    setUnocked(true);
     setTimeout(() => {
       lockScreen.remove();
-    }, 1000);
+    }, 2000);
   };
 
   const handleChange = (event) => {
@@ -30,7 +31,7 @@ export default function LockScreen() {
   return (
     <main
       id="lock-screen"
-      className="absolute ease-out z-50 h-screen w-screen duration-1000 flex flex-col items-center justify-center"
+      className="absolute ease-in-out z-50 h-screen w-screen duration-[2000ms] flex flex-col items-center justify-center"
       style={{
         background: 'url("./lock-screen.jpg")',
         backgroundPosition: "center",
@@ -54,7 +55,7 @@ export default function LockScreen() {
           className="flex h-9 w-full rounded-md border border-input bg-white px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
         />
         {error && (
-          <span className="text-[#d32f2f] bg-[#ffffff8a] my-2 rounded-sm p-1 mx-auto font-semibold text-sm">
+          <span className="text-[#d32f2f] bg-[#ffffff78] my-2 rounded-sm p-1 mx-auto font-semibold text-sm">
             Please Enter Your Name.
           </span>
         )}
