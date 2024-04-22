@@ -5,12 +5,18 @@ import { useState } from "react";
 
 export default function LockScreen({ setUnocked }) {
   const [userName, setUserName] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!userName.length) {
-      setError(true);
+      setError("Please Enter Your Name.");
+      return;
+    }
+
+    var regex = /^[a-zA-Z]+$/;
+    if (!regex.test(userName)) {
+      setError("The name can only consist of letters (a-z and/or A-Z)");
       return;
     }
 
@@ -40,11 +46,12 @@ export default function LockScreen({ setUnocked }) {
       }}
     >
       <Image
+        priority
         src={"/user-avatar.png"}
-        width={"150"}
-        height={"150"}
+        width={"125"}
+        height={"125"}
         alt="User"
-        className="mb-10"
+        className="mb-10 w-auto h-auto"
       />
       <form onSubmit={handleSubmit} className="flex flex-col">
         <input
@@ -52,11 +59,11 @@ export default function LockScreen({ setUnocked }) {
           type="text"
           onChange={handleChange}
           placeholder="Enter your name"
-          className="flex h-9 w-full rounded-md border border-input bg-white px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex h-9 w-60 mx-auto rounded-md border border-input bg-white px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
         />
         {error && (
           <span className="text-[#d32f2f] bg-[#ffffff78] my-2 rounded-sm p-1 mx-auto font-semibold text-sm">
-            Please Enter Your Name.
+            {error}
           </span>
         )}
         <button
