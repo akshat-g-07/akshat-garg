@@ -12,8 +12,7 @@
 1. [x] Resizeable Terminal & Notes Window.
 2. [x] Terminal & Notes draggable using title bar.
 3. [x] Lock Screen
-4. [ ] Dynamic Wallpapers
-5. [ ] Debounce Throttle
-6. [ ] Home Screen Files
+4. [ ] Dynamic Wallpapers (implemented in macos-EFT04 branch. Didn't push it to prod because of low performance while changing backgrounds)
+5. [ ] Home Screen Files
 
 ## Advice(s) from viewers

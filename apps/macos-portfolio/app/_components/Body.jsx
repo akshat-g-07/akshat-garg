@@ -2,6 +2,7 @@ import Image from "next/image";
 import DateTime from "./Date-Time";
 import Footer from "./Footer";
 import Terminal from "./Terminal";
+import PDFIcon from "./PDF-Icon";
 
 export default function Body() {
   return (
@@ -34,6 +35,9 @@ export default function Body() {
             backgroundPosition: "center",
           }}
         >
+          <>
+            <PDFIcon />
+          </>
           <div
             id="notesParent"
             className="h-[95%] absolute w-full overflow-hidden"
