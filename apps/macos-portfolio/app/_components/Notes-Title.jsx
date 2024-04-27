@@ -55,6 +55,9 @@ export default function NotesTitle() {
             className="rounded-full cursor-pointer bg-green-500 size-4"
             onClick={() => {
               const notesParent = document.getElementById("notesParent");
+              const terminalParent = document.getElementById("terminalParent");
+              const terminal = terminalParent.querySelector("#terminal");
+
               if (notesParent.classList.contains("MAX_SIZE")) {
                 notesParent.classList.remove("MAX_SIZE");
                 notesParent.style.height = "90%";
@@ -64,6 +67,10 @@ export default function NotesTitle() {
                 notesParent.style.height = "95%";
                 notesParent.style.width = "100%";
                 document.getElementById("notesParent").style.transform = "none";
+                if (terminal) {
+                  terminalParent.style.zIndex = 0;
+                  notesParent.style.zIndex = 10;
+                }
               }
             }}
           />

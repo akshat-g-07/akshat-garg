@@ -54,7 +54,10 @@ export default function TerminalTitle() {
           <div
             className="rounded-full cursor-pointer bg-green-500 size-4"
             onClick={() => {
+              const notesParent = document.getElementById("notesParent");
+              const notes = notesParent.querySelector("#notes");
               const terminalParent = document.getElementById("terminalParent");
+
               if (terminalParent.classList.contains("MAX_SIZE")) {
                 terminalParent.classList.remove("MAX_SIZE");
                 terminalParent.style.height = "75%";
@@ -65,6 +68,10 @@ export default function TerminalTitle() {
                 terminalParent.style.width = "100%";
                 document.getElementById("terminalParent").style.transform =
                   "none";
+                if (notes) {
+                  terminalParent.style.zIndex = 10;
+                  notesParent.style.zIndex = 0;
+                }
               }
             }}
           />
