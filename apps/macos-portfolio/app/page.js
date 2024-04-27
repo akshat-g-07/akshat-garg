@@ -5,10 +5,10 @@ import Body from "./_components/Body";
 import { useState } from "react";
 
 export default function Home() {
-  const [unlocked, setUnocked] = useState(false);
+  const [unlocked, setUnlocked] = useState(false);
   return (
     <>
-      <LockScreen setUnocked={setUnocked} />
+      <LockScreen setUnlocked={setUnlocked} />
       {unlocked && <Body />}
     </>
   );

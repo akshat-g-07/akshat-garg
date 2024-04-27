@@ -2,6 +2,8 @@ import Image from "next/image";
 import DateTime from "./Date-Time";
 import Footer from "./Footer";
 import Terminal from "./Terminal";
+import PDFIcon from "./PDF-Icon";
+import Notes from "./Notes";
 
 export default function Body() {
   return (
@@ -27,23 +29,20 @@ export default function Body() {
           <DateTime />
         </header>
         <div
-          className="h-[95%] w-full"
+          className="h-[95%] w-full overflow-hidden flex items-center justify-center"
           style={{
             backgroundImage: 'url("/wallpaper.jpg")',
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
-          <div
-            id="notesParent"
-            className="h-[95%] absolute w-full overflow-hidden"
-          ></div>
-          <div
-            id="terminalParent"
-            className="h-[95%] absolute w-full overflow-hidden"
-          >
+          <>
+            <PDFIcon />
+          </>
+          <Notes />
+          <>
             <Terminal />
-          </div>
+          </>
         </div>
         <footer className="absolute z-20 h-12 w-5/6 bottom-2 left-1/2 -translate-x-1/2 flex justify-center">
           <Footer />

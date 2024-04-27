@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { createRoot } from "react-dom/client";
-import Terminal from "./Terminal";
-import Notes from "./Notes";
+import TerminalWindow from "./Terminal-Window";
+import NotesWindow from "./Notes-Window";
 
 export default function Footer() {
   return (
@@ -20,23 +20,18 @@ export default function Footer() {
             const notes = notesParent.querySelector("#notes");
             const terminalParent = document.getElementById("terminalParent");
             const terminal = terminalParent.querySelector("#terminal");
-            if (notes && terminal && terminalParent.classList.contains("z-0")) {
-              terminalParent.classList.remove("z-0");
-              terminalParent.classList.add("z-10");
-              notesParent.classList.remove("z-10");
-              notesParent.classList.add("z-0");
+            if (notes && terminal && terminalParent.style.zIndex == 0) {
+              terminalParent.style.zIndex = 10;
+              notesParent.style.zIndex = 0;
             } else if (terminal) {
               terminal.remove();
               sessionStorage.removeItem("commandIndx");
               sessionStorage.removeItem("commandsHistory");
               sessionStorage.removeItem("currentCommand");
 
-              terminalParent.classList.remove("z-10");
-              terminalParent.classList.remove("z-0");
-              terminalParent.classList.add("-z-10");
+              terminalParent.style.zIndex = -10;
               if (notes) {
-                notesParent.classList.remove("z-0");
-                notesParent.classList.add("z-10");
+                notesParent.style.zIndex = 10;
               }
             } else {
               await new Promise((resolve) => {
@@ -47,13 +42,11 @@ export default function Footer() {
               });
               event.target.classList.remove("animate-bounce");
               if (notes) {
-                notesParent.classList.remove("z-10");
-                notesParent.classList.add("z-0");
+                notesParent.style.zIndex = 0;
               }
-              terminalParent.classList.remove("-z-10");
-              terminalParent.classList.add("z-10");
+              terminalParent.style.zIndex = 10;
               const root = createRoot(terminalParent);
-              root.render(<Terminal />);
+              root.render(<TerminalWindow />);
             }
           }}
         >
@@ -97,19 +90,14 @@ export default function Footer() {
             const notes = notesParent.querySelector("#notes");
             const terminalParent = document.getElementById("terminalParent");
             const terminal = terminalParent.querySelector("#terminal");
-            if (notes && terminal && notesParent.classList.contains("z-0")) {
-              notesParent.classList.remove("z-0");
-              notesParent.classList.add("z-10");
-              terminalParent.classList.remove("z-10");
-              terminalParent.classList.add("z-0");
+            if (notes && terminal && notesParent.style.zIndex == 0) {
+              notesParent.style.zIndex = 10;
+              terminalParent.style.zIndex = 0;
             } else if (notes) {
               notes.remove();
-              notesParent.classList.remove("z-10");
-              notesParent.classList.remove("z-0");
-              notesParent.classList.add("-z-10");
+              notesParent.style.zIndex = -10;
               if (terminal) {
-                terminalParent.classList.remove("z-0");
-                terminalParent.classList.add("z-10");
+                terminalParent.style.zIndex = 10;
               }
             } else {
               await new Promise((resolve) => {
@@ -120,13 +108,11 @@ export default function Footer() {
               });
               event.target.classList.remove("animate-bounce");
               if (terminal) {
-                terminalParent.classList.remove("z-10");
-                terminalParent.classList.add("z-0");
+                terminalParent.style.zIndex = 0;
               }
-              notesParent.classList.remove("-z-10");
-              notesParent.classList.add("z-10");
+              notesParent.style.zIndex = 10;
               const root = createRoot(notesParent);
-              root.render(<Notes />);
+              root.render(<NotesWindow />);
             }
           }}
         >

@@ -18,12 +18,9 @@ export default function NotesTitle() {
 
               notes.remove();
 
-              notesParent.classList.remove("z-10");
-              notesParent.classList.remove("z-0");
-              notesParent.classList.add("-z-10");
+              notesParent.style.zIndex = -10;
               if (terminal) {
-                terminalParent.classList.remove("z-0");
-                terminalParent.classList.add("z-10");
+                terminalParent.style.zIndex = 10;
               }
             }}
           />
@@ -57,23 +54,24 @@ export default function NotesTitle() {
           <div
             className="rounded-full cursor-pointer bg-green-500 size-4"
             onClick={() => {
-              const notes = document.getElementById("notes");
-              if (notes.classList.contains("MAX_SIZE")) {
-                notes.classList.remove("MAX_SIZE");
-                notes.style.height = "75%";
-                notes.style.width = "67%";
+              const notesParent = document.getElementById("notesParent");
+              if (notesParent.classList.contains("MAX_SIZE")) {
+                notesParent.classList.remove("MAX_SIZE");
+                notesParent.style.height = "90%";
+                notesParent.style.width = "60%";
               } else {
-                notes.classList.add("MAX_SIZE");
-                notes.style.height = "100%";
-                notes.style.width = "100%";
-                document
-                  .getElementById("notesParent")
-                  .querySelector("div").style.transform = "none";
+                notesParent.classList.add("MAX_SIZE");
+                notesParent.style.height = "95%";
+                notesParent.style.width = "100%";
+                document.getElementById("notesParent").style.transform = "none";
               }
             }}
           />
         </div>
-        <h1 className="cursor-default text-center h-fit w-11/12 font-bold text-xl">
+        <h1
+          id="notes-title-bar"
+          className="cursor-pointer text-center h-fit w-11/12 font-bold text-xl"
+        >
           Projects of Akshat Garg
         </h1>
       </div>
