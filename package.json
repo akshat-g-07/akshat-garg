@@ -3,8 +3,10 @@
   "private": true,
   "scripts": {
     "build:macos-portfolio": "turbo run build --filter=macos-portfolio",
+    "build:threejs-portfolio": "turbo run build --filter=threejs-portfolio",
     "build": "turbo build",
     "dev:macos-portfolio": "turbo dev --filter=macos-portfolio",
+    "dev:threejs-portfolio": "turbo dev --filter=threejs-portfolio",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
