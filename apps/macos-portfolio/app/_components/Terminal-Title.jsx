@@ -24,12 +24,9 @@ export default function TerminalTitle() {
               sessionStorage.removeItem("currentCommand");
 
               terminal.remove();
-              terminalParent.classList.remove("z-10");
-              terminalParent.classList.remove("z-0");
-              terminalParent.classList.add("-z-10");
+              terminalParent.style.zIndex = -10;
               if (notes) {
-                notesParent.classList.remove("z-0");
-                notesParent.classList.add("z-10");
+                notesParent.style.zIndex = 10;
               }
             }}
           />
@@ -57,23 +54,25 @@ export default function TerminalTitle() {
           <div
             className="rounded-full cursor-pointer bg-green-500 size-4"
             onClick={() => {
-              const terminal = document.getElementById("terminal");
-              if (terminal.classList.contains("MAX_SIZE")) {
-                terminal.classList.remove("MAX_SIZE");
-                terminal.style.height = "75%";
-                terminal.style.width = "67%";
+              const terminalParent = document.getElementById("terminalParent");
+              if (terminalParent.classList.contains("MAX_SIZE")) {
+                terminalParent.classList.remove("MAX_SIZE");
+                terminalParent.style.height = "75%";
+                terminalParent.style.width = "67%";
               } else {
-                terminal.classList.add("MAX_SIZE");
-                terminal.style.height = "100%";
-                terminal.style.width = "100%";
-                document
-                  .getElementById("terminalParent")
-                  .querySelector("div").style.transform = "none";
+                terminalParent.classList.add("MAX_SIZE");
+                terminalParent.style.height = "95%";
+                terminalParent.style.width = "100%";
+                document.getElementById("terminalParent").style.transform =
+                  "none";
               }
             }}
           />
         </div>
-        <h1 className="cursor-default text-center h-fit w-11/12 font-bold text-xl">
+        <h1
+          id="terminal-title-bar"
+          className="cursor-pointer text-center h-fit w-11/12 font-bold text-xl"
+        >
           Akshat Garg
         </h1>
       </div>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-export default function LockScreen({ setUnocked }) {
+export default function LockScreen({ setUnlocked }) {
   const [userName, setUserName] = useState("");
   const [error, setError] = useState("");
 
@@ -25,7 +25,7 @@ export default function LockScreen({ setUnocked }) {
 
     const lockScreen = document.getElementById("lock-screen");
     lockScreen.style.transform = "translate(0px,-100%)";
-    setUnocked(true);
+    setUnlocked(true);
     setTimeout(() => {
       lockScreen.remove();
     }, 2000);
