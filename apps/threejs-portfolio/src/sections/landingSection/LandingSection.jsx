@@ -1,7 +1,6 @@
 import HelloWords from "./components/HelloWords";
 import NameDesc from "./components/NameDesc";
 import ResumeButton from "./components/ResumeButton";
-import TechWrite from "./components/TechWrite";
 import { motion } from "framer-motion";
 import IncomingAnimation from "../../globalComps/IncomingAnimation";
 
@@ -32,9 +31,8 @@ const LandingSection = () => {
           }}
           className="w-full"
         >
-          <div className="w-full py-8 flex flex-col md:flex-row justify-center md:justify-evenly lg:justify-around items-center">
+          <div className="w-full py-16 md:mt-60 flex flex-col md:flex-row justify-center md:justify-evenly lg:justify-around items-center">
             <ResumeButton />
-            <TechWrite />
           </div>
         </motion.div>
       </div>
