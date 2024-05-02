@@ -25,9 +25,7 @@ const AllSections = () => {
 
   useEffect(() => {
     async function apiCall() {
-      const someval = await fetch("https://mail-sender-exby.onrender.com");
-      const testVal = await someval.json();
-      console.log(someval, testVal);
+      await fetch("https://mail-sender-exby.onrender.com");
     }
     apiCall();
     setTimeout(() => {
