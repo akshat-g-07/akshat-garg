@@ -20,11 +20,8 @@ export default function LockScreen({ setUnlocked }) {
       return;
     }
 
-    console.log("user input", userName);
-    // implement a strategy to let me knw who is here!
-
     (async function apiCall() {
-      await fetch("https://mail-sender-exby.onrender.com");
+      await fetch(`https://mail-sender-exby.onrender.com?user=${userName}`);
     })();
 
     const lockScreen = document.getElementById("lock-screen");
