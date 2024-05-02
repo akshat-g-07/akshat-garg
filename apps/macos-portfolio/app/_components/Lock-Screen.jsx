@@ -23,6 +23,10 @@ export default function LockScreen({ setUnlocked }) {
     console.log("user input", userName);
     // implement a strategy to let me knw who is here!
 
+    (async function apiCall() {
+      await fetch("https://mail-sender-exby.onrender.com");
+    })();
+
     const lockScreen = document.getElementById("lock-screen");
     lockScreen.style.transform = "translate(0px,-100%)";
     setUnlocked(true);
