@@ -78,7 +78,7 @@ export default function TerminalTitle() {
         </div>
         <h1
           id="terminal-title-bar"
-          className="cursor-pointer text-center h-fit w-11/12 font-bold text-xl"
+          className="cursor-pointer text-center h-fit w-11/12 font-bold text-xl font-heading"
         >
           Akshat Garg
         </h1>

@@ -25,7 +25,7 @@ export default function DateTime() {
   }, []);
   return (
     <>
-      <p className="text-white">
+      <p className="text-white font-tInput">
         {currentDate.toLocaleString("en-US", options)}
       </p>
     </>
