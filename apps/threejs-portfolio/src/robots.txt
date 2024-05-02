@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Disallow:
+
+Sitemap: https://threejs-portfolio.akshat-garg.com/sitemap.xml

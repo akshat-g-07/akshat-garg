@@ -27,8 +27,10 @@ export default function NotesBody() {
               setProjectToShow("treklicious");
             }}
           >
-            <p className="text-xl mb-1 font-semibold">TrekLicious</p>
-            <p className="text-xs">
+            <p className="text-xl mb-1 font-semibold font-tInput">
+              TrekLicious
+            </p>
+            <p className="text-xs font-tOutput">
               ReactJS | NodeJS | Express | MongoDB | MUI
             </p>
           </div>
@@ -48,8 +50,10 @@ export default function NotesBody() {
               setProjectToShow("ratventure");
             }}
           >
-            <p className="text-xl mb-1 font-semibold">RatVenture</p>
-            <p className="text-xs">ReactJs | NodeJS | Express | Javascript</p>
+            <p className="text-xl mb-1 font-semibold font-tInput">RatVenture</p>
+            <p className="text-xs font-tOutput">
+              ReactJs | NodeJS | Express | Javascript
+            </p>
           </div>
           <div
             id="grillzilla"
@@ -67,8 +71,8 @@ export default function NotesBody() {
               setProjectToShow("grillzilla");
             }}
           >
-            <p className="text-xl mb-1 font-semibold">GrillZilla</p>
-            <p className="text-xs">ReactJs | API | Axios</p>
+            <p className="text-xl mb-1 font-semibold font-tInput">GrillZilla</p>
+            <p className="text-xs font-tOutput">ReactJs | API | Axios</p>
           </div>
         </div>
         <div className="h-full w-2/3 bg-white p-4">

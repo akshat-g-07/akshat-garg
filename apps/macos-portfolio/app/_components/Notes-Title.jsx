@@ -77,7 +77,7 @@ export default function NotesTitle() {
         </div>
         <h1
           id="notes-title-bar"
-          className="cursor-pointer text-center h-fit w-11/12 font-bold text-xl"
+          className="cursor-pointer text-center h-fit w-11/12 font-bold text-xl font-heading"
         >
           Projects of Akshat Garg
         </h1>

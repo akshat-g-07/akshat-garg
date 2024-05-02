@@ -79,19 +79,20 @@ export default function EnterKey(event) {
       commandOutputNode.innerText = `Command not found. Type "help" to show a list of available commands.`;
       break;
   }
+  commandOutputNode.classList.add("font-tOutput");
   parentElement.appendChild(commandOutputNode);
 
   const terminalNode = document.createElement("div");
   terminalNode.classList = "w-[98%] h-fit flex flex-start py-2";
   terminalNode.innerHTML = `
     <div class="w-fit flex items-center mr-4">
-      <div class="w-fit min-w-28 text-black bg-yellow-400 px-2 font-semibold">akshat-garg</div>
+      <div class="w-fit min-w-28 text-black bg-yellow-400 px-2 font-semibold font-tInput">akshat-garg</div>
       <div class="h-6 w-5 relative">
         <img src="/triangle.png" fill={true} alt="Terminal Triangle" />
       </div>
     </div>
     <input
-      class="w-4/5 bg-slate-700 focus:outline-none border-none text-green-500 font-normal"
+      class="w-4/5 bg-slate-700 focus:outline-none border-none text-green-500 font-normal font-tInput"
       type="text"
          />
  `;

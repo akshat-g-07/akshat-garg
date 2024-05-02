@@ -1,3 +1,12 @@
+/* Akshat Garg */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&display=swap");
+
+/* Terminal Input */
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap");
+
+/* Terminal Output */
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
