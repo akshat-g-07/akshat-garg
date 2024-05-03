@@ -10,7 +10,7 @@ A portfolio built using ThreeJS library with 3D Model and animation.
 
 <hr />
 
-#### Features:
+### Features:
 
 - Landing Screen with Resume Button and left sidebar to quickly access my resume and my socials respectively.
   ![Landing Section](./snaps/landingsection.png)
