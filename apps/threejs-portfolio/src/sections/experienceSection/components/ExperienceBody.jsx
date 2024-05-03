@@ -1,5 +1,5 @@
 import { ListItem, UnorderedList } from "@chakra-ui/react";
-import Experience from "./Experience";
+import { Experience } from "@repo/portfolio-details";
 
 const ExperienceBody = () => {
   return (
@@ -8,7 +8,7 @@ const ExperienceBody = () => {
       {Experience.map((item) => {
         return (
           <div
-            key={item}
+            key={item.company}
             className="h-auto w-4/5 lg:w-7/12 bg-stone-600 p-2 ml-1"
           >
             <div className="text-lg lg:text-2xl font-bold font-firstDescription">

@@ -1,12 +1,12 @@
 import {
-  Help,
-  About,
-  Skills,
-  Education,
-  Experience,
-  Projects,
-  Achievements,
-  Mail,
+  HelpFunction,
+  AboutFunction,
+  SkillsFunction,
+  EducationFunction,
+  ExperienceFunction,
+  ProjectsFunction,
+  AchievementsFunction,
+  MailFunction,
 } from "./Command-Values";
 import OnKeyDown from "./EventListener";
 
@@ -33,25 +33,25 @@ export default function EnterKey(event) {
       }
       break;
     case "help":
-      commandOutputNode.innerHTML = Help();
+      commandOutputNode.innerHTML = HelpFunction();
       break;
     case "about":
-      commandOutputNode.innerText = About();
+      commandOutputNode.innerText = AboutFunction();
       break;
     case "skills":
-      commandOutputNode.appendChild(Skills());
+      commandOutputNode.appendChild(SkillsFunction());
       break;
     case "education":
-      commandOutputNode.innerText = Education();
+      commandOutputNode.innerText = EducationFunction();
       break;
     case "experience":
-      commandOutputNode.innerText = Experience();
+      commandOutputNode.innerText = ExperienceFunction();
       break;
     case "projects":
-      commandOutputNode.appendChild(Projects());
+      commandOutputNode.appendChild(ProjectsFunction());
       break;
     case "achievements":
-      commandOutputNode.innerText = Achievements();
+      commandOutputNode.innerText = AchievementsFunction();
       break;
     case "resume":
       const resumeLink = document.createElement("a");
@@ -72,7 +72,7 @@ export default function EnterKey(event) {
       window.open("https://twitter.com/akku_g__", "_blank");
       break;
     case "mail":
-      commandOutputNode.innerText = Mail();
+      commandOutputNode.innerText = MailFunction();
       break;
 
     default:
