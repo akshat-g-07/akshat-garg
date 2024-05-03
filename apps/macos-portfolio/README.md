@@ -10,7 +10,7 @@ MacOS Portfolio
 
 <hr />
 
-#### Features:
+### Features:
 
 - A Lock Screen where user puts his name to Sign In.
   ![Lock Screen](./snaps/lockscreen.png)
