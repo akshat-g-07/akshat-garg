@@ -18,7 +18,7 @@ MacOS Portfolio
 - User can enter various commands in terminal to get desired output.
   ![Home Screen](./snaps/homescreen.png)
 
-- There's a Resume icon on home screen for user to download my resume directly.
+- There's a Resume icon on home screen for user to download my resume directly.<br/>
   ![Resume](./snaps/resume.png)
 
 - There's a responsive footer as well. Different Icons perform different sections.
@@ -27,5 +27,5 @@ MacOS Portfolio
 - From Notes App Icon, user can open an interface showing all of my projects.
   ![Projects](./snaps/projects.png)
 
-- There's a dynamic clock at top left corner of screen.
+- There's a dynamic clock at top left corner of screen.<br/>
   ![Clock](./snaps/clock.png)
