@@ -5,17 +5,20 @@ akshat-garg
 </h1>
 
 <p align="center">
-<a rel="noopener noreferrer" style="padding: 5px;" target="_blank" href="mailto:akshatg805@gmail.com">
-<img src="https://github.com/akshat-g-07/akshat-garg/blob/main/apps/macos-portfolio/public/footer/gmail.png?raw=true" width="20" alt="Mail">
+<a rel="noopener noreferrer" target="_blank" href="mailto:akshatg805@gmail.com">
+<img src="https://github.com/akshat-g-07/akshat-garg/blob/main/apps/macos-portfolio/public/footer/gmail.png?raw=true" width="25" alt="Mail">
 </a>
-<a rel="noopener noreferrer" style="padding: 5px;" target="_blank" href="https://www.linkedin.com/in/akshat-garg-580322241/">
-<img src="https://github.com/akshat-g-07/akshat-garg/blob/main/apps/macos-portfolio/public/footer/linkedin.png?raw=true" width="20" alt="LinkedIn">
+   &nbsp; &nbsp;
+<a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/in/akshat-garg-580322241/">
+<img src="https://github.com/akshat-g-07/akshat-garg/blob/main/apps/macos-portfolio/public/footer/linkedin.png?raw=true" width="25" alt="LinkedIn">
 </a>
-<a rel="noopener noreferrer" style="padding: 5px;" target="_blank" href="https://twitter.com/akku_g__">
-<img src="https://github.com/akshat-g-07/akshat-garg/blob/main/apps/macos-portfolio/public/footer/x.png?raw=true" width="20" alt="X(Twitter)">
+   &nbsp; &nbsp;
+<a rel="noopener noreferrer" target="_blank" href="https://twitter.com/akku_g__">
+<img src="https://github.com/akshat-g-07/akshat-garg/blob/main/apps/macos-portfolio/public/footer/x.png?raw=true" width="25" alt="X(Twitter)">
 </a>
-<a rel="noopener noreferrer" style="padding: 5px;" target="_blank" href="https://www.github.com/akshat-g-07/">
-<img src="https://github.com/akshat-g-07/akshat-garg/blob/main/apps/macos-portfolio/public/footer/github.png?raw=true" width="20" alt="Github">
+   &nbsp; &nbsp;
+<a rel="noopener noreferrer" target="_blank" href="https://www.github.com/akshat-g-07/">
+<img src="https://github.com/akshat-g-07/akshat-garg/blob/main/apps/macos-portfolio/public/footer/github.png?raw=true" width="25" alt="Github">
 </a>
 </p>
 
@@ -25,7 +28,7 @@ This is a monorepo (Turborepo) containing all my projects and portfolios.
 
 <hr />
 
-#### My Projects:
+### My Projects:
 
 1. [MacOS Portfolio](./apps/macos-portfolio/README.md) :
    A portfolio based on MacOS Terminal UI, where user puts in different commands to get desired information about me.
