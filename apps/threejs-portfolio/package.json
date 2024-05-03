@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@repo/portfolio-details": "^0.0.0",
+    "@repo/portfolio-details": "^1.0.0",
     "@chakra-ui/icons": "^2.1.0",
     "@chakra-ui/react": "^2.8.0",
     "@emailjs/browser": "^4.3.3",
