@@ -9,7 +9,7 @@ const ResumeButton = () => {
       endIcon={<LaunchIcon />}
       className="h-10"
     >
-      <a href="/resume/Akshat_Garg_Resume.pdf" download={true} target="_blank">
+      <a href="/resume/Akshat_Full_Stack_Resume.pdf" download={true} target="_blank">
         Resume
       </a>
     </Button>
