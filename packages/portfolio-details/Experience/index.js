@@ -4,9 +4,12 @@ const Experience = [
     role: "Specialist Programmer",
     duration: "2021-Present",
     description: [
-      "Automated weekly support and few other monotonous tasks using Pyspark.",
-      "As part of agile team, developed sales observation logics for multiple retailers and collaborated with ROI team to identify and fix bugs for better investment insights.",
-      "Experience in data integration and ETL processes using IICS. Revamped and optimized pipelines which ultimately improved the quality of deliverables.",
+      "Developing Microservices APIs for various functionalities. ",
+      "Integrating API to UI and implementing functionalities for user interactions. ",
+      "As part of agile team, developed a MVC application which can perform CRUD operations. ",
+      "Suggested the use of stored procedures to enhance the reusability of code and efficiency of the team. ",
+      "Experience in ETL processes using SQL queries on IICS. ",
+      "Revamped and optimized ETL pipelines which ultimately improved the quality of deliverables by almost 30%.",
     ],
   },
 ];

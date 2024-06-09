@@ -55,8 +55,8 @@ export default function EnterKey(event) {
       break;
     case "resume":
       const resumeLink = document.createElement("a");
-      resumeLink.href = "/resume/Akshat_Full_Stack_Resume.pdf";
-      resumeLink.download = "Akshat_Full_Stack_Resume";
+      resumeLink.href = "/resume/Akshat_Dot_Net_Resume.pdf";
+      resumeLink.download = "Akshat_Dot_Net_Resume";
       resumeLink.click();
       break;
     case "github":

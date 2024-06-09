@@ -62,7 +62,7 @@ export function HelpFunction() {
 }
 
 export function AboutFunction() {
-  return "Hey there!\nI am Akshat Garg, alumnus of NIT Patna. I am an experienced web developer who really enjoys creating websites.  I can endlessly talk about web development using different JS libraries/frameworks. I really thrive to develop something meaningful!";
+  return "Hey there!\nI am Akshat Garg, alumnus of NIT Patna. I am an experienced full stack developer proficient with Dot Net Tech Stack. I really thrive to develop something meaningful!";
 }
 
 export function SkillsFunction() {
