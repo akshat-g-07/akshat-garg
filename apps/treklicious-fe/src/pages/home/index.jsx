@@ -1,3 +1,4 @@
+import CallToAction from "@/components/home/call-to-action";
 import HeroSection from "@/components/home/hero-section";
 
 export default function Home() {
@@ -5,6 +6,7 @@ export default function Home() {
     <>
       <section className="w-full min-h-screen h-[2000px] flex flex-col items-center">
         <HeroSection />
+        <CallToAction />
       </section>
     </>
   );
