@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 
-export default function RotatingPart() {
-  const descriptions = ["Adventure", "Escape", "Quest", "Getaway", "Odyssey"];
-
+export default function RotatingPart({ descriptions, animationDirection }) {
   const [showId, setShowId] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setShowId((prev) => (prev + 1) % descriptions.length);
+      setShowId((prev) => (prev + 1) % descriptions?.length);
     }, 2500);
 
     return () => clearInterval(interval);
   }, [showId, descriptions.length]);
 
+  const yValues =
+    animationDirection === "up"
+      ? ["100%", "0%", "0%", "-100%"]
+      : ["-100%", "0%", "0%", "100%"];
+
   const animation = {
-    y: ["-100%", "0%", "0%", "100%"],
+    y: yValues,
     transition: {
       duration: 2.5,
       times: [0, 0.25, 0.75, 1],
