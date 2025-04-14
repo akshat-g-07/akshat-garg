@@ -5,7 +5,7 @@ import Season from "@/components/home/season";
 export default function Home() {
   return (
     <>
-      <section className="w-full min-h-screen h-fit flex flex-col items-center">
+      <section className="w-full min-h-screen h-[9600px] flex flex-col items-center">
         <HeroSection />
         <CallToAction />
         <Season />

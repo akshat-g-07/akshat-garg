@@ -6,7 +6,7 @@ export default function Tile({ imgSrc, alt, title, link, className }) {
     <Link
       to={link}
       className={cn(
-        "border-2 border-black rounded-lg flex justify-center items-center transition-all duration-500 ease-in-out pointer shadow-xl hover:scale-105 group/tile-parent relative overflow-hidden aspect-video w-64",
+        "border-2 border-black rounded-lg flex justify-center items-center transition-all duration-500 ease-in-out pointer shadow-xl hover:scale-105 group/tile-parent relative overflow-hidden aspect-video w-48 md:w-64",
         className
       )}
     >

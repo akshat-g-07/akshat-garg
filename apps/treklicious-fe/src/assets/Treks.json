@@ -1,0 +1,250 @@
+[
+  {
+    "name": "Kedarkantha",
+    "season": "Winter",
+    "difficulty": "Easy",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Kedarkantha Trek is a popular winter trek in Uttarakhand, known for its scenic beauty and snow-covered trails. It offers breathtaking views of the Himalayan peaks and takes you through dense forests and meadows."
+  },
+  {
+    "name": "Valley of Flowers",
+    "season": "Monsoon",
+    "difficulty": "Medium",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Valley of Flowers Trek is a mesmerizing journey through the colorful floral meadows of Uttarakhand. It is famous for its diverse range of alpine flowers, stunning landscapes, and serene atmosphere."
+  },
+  {
+    "name": "Har Ki Dun",
+    "season": "Monsoon",
+    "difficulty": "Medium",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Har Ki Dun Trek is a picturesque trail in Uttarakhand, known for its scenic beauty and rich cultural heritage. It takes you through ancient villages, lush green valleys, and offers panoramic views of the Himalayan peaks."
+  },
+  {
+    "name": "Hampta Pass",
+    "season": "Summer",
+    "difficulty": "Medium",
+    "state": "Himachal Pradesh",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Hampta Pass Trek is a thrilling adventure in Himachal Pradesh, offering a mix of landscapes, including lush green valleys, barren landscapes, and snow-covered mountains. It provides stunning views of the Himalayas and a memorable camping experience."
+  },
+  {
+    "name": "Roopkund",
+    "season": "Monsoon",
+    "difficulty": "Hard",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Roopkund Trek is a challenging expedition to the mysterious Roopkund Lake, known for its skeletal remains. It is a high-altitude trek that takes you through alpine forests, meadows, and breathtaking views of the Trishul and Nanda Ghunti peaks."
+  },
+  {
+    "name": "Rupin Pass",
+    "season": "Summer",
+    "difficulty": "Hard",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Rupin Pass Trek is a thrilling adventure that takes you through diverse landscapes, including dense forests, gushing rivers, snow bridges, and stunning waterfalls. It offers panoramic views of the Himalayas and a challenging crossing of the Rupin Pass."
+  },
+  {
+    "name": "Kuari Pass",
+    "season": "Winter",
+    "difficulty": "Medium",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Kuari Pass Trek, also known as Lord Curzon Trail, is a popular winter trek in Uttarakhand. It offers breathtaking views of the Nanda Devi and Dronagiri peaks, along with enchanting meadows, forests, and charming villages."
+  },
+  {
+    "name": "Nag Tibba",
+    "season": "Winter",
+    "difficulty": "Easy",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Nag Tibba Trek is a short and easy trek near Mussoorie, perfect for beginners and nature lovers. It provides panoramic views of the snow-capped Himalayan peaks and offers a refreshing experience in the lap of nature."
+  },
+  {
+    "name": "Tungnath Chandrashila",
+    "season": "Winter",
+    "difficulty": "Medium",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Tungnath Chandrashila Trek is a popular winter trek in Uttarakhand, known for its stunning views of the Himalayas, including the majestic Chaukhamba, Nanda Devi, and Trishul peaks. It also includes a visit to the famous Tungnath Temple."
+  },
+  {
+    "name": "Brahmatal",
+    "season": "Winter",
+    "difficulty": "Medium",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Brahmatal Trek is a captivating winter trek in Uttarakhand, offering mesmerizing views of snow-covered peaks, frozen lakes, and enchanting forests. It is known for its scenic beauty and thrilling camping experience."
+  },
+  {
+    "name": "Pindari Glacier",
+    "season": "Summer",
+    "difficulty": "Medium",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Pindari Glacier Trek is a scenic trek in Uttarakhand, offering panoramic views of snow-capped peaks, lush meadows, and the majestic Pindari Glacier. It is known for its natural beauty and serene environment."
+  },
+  {
+    "name": "Gaumukh Tapovan",
+    "season": "Summer",
+    "difficulty": "Hard",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Gaumukh Tapovan Trek is a challenging expedition to the source of the holy River Ganges, known as Gaumukh. It takes you through breathtaking landscapes, including glaciers, moraines, and offers stunning views of the Bhagirathi peaks."
+  },
+  {
+    "name": "Pin Parvati Pass",
+    "season": "Summer",
+    "difficulty": "Hard",
+    "state": "Himachal Pradesh",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Pin Parvati Pass Trek is a challenging high-altitude trek in Himachal Pradesh, known for its stunning views, rocky terrains, and thrilling river crossings. It offers a unique experience of traversing from the lush Parvati Valley to the barren Pin Valley."
+  },
+  {
+    "name": "Tarsar Marsar",
+    "season": "Summer",
+    "difficulty": "Medium",
+    "state": "Jammu and Kashmir",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Tarsar Marsar Trek is a beautiful trek in Jammu and Kashmir, known for its twin alpine lakes, Tarsar and Marsar. It takes you through scenic meadows, deep valleys, and offers breathtaking views of the surrounding mountains."
+  },
+  {
+    "name": "Kareri Lake",
+    "season": "Summer",
+    "difficulty": "Easy",
+    "state": "Himachal Pradesh",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Kareri Lake Trek is a serene trek in Himachal Pradesh, leading to the crystal clear Kareri Lake nestled amidst the Dhauladhar Range. It offers a peaceful environment, lush green forests, and stunning views of the surrounding peaks."
+  },
+  {
+    "name": "Goechala",
+    "season": "Summer",
+    "difficulty": "Hard",
+    "state": "Sikkim",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Goechala Trek is a challenging trek in Sikkim, known for its close-up views of the majestic Kanchenjunga, the third highest peak in the world. It takes you through dense rhododendron forests, alpine meadows, and offers a memorable experience."
+  },
+  {
+    "name": "Kheerganga",
+    "season": "Summer",
+    "difficulty": "Easy",
+    "state": "Himachal Pradesh",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Kheerganga Trek is a popular trek in Himachal Pradesh, known for its natural hot water springs and stunning panoramic views of the Parvati Valley. It offers a rejuvenating experience and a chance to camp amidst the picturesque landscapes."
+  },
+  {
+    "name": "Sandakphu",
+    "season": "Monsoon",
+    "difficulty": "Medium",
+    "state": "West Bengal",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Sandakphu Trek is a picturesque trek in West Bengal, offering breathtaking views of the Everest and Kanchenjunga peaks. It takes you through dense forests, charming villages, and provides a unique experience of walking along the India-Nepal border."
+  },
+  {
+    "name": "Gangotri Tapovan",
+    "season": "Summer",
+    "difficulty": "Medium",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Gangotri Tapovan Trek is a spiritual and adventurous journey in Uttarakhand, leading to the holy Gangotri Glacier and the mesmerizing Tapovan meadow. It offers stunning views of the Bhagirathi peaks and a chance to experience the divine Ganges."
+  },
+  {
+    "name": "Deoriatal Chandrashila",
+    "season": "Winter",
+    "difficulty": "Medium",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Deoriatal Chandrashila Trek is a popular winter trek in Uttarakhand, known for its panoramic views of the snow-capped Himalayan peaks, including Chaukhamba, Nanda Devi, and Trishul. It also includes a visit to the serene Deoriatal Lake."
+  },
+  {
+    "name": "Dodital",
+    "season": "Summer",
+    "difficulty": "Easy",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Dodital Trek is a peaceful trek in Uttarakhand, leading to the serene Dodital Lake surrounded by dense forests. It offers a refreshing experience, beautiful campsite, and a chance to spot a variety of bird species."
+  },
+  {
+    "name": "Dayara Bugyal",
+    "season": "Summer",
+    "difficulty": "Easy",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Dayara Bugyal Trek is a scenic trek in Uttarakhand, known for its vast meadows and panoramic views of the snow-covered Himalayan peaks. It offers a peaceful environment, charming villages, and a chance to witness the local culture."
+  },
+  {
+    "name": "Kanamo Peak",
+    "season": "Summer",
+    "difficulty": "Hard",
+    "state": "Himachal Pradesh",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Kanamo Peak Trek is a challenging trek in Himachal Pradesh, offering stunning views of the Spiti Valley and the surrounding peaks. It requires technical skills and acclimatization, making it suitable for experienced trekkers."
+  },
+  {
+    "name": "Bhrigu Lake",
+    "season": "Monsoon",
+    "difficulty": "Medium",
+    "state": "Himachal Pradesh",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Bhrigu Lake Trek is a beautiful trek in Himachal Pradesh, leading to the sacred Bhrigu Lake nestled amidst the snowy mountains. It offers panoramic views, lush green meadows, and a chance to experience the local culture."
+  },
+  {
+    "name": "Indrahar Pass",
+    "season": "Summer",
+    "difficulty": "Hard",
+    "state": "Himachal Pradesh",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Indrahar Pass Trek is a challenging high-altitude trek in Himachal Pradesh, offering panoramic views of the Dhauladhar Range and the Kangra Valley. It requires technical skills and acclimatization, making it suitable for experienced trekkers."
+  },
+  {
+    "name": "Triund",
+    "season": "Summer",
+    "difficulty": "Easy",
+    "state": "Himachal Pradesh",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Triund Trek is a popular trek in Himachal Pradesh, known for its easy accessibility and stunning views of the Dhauladhar Range. It offers a rewarding experience, beautiful camping site, and a chance to enjoy the breathtaking sunset."
+  },
+  {
+    "name": "Nanda Devi Base Camp",
+    "season": "Summer",
+    "difficulty": "Hard",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Nanda Devi Base Camp Trek is a challenging expedition to the base camp of Nanda Devi, the second highest peak in India. It takes you through remote villages, lush valleys, and offers breathtaking views of the Nanda Devi Sanctuary."
+  },
+  {
+    "name": "Naggar to Malana",
+    "season": "Summer",
+    "difficulty": "Medium",
+    "state": "Himachal Pradesh",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Naggar to Malana Trek is a unique trek in Himachal Pradesh, offering a glimpse into the fascinating village of Malana and its distinct culture. It takes you through beautiful landscapes, dense forests, and provides a memorable cultural experience."
+  },
+  {
+    "name": "Buran Ghati",
+    "season": "Summer",
+    "difficulty": "Hard",
+    "state": "Himachal Pradesh",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Buran Ghati Trek is a challenging high-altitude trek in Himachal Pradesh, known for its snow-covered trail, scenic beauty, and thrilling adventure. It offers panoramic views of the Kinnaur and Shimla regions and requires technical skills."
+  },
+  {
+    "name": "Auden's Col",
+    "season": "Winter",
+    "difficulty": "Hard",
+    "state": "Uttarakhand",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Auden's Col Trek is a challenging expedition in Uttarakhand, known for its high-altitude pass and thrilling adventure. It takes you through remote valleys, glaciers, and offers breathtaking views of the Gangotri and Jogin peaks."
+  },
+  {
+    "name": "Delete",
+    "season": "Delete",
+    "difficulty": "Delete",
+    "state": "Maharashtra",
+    "img": "https://res.cloudinary.com/dssdgt6zt/image/upload/v1687618130/TrekLicious/Yamunotri_qeseex.jpg",
+    "description": "Delete"
+  }
+]
