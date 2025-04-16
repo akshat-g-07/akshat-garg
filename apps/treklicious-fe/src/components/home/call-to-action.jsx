@@ -18,6 +18,7 @@ export default function CallToAction() {
       rotatingPartDescriptions={rotatingPartDescriptions}
       subTitle="is your much needed"
       animationDirection="down"
+      speed={2}
       className="bg-cover bg-center"
     >
       <p className="font-[Tajawal,sans-serif] text-center font-medium text-lg my-20 w-2/3">

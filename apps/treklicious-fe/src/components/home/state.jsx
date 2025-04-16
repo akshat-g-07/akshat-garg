@@ -36,6 +36,7 @@ export default function State() {
       bgImgUrl={imgSrc}
       subTitle="to explore state treasures"
       className="bg-auto bg-top"
+      speed={1.5}
     >
       <div className="w-full flex flex-wrap items-center justify-center gap-4 mt-6">
         {states.map((state, indx) => (

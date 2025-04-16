@@ -15,6 +15,7 @@ export default function Season() {
       rotatingPartDescriptions={rotatingPartDescriptions}
       subTitle="for all seasons"
       animationDirection="up"
+      speed={0.75}
       className="px-0 bg-contain bg-[#A1D2CE] bg-right"
     >
       {[summerTreks, monsoonTreks, winterTreks].map((seasonTreks, index) => (
