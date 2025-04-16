@@ -10,7 +10,7 @@ export default function RotatingPart({ descriptions, animationDirection }) {
     }, 2500);
 
     return () => clearInterval(interval);
-  }, [showId, descriptions.length]);
+  }, [showId, descriptions?.length]);
 
   const yValues =
     animationDirection === "up"
@@ -27,8 +27,12 @@ export default function RotatingPart({ descriptions, animationDirection }) {
   };
 
   return (
-    <div className="w-full overflow-hidden text-5xl flex justify-center">
-      <motion.div animate={animation}>{descriptions[showId]}</motion.div>
-    </div>
+    <>
+      {descriptions?.length > 0 && (
+        <div className="w-full overflow-hidden text-5xl flex justify-center">
+          <motion.div animate={animation}>{descriptions[showId]}</motion.div>
+        </div>
+      )}
+    </>
   );
 }
