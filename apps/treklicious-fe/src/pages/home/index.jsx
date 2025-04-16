@@ -1,6 +1,7 @@
 import CallToAction from "@/components/home/call-to-action";
 import HeroSection from "@/components/home/hero-section";
 import Season from "@/components/home/season";
+import State from "@/components/home/state";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
         <HeroSection />
         <CallToAction />
         <Season />
+        <State />
       </section>
     </>
   );
