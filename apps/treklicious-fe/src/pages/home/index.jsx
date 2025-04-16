@@ -6,7 +6,7 @@ import State from "@/components/home/state";
 export default function Home() {
   return (
     <>
-      <section className="w-full min-h-screen h-[9600px] flex flex-col items-center">
+      <section className="w-full min-h-screen h-[9600px] flex flex-col items-center relative">
         <HeroSection />
         <CallToAction />
         <Season />
