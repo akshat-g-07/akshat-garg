@@ -35,7 +35,7 @@ export default function State() {
     <SectionTemplate
       bgImgUrl={imgSrc}
       subTitle="to explore state treasures"
-      className="bg-auto bg-top"
+      className="bg-cover bg-top"
       speed={1.5}
     >
       <div className="w-full flex flex-wrap items-center justify-center gap-4 mt-6">
