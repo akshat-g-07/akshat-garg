@@ -1,6 +1,6 @@
 export default function TestimonialTile({ text, name }) {
   return (
-    <div className="w-full border-16 border-blue-500 h-fit relative py-4 px-12 group/testimonial-tile cursor-default">
+    <div className="w-full border-16 border-blue-500 h-fit relative py-4 px-12 group/testimonial-tile cursor-default max-w-[350px]">
       <div
         id="first-div"
         className="absolute leading-10 top-0 left-0 bg-white text-blue-700 text-9xl font-extrabold font-[Alegreya_SC,serif] -translate-y-1/2 transition-transform duration-500 group-hover/testimonial-tile:rotate-[720deg]"

@@ -10,6 +10,7 @@ export default function State() {
 
   // MARK: db
   // or maybe fetch all the treks grouped by states
+  // fetch first 10 only
   const states = useMemo(
     () => [
       "Uttarakhand",
@@ -24,11 +25,11 @@ export default function State() {
   const [index, setIndex] = useState(0);
 
   const [treks, setTreks] = useState(
-    Treks.filter((trek) => trek.state === states[index])
+    Treks.filter((trek) => trek.state === states[index]).slice(0, 10)
   );
 
   useEffect(() => {
-    setTreks(Treks.filter((trek) => trek.state === states[index]));
+    setTreks(Treks.filter((trek) => trek.state === states[index]).slice(0, 10));
   }, [index, states]);
 
   return (
@@ -55,7 +56,7 @@ export default function State() {
           </div>
         ))}
       </div>
-      <div className="w-full flex flex-wrap items-center justify-center gap-4 mt-6 min-h-[500px]">
+      <div className="w-full gap-4 mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 auto-rows-[minmax(150px,150px)] justify-items-center-safe min-h-[700px]">
         {treks.map((trek, indx) => (
           <Tile
             key={indx}
