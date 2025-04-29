@@ -1,11 +1,11 @@
 import InputField from "@/components/common/input-field";
-import { Link } from "react-router";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import normalSrc from "../../assets/profile-normal.png";
 import passwordSrc from "../../assets/profile-password.png";
 import usernameSrc from "../../assets/profile-username.png";
+import { Auth, AuthBody, AuthFooter } from "@/components/common/auth-setup";
 
 export default function LogIn() {
   const {
@@ -56,9 +56,9 @@ export default function LogIn() {
   };
 
   return (
-    <section className="bg-[#0d47a1] flex justify-center min-h-screen pt-5 pb-20">
+    <Auth>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="bg-[#ffffff2d] p-10 grid grid-cols-1 md:grid-cols-2 rounded-lg backdrop-blur-xs border border-[#ffffff1a] shadow-2xl md:gap-x-20 mt-25 space-y-12 w-[300px] md:w-[600px] lg:w-[900px]">
+        <AuthBody>
           <div className="h-10 relative md:col-span-2 *:left-1/2 *:-translate-1/2 rounded-full *:absolute *:-top-full mb-4">
             <img className="size-37 object-fill" src={headerImg} />
           </div>
@@ -100,15 +100,13 @@ export default function LogIn() {
             Log In
           </Button>
 
-          <div className="md:col-span-2 h-0.25 w-full bg-black" />
-          <div className="md:col-span-2 w-full md:flex md:justify-center-safe md:space-x-1">
-            <p>Don't have one?</p>
-            <Link to="/sign-up" className="font-semibold">
-              Sign Up
-            </Link>
-          </div>
-        </div>
+          <AuthFooter
+            textToShow="Don't have one?"
+            CTAUrl="/sign-up"
+            CTAText="Sign Up"
+          />
+        </AuthBody>
       </form>
-    </section>
+    </Auth>
   );
 }

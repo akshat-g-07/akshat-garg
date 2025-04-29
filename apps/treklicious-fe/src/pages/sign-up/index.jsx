@@ -1,5 +1,5 @@
+import { Auth, AuthBody, AuthFooter } from "@/components/common/auth-setup";
 import InputField from "@/components/common/input-field";
-import { Link } from "react-router";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -173,9 +173,9 @@ export default function SignUp() {
   };
 
   return (
-    <section className="bg-[#0d47a1] flex justify-center min-h-screen pt-5 pb-20">
+    <Auth>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="bg-[#ffffff2d] p-10 grid grid-cols-1 md:grid-cols-2 rounded-lg backdrop-blur-xs border border-[#ffffff1a] shadow-2xl md:gap-x-20 mt-25 space-y-12 w-[300px] md:w-[600px] lg:w-[900px]">
+        <AuthBody>
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <div className="h-10 relative md:col-span-2 *:left-1/2 *:-translate-1/2 cursor-grab rounded-full *:absolute *:-top-full mb-4">
@@ -280,15 +280,14 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
-          <div className="md:col-span-2 h-0.25 w-full bg-black" />
-          <div className="md:col-span-2 w-full md:flex md:justify-center-safe md:space-x-1">
-            <p>Already have an account?</p>
-            <Link to="/log-in" className="font-semibold">
-              Log In
-            </Link>
-          </div>
-        </div>
+
+          <AuthFooter
+            textToShow="Already have an account?"
+            CTAUrl="/log-in"
+            CTAText="Log In"
+          />
+        </AuthBody>
       </form>
-    </section>
+    </Auth>
   );
 }
