@@ -16,7 +16,7 @@ export default function InputField({
   return (
     <div
       className={cn(
-        "w-full font-[Tajawal,sans-serif] h-fit max-w-[150px] font-semibold space-y-2",
+        "w-full font-[Tajawal,sans-serif] h-fit max-w-[200px] font-semibold space-y-2 flex flex-col items-center-safe md:items-start",
         className
       )}
     >
@@ -35,7 +35,11 @@ export default function InputField({
         />
         <div className="w-full h-0 border-b-2 border-black absolute bottom-0 -z-10 origin-bottom transition-all duration-300 ease-in-out rounded-t-xl peer-focus:h-10 bg-[#b9b9b9bf]" />
       </div>
-      {error && <p className={cn("text-red-500", errorClassName)}>{error}</p>}
+      {error && (
+        <p className={cn("text-red-500 whitespace-pre-wrap", errorClassName)}>
+          {error}
+        </p>
+      )}
     </div>
   );
 }
