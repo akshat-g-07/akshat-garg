@@ -152,6 +152,7 @@ export default function SignUp() {
 
   const [profileImg, setProfileImg] = useState(null);
   const [tempProfileImg, setTempProfileImg] = useState(null);
+  const [profileImgError, setProfileImgError] = useState(true);
 
   const avatarOnClose = () => {
     setTempProfileImg(null);
@@ -162,12 +163,16 @@ export default function SignUp() {
   };
 
   const onSubmit = (data) => {
+    if (!profileImg) {
+      setProfileImgError(true);
+      return;
+    }
     console.log("data");
     console.log(data);
   };
 
   return (
-    <section className="bg-[#0d47a1] flex justify-center min-h-screen">
+    <section className="bg-[#0d47a1] flex justify-center min-h-screen pt-5 pb-20">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="bg-[#ffffff2d] p-10 grid grid-cols-1 md:grid-cols-2 rounded-lg backdrop-blur-xs border border-[#ffffff1a] shadow-2xl md:gap-x-20 mt-25 space-y-12 w-[300px] md:w-[600px] lg:w-[900px]">
           <AlertDialog>
@@ -214,6 +219,11 @@ export default function SignUp() {
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
+          {profileImgError && (
+            <p className="text-red-500 md:col-span-2 w-full text-center">
+              Please choose a profile picture.
+            </p>
+          )}
           <InputField
             type="text"
             id="firstName"
