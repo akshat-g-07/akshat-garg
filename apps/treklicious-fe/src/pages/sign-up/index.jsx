@@ -152,7 +152,7 @@ export default function SignUp() {
 
   const [profileImg, setProfileImg] = useState(null);
   const [tempProfileImg, setTempProfileImg] = useState(null);
-  const [profileImgError, setProfileImgError] = useState(true);
+  const [profileImgError, setProfileImgError] = useState(false);
 
   const avatarOnClose = () => {
     setTempProfileImg(null);
@@ -167,8 +167,9 @@ export default function SignUp() {
       setProfileImgError(true);
       return;
     }
-    console.log("data");
-    console.log(data);
+    setProfileImgError(false);
+    console.log("data", data);
+    console.log("profileImg", profileImg);
   };
 
   return (
