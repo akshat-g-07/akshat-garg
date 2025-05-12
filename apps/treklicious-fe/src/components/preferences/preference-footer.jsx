@@ -9,7 +9,7 @@ export default function PreferenceFooter({ activeIndx, handleClick }) {
           disabled={activeIndx === 0}
           className="md:col-span-2 w-fit justify-self-center-safe cursor-pointer"
           onClick={() => {
-            handleClick(activeIndx - 1);
+            handleClick(-1);
           }}
         >
           Back
@@ -18,7 +18,7 @@ export default function PreferenceFooter({ activeIndx, handleClick }) {
           size="lg"
           className="md:col-span-2 w-fit justify-self-center-safe cursor-pointer"
           onClick={() => {
-            handleClick(activeIndx + 1);
+            handleClick(+1);
           }}
         >
           {activeIndx === 2 ? "Finish" : "Next"}
