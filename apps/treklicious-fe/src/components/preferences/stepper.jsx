@@ -1,15 +1,32 @@
-import { preferencesSVGs } from "@/assets/preferencesSVGs";
 import { cn } from "@/lib/utils";
 import React from "react";
+import { Preferences } from "./preferences";
 
 export default function Stepper({ activeIndx }) {
   return (
     <>
       <div className="md:col-span-2 flex w-full justify-center-safe items-center-safe h-fit gap-x-2 md:gap-x-4 lg:gap-x-10">
-        {preferencesSVGs.map((svg, index) => (
+        {Preferences.map((preference, index) => (
           <React.Fragment key={index}>
-            <SVGIcon index={index} activeIndx={activeIndx} />
-            <div className="bg-white h-px flex-auto last:hidden" />
+            <SVGIcon
+              index={index}
+              activeIndx={activeIndx}
+              svg={preference.svg}
+            />
+            <div
+              className={cn(
+                "h-px flex-auto last:hidden",
+                activeIndx === 0
+                  ? "bg-gray-400"
+                  : activeIndx === 1
+                    ? index === 0
+                      ? "bg-white"
+                      : "bg-gray-400"
+                    : activeIndx === 2
+                      ? "bg-white"
+                      : "bg-gray-400"
+              )}
+            />
           </React.Fragment>
         ))}
       </div>
@@ -17,7 +34,7 @@ export default function Stepper({ activeIndx }) {
   );
 }
 
-function SVGIcon({ index, activeIndx }) {
+function SVGIcon({ index, activeIndx, svg }) {
   return (
     <div
       className={cn(
@@ -27,7 +44,7 @@ function SVGIcon({ index, activeIndx }) {
           : "bg-[#ccc]"
       )}
     >
-      {preferencesSVGs[index]}
+      {svg}
     </div>
   );
 }
