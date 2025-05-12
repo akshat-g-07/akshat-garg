@@ -3,6 +3,8 @@ import Home from "@/pages/home";
 import SignUp from "@/pages/sign-up";
 import LogIn from "@/pages/log-in";
 import Preferences from "@/pages/preferences";
+import Dashboard from "@/pages/dashboard";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -19,5 +21,9 @@ export const router = createBrowserRouter([
   {
     path: "/preferences",
     Component: Preferences,
+  },
+  {
+    path: "/dashboard",
+    Component: Dashboard,
   },
 ]);
