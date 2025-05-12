@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from "motion/react";
 import PreferenceForm from "./preference-form";
-import { useState } from "react";
 
 const variants = {
   enter: (direction) => {
@@ -24,17 +23,13 @@ const variants = {
   },
 };
 
-export default function FormParent({ activeIndx, direction }) {
-  const [answers, setAnswers] = useState({
-    state: "NA",
-    season: "NA",
-    difficulty: "NA",
-  });
-
-  const handleAnswerSelect = (question, answer) => {
-    setAnswers((prevAnswers) => ({ ...prevAnswers, [question]: answer }));
-  };
-
+export default function FormParent({
+  answers,
+  question,
+  direction,
+  activeIndx,
+  handleAnswerSelect,
+}) {
   return (
     <div className="md:col-span-2 w-full min-h-100 overflow-x-hidden relative flex justify-center-safe">
       <AnimatePresence initial={false} custom={direction}>
@@ -53,6 +48,7 @@ export default function FormParent({ activeIndx, direction }) {
         >
           <PreferenceForm
             answers={answers}
+            question={question}
             activeIndx={activeIndx}
             handleAnswerSelect={handleAnswerSelect}
           />

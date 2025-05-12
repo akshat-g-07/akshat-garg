@@ -5,22 +5,10 @@ import { BadgeCheck, ChevronDown, ChevronUp } from "lucide-react";
 
 export default function PreferenceForm({
   answers,
+  question,
   activeIndx,
   handleAnswerSelect,
 }) {
-  const question = useMemo(() => {
-    switch (activeIndx) {
-      case 0:
-        return "state";
-      case 1:
-        return "season";
-      case 2:
-        return "difficulty";
-      default:
-        return "";
-    }
-  }, [activeIndx]);
-
   const FilteredTrekNames = useMemo(
     () => [
       ...new Set(
@@ -47,7 +35,6 @@ export default function PreferenceForm({
         >
           {option === "Other:" ? (
             <OtherOption
-              question={question}
               filteredTrekNames={FilteredTrekNames}
               handleAnswerSelect={handleAnswerSelect}
             />
@@ -55,7 +42,7 @@ export default function PreferenceForm({
             <p
               className="p-2 pr-0 size-full"
               onClick={() => {
-                handleAnswerSelect(question, option);
+                handleAnswerSelect(option);
               }}
             >
               {option}
@@ -70,7 +57,7 @@ export default function PreferenceForm({
   );
 }
 
-const OtherOption = ({ filteredTrekNames, handleAnswerSelect, question }) => {
+const OtherOption = ({ filteredTrekNames, handleAnswerSelect }) => {
   const searchRef = useRef(null);
   const [isFocused, setIsFocused] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -103,7 +90,7 @@ const OtherOption = ({ filteredTrekNames, handleAnswerSelect, question }) => {
     <div
       className="w-full flex items-center-safe p-2 pr-0"
       onClick={() => {
-        if (searchTerm) handleAnswerSelect(question, `Other: ${searchTerm}`);
+        if (searchTerm) handleAnswerSelect(`Other: ${searchTerm}`);
       }}
     >
       <p className="w-fit md:w-[10%]">Other:</p>
@@ -133,7 +120,7 @@ const OtherOption = ({ filteredTrekNames, handleAnswerSelect, question }) => {
                 key={index}
                 className="flex items-center px-4 py-2 odd:bg-[#303030] even:bg-[#1E1E1E] odd:hover:bg-[#303030]/90 even:hover:bg-[#1E1E1E]/90 cursor-pointer space-x-2"
                 onClick={() => {
-                  handleAnswerSelect(question, `Other: ${suggestion}`);
+                  handleAnswerSelect(`Other: ${suggestion}`);
                   setSearchTerm(suggestion);
                   setIsFocused(false);
                 }}
