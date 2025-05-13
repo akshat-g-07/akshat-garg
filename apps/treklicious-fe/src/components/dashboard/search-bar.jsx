@@ -3,10 +3,9 @@ import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-export default function SearchBar() {
+export default function SearchBar({ isFocused, setIsFocused }) {
   const searchRef = useRef(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [isFocused, setIsFocused] = useState(false);
   const [filteredSuggestions, setFilteredSuggestions] = useState(Treks);
 
   useEffect(() => {
@@ -18,13 +17,11 @@ export default function SearchBar() {
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [setIsFocused]);
 
   useEffect(() => {
     const inputEl = searchRef.current.querySelector("input");
     if (isFocused && inputEl) {
-      console.log("inputEl", inputEl);
-
       inputEl.focus();
     }
   }, [isFocused]);
@@ -45,8 +42,8 @@ export default function SearchBar() {
       <div
         ref={searchRef}
         className={cn(
-          "overflow-hidden flex h-10 items-center-safe transition-all duration-700 ease-out",
-          isFocused ? "w-70 space-x-1 border-white border-b" : "w-5"
+          "overflow-hidden flex h-10 items-center-safe transition-all duration-300 md:duration-700 ease-out",
+          isFocused ? "w-60 md:w-70 space-x-1 border-white border-b" : "w-5"
         )}
       >
         <Search
@@ -68,7 +65,7 @@ export default function SearchBar() {
         />
       </div>
       {isFocused && filteredSuggestions.length > 0 && (
-        <div className="absolute bottom-0 translate-y-[97.5%] z-50 w-[90%] max-w-70 rounded-b-md bg-white shadow-lg max-h-[300px] overflow-y-auto">
+        <div className="absolute bottom-0 translate-y-[97.5%] z-50 w-[90%] max-w-60 md:max-w-70 rounded-b-md bg-white shadow-lg max-h-[300px] overflow-y-auto">
           {filteredSuggestions.map((suggestion, index) => (
             <div
               key={index}

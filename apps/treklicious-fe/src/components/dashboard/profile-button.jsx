@@ -10,7 +10,7 @@ import { Heart, LogOut, Settings } from "lucide-react";
 import React from "react";
 import { cn } from "@/lib/utils";
 
-export default function ProfileButton() {
+export default function ProfileButton({ isFocused }) {
   const options = [
     {
       link: "/profile",
@@ -40,7 +40,12 @@ export default function ProfileButton() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <div className="size-8 rounded-full cursor-pointer overflow-hidden">
+        <div
+          className={cn(
+            "size-8 rounded-full cursor-pointer overflow-hidden",
+            isFocused && "hidden md:block"
+          )}
+        >
           <UserProfilePic size="lg" />
         </div>
       </PopoverTrigger>

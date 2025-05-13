@@ -1,8 +1,13 @@
 import { cn } from "@/lib/utils";
 
-export default function Switch({ handleClick, displayMode }) {
+export default function Switch({ isFocused, handleClick, displayMode }) {
   return (
-    <div className="h-6 overflow-hidden w-fit">
+    <div
+      className={cn(
+        "h-6 overflow-hidden w-fit",
+        isFocused && "hidden md:block"
+      )}
+    >
       <div
         className={cn(
           "flex flex-col h-fit w-fit transition-all duration-700 ease-in-out",
