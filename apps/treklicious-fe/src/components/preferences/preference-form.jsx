@@ -103,9 +103,6 @@ const OtherOption = ({ filteredTrekNames, handleAnswerSelect }) => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onFocus={() => setIsFocused(true)}
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
           />
           {isFocused ? (
             <ChevronUp className="size-4" />
@@ -118,7 +115,7 @@ const OtherOption = ({ filteredTrekNames, handleAnswerSelect }) => {
             {filteredSuggestions.map((suggestion, index) => (
               <div
                 key={index}
-                className="flex items-center px-4 py-2 odd:bg-[#303030] even:bg-[#1E1E1E] odd:hover:bg-[#303030]/90 even:hover:bg-[#1E1E1E]/90 cursor-pointer space-x-2"
+                className="flex items-center px-4 py-2 odd:bg-[#303030] even:bg-[#1E1E1E] odd:hover:bg-[#303030]/90 even:hover:bg-[#1E1E1E]/90 cursor-pointer"
                 onClick={() => {
                   handleAnswerSelect(`Other: ${suggestion}`);
                   setSearchTerm(suggestion);
