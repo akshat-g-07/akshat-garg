@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import Switch from "./switch";
+import ProfileButton from "./profile-button";
 
 export default function Header() {
   // true mean light mode false means dark mode
@@ -21,7 +22,11 @@ export default function Header() {
         TrekLicious
       </h1>
 
-      <Switch handleClick={handleClick} displayMode={displayMode} />
+      <div className="flex items-center-safe w-fit gap-x-2 md:gap-x-6">
+        <Switch handleClick={handleClick} displayMode={displayMode} />
+
+        <ProfileButton />
+      </div>
     </header>
   );
 }
