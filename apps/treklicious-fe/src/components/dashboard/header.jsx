@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { useState } from "react";
 import Switch from "./switch";
 import ProfileButton from "./profile-button";
+import SearchBar from "./search-bar";
 
 export default function Header() {
   // true mean light mode false means dark mode
@@ -23,6 +24,8 @@ export default function Header() {
       </h1>
 
       <div className="flex items-center-safe w-fit gap-x-2 md:gap-x-6">
+        <SearchBar />
+
         <Switch handleClick={handleClick} displayMode={displayMode} />
 
         <ProfileButton />
