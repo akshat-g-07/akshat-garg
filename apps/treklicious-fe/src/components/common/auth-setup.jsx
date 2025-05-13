@@ -20,7 +20,7 @@ export function AuthFooter({ textToShow, CTAUrl, CTAText }) {
   return (
     <>
       <div className="md:col-span-2 h-0.25 w-full bg-black" />
-      <div className="md:col-span-2 w-full md:flex md:justify-center-safe md:space-x-1">
+      <div className="md:col-span-2 w-full flex flex-col items-center-safe md:flex-row md:justify-center-safe md:space-x-1">
         <p>{textToShow}</p>
         <Link to={CTAUrl} className="font-semibold">
           {CTAText}
