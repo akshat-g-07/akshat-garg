@@ -18,7 +18,7 @@ export default function VideoSection() {
           className="size-full bg-yellow-500"
         />
       </div>
-      <div className="w-3/7 h-full bg-gradient-to-r from-black to-black/0.5 from-20% p-4 justify-between flex flex-col text-white">
+      <div className="w-3/7 h-full bg-gradient-to-r from-black to-black/5 from-20% p-4 justify-between flex flex-col text-white">
         <div className="h-8/9 flex flex-col space-y-4 overflow-hidden">
           <div className="h-fit w-full text-2xl font-semibold text-shadow-black text-shadow-md">
             {trek.name}

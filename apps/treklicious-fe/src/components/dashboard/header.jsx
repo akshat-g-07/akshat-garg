@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 w-full h-fit flex justify-between items-center-safe py-2 px-6 bg-linear-[#5d9cec_0%,#2d6bbc_10%,#111_20%,#555_30%] bg-fixed transition-all duration-700 ease-in-out",
+        "sticky top-0 z-50 w-full h-fit flex justify-between items-center-safe py-2 px-6 bg-linear-[#5d9cec_0%,#2d6bbc_10%,#111_20%,#555_30%] bg-fixed transition-all duration-700 ease-in-out",
         displayMode ? "bg-position-[0px_-10px]" : "bg-position-[0px_-200px]"
       )}
     >
