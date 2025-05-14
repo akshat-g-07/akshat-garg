@@ -1,7 +1,7 @@
 import imgSrc from "../../assets/season-bg.jpg";
 import SectionTemplate from "./section-template";
 import Treks from "@/assets/Treks.json";
-import TileRow from "./tile-row";
+import TileRow from "@/components/common/tile-row";
 
 export default function Season() {
   const rotatingPartDescriptions = ["Summer", "Monsoon", "Winter"];

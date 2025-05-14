@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import SectionTemplate from "./section-template";
 import Treks from "@/assets/Treks.json";
 import { cn } from "@/lib/utils";
-import Tile from "../common/tile";
+import Tile from "@/components/common/tile";
 
 export default function State() {
   const imgSrc =
