@@ -7,10 +7,7 @@ const dbConnect = require("./config/dbConn");
 
 dbConnect();
 
-// This is to know if server is up and running
-app.get("/", (req, res) =>
-  res.status(200).send(`Server is running on port ${port} on ${new Date()}`)
-);
+app.use("/health", require("./health"));
 
 mongoose.connection.once("open", () => {
   console.log("Mongoose Connected");
