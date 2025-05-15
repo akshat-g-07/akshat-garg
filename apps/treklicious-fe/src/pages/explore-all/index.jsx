@@ -3,6 +3,7 @@ import BackButton from "@/components/common/back-button";
 import { useLocation } from "react-router";
 import { useState } from "react";
 import Filters from "@/components/explore-all/filters";
+import ShowTreks from "@/components/common/show-treks";
 
 export default function ExploreAll() {
   const location = useLocation();
@@ -23,6 +24,8 @@ export default function ExploreAll() {
           setFilters={setFilters}
         />
       </header>
+
+      <ShowTreks treks={Treks} />
     </section>
   );
 }

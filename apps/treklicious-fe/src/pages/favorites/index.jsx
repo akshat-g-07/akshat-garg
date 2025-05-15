@@ -1,6 +1,6 @@
 import SettingSetup from "@/components/common/setting-setup";
 import Treks from "@/assets/Treks.json";
-import FavoriteTreks from "@/components/favorites/favorite-treks";
+import ShowTreks from "@/components/common/show-treks";
 
 export default function Favorites() {
   return (
@@ -9,7 +9,7 @@ export default function Favorites() {
         Your favorites are:
       </h2>
 
-      <FavoriteTreks treks={Treks} />
+      <ShowTreks treks={Treks} />
     </SettingSetup>
   );
 }
