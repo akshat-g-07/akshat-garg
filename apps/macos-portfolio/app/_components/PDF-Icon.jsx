@@ -5,7 +5,7 @@ export default function PDFIcon() {
     <>
       <a
         download
-        href="./resume/Akshat_Full_Stack_Resume.pdf"
+        href="./resume/Akshat_Dot_Net_Resume.pdf"
         className="size-14 absolute mt-5 ml-5 cursor-pointer font-semibold z-0 top-10 left-0 font-tInput"
       >
         <Image

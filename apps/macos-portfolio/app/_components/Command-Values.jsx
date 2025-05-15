@@ -62,7 +62,7 @@ export function HelpFunction() {
 }
 
 export function AboutFunction() {
-  return "Hey there!\nI am Akshat Garg, alumnus of NIT Patna. I am an experienced web developer who really enjoys creating websites.  I can endlessly talk about web development using different JS libraries/frameworks. I really thrive to develop something meaningful!";
+  return "Hey there!\nI am Akshat Garg, alumnus of NIT Patna. I am an experienced full stack developer proficient with Dot Net Tech Stack. I really thrive to develop something meaningful!";
 }
 
 export function SkillsFunction() {
@@ -200,8 +200,12 @@ export function ProjectsFunction() {
 export function AchievementsFunction() {
   return `↪ Make-a-thon 16 | Finalists
   ≕ Successfully led a team of 4 to the finals of Infosys’s prestigious Hackathon event where brightest minds showcase their skills.
-  ≕  Leveraged expertise in full-stack development and picked a PS where we had to develop a Bidding Platform from scratch, showcasing proficiency in both frontend and backend.
+  ≕ Leveraged expertise in full-stack development and picked a PS where we had to develop a Bidding Platform from scratch, showcasing proficiency in both frontend and backend.
   ≕ Designed and implemented the platform using a Microservices architecture to build a robust product.
+  ↪ Make-a-thon 17 | Semi-Finalists
+  ≕ Created a team of 5 and led them from the front to the semi-finals of the event.
+  ≕ This time picked a PS where we had to develop a Copilot for the Insurance Domain, to help the testers with their monotonous tasks.
+  ≕ Applied prompt engineering techniques to train the model, translating natural language inputs into user-friendly actions.
   `;
 }
 

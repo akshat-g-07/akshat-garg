@@ -4,9 +4,12 @@
   "scripts": {
     "build:macos-portfolio": "turbo run build --filter=macos-portfolio",
     "build:threejs-portfolio": "turbo run build --filter=threejs-portfolio",
+    "build:noteworthy-ninja-privacy-policy": "turbo run build --filter=noteworthy-ninja-privacy-policy",
     "build": "turbo build",
     "dev:macos-portfolio": "turbo dev --filter=macos-portfolio",
+    "dev:treklicious-fe": "turbo dev --filter=treklicious-fe",
     "dev:threejs-portfolio": "turbo dev --filter=threejs-portfolio",
+    "dev:noteworthy-ninja-privacy-policy": "turbo dev --filter=noteworthy-ninja-privacy-policy",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
