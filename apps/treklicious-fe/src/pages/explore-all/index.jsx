@@ -15,7 +15,7 @@ export default function ExploreAll() {
 
   return (
     <section>
-      <header className="w-full h-fit bg-[#6495ed] flex py-6 px-8">
+      <header className="w-full h-fit bg-[cornflowerblue] flex py-6 px-8 flex-col md:flex-row">
         <BackButton />
 
         <Filters

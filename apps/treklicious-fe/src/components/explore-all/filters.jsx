@@ -30,7 +30,7 @@ export default function Filters({ filterParam, filterVal, setFilters }) {
     }
   }, [filterParam]);
   return (
-    <div className="flex-1 flex justify-evenly">
+    <div className="flex-1 flex flex-col md:flex-row justify-evenly w-full items-center-safe gap-y-4 mt-8 md:mt-0">
       <Select
         value={filterParam}
         onValueChange={(val) => {
@@ -40,7 +40,7 @@ export default function Filters({ filterParam, filterVal, setFilters }) {
           });
         }}
       >
-        <SelectTrigger className="w-[180px]">
+        <SelectTrigger className="w-[180px] focus-visible:border-black data-[placeholder]:text-white">
           <SelectValue placeholder="Select Parameter" />
         </SelectTrigger>
         <SelectContent>
@@ -62,7 +62,7 @@ export default function Filters({ filterParam, filterVal, setFilters }) {
           }));
         }}
       >
-        <SelectTrigger className="w-[180px]">
+        <SelectTrigger className="w-[180px] focus-visible:border-black data-[placeholder]:text-white">
           <SelectValue placeholder="Select Value" />
         </SelectTrigger>
         <SelectContent>
