@@ -13,8 +13,6 @@ export default function RestBody() {
     filterValue: "recommendation",
   });
 
-  console.log(trekDetailComponents);
-
   //   update the trek id
   return (
     <section className="py-10 px-4 space-y-8">
