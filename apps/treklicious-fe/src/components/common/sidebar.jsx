@@ -19,7 +19,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <nav className="bg-[#6495ed] min-h-svh w-1/3 px-4 py-10">
+    <nav className="bg-[#6495ed] h-full w-1/3 px-4 py-10">
       <Button
         variant="secondary"
         className="space-x-2 cursor-pointer w-fit"
