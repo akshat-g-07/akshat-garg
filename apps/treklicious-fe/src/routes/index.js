@@ -6,6 +6,7 @@ import Preferences from "@/pages/preferences";
 import Dashboard from "@/pages/dashboard";
 import ExploreAll from "@/pages/explore-all";
 import Profile from "@/pages/profile";
+import Favorites from "@/pages/favorites";
 
 export const router = createBrowserRouter([
   {
@@ -35,5 +36,9 @@ export const router = createBrowserRouter([
   {
     path: "/profile",
     Component: Profile,
+  },
+  {
+    path: "/favorites",
+    Component: Favorites,
   },
 ]);
