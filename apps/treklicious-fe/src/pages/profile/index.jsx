@@ -1,4 +1,5 @@
 import SettingSetup from "@/components/common/setting-setup";
+import PreferencesForm from "@/components/profile/preferences-form";
 import ProfileForm from "@/components/profile/profile-form";
 
 export default function Profile() {
@@ -10,12 +11,11 @@ export default function Profile() {
         defaultEmail={"defaultEmail"}
         defaultUserName={"defaultUserName"}
       />
-      <h3
-        id="preferences"
-        className="pb-2 border-b-2 border-black w-full text-xl font-semibold cursor-default"
-      >
-        Preferences
-      </h3>
+      <PreferencesForm
+        defaultState={"Uttarakhand"}
+        defaultSeason={"Summer"}
+        defaultDifficulty={"Easy"}
+      />
     </SettingSetup>
   );
 }
