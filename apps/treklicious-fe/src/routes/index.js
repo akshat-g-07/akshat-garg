@@ -7,6 +7,8 @@ import Dashboard from "@/pages/dashboard";
 import ExploreAll from "@/pages/explore-all";
 import Profile from "@/pages/profile";
 import Favorites from "@/pages/favorites";
+import Trek from "@/pages/trek";
+import GetTrekByID from "@/apis/Trek/GetTrekByID";
 
 export const router = createBrowserRouter([
   {
@@ -40,5 +42,10 @@ export const router = createBrowserRouter([
   {
     path: "/favorites",
     Component: Favorites,
+  },
+  {
+    path: "/trek/:trekID",
+    Component: Trek,
+    loader: async ({ params }) => ({ trek: await GetTrekByID(params.trekID) }),
   },
 ]);

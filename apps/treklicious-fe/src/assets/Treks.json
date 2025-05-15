@@ -1,5 +1,6 @@
 [
   {
+    "id": "1",
     "name": "Kedarkantha",
     "season": "Winter",
     "difficulty": "Easy",
@@ -8,6 +9,7 @@
     "description": "Kedarkantha Trek is a popular winter trek in Uttarakhand, known for its scenic beauty and snow-covered trails. It offers breathtaking views of the Himalayan peaks and takes you through dense forests and meadows."
   },
   {
+    "id": "2",
     "name": "Valley of Flowers",
     "season": "Monsoon",
     "difficulty": "Medium",
@@ -16,6 +18,7 @@
     "description": "Valley of Flowers Trek is a mesmerizing journey through the colorful floral meadows of Uttarakhand. It is famous for its diverse range of alpine flowers, stunning landscapes, and serene atmosphere."
   },
   {
+    "id": "3",
     "name": "Har Ki Dun",
     "season": "Monsoon",
     "difficulty": "Medium",
@@ -24,6 +27,7 @@
     "description": "Har Ki Dun Trek is a picturesque trail in Uttarakhand, known for its scenic beauty and rich cultural heritage. It takes you through ancient villages, lush green valleys, and offers panoramic views of the Himalayan peaks."
   },
   {
+    "id": "4",
     "name": "Hampta Pass",
     "season": "Summer",
     "difficulty": "Medium",
@@ -32,6 +36,7 @@
     "description": "Hampta Pass Trek is a thrilling adventure in Himachal Pradesh, offering a mix of landscapes, including lush green valleys, barren landscapes, and snow-covered mountains. It provides stunning views of the Himalayas and a memorable camping experience."
   },
   {
+    "id": "5",
     "name": "Roopkund",
     "season": "Monsoon",
     "difficulty": "Hard",
@@ -40,6 +45,7 @@
     "description": "Roopkund Trek is a challenging expedition to the mysterious Roopkund Lake, known for its skeletal remains. It is a high-altitude trek that takes you through alpine forests, meadows, and breathtaking views of the Trishul and Nanda Ghunti peaks."
   },
   {
+    "id": "5",
     "name": "Rupin Pass",
     "season": "Summer",
     "difficulty": "Hard",
