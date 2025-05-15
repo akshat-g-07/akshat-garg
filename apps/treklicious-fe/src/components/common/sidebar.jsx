@@ -39,7 +39,7 @@ export default function Sidebar() {
             className={cn(
               "w-full h-fit py-2 my-2 text-black cursor-pointer hover:underline",
               location.pathname === link &&
-                "bg-[#d3d3d3] [box-shadow:2px_2px_10px_#000] scale-120 px-4"
+                "bg-[#d3d3d3] [box-shadow:2px_2px_10px_#000] scale-110 px-4 origin-left"
             )}
           >
             {text}
