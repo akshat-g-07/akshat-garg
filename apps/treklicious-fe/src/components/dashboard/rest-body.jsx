@@ -9,8 +9,8 @@ export default function RestBody() {
   trekDetailComponents.push({
     sectionHead: "Recommended For You",
     sectionArray: recommendedTreks.sort(() => Math.random() - 0.5).slice(0, 10),
-    filterParameter: "recommended",
-    filterValue: "recommendation",
+    filterParameter: "Recommended",
+    filterValue: "Recommendations",
   });
 
   //   update the trek id
