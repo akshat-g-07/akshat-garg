@@ -5,6 +5,7 @@ import LogIn from "@/pages/log-in";
 import Preferences from "@/pages/preferences";
 import Dashboard from "@/pages/dashboard";
 import ExploreAll from "@/pages/explore-all";
+import Profile from "@/pages/profile";
 
 export const router = createBrowserRouter([
   {
@@ -30,5 +31,9 @@ export const router = createBrowserRouter([
   {
     path: "/explore-all",
     Component: ExploreAll,
+  },
+  {
+    path: "/profile",
+    Component: Profile,
   },
 ]);
