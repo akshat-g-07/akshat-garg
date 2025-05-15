@@ -172,7 +172,6 @@ export default function ProfileForm({
               label="First Name"
               {...register("firstName")}
               error={errors.firstName?.message}
-              className="justify-self-center-safe"
             />
           </div>
           <div className="md:row-span-2 order-1 md:order-2 h-fit w-full flex justify-center-safe">
@@ -233,7 +232,6 @@ export default function ProfileForm({
               label="Last Name"
               {...register("lastName")}
               error={errors.lastName?.message}
-              className="justify-self-center-safe"
             />
           </div>
           <div className="order-4">
@@ -243,7 +241,6 @@ export default function ProfileForm({
               label="Email"
               {...register("email")}
               error={errors.email?.message}
-              className="justify-self-center-safe"
             />
           </div>
           <div className="order-5">
@@ -253,7 +250,6 @@ export default function ProfileForm({
               label="Username"
               {...register("userName")}
               error={errors.userName?.message}
-              className="justify-self-center-safe"
             />
           </div>
           <div className="order-6">
@@ -263,7 +259,6 @@ export default function ProfileForm({
               label="New Password"
               {...register("newPassword")}
               error={errors.newPassword?.message}
-              className="justify-self-center-safe"
             />
           </div>
           {/* MARK: enable only if there is change in any of the value */}
