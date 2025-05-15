@@ -1,10 +1,8 @@
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ChevronLeft } from "lucide-react";
-import { useNavigate, useLocation, Link } from "react-router";
+import { useLocation, Link } from "react-router";
+import BackButton from "./back-button";
 
 export default function Sidebar() {
-  const navigate = useNavigate();
   const location = useLocation();
 
   const options = [
@@ -20,17 +18,7 @@ export default function Sidebar() {
 
   return (
     <nav className="bg-[#6495ed] h-full w-1/3 px-4 py-10">
-      <Button
-        variant="secondary"
-        className="space-x-2 cursor-pointer w-fit"
-        onClick={() => {
-          navigate(-1);
-        }}
-      >
-        <ChevronLeft className="size-4" />
-        Back
-      </Button>
-
+      <BackButton />
       <div className="h-10/11 py-5 flex flex-col">
         {options.map(({ link, text }) => (
           <Link
