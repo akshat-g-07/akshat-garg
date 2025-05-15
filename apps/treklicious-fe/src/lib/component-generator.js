@@ -22,7 +22,7 @@ const GenerateStateLine = (stateName) => {
   );
 
   return {
-    filterParameter: "state",
+    filterParameter: "State",
     filterValue: stateName,
     sectionHead: value + stateName,
     sectionArray: sectionArray,
@@ -39,7 +39,7 @@ const GenerateSeasonLine = (seasonName) => {
   );
 
   return {
-    filterParameter: "season",
+    filterParameter: "Season",
     filterValue: seasonName,
     sectionHead: value + seasonName,
     sectionArray: sectionArray,
@@ -55,7 +55,7 @@ const GenerateDifficultyLine = (difficultyName) => {
   ).slice(0, 10);
 
   return {
-    filterParameter: "difficulty",
+    filterParameter: "Difficulty",
     filterValue: difficultyName,
     sectionHead: value + difficultyName + " Treks",
     sectionArray: sectionArray,
