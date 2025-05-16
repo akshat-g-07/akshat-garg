@@ -11,35 +11,69 @@ class Logger {
     this.backupCount = options.backupCount || 5;
     this.dirPath = path.join(__dirname, "../logs");
     this.currentLogFile = "";
+    this.logFilesCache = {};
+    this.logFilesStatsCache = {};
+    this.cacheTime = 10 * 60 * 1000; // 10 mins default
   }
 
   async getLogFiles() {
+    if (
+      this.logFilesCache.logFiles &&
+      new Date() - this.logFilesCache.timeLastCalculated < this.cacheTime
+    )
+      return this.logFilesCache.logFiles;
+
     try {
       if (!fsSync.existsSync(this.dirPath)) {
         await fs.mkdir(this.dirPath, { recursive: true });
       }
 
-      const logFiles = await fs.readdir(this.dirPath);
+      const files = await fs.readdir(this.dirPath);
 
-      return logFiles.filter((file) => file.startsWith("logs_"));
+      const logFiles = files.filter((file) => file.startsWith("logs_"));
+
+      this.logFilesCache = {
+        logFiles,
+        timeLastCalculated: new Date(),
+      };
+
+      return logFiles;
     } catch (err) {
       console.error("Error in getLogFiles:", err);
     }
   }
 
   async getLogFilesStats() {
+    if (
+      this.logFilesStatsCache.logFilesStats &&
+      new Date() - this.logFilesStatsCache.timeLastCalculated < this.cacheTime
+    )
+      return this.logFilesStatsCache.logFilesStats;
+
     try {
       const logFiles = await this.getLogFiles();
 
-      if (!logFiles.length) return [];
+      if (!logFiles.length) {
+        this.logFilesStatsCache = {
+          logFilesStats: [],
+          timeLastCalculated: new Date(),
+        };
+        return [];
+      }
 
-      return await Promise.all(
+      const logFilesStats = await Promise.all(
         logFiles.map(async (file) => {
           const filePath = path.join(this.dirPath, file);
           const stats = await fs.stat(filePath);
           return { file, lastModifiedTime: stats.mtime };
         })
       );
+      this.logFilesStatsCache = {
+        logFilesStats,
+        timeLastCalculated: new Date(),
+      };
+
+      return logFilesStats;
     } catch (err) {
       console.error("Error in getLogFilesStats:", err);
     }
@@ -92,6 +126,8 @@ class Logger {
       const newLogFilePath = path.join(this.dirPath, newLogFileName);
       await fs.writeFile(newLogFilePath, "");
 
+      this.logFilesCache = {};
+
       this.currentLogFile = newLogFilePath;
     } catch (err) {
       console.error("Error in createNewLogFile:", err);
@@ -110,6 +146,7 @@ class Logger {
 
       const oldestLogFilePath = path.join(this.dirPath, oldestLogFile.file);
       await fs.unlink(oldestLogFilePath);
+      this.logFilesCache = {};
     } catch (err) {
       console.error("Error in deleteOldestLogFile:", err);
     }
@@ -122,6 +159,7 @@ class Logger {
       this.currentLogFile,
       `(${GetDateTime()}) ⏩⏩` + "\t" + message + "\n"
     );
+    this.logFilesStatsCache = {};
   }
 }
 
