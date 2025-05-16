@@ -4,9 +4,7 @@ const port = process.env.PORT || 3400;
 
 const mongoose = require("mongoose");
 const dbConnect = require("./config/dbConn");
-const Logger = require("./utils/logger");
-
-const logger = new Logger();
+const logger = require("./utils/logger");
 
 dbConnect();
 
