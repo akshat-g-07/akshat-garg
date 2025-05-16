@@ -158,6 +158,77 @@ class logger {
     );
     this.#logFilesStatsCache = {};
   }
+
+  static async listLogFiles() {
+    try {
+      const logFiles = await this.#getLogFiles();
+
+      if (!logFiles.length) {
+        return "No log files found";
+      }
+
+      return logFiles
+        .map((file, index) => `${index + 1}- \`${file}\``)
+        .join("<br>");
+    } catch (err) {
+      console.error("Error in listLogFiles:", err);
+      return "Error listing log files";
+    }
+  }
+
+  static async getLogFileContent(indx) {
+    const index = indx - 1;
+    try {
+      const logFiles = await this.#getLogFiles();
+      if (!logFiles.length) {
+        return "No log files found";
+      }
+      if (indx === null || index < 0 || index >= logFiles.length) {
+        return "Invalid file index";
+      }
+      const logFile = logFiles[index];
+      const logFilePath = path.join(this.#dirPath, logFile);
+      const content = await fs.readFile(logFilePath, "utf8");
+      return `<h1>File: ${logFile}</h1>${content.replace(/\n/g, "<br>")}`;
+    } catch (err) {
+      console.error("Error in getLogFileContent:", err);
+    }
+  }
+
+  static async deleteLogFile(index) {
+    try {
+      const logFiles = await this.#getLogFiles();
+
+      if (!logFiles.length) {
+        return "No log files found";
+      }
+
+      if (index === "all") {
+        await Promise.all(
+          logFiles.map(async (file) => {
+            const filePath = path.join(this.#dirPath, file);
+            await fs.unlink(filePath);
+          })
+        );
+        this.#logFilesCache = {};
+        return "All log files deleted successfully";
+      }
+
+      const fileIndex = index - 1;
+      if (fileIndex < 0 || fileIndex >= logFiles.length) {
+        return "Invalid file index";
+      }
+
+      const fileToDelete = logFiles[fileIndex];
+      const filePath = path.join(this.#dirPath, fileToDelete);
+      await fs.unlink(filePath);
+      this.#logFilesCache = {};
+      return `Log file ${fileToDelete} deleted successfully`;
+    } catch (err) {
+      console.error("Error in deleteLogFile:", err);
+      return "Error deleting log file(s)";
+    }
+  }
 }
 
 module.exports = logger;

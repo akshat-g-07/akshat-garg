@@ -9,6 +9,7 @@ const logger = require("./utils/logger");
 dbConnect();
 
 app.use("/health", require("./health"));
+app.use("/logs", require("./logs"));
 
 mongoose.connection.once("open", async () => {
   console.log("Mongoose Connected");
