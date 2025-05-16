@@ -1,4 +1,5 @@
+const userIDModel = require("./userID");
 const userDetailsModel = require("./userDetail");
-const userID = require("./userID");
+const trekDetailsModel = require("./trekDetail");
 
-module.exports = { userDetailsModel, userID };
+module.exports = { userIDModel, userDetailsModel, trekDetailsModel };
