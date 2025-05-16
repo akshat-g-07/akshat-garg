@@ -1,3 +1,4 @@
-const userDetailsModel = require("./userDetails");
+const userDetailsModel = require("./userDetail");
+const userID = require("./userID");
 
-module.exports = { userDetailsModel };
+module.exports = { userDetailsModel, userID };
