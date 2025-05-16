@@ -6,11 +6,12 @@ const mongoose = require("mongoose");
 const dbConnect = require("./config/dbConn");
 const logger = require("./utils/logger");
 
+const middleware = require("./middleware");
+
 const openRoutes = require("./config/openRoutes");
+const routes = require("./routes");
 
 dbConnect();
-
-const middleware = require("./middleware");
 
 app.use(middleware);
 
@@ -30,6 +31,8 @@ app.get("/", (req, res) => {
 });
 app.use("/health", require("./health"));
 app.use("/logs", require("./logs"));
+
+app.use("/api", routes);
 
 mongoose.connection.once("open", async () => {
   console.log("Mongoose Connected");
