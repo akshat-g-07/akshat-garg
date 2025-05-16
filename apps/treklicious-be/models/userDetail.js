@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const userPreferencesSchema = require("./userPreferencesSchema");
+
 const userDetailSchema = new mongoose.Schema(
   {
     firstName: {
@@ -25,6 +27,7 @@ const userDetailSchema = new mongoose.Schema(
     favorites: {
       type: [String],
     },
+    preferences: userPreferencesSchema,
   },
   { timestamps: true },
   { collection: "userDetails" }
