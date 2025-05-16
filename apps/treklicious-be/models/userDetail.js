@@ -22,6 +22,9 @@ const userDetailSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    favorites: {
+      type: [String],
+    },
   },
   { timestamps: true },
   { collection: "userDetails" }
