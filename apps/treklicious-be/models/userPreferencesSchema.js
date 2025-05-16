@@ -18,4 +18,4 @@ const userPreferencesSchema = new mongoose.Schema(
   { collection: "userPreferences" }
 );
 
-module.exports = userPreferencesSchema
+module.exports = userPreferencesSchema;

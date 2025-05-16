@@ -15,10 +15,14 @@ const userDetailSchema = new mongoose.Schema(
     userName: {
       type: String,
       required: true,
+      unique: true,
     },
     email: {
       type: String,
       required: true,
+      index: true,
+      unique: true,
+      immutable: true,
     },
     profile: {
       type: String,
