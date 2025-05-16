@@ -10,6 +10,10 @@ const openRoutes = require("./config/openRoutes");
 
 dbConnect();
 
+const middleware = require("./middleware");
+
+app.use(middleware);
+
 app.get("/", (req, res) => {
   const response = openRoutes
     .map(
