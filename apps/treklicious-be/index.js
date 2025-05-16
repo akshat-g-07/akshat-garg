@@ -6,8 +6,24 @@ const mongoose = require("mongoose");
 const dbConnect = require("./config/dbConn");
 const logger = require("./utils/logger");
 
+const openRoutes = require("./config/openRoutes");
+
 dbConnect();
 
+app.get("/", (req, res) => {
+  const response = openRoutes
+    .map(
+      ({ route, description }) =>
+        `<div>
+      <a href=${route} target="_blank">
+        ${route}
+      </a>
+      <p>${description}</p>
+    </div>`
+    )
+    .join("");
+  res.status(200).send(response);
+});
 app.use("/health", require("./health"));
 app.use("/logs", require("./logs"));
 
