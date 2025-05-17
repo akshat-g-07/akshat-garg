@@ -16,11 +16,13 @@ dbConnect();
 app.use(middleware);
 
 app.get("/", (req, res) => {
+  const ADMIN_CODE = process.env.ADMIN_CODE;
+
   const response = openRoutes
     .map(
       ({ route, description }) =>
         `<div>
-      <a href=${route} target="_blank">
+      <a href=${route}?code=${ADMIN_CODE} target="_blank">
         ${route}
       </a>
       <p>${description}</p>

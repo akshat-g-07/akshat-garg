@@ -1,13 +1,34 @@
 const express = require("express");
 const router = express.Router();
 
-const logRequest = require("./log-request");
-router.use(logRequest);
-
-const rateLimiter = require("./rate-limiter");
-router.use(rateLimiter);
+const NODE_ENV = process.env.NODE_ENV;
+const ADMIN_CODE = process.env.ADMIN_CODE;
 
 const verifyJWT = require("./verify-jwt");
-router.use(verifyJWT);
+const logRequest = require("./log-request");
+const rateLimiter = require("./rate-limiter");
+
+const openRoutes = require("../config/open-routes");
+
+const adminRoutes = openRoutes.map((route) => route.route);
+adminRoutes.push("/");
+
+router.use(logRequest, (req, res, next) => {
+  if (NODE_ENV !== "production") {
+    next();
+  }
+
+  if (adminRoutes.includes(req.path)) {
+    const code = req.query.code;
+    if (code !== ADMIN_CODE) return res.status(401).send("Unauthorized");
+    next();
+  }
+
+  rateLimiter(req, res, next);
+
+  if (req.url.includes("/user")) verifyJWT(req, res, next);
+
+  next();
+});
 
 module.exports = router;
