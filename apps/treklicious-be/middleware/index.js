@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const logRequest = require("./logRequest");
+const logRequest = require("./log-request");
 router.use(logRequest);
 
 const rateLimiter = require("./rate-limiter");

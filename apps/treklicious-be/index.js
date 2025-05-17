@@ -3,12 +3,12 @@ const app = express();
 const port = process.env.PORT || 3400;
 
 const mongoose = require("mongoose");
-const dbConnect = require("./config/dbConn");
+const dbConnect = require("./config/db-connect");
 const logger = require("./utils/logger");
 
 const middleware = require("./middleware");
 
-const openRoutes = require("./config/openRoutes");
+const openRoutes = require("./config/open-routes");
 const routes = require("./routes");
 
 dbConnect();
