@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
+// user route to get recommended treks
+router.route("/recommended").get(() => {});
+
 // user profile routes get request put request
 router
   .route("/profile")
