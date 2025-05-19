@@ -5,6 +5,7 @@ const {
   TileInfo,
   TrekNames,
   RandomTrek,
+  CategoryTreks,
 } = require("../../controllers/trek");
 const router = express.Router();
 
@@ -13,7 +14,9 @@ router.get("/trekID/:trekID", TrekByID);
 router.get("/tileInfo", TileInfo);
 router.get("/allNames", TrekNames);
 router.get("/random", RandomTrek);
-// get trek on category basis {filterParam, filterVal}
-router.get("/category", () => {});
+router.get(
+  "/category/filterParam/:filterParam/filterValue/:filterValue",
+  CategoryTreks
+);
 
 module.exports = router;
