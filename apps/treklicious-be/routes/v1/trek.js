@@ -1,11 +1,11 @@
 const express = require("express");
-const { AllTreks, TrekByID } = require("../../controllers/trek");
+const { AllTreks, TrekByID, TileInfo } = require("../../controllers/trek");
 const router = express.Router();
 
 router.get("/", AllTreks);
 router.get("/:trekID", TrekByID);
 // get title, image, uuid of all treks
-router.get("/tileInfo", () => {});
+router.get("/tileInfo", TileInfo);
 // get title, state, image, uuid of all treks
 router.get("/tileInfoWithState", () => {});
 // get uuid and name of all treks
