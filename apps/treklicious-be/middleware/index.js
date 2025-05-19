@@ -15,13 +15,13 @@ adminRoutes.push("/");
 
 router.use(logRequest, (req, res, next) => {
   if (NODE_ENV !== "production") {
-    next();
+    return next();
   }
 
   if (adminRoutes.includes(req.path)) {
     const code = req.query.code;
     if (code !== ADMIN_CODE) return res.status(401).send("Unauthorized");
-    next();
+    return next();
   }
 
   rateLimiter(req, res, next);
