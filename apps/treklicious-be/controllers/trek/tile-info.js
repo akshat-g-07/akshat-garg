@@ -2,8 +2,15 @@ const logger = require("../../utils/logger");
 const { trekDetailsModel } = require("../../models");
 
 async function TileInfo(req, res) {
+  const state = req.query.state;
+  const fields = {
+    name: 1,
+    img: 1,
+  };
+  if (state) fields["state"] = 1;
+
   try {
-    const trekList = await trekDetailsModel.find(null, "name img").lean();
+    const trekList = await trekDetailsModel.find(null, { ...fields }).lean();
 
     res.status(200).send(trekList);
   } catch (error) {
