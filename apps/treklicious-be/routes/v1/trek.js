@@ -3,8 +3,7 @@ const { AllTreks, TrekByID, TileInfo } = require("../../controllers/trek");
 const router = express.Router();
 
 router.get("/", AllTreks);
-router.get("/:trekID", TrekByID);
-// get title, image, uuid of all treks
+router.get("/trekID/:trekID", TrekByID);
 router.get("/tileInfo", TileInfo);
 // get title, state, image, uuid of all treks
 router.get("/tileInfoWithState", () => {});
