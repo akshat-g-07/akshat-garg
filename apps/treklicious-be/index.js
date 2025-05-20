@@ -3,6 +3,7 @@ const app = express();
 const port = process.env.PORT || 3400;
 
 const mongoose = require("mongoose");
+cookieParser = require("cookie-parser");
 const dbConnect = require("./config/db-connect");
 const logger = require("./utils/logger");
 
@@ -12,6 +13,10 @@ const openRoutes = require("./config/open-routes");
 const routes = require("./routes");
 
 dbConnect();
+
+app.use(express.json());
+
+app.use(cookieParser());
 
 app.use(middleware);
 
