@@ -1,8 +1,8 @@
 const express = require("express");
+const { Login } = require("../../controllers/auth");
 const router = express.Router();
 
-// login route
-router.post("/login", () => {});
+router.post("/login", Login);
 // refesh route
 router.get("/refresh", () => {});
 // signup route
