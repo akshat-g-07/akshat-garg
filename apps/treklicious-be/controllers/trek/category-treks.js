@@ -13,7 +13,7 @@ async function CategoryTreks(req, res) {
     logger.log("Error in CategoryTreks");
     logger.log(error);
 
-    res.status(500).send("Something went wrong.");
+    res.sendStatus(500);
   }
 }
 

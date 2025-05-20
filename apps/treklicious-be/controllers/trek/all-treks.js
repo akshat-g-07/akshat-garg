@@ -9,7 +9,7 @@ async function AllTreks(req, res) {
     logger.log("Error in AllTreks");
     logger.log(error);
 
-    res.status(500).send("Something went wrong.");
+    res.sendStatus(500);
   }
 }
 

@@ -17,7 +17,7 @@ async function TileInfo(req, res) {
     logger.log("Error in TileInfo");
     logger.log(error);
 
-    res.status(500).send("Something went wrong.");
+    res.sendStatus(500);
   }
 }
 
