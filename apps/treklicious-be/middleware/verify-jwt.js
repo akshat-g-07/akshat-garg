@@ -11,9 +11,9 @@ function verifyJWT(req, res, next) {
 
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
     if (err) {
-      return res.status(403).send({ message: "Forbidden" });
+      return res.sendStatus(403);
     }
-    req.userID = decoded.user.userID;
+    req.userIDModel_id = decoded.userIDModel_id;
     next();
   });
 }
