@@ -27,6 +27,8 @@ async function Signup(req, res) {
       return res.status(409).json({ message: EMAIL_EXISTS_RESPONSE });
 
     const hashedPassword = hashPassword(password);
+    const userIDObject = { userName, password: hashedPassword };
+    const userIDCreated = await userIDModel.create(userIDObject);
 
     const preferences = {
       state: "NA",
@@ -35,6 +37,7 @@ async function Signup(req, res) {
     };
 
     const userDetailsObject = {
+      userIDModel_id: userIDCreated._id,
       firstName,
       lastName,
       userName,
@@ -42,10 +45,8 @@ async function Signup(req, res) {
       profile,
       preferences,
     };
-    const userIDObject = { userName, password: hashedPassword };
 
     const userDetailCreated = await userDetailsModel.create(userDetailsObject);
-    const userIDCreated = await userIDModel.create(userIDObject);
 
     if (userDetailCreated && userIDCreated) {
       const accessToken = getAccessToken(userIDCreated._id);
