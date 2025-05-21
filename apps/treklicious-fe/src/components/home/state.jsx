@@ -75,7 +75,7 @@ export default function State() {
                 imgSrc={trek.img}
                 alt={trek.name.toLowerCase()}
                 title={trek.name}
-                link={trek.name.toLowerCase()}
+                link={`trek/${trek._id}`}
               />
             ))}
           </div>
