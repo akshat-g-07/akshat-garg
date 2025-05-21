@@ -18,7 +18,6 @@ export default function Season() {
     queryFn: AllTreks,
   });
 
-  // MARK: fetch treks from backend, summer array, monsoon array, winter array
   const summerTreks = useMemo(
     () => Treks?.filter((trek) => trek.season === "Summer") ?? [],
     [Treks]
@@ -34,6 +33,7 @@ export default function Season() {
     [Treks]
   );
 
+  console.log("Error in Season", error);
   if (error) return <></>;
 
   return (
