@@ -5,7 +5,7 @@ const userPreferencesSchema = require("./userPreferencesSchema");
 const userDetailSchema = new mongoose.Schema(
   {
     userIDModel_id: {
-      type: ObjectId,
+      type: mongoose.Types.ObjectId,
       required: true,
       index: true,
       unique: true,
