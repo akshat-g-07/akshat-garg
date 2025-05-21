@@ -30,6 +30,7 @@ const userDetailSchema = new mongoose.Schema(
     },
     favorites: {
       type: [String],
+      default: [],
     },
     preferences: userPreferencesSchema,
   },
