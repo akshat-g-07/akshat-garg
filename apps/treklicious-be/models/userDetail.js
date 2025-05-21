@@ -4,6 +4,13 @@ const userPreferencesSchema = require("./userPreferencesSchema");
 
 const userDetailSchema = new mongoose.Schema(
   {
+    userIDModel_id: {
+      type: ObjectId,
+      required: true,
+      index: true,
+      unique: true,
+      immutable: true,
+    },
     firstName: {
       type: String,
       required: true,
@@ -20,7 +27,6 @@ const userDetailSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
-      index: true,
       unique: true,
       immutable: true,
     },
