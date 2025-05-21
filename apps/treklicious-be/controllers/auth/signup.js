@@ -30,12 +30,6 @@ async function Signup(req, res) {
     const userIDObject = { userName, password: hashedPassword };
     const userIDCreated = await userIDModel.create(userIDObject);
 
-    const preferences = {
-      state: "NA",
-      season: "NA",
-      difficulty: "NA",
-    };
-
     const userDetailsObject = {
       userIDModel_id: userIDCreated._id,
       firstName,
@@ -43,7 +37,6 @@ async function Signup(req, res) {
       userName,
       email,
       profile,
-      preferences,
     };
 
     const userDetailCreated = await userDetailsModel.create(userDetailsObject);
