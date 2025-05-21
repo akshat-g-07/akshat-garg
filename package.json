@@ -4,10 +4,15 @@
   "scripts": {
     "build:macos-portfolio": "turbo run build --filter=macos-portfolio",
     "build:threejs-portfolio": "turbo run build --filter=threejs-portfolio",
+    "build:treklicious-fe": "turbo run build --filter=treklicious-fe",
+    "build:treklicious-be": "turbo run build --filter=treklicious-be",
+    "build:treklicious": "turbo run build --filter=treklicious-*",
     "build:noteworthy-ninja-privacy-policy": "turbo run build --filter=noteworthy-ninja-privacy-policy",
     "build": "turbo build",
     "dev:macos-portfolio": "turbo dev --filter=macos-portfolio",
     "dev:treklicious-fe": "turbo dev --filter=treklicious-fe",
+    "dev:treklicious-be": "turbo dev --filter=treklicious-be",
+    "dev:treklicious": "turbo dev --filter=treklicious-*",
     "dev:threejs-portfolio": "turbo dev --filter=threejs-portfolio",
     "dev:noteworthy-ninja-privacy-policy": "turbo dev --filter=noteworthy-ninja-privacy-policy",
     "dev": "turbo dev",
@@ -18,6 +23,7 @@
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "prettier": "^3.2.5",
+    "tsup": "^8.5.0",
     "turbo": "latest"
   },
   "engines": {
