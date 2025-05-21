@@ -9,6 +9,7 @@ import Profile from "@/pages/profile";
 import Favorites from "@/pages/favorites";
 import Trek from "@/pages/trek";
 import TrekByID from "@/apis/Trek/TrekByID";
+import { QueryClient } from "@tanstack/react-query";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,16 @@ export const router = createBrowserRouter([
   {
     path: "/trek/:trekID",
     Component: Trek,
-    loader: async ({ params }) => ({ trek: await TrekByID(params.trekID) }),
+    loader: async ({ params }) => {
+      const trekID = params.trekID;
+      const queryClient = new QueryClient();
+
+      const data = await queryClient.ensureQueryData({
+        queryKey: ["trek-by-id", trekID],
+        queryFn: TrekByID,
+      });
+
+      return { trek: data };
+    },
   },
 ]);
