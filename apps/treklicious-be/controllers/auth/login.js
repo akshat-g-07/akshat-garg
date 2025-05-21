@@ -7,7 +7,9 @@ const {
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
 const logger = require("../../utils/logger");
+const { getAccessToken, getRefreshToken } = require("../../utils/tokens");
 
 async function Login(req, res) {
   const { userName, password } = req.body;
@@ -28,21 +30,9 @@ async function Login(req, res) {
       return res.status(401).json({ message: PASSWORDS_DONT_MATCH_RESPONSE });
     }
 
-    const accessToken = jwt.sign(
-      {
-        userIDModel_id: foundUser._id,
-      },
-      process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "1d" }
-    );
+    const accessToken = getAccessToken(foundUser._id);
 
-    const refreshToken = jwt.sign(
-      {
-        userIDModel_id: foundUser._id,
-      },
-      process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: "7d" }
-    );
+    const refreshToken = getRefreshToken(foundUser._id);
 
     res.cookie("jwt", refreshToken, {
       httpOnly: true,

@@ -28,13 +28,7 @@ async function Refresh(req, res) {
         return res.status(401).json({ message: UNAUTHORIZED_RESPONSE });
       }
 
-      const accessToken = jwt.sign(
-        {
-          userIDModel_id: foundUser._id,
-        },
-        process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: "1d" }
-      );
+      const accessToken = getAccessToken(foundUser._id);
 
       res.status(200).json({ accessToken });
     }
