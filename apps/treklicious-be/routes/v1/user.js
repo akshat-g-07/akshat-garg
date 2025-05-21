@@ -5,11 +5,11 @@ const {
   GETFavorite,
   POSTFavorite,
   DELETEFavorite,
+  Recommended,
 } = require("../../controllers/user");
 const router = express.Router();
 
-// user route to get recommended treks
-router.route("/recommended").get(() => {});
+router.route("/recommended").get(Recommended);
 
 router.route("/profile").get(GETProfile).put(PUTProfile);
 
