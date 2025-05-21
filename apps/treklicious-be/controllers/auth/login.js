@@ -5,11 +5,9 @@ const {
   PASSWORDS_DONT_MATCH_RESPONSE,
 } = require("@repo/treklicious-constants");
 
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-
 const logger = require("../../utils/logger");
 const { getAccessToken, getRefreshToken } = require("../../utils/tokens");
+const { verifyPassword } = require("../../utils/password");
 
 async function Login(req, res) {
   const { userName, password } = req.body;
@@ -24,7 +22,7 @@ async function Login(req, res) {
       return res.status(401).json({ message: USER_NOT_FOUND_RESPONSE });
     }
 
-    const match = await bcrypt.compare(password, foundUser.password);
+    const match = verifyPassword(password, foundUser.password);
 
     if (!match) {
       return res.status(401).json({ message: PASSWORDS_DONT_MATCH_RESPONSE });
