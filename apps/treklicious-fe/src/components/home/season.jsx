@@ -33,8 +33,10 @@ export default function Season() {
     [Treks]
   );
 
-  console.log("Error in Season", error);
-  if (error) return <></>;
+  if (error) {
+    console.log("Error in State", error);
+    return <></>;
+  }
 
   return (
     <SectionTemplate

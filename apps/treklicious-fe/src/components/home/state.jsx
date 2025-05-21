@@ -36,8 +36,10 @@ export default function State() {
     );
   }, [index, states, Treks]);
 
-  console.log("Error in State", error);
-  if (error) return <></>;
+  if (error) {
+    console.log("Error in State", error);
+    return <></>;
+  }
 
   return (
     <SectionTemplate
