@@ -1,14 +1,11 @@
 const express = require("express");
+const { GETProfile, PUTProfile } = require("../../controllers/user");
 const router = express.Router();
 
 // user route to get recommended treks
 router.route("/recommended").get(() => {});
 
-// user profile routes get request put request
-router
-  .route("/profile")
-  .get(() => {})
-  .put(() => {});
+router.route("/profile").get(GETProfile).put(PUTProfile);
 
 // user preferences routes get request put request
 router
