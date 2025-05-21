@@ -12,6 +12,11 @@ const middleware = require("./middleware");
 const openRoutes = require("./config/open-routes");
 const routes = require("./routes");
 
+const cors = require("cors");
+const corsOptions = require("./config/cors-options");
+
+app.use(cors(corsOptions));
+
 dbConnect();
 
 app.use(express.json());
