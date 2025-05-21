@@ -7,12 +7,6 @@ router.route("/recommended").get(() => {});
 
 router.route("/profile").get(GETProfile).put(PUTProfile);
 
-// user preferences routes get request put request
-router
-  .route("/preferences")
-  .get(() => {})
-  .put(() => {});
-
 // user favorites routes get request post request to add delete req to remove
 router
   .route("/favorites")
