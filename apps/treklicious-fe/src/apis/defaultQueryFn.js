@@ -1,0 +1,14 @@
+import fetch from "@/lib/fetch";
+
+import { APIs } from ".";
+
+export default async function defaultQueryFn({ queryKey, meta }) {
+  const { baseURL, apiVersion, route, baseRoute } = APIs[queryKey[0]];
+  const ID = queryKey[1] || "";
+
+  const options = meta?.options || {};
+  const url = baseURL + "/api" + apiVersion + baseRoute + route + ID;
+
+  const res = await fetch(url, options);
+  return res;
+}

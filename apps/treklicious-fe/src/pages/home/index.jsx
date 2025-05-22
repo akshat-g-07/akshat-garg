@@ -1,4 +1,4 @@
-import { Keys } from "@/apis/keys";
+import { APIs } from "@/apis";
 import CallToAction from "@/components/home/call-to-action";
 import HeroSection from "@/components/home/hero-section";
 import Season from "@/components/home/season";
@@ -8,7 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function Home() {
   const queryKey = "all-treks";
-  const { queryOptions } = Keys[queryKey];
+  const { queryOptions } = APIs[queryKey];
   const {
     isLoading,
     error,

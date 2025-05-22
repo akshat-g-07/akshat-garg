@@ -4,7 +4,6 @@ import TileRow from "@/components/common/tile-row";
 
 import Loading from "@/components/common/loading";
 import { useMemo } from "react";
-import { Keys } from "@/apis/keys";
 
 export default function Season({ Treks, isLoading }) {
   const rotatingPartDescriptions = ["Summer", "Monsoon", "Winter"];

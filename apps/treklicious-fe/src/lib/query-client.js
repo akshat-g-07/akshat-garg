@@ -1,4 +1,4 @@
-import defaultQueryFn from "@/apis";
+import defaultQueryFn from "@/apis/defaultQueryFn";
 import { QueryClient } from "@tanstack/react-query";
 
 globalThis.queryClient =

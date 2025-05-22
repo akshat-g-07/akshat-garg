@@ -1,14 +1,76 @@
-import fetch from "@/lib/fetch";
+import { TREK_ROUTE } from "@repo/treklicious-constants";
+import { queryOptions } from "@tanstack/react-query";
 
-import { Keys } from "./keys";
+const baseURL = import.meta.env.VITE_API_HOST;
 
-export default async function defaultQueryFn({ queryKey, meta }) {
-  const { baseURL, apiVersion, route, baseRoute } = Keys[queryKey[0]];
-  const ID = queryKey[1] || "";
-
-  const options = meta?.options || {};
-  const url = baseURL + "/api" + apiVersion + baseRoute + route + ID;
-
-  const res = await fetch(url, options);
-  return res;
-}
+export const APIs = {
+  "all-treks": {
+    baseURL,
+    apiVersion: "/v1",
+    route: "",
+    baseRoute: TREK_ROUTE,
+    queryOptions: queryOptions({
+      staleTime: 30 * 60 * 1000,
+      refetchOnReconnect: false,
+    }),
+  },
+  "trek-by-trekID": {
+    baseURL,
+    apiVersion: "/v1",
+    route: "/trekID",
+    baseRoute: TREK_ROUTE,
+  },
+  // dummy below
+  "with-headers": {
+    baseURL,
+    apiVersion: "/v1",
+    route: "",
+    baseRoute: TREK_ROUTE,
+    queryOptions: queryOptions({
+      staleTime: 30 * 60 * 1000,
+      refetchOnReconnect: false,
+    }),
+    meta: {
+      options: {
+        headers: {
+          Authorization: "Bearer your_token_here",
+        },
+      },
+    },
+  },
+  "post-req": {
+    queryKey: ["post-req"],
+    baseURL,
+    apiVersion: "/v1",
+    route: "",
+    baseRoute: TREK_ROUTE,
+    queryOptions: queryOptions({
+      staleTime: 30 * 60 * 1000,
+      refetchOnReconnect: false,
+    }),
+    meta: {
+      options: {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer your_token_here",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          key1: "value1",
+          key2: "value2",
+        }),
+      },
+    },
+  },
+  "trekby-ID": {
+    queryKey: ["trekby-ID"],
+    baseURL,
+    apiVersion: "/v1",
+    route: "/trekID",
+    baseRoute: TREK_ROUTE,
+    queryOptions: queryOptions({
+      staleTime: 30 * 60 * 1000,
+      refetchOnReconnect: false,
+    }),
+  },
+};
