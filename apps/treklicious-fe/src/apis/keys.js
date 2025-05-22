@@ -14,6 +14,12 @@ export const Keys = {
       refetchOnReconnect: false,
     }),
   },
+  "trek-by-trekID": {
+    baseURL,
+    apiVersion: "/v1",
+    route: "/trekID",
+    baseRoute: TREK_ROUTE,
+  },
   // dummy below
   "with-headers": {
     baseURL,

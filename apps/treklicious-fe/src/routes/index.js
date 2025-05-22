@@ -8,8 +8,8 @@ import ExploreAll from "@/pages/explore-all";
 import Profile from "@/pages/profile";
 import Favorites from "@/pages/favorites";
 import Trek from "@/pages/trek";
-import TrekByID from "@/apis/Trek/TrekByID";
 import { queryClient } from "@/lib/query-client";
+import { Keys } from "@/apis/keys";
 
 export const router = createBrowserRouter([
   {
@@ -51,8 +51,7 @@ export const router = createBrowserRouter([
       const trekID = params.trekID;
 
       const data = await queryClient.ensureQueryData({
-        queryKey: ["trek-by-id", trekID],
-        queryFn: TrekByID,
+        queryKey: ["trek-by-trekID", `/${trekID}`],
       });
 
       return { trek: data };
