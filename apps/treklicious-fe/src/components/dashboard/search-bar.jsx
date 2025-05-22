@@ -1,11 +1,26 @@
-import Treks from "@/assets/Treks.json";
 import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { APIs } from "@/apis";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../common/loading";
+import { useNavigate } from "react-router";
 
 export default function SearchBar({ isFocused, setIsFocused }) {
+  const navigate = useNavigate();
+  const queryKey = "all-names";
   const searchRef = useRef(null);
+  const { queryOptions } = APIs[queryKey];
   const [searchTerm, setSearchTerm] = useState("");
+  const {
+    isLoading,
+    error,
+    data: Treks,
+  } = useQuery({
+    queryKey: [queryKey],
+    ...queryOptions,
+  });
+
   const [filteredSuggestions, setFilteredSuggestions] = useState(Treks);
 
   useEffect(() => {
@@ -35,12 +50,16 @@ export default function SearchBar({ isFocused, setIsFocused }) {
     } else {
       setFilteredSuggestions(Treks);
     }
-  }, [searchTerm]);
+  }, [searchTerm, Treks]);
+
+  if (error) {
+    console.log("Error in SearchBar", error);
+    return <></>;
+  }
 
   return (
-    <>
+    <div ref={searchRef}>
       <div
-        ref={searchRef}
         className={cn(
           "overflow-hidden flex h-10 items-center-safe transition-all duration-300 md:duration-700 ease-out",
           isFocused ? "w-60 md:w-70 space-x-1 border-white border-b" : "w-5"
@@ -66,19 +85,25 @@ export default function SearchBar({ isFocused, setIsFocused }) {
       </div>
       {isFocused && filteredSuggestions.length > 0 && (
         <div className="absolute bottom-0 translate-y-[97.5%] z-50 w-[90%] max-w-60 md:max-w-70 rounded-b-md bg-white shadow-lg max-h-[300px] overflow-y-auto">
-          {filteredSuggestions.map((suggestion, index) => (
-            <div
-              key={index}
-              className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-300"
-              onClick={() => {
-                setIsFocused(false);
-              }}
-            >
-              <span>{suggestion.name}</span>
-            </div>
-          ))}
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <>
+              {filteredSuggestions.map((suggestion, index) => (
+                <div
+                  key={index}
+                  className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-300"
+                  onClick={() => {
+                    navigate(`/trek/${suggestion._id}`);
+                  }}
+                >
+                  <span>{suggestion.name}</span>
+                </div>
+              ))}
+            </>
+          )}
         </div>
       )}
-    </>
+    </div>
   );
 }

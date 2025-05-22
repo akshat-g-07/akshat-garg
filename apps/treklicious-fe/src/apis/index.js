@@ -20,6 +20,16 @@ export const APIs = {
     route: "/trekID",
     baseRoute: TREK_ROUTE,
   },
+  "all-names": {
+    baseURL,
+    apiVersion: "/v1",
+    route: "/allNames",
+    baseRoute: TREK_ROUTE,
+    queryOptions: queryOptions({
+      staleTime: 60 * 60 * 1000,
+      refetchOnReconnect: false,
+    }),
+  },
   // dummy below
   "with-headers": {
     baseURL,
