@@ -8,14 +8,13 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function Home() {
   const queryKey = "all-treks";
-  const { meta, queryOptions } = Keys[queryKey];
+  const { queryOptions } = Keys[queryKey];
   const {
     isLoading,
     error,
     data: Treks,
   } = useQuery({
     queryKey: [queryKey],
-    meta,
     ...queryOptions,
   });
 
