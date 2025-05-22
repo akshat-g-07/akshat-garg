@@ -9,7 +9,7 @@ import Profile from "@/pages/profile";
 import Favorites from "@/pages/favorites";
 import Trek from "@/pages/trek";
 import TrekByID from "@/apis/Trek/TrekByID";
-import { queryClient } from "@/main";
+import { queryClient } from "@/lib/queryClient";
 
 export const router = createBrowserRouter([
   {
