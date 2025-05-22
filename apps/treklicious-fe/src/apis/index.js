@@ -30,6 +30,16 @@ export const APIs = {
       refetchOnReconnect: false,
     }),
   },
+  "random-trek": {
+    baseURL,
+    apiVersion: "/v1",
+    route: "/random",
+    baseRoute: TREK_ROUTE,
+    queryOptions: queryOptions({
+      staleTime: 10 * 60 * 1000,
+      refetchOnMount: true,
+    }),
+  },
   // dummy below
   "with-headers": {
     baseURL,
