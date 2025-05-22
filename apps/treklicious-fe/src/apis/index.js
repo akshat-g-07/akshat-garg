@@ -40,6 +40,16 @@ export const APIs = {
       refetchOnMount: true,
     }),
   },
+  "category-treks": {
+    baseURL,
+    apiVersion: "/v1",
+    route: "/category",
+    baseRoute: TREK_ROUTE,
+    queryOptions: queryOptions({
+      staleTime: 10 * 60 * 1000,
+      refetchOnMount: true,
+    }),
+  },
   // dummy below
   "with-headers": {
     baseURL,

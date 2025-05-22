@@ -1,9 +1,11 @@
-import Treks from "@/assets/Treks.json";
 import BackButton from "@/components/common/back-button";
 import { useLocation } from "react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Filters from "@/components/explore-all/filters";
 import ShowTreks from "@/components/common/show-treks";
+import { APIs } from "@/apis";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "@/components/common/loading";
 
 export default function ExploreAll() {
   const location = useLocation();
@@ -12,6 +14,28 @@ export default function ExploreAll() {
     filterParam: filterParameter || "",
     filterVal: filterValue || "",
   });
+
+  const queryKey = "category-treks";
+  const [queryKeyID, setQueryKeyID] = useState(
+    `/filterParam/${filterParam.toLowerCase()}/filterValue/${filterVal}`
+  );
+
+  const { queryOptions } = APIs[queryKey];
+  const {
+    isLoading,
+    error,
+    data: Treks,
+  } = useQuery({
+    queryKey: [queryKey, queryKeyID],
+    ...queryOptions,
+  });
+
+  useEffect(() => {
+    if (filterParam && filterVal)
+      setQueryKeyID(
+        `/filterParam/${filterParam.toLowerCase()}/filterValue/${filterVal}`
+      );
+  }, [filterParam, filterVal]);
 
   return (
     <section>
@@ -24,8 +48,11 @@ export default function ExploreAll() {
           setFilters={setFilters}
         />
       </header>
-
-      <ShowTreks treks={Treks} />
+      {error ? (
+        <>Please Try Again</>
+      ) : (
+        <>{isLoading ? <Loading /> : <ShowTreks treks={Treks} />}</>
+      )}
     </section>
   );
 }
