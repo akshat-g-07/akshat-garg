@@ -2,22 +2,11 @@ import { useEffect, useState, useMemo } from "react";
 import SectionTemplate from "./section-template";
 import { cn } from "@/lib/utils";
 import Tile from "@/components/common/tile";
-import { useQuery } from "@tanstack/react-query";
-import AllTreks from "@/apis/Trek/AllTreks";
 import Loading from "@/components/common/loading";
 
-export default function State() {
+export default function State({ Treks, isLoading }) {
   const imgSrc =
     "https://wallpapers.com/images/hd/hiking-on-foggy-mountain-g7bz0k4c45e2zmgt.jpg";
-
-  const {
-    isLoading,
-    error,
-    data: Treks,
-  } = useQuery({
-    queryKey: ["all-treks"],
-    queryFn: AllTreks,
-  });
 
   const states = useMemo(
     () => [...new Set(Treks?.map((trek) => trek.state))],
@@ -35,11 +24,6 @@ export default function State() {
       Treks?.filter((trek) => trek.state === states[index]).slice(0, 10)
     );
   }, [index, states, Treks]);
-
-  if (error) {
-    console.log("Error in State", error);
-    return <></>;
-  }
 
   return (
     <SectionTemplate
