@@ -14,13 +14,11 @@ async function Recommended(req, res) {
       .lean();
 
     if (!user)
-      return res.sendStatus(400).json({ message: USER_NOT_FOUND_RESPONSE });
+      return res.status(400).json({ message: USER_NOT_FOUND_RESPONSE });
 
     const { state, season, difficulty } = user.preferences;
     if (state === "NA" || season === "NA" || difficulty === "NA")
-      return res
-        .sendStatus(400)
-        .json({ message: PREFERENCES_NOT_SET_RESPONSE });
+      return res.status(400).json({ message: PREFERENCES_NOT_SET_RESPONSE });
 
     const recommendedTreks = await trekDetailsModel
       .find({
