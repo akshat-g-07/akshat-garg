@@ -1,6 +1,5 @@
 import { seasonLines, stateLines, difficultyLines } from "./section-heading";
 import TrekCategoryGenerator from "./trek-category-generator";
-import Treks from "@/assets/Treks.json";
 
 const usedSectionHeads = [];
 
@@ -12,7 +11,7 @@ const getUniqueSectionHead = (lines) => {
   return lines[index];
 };
 
-const GenerateStateLine = (stateName) => {
+const GenerateStateLine = (Treks, stateName) => {
   const value = getUniqueSectionHead(stateLines);
   usedSectionHeads.push(value);
 
@@ -29,7 +28,7 @@ const GenerateStateLine = (stateName) => {
   };
 };
 
-const GenerateSeasonLine = (seasonName) => {
+const GenerateSeasonLine = (Treks, seasonName) => {
   const value = getUniqueSectionHead(seasonLines);
   usedSectionHeads.push(value);
 
@@ -46,7 +45,7 @@ const GenerateSeasonLine = (seasonName) => {
   };
 };
 
-const GenerateDifficultyLine = (difficultyName) => {
+const GenerateDifficultyLine = (Treks, difficultyName) => {
   const value = getUniqueSectionHead(difficultyLines);
   usedSectionHeads.push(value);
 
@@ -62,7 +61,7 @@ const GenerateDifficultyLine = (difficultyName) => {
   };
 };
 
-const ComponentGenerator = () => {
+const ComponentGenerator = (Treks) => {
   const trekCategory = TrekCategoryGenerator(Treks);
   const componentValue = [];
 
@@ -70,10 +69,10 @@ const ComponentGenerator = () => {
     const [[key, value]] = Object.entries(category);
     componentValue.push(
       key === "state"
-        ? GenerateStateLine(value)
+        ? GenerateStateLine(Treks, value)
         : key === "season"
-          ? GenerateSeasonLine(value)
-          : GenerateDifficultyLine(value)
+          ? GenerateSeasonLine(Treks, value)
+          : GenerateDifficultyLine(Treks, value)
     );
   });
 

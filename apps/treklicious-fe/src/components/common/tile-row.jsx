@@ -12,7 +12,7 @@ export default function TileRow({ treks }) {
             imgSrc={trek.img}
             alt={trek.name.toLowerCase()}
             title={trek.name}
-            link={`trek/${trek._id}`}
+            link={`/trek/${trek._id}`}
           />
         ))}
       </div>
