@@ -1,5 +1,6 @@
 // ROUTES
 export const TREK_ROUTE = "/trek";
+export const USER_ROUTE = "/user";
 
 // RESPONSES
 export const BAD_REQUEST_RESPONSE = "Bad request";
