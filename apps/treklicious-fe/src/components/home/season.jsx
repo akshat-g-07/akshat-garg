@@ -6,16 +6,51 @@ import { useQuery } from "@tanstack/react-query";
 import Loading from "@/components/common/loading";
 import AllTreks from "@/apis/Trek/AllTreks";
 import { useMemo } from "react";
+import { Keys } from "@/apis/keys";
 
 export default function Season() {
   const rotatingPartDescriptions = ["Summer", "Monsoon", "Winter"];
+  // const { meta, queryOptions } = Keys["/"];
+  // const {
+  //   isLoading,
+  //   error,
+  //   data: Treks,
+  // } = useQuery({
+  //   queryKey: ["/"],
+  //   meta,
+  //   ...queryOptions,
+  // });
+  // const queryKey = "with-headers";
+  // const { meta, queryOptions } = Keys[queryKey];
+  // const {
+  //   isLoading,
+  //   error,
+  //   data: Treks,
+  // } = useQuery({
+  //   queryKey: [queryKey],
+  //   meta,
+  //   ...queryOptions,
+  // });
+  // const { queryKey, meta, queryOptions } = Keys["post-req"];
+  // const {
+  //   isLoading,
+  //   error,
+  //   data: Treks,
+  // } = useQuery({
+  //   queryKey,
+  //   meta,
+  //   ...queryOptions,
+  // });
+  const queryKey = "trekby-ID";
+  const { meta, queryOptions } = Keys[queryKey];
   const {
     isLoading,
     error,
     data: Treks,
   } = useQuery({
-    queryKey: ["all-treks"],
-    queryFn: AllTreks,
+    queryKey: [queryKey, "/649701d2dfe153ddd70c670a"],
+    meta,
+    ...queryOptions,
   });
 
   const summerTreks = useMemo(
