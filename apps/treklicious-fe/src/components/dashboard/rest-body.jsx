@@ -20,7 +20,6 @@ export default function RestBody() {
     console.log("Error in RestBody All Treks", allTreksError);
     return <></>;
   }
-  console.log("allTreksIsLoading", allTreksIsLoading);
 
   if (allTreksIsLoading) {
     return <Loading />;
