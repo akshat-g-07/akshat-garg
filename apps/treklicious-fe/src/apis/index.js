@@ -1,4 +1,4 @@
-import { TREK_ROUTE } from "@repo/treklicious-constants";
+import { TREK_ROUTE, USER_ROUTE } from "@repo/treklicious-constants";
 import { queryOptions } from "@tanstack/react-query";
 
 const baseURL = import.meta.env.VITE_API_HOST;
@@ -45,6 +45,16 @@ export const APIs = {
     apiVersion: "/v1",
     route: "/category",
     baseRoute: TREK_ROUTE,
+    queryOptions: queryOptions({
+      staleTime: 10 * 60 * 1000,
+      refetchOnMount: true,
+    }),
+  },
+  "recommended-treks": {
+    baseURL,
+    apiVersion: "/v1",
+    route: "/recommended",
+    baseRoute: USER_ROUTE,
     queryOptions: queryOptions({
       staleTime: 10 * 60 * 1000,
       refetchOnMount: true,

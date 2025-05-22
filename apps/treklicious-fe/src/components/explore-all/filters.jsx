@@ -9,7 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 export default function Filters({ filterParam, filterVal, setFilters }) {
   const filterParamOptions = ["Recommended", "Season", "State", "Difficulty"];
@@ -29,6 +29,15 @@ export default function Filters({ filterParam, filterVal, setFilters }) {
         return [];
     }
   }, [filterParam]);
+
+  useEffect(() => {
+    if (filterParam === "Recommended")
+      setFilters((prev) => ({
+        ...prev,
+        filterVal: "Recommendations",
+      }));
+  }, [filterParam, setFilters]);
+
   return (
     <div className="flex-1 flex flex-col md:flex-row justify-evenly w-full items-center-safe gap-y-4 mt-8 md:mt-0">
       <Select
@@ -54,7 +63,7 @@ export default function Filters({ filterParam, filterVal, setFilters }) {
 
       <Select
         disabled={!filterValueOptions.length}
-        value={filterParam === "Recommended" ? "Recommendations" : filterVal}
+        value={filterVal}
         onValueChange={(val) => {
           setFilters((prev) => ({
             ...prev,
