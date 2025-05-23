@@ -40,8 +40,7 @@ const userDetailSchema = new mongoose.Schema(
     },
     preferences: userPreferencesSchema,
   },
-  { timestamps: true },
-  { collection: "userDetails" }
+  { collection: "userDetails", timestamps: true }
 );
 
 module.exports = mongoose.model("userDetailModel", userDetailSchema);
