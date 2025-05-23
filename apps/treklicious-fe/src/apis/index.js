@@ -76,6 +76,17 @@ export const APIs = {
     }),
     meta: defaultMeta,
   },
+  "get-profile": {
+    baseURL,
+    apiVersion: "/v1",
+    route: "/profile",
+    baseRoute: USER_ROUTE,
+    queryOptions: queryOptions({
+      staleTime: 30 * 60 * 1000,
+      refetchOnMount: true,
+    }),
+    meta: defaultMeta,
+  },
   // dummy below
   "with-headers": {
     baseURL,

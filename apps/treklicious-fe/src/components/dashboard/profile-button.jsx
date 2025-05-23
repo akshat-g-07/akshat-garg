@@ -9,13 +9,28 @@ import {
 import { Heart, LogOut, Settings } from "lucide-react";
 import React from "react";
 import { cn } from "@/lib/utils";
+import { APIs } from "@/apis";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../common/loading";
 
 export default function ProfileButton({ isFocused }) {
+  const queryKey = "get-profile";
+  const { queryOptions, meta } = APIs[queryKey];
+  const {
+    isLoading,
+    error,
+    data: Profile,
+  } = useQuery({
+    queryKey: [queryKey],
+    ...queryOptions,
+    meta,
+  });
+
   const options = [
     {
       link: "/profile",
       text: "Profile",
-      icon: <UserProfilePic />,
+      icon: <UserProfilePic src={error ? normalSrc : Profile?.profile} />,
       divider: true,
     },
     {
@@ -37,6 +52,7 @@ export default function ProfileButton({ isFocused }) {
       divider: false,
     },
   ];
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -46,7 +62,14 @@ export default function ProfileButton({ isFocused }) {
             isFocused && "hidden md:block"
           )}
         >
-          <UserProfilePic size="lg" />
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <UserProfilePic
+              size="lg"
+              src={error ? normalSrc : Profile?.profile}
+            />
+          )}
         </div>
       </PopoverTrigger>
       <PopoverContent className="w-60 space-y-1">
@@ -69,10 +92,10 @@ export default function ProfileButton({ isFocused }) {
   );
 }
 
-function UserProfilePic({ size = "sm" }) {
+function UserProfilePic({ size = "sm", src }) {
   return (
     <img
-      src={normalSrc}
+      src={src}
       alt={"Profile Pic"}
       className={cn(size === "sm" ? "size-4" : "size-8")}
     />
