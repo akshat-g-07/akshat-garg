@@ -1,7 +1,22 @@
+import { getAccessToken } from "@/lib/access-token";
 import { TREK_ROUTE, USER_ROUTE } from "@repo/treklicious-constants";
 import { queryOptions } from "@tanstack/react-query";
 
 const baseURL = import.meta.env.VITE_API_HOST;
+
+let defaultMeta = {};
+
+let accessToken = getAccessToken();
+
+if (accessToken) {
+  defaultMeta = {
+    options: {
+      headers: {
+        Authorization: getAccessToken(),
+      },
+    },
+  };
+}
 
 export const APIs = {
   "all-treks": {
@@ -59,6 +74,7 @@ export const APIs = {
       staleTime: 10 * 60 * 1000,
       refetchOnMount: true,
     }),
+    meta: defaultMeta,
   },
   // dummy below
   "with-headers": {
