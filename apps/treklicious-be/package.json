@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon --env-file=.env.dev index.js",
     "start": "node --env-file=.env.prod index.js",
+    "seed-db": "node --env-file=.env.dev scripts/seed-db.js",
     "sync-indexes": "node --env-file=.env.dev scripts/sync-indexes.js"
   },
   "author": "Akshat Garg",
