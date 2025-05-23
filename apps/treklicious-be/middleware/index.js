@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const { USER_ROUTE } = require("@repo/treklicious-constants");
+
 const NODE_ENV = process.env.NODE_ENV;
 const ADMIN_CODE = process.env.ADMIN_CODE;
 
@@ -26,7 +28,7 @@ router.use(logRequest, (req, res, next) => {
 
   rateLimiter(req, res, next);
 
-  if (req.url.includes("/user")) verifyJWT(req, res, next);
+  if (req.url.includes(USER_ROUTE)) verifyJWT(req, res, next);
 
   next();
 });
