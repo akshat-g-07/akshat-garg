@@ -28,7 +28,7 @@ router.use(logRequest, (req, res, next) => {
 
   rateLimiter(req, res, next);
 
-  if (req.url.includes(USER_ROUTE)) verifyJWT(req, res, next);
+  if (req.url.includes(USER_ROUTE)) return verifyJWT(req, res, next);
 
   next();
 });
