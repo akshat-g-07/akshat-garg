@@ -15,12 +15,19 @@ export default function ExploreAll() {
     filterVal: filterValue || "",
   });
 
-  const [queryKey, setQueryKey] = useState("category-treks");
-  const [queryKeyID, setQueryKeyID] = useState(
-    `/filterParam/${filterParam.toLowerCase()}/filterValue/${filterVal}`
-  );
+  const [queryKey, setQueryKey] = useState(() => {
+    if (filterParam === "Recommended" && filterVal === "Recommendations")
+      return "recommended-treks";
+    else return "category-treks";
+  });
+  const [queryKeyID, setQueryKeyID] = useState(() => {
+    if (filterParam === "Recommended" && filterVal === "Recommendations")
+      return "";
+    else
+      return `/filterParam/${filterParam.toLowerCase()}/filterValue/${filterVal}`;
+  });
 
-  const { queryOptions } = APIs[queryKey];
+  const { queryOptions, meta } = APIs[queryKey];
   const {
     isLoading,
     error,
@@ -28,6 +35,7 @@ export default function ExploreAll() {
   } = useQuery({
     queryKey: [queryKey, queryKeyID],
     ...queryOptions,
+    meta,
   });
 
   useEffect(() => {
