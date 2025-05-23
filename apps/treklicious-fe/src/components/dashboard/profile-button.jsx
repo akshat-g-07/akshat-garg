@@ -1,6 +1,5 @@
 import { Link } from "react-router";
 import normalSrc from "../../assets/profile-normal.png";
-
 import {
   Popover,
   PopoverContent,
