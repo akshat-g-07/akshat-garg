@@ -13,6 +13,9 @@ async function main() {
   await dbConnect();
   console.log("Connected");
 
+  await userIDModel.deleteMany();
+  await userDetailsModel.deleteMany();
+
   const userIDData = [];
   for (let i = 1; i < 6; i++) {
     userIDData.push({
@@ -42,7 +45,7 @@ async function main() {
       lastName: `Doe_${indx}`,
       userName: `johnDoe_${indx}`,
       email: `john.doe${indx}@example.com`,
-      profile: `https://i.pravatar.cc/${Math.floor(Math.random() * 1000)}`,
+      profile: `https://i.pravatar.cc/300?img=${Math.floor(Math.random() * 70)}`,
       favorites: treks.map((trek) => trek._id).slice(startIndx, endIndx),
       preferences: {
         state: state[Math.floor(Math.random() * state.length)],
