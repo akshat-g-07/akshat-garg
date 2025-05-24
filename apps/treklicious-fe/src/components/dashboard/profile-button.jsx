@@ -14,7 +14,7 @@ import Loading from "../common/loading";
 
 export default function ProfileButton({ isFocused }) {
   const queryKey = "get-profile";
-  const { queryOptions, meta } = APIs[queryKey];
+  const { queryOptions } = APIs[queryKey];
   const {
     isLoading,
     error,
@@ -22,7 +22,6 @@ export default function ProfileButton({ isFocused }) {
   } = useQuery({
     queryKey: [queryKey],
     ...queryOptions,
-    meta,
   });
 
   const options = [

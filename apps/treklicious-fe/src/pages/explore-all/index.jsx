@@ -27,7 +27,7 @@ export default function ExploreAll() {
       return `/filterParam/${filterParam.toLowerCase()}/filterValue/${filterVal}`;
   });
 
-  const { queryOptions, meta } = APIs[queryKey];
+  const { queryOptions } = APIs[queryKey];
   const {
     isLoading,
     error,
@@ -35,7 +35,6 @@ export default function ExploreAll() {
   } = useQuery({
     queryKey: [queryKey, queryKeyID],
     ...queryOptions,
-    meta,
   });
 
   useEffect(() => {

@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function Profile() {
   const queryKey = "get-profile";
-  const { queryOptions, meta } = APIs[queryKey];
+  const { queryOptions } = APIs[queryKey];
   const {
     isLoading,
     error,
@@ -15,7 +15,6 @@ export default function Profile() {
   } = useQuery({
     queryKey: [queryKey],
     ...queryOptions,
-    meta,
   });
 
   if (error) {
