@@ -94,18 +94,16 @@ export const APIs = {
     }),
     authorization: true,
   },
-  // "put-profile": {
-  //   baseURL,
-  //   apiVersion: "/v1",
-  //   route: "/profile",
-  //   baseRoute: USER_ROUTE,
-  //   authorization: true,
-  //   method: "PUT",
-  //   queryInvalidate: ["get-profile"],
-  //   mutationOptions: {
-  //     retry: 2,
-  //   },
-  // },
+  "check-favorite": {
+    baseURL,
+    apiVersion: "/v1",
+    route: "/check-favorite",
+    baseRoute: USER_ROUTE,
+    authorization: true,
+    queryOptions: {
+      refetchOnMount: true,
+    },
+  },
   // dummy below
   "with-headers": {
     baseURL,

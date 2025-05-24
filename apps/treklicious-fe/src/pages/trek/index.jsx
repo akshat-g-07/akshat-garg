@@ -1,11 +1,25 @@
+import { APIs } from "@/apis";
 import BackButton from "@/components/common/back-button";
 import { Preferences } from "@/components/preferences/preferences";
+import { useQuery } from "@tanstack/react-query";
 import { Heart } from "lucide-react";
 import { useLoaderData } from "react-router";
 
 export default function Trek() {
   const data = useLoaderData();
-  const { name, season, difficulty, state, img, description } = data.trek;
+  const { _id, name, season, difficulty, state, img, description } = data.trek;
+  console.log("id", _id);
+
+  const checkQueryKey = "check-favorite";
+  const { queryOptions: checkQueryOptions } = APIs[checkQueryKey];
+  const {
+    isLoading: isCheckLoading,
+    error: checkError,
+    data: CheckFavorite,
+  } = useQuery({
+    queryKey: [checkQueryKey, `/${_id}`],
+    ...checkQueryOptions,
+  });
 
   return (
     <section className="w-full min-h-svh relative">
@@ -18,9 +32,23 @@ export default function Trek() {
           <h1 className="text-2xl md:text-5xl font-[Alegreya_SC,serif] font-bold">
             {name}
           </h1>
-          <p>
-            <Heart className="size-6 md:size-10 font-bold" />
-          </p>
+          {isCheckLoading ? (
+            <></>
+          ) : (
+            <>
+              {checkError ? (
+                <></>
+              ) : (
+                <p>
+                  <Heart
+                    fill={CheckFavorite ? "red" : "transparent"}
+                    strokeWidth={CheckFavorite ? 0 : 2}
+                    className="size-6 md:size-10 font-bold"
+                  />
+                </p>
+              )}
+            </>
+          )}
         </div>
         <div className="h-1.5 bg-gradient-to-r from-black to-black/0 my-4" />
         <div className="flex flex-col lg:flex-row justify-around items-center-safe *:flex *:items-center-safe space-y-3">

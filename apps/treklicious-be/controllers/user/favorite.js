@@ -34,8 +34,8 @@ async function CheckFavorite(req, res) {
 
     if (!user) return res.sendStatus(400);
 
-    if (user.favorites.includes(favID)) res.status(200).json({ message: true });
-    else res.status(200).json({ message: false });
+    if (user.favorites.includes(favID)) res.status(200).send(true);
+    else res.status(200).send(false);
   } catch (error) {
     logger.log("Error in CheckFavorite");
     logger.log(error);
