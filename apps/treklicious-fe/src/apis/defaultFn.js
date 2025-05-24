@@ -1,21 +1,22 @@
 import fetch from "@/lib/fetch";
-
-import { APIs } from ".";
 import { getAccessToken } from "@/lib/access-token";
 
-export default async function defaultMutationFn({ mutationKey, data }) {
+import { APIs } from ".";
+
+export default async function ({ queryKey, data }) {
   const { baseURL, apiVersion, route, baseRoute, authorization, method } =
-    APIs[mutationKey[0]];
-  const ID = mutationKey[1] || "";
+    APIs[queryKey[0]];
+  const ID = queryKey[1] || "";
 
   const url = baseURL + "/api" + apiVersion + baseRoute + route + ID;
 
   const options = {};
   options.headers = {};
 
-  options.method = method;
+  options.method = method ? method : "GET";
   if (method === "POST" || method === "PUT")
     options.headers["Content-Type"] = "application/json";
+
   if (authorization) options.headers["Authorization"] = getAccessToken();
 
   if (data) {

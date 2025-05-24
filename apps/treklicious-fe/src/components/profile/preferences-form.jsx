@@ -66,7 +66,7 @@ export default function PreferencesForm({
 
   const onSubmit = (data) => {
     mutate({
-      mutationKey: [mutationKey],
+      queryKey: [mutationKey],
       data: {
         ...profile,
         preferences: {
