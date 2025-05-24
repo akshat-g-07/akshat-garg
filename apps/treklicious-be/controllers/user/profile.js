@@ -58,7 +58,7 @@ async function PUTProfile(req, res) {
     const userIDUpdated = await userIDObject.save();
 
     if (userDetailUpdated && userIDUpdated) {
-      res.sendStatus(200);
+      res.status(200).json({ message: "OK" });
     } else {
       res.sendStatus(400);
     }
