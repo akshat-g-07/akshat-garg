@@ -87,6 +87,18 @@ export const APIs = {
     }),
     meta: defaultMeta,
   },
+  "put-profile": {
+    baseURL,
+    apiVersion: "/v1",
+    route: "/profile",
+    baseRoute: USER_ROUTE,
+    authorization: true,
+    method: "PUT",
+    queryInvalidate: ["get-profile"],
+    mutationOptions: {
+      retry: 2,
+    },
+  },
   // dummy below
   "with-headers": {
     baseURL,

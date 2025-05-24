@@ -37,6 +37,7 @@ export default function Profile() {
             defaultProfilePic={Profile.profile}
           />
           <PreferencesForm
+            profile={Profile}
             defaultState={Profile.preferences.state}
             defaultSeason={Profile.preferences.season}
             defaultDifficulty={Profile.preferences.difficulty}

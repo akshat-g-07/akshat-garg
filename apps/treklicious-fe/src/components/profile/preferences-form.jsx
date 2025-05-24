@@ -7,11 +7,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { useForm, Controller, useWatch } from "react-hook-form";
+import { queryClient } from "@/lib/query-client";
 
 export default function PreferencesForm({
+  profile,
   defaultState,
   defaultSeason,
   defaultDifficulty,
@@ -24,11 +26,21 @@ export default function PreferencesForm({
     },
   });
 
-  const trekQueryKey = "all-treks";
-  const { queryOptions } = APIs[trekQueryKey];
+  const queryKey = "all-treks";
+  const { queryOptions } = APIs[queryKey];
   const { data: Treks } = useQuery({
-    queryKey: [trekQueryKey],
+    queryKey: [queryKey],
     ...queryOptions,
+  });
+
+  const mutationKey = "put-profile";
+  const { mutationOptions, queryInvalidate } = APIs[mutationKey];
+  const { isPending, mutate } = useMutation({
+    mutationKey: [mutationKey],
+    ...mutationOptions,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryInvalidate });
+    },
   });
 
   const stateOptions = useMemo(() => {
@@ -53,8 +65,15 @@ export default function PreferencesForm({
   }, [watchedValues, defaultState, defaultSeason, defaultDifficulty]);
 
   const onSubmit = (data) => {
-    console.log(data);
-    // Handle form submission
+    mutate({
+      mutationKey: [mutationKey],
+      data: {
+        ...profile,
+        preferences: {
+          ...data,
+        },
+      },
+    });
   };
 
   return (
@@ -145,7 +164,7 @@ export default function PreferencesForm({
             disabled={!updateButtonDisable}
             className="md:col-span-2 w-fit justify-self-center-safe cursor-pointer mt-4 md:mt-0"
           >
-            Update
+            {isPending ? "Updating" : "Update"}
           </Button>
         </div>
       </form>
