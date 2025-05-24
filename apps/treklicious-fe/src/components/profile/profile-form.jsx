@@ -15,10 +15,12 @@ import { useMemo, useState } from "react";
 import profilePlaceholderSrc from "../../assets/profile-placeholder.png";
 import { Button } from "@/components/ui/button";
 import { useForm, useWatch } from "react-hook-form";
+import { APIs } from "@/apis";
+import { useMutation } from "@tanstack/react-query";
+import { queryClient } from "@/lib/query-client";
 
-// MARK: user details in props
-// put those details as default values of form
 export default function ProfileForm({
+  preferences,
   defaultEmail,
   defaultUserName,
   defaultLastName,
@@ -117,20 +119,18 @@ export default function ProfileForm({
           message: "Password should be at least 8 characters long.",
         },
       ];
-      const failedRules = rules.filter((rule) => !rule.regex.test(newPassword));
+      if (newPassword) {
+        const failedRules = rules.filter(
+          (rule) => !rule.regex.test(newPassword)
+        );
 
-      if (!newPassword) {
-        errors.newPassword = {
-          type: "required",
-          message: "Please choose a passsword.",
-        };
-      } else if (failedRules.length > 0) {
-        errors.newPassword = {
-          type: "validation",
-          message: failedRules.map((rule) => rule.message).join("\n"),
-        };
+        if (failedRules.length > 0) {
+          errors.newPassword = {
+            type: "validation",
+            message: failedRules.map((rule) => rule.message).join("\n"),
+          };
+        }
       }
-
       return {
         errors: errors,
         values: values,
@@ -141,6 +141,16 @@ export default function ProfileForm({
   const [tempProfileImg, setTempProfileImg] = useState(null);
   const [profileImgError, setProfileImgError] = useState(false);
   const [profileImg, setProfileImg] = useState(defaultProfilePic);
+
+  const mutationKey = "put-profile";
+  const { mutationOptions, queryInvalidate } = APIs[mutationKey];
+  const { isPending, mutate } = useMutation({
+    mutationKey: [mutationKey],
+    ...mutationOptions,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: queryInvalidate });
+    },
+  });
 
   const watchedValues = useWatch({ control });
   const updateButtonDisable = useMemo(() => {
@@ -182,8 +192,15 @@ export default function ProfileForm({
       return;
     }
     setProfileImgError(false);
-    console.log("data", data);
-    console.log("profileImg", profileImg);
+
+    mutate({
+      queryKey: [mutationKey],
+      data: {
+        ...data,
+        profile: profileImg,
+        preferences,
+      },
+    });
   };
 
   return (
@@ -297,7 +314,7 @@ export default function ProfileForm({
             disabled={!updateButtonDisable}
             className="md:col-span-2 w-fit justify-self-center-safe cursor-pointer order-7"
           >
-            Update
+            {isPending ? "Updating" : "Update"}
           </Button>
         </div>
       </form>

@@ -30,6 +30,7 @@ export default function Profile() {
       ) : (
         <>
           <ProfileForm
+            preferences={Profile.preferences}
             defaultEmail={Profile.email}
             defaultLastName={Profile.lastName}
             defaultUserName={Profile.userName}

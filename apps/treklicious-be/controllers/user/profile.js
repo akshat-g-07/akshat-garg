@@ -33,6 +33,7 @@ async function PUTProfile(req, res) {
       .findOne({ userName })
       .lean();
     if (
+      duplicateUserName &&
       duplicateUserName.length > 0 &&
       duplicateUserName.some(
         (user) => user.userIDModel_id.toString() !== userIDModel_id
