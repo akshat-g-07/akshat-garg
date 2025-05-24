@@ -52,9 +52,10 @@ async function POSTFavorite(req, res) {
     return res.sendStatus(400).json({ message: BAD_REQUEST_RESPONSE });
 
   try {
-    const user = await userDetailsModel
-      .findOne({ userIDModel_id }, { favorites: 1 })
-      .lean();
+    const user = await userDetailsModel.findOne(
+      { userIDModel_id },
+      { favorites: 1 }
+    );
 
     if (!user)
       return res.sendStatus(400).json({ message: USER_NOT_FOUND_RESPONSE });
@@ -69,7 +70,7 @@ async function POSTFavorite(req, res) {
     const userUpdated = await user.save();
 
     if (userUpdated) {
-      res.sendStatus(200);
+      res.status(200).json({ message: "OK" });
     } else {
       res.sendStatus(400);
     }
@@ -89,9 +90,10 @@ async function DELETEFavorite(req, res) {
     return res.sendStatus(400).json({ message: BAD_REQUEST_RESPONSE });
 
   try {
-    const user = await userDetailsModel
-      .findOne({ userIDModel_id }, { favorites: 1 })
-      .lean();
+    const user = await userDetailsModel.findOne(
+      { userIDModel_id },
+      { favorites: 1 }
+    );
 
     if (!user)
       return res.sendStatus(400).json({ message: USER_NOT_FOUND_RESPONSE });
@@ -106,7 +108,7 @@ async function DELETEFavorite(req, res) {
     const userUpdated = await user.save();
 
     if (userUpdated) {
-      res.sendStatus(200);
+      res.status(200).json({ message: "OK" });
     } else {
       res.sendStatus(400);
     }
