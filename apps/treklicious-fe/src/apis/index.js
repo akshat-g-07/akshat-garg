@@ -89,9 +89,6 @@ export const APIs = {
     apiVersion: "/v1",
     route: "/favorites",
     baseRoute: USER_ROUTE,
-    queryOptions: queryOptions({
-      refetchOnMount: true,
-    }),
     authorization: true,
   },
   "check-favorite": {
@@ -111,7 +108,7 @@ export const APIs = {
     baseRoute: USER_ROUTE,
     authorization: true,
     method: "POST",
-    queryInvalidate: ["check-favorite"],
+    queryInvalidate: ["check-favorite", "get-favorites"],
     mutationOptions: {
       retry: 2,
     },
@@ -123,7 +120,7 @@ export const APIs = {
     baseRoute: USER_ROUTE,
     authorization: true,
     method: "DELETE",
-    queryInvalidate: ["check-favorite"],
+    queryInvalidate: ["check-favorite", "get-favorites"],
     mutationOptions: {
       retry: 2,
     },

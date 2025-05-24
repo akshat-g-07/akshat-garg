@@ -31,7 +31,9 @@ export default function Trek() {
     mutationKey: [postFavorite],
     ...postFavoriteOptions,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: postQueryInvalidate });
+      postQueryInvalidate.forEach((query) =>
+        queryClient.invalidateQueries({ queryKey: [query] })
+      );
     },
   });
 
@@ -44,7 +46,9 @@ export default function Trek() {
     mutationKey: [deleteFavorite],
     ...deleteFavoriteOptions,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: deleteQueryInvalidate });
+      deleteQueryInvalidate.forEach((query) =>
+        queryClient.invalidateQueries({ queryKey: [query] })
+      );
     },
   });
 

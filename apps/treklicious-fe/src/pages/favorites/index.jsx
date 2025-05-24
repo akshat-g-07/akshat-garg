@@ -17,14 +17,12 @@ export default function Favorites() {
   });
 
   const favQueryKey = "get-favorites";
-  const { queryOptions: favQueryOptions } = APIs[favQueryKey];
   const {
     isLoading: isFavLoading,
     error: favError,
     data: Favorites,
   } = useQuery({
     queryKey: [favQueryKey],
-    ...favQueryOptions,
   });
 
   return (
