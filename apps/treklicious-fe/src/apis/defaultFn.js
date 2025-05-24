@@ -6,7 +6,9 @@ import { APIs } from ".";
 export default async function ({ queryKey, data }) {
   const { baseURL, apiVersion, route, baseRoute, authorization, method } =
     APIs[queryKey[0]];
-  const ID = queryKey[1] || "";
+  let ID = "";
+
+  if (queryKey[1]) ID = "/" + queryKey[1];
 
   const url = baseURL + "/api" + apiVersion + baseRoute + route + ID;
 

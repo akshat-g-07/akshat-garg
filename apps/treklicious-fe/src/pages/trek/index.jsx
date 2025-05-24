@@ -18,7 +18,7 @@ export default function Trek() {
     error: checkError,
     data: CheckFavorite,
   } = useQuery({
-    queryKey: [checkQueryKey, `/${_id}`],
+    queryKey: [checkQueryKey, _id],
     ...checkQueryOptions,
   });
 
@@ -72,7 +72,7 @@ export default function Trek() {
                     fill={CheckFavorite ? "red" : "transparent"}
                     strokeWidth={CheckFavorite ? 0 : 2}
                     className={cn(
-                      "size-6 md:size-10 font-bold",
+                      "size-6 md:size-10 font-bold cursor-pointer",
                       deletePending || postPending
                         ? "opacity-75"
                         : "opacity-100"
@@ -80,7 +80,7 @@ export default function Trek() {
                     onClick={() => {
                       if (CheckFavorite)
                         deleteMutate({
-                          queryKey: [deleteFavorite, `/${_id}`],
+                          queryKey: [deleteFavorite, _id],
                         });
                       else
                         postMutate({

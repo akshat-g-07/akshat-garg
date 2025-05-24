@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
       const trekID = params.trekID;
 
       const data = await queryClient.ensureQueryData({
-        queryKey: ["trek-by-trekID", `/${trekID}`],
+        queryKey: ["trek-by-trekID", trekID],
       });
 
       return { trek: data };
