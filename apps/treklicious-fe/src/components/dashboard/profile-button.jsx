@@ -96,7 +96,7 @@ function UserProfilePic({ size = "sm", src }) {
     <img
       src={src}
       alt={"Profile Pic"}
-      className={cn(size === "sm" ? "size-4" : "size-8")}
+      className={cn(size === "sm" ? "size-4" : "size-8", "rounded-full")}
     />
   );
 }
