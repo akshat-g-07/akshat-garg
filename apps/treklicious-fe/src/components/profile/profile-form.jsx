@@ -11,20 +11,22 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import Avatar from "react-avatar-edit";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import profilePlaceholderSrc from "../../assets/profile-placeholder.png";
 import { Button } from "@/components/ui/button";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 
 // MARK: user details in props
 // put those details as default values of form
 export default function ProfileForm({
-  defaultFirstName,
-  defaultLastName,
   defaultEmail,
   defaultUserName,
+  defaultLastName,
+  defaultFirstName,
+  defaultProfilePic,
 }) {
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -136,9 +138,35 @@ export default function ProfileForm({
     },
   });
 
-  const [profileImg, setProfileImg] = useState(null);
   const [tempProfileImg, setTempProfileImg] = useState(null);
   const [profileImgError, setProfileImgError] = useState(false);
+  const [profileImg, setProfileImg] = useState(defaultProfilePic);
+
+  const watchedValues = useWatch({ control });
+  const updateButtonDisable = useMemo(() => {
+    const currentValues = watchedValues;
+
+    const isPasswordChanged = currentValues.newPassword !== "";
+    const isProfilePicChanged = profileImg !== defaultProfilePic;
+    const isLastNameChanged = currentValues.lastName !== defaultLastName;
+    const isUserNameChanged = currentValues.userName !== defaultUserName;
+    const isFirstNameChanged = currentValues.firstName !== defaultFirstName;
+
+    return (
+      isLastNameChanged ||
+      isUserNameChanged ||
+      isFirstNameChanged ||
+      isProfilePicChanged ||
+      isPasswordChanged
+    );
+  }, [
+    profileImg,
+    watchedValues,
+    defaultLastName,
+    defaultUserName,
+    defaultFirstName,
+    defaultProfilePic,
+  ]);
 
   const avatarOnClose = () => {
     setTempProfileImg(null);
@@ -177,7 +205,7 @@ export default function ProfileForm({
           <div className="md:row-span-2 order-1 md:order-2 h-fit w-full flex justify-center-safe">
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <div className="cursor-grab rounded-full relative">
+                <div className="cursor-grab rounded-full relative overflow-hidden">
                   <img
                     className="size-37 object-fill hover:opacity-25"
                     src={profileImg ? profileImg : profilePlaceholderSrc}
@@ -236,8 +264,9 @@ export default function ProfileForm({
           </div>
           <div className="order-4">
             <InputField
-              type="text"
+              readOnly
               id="email"
+              type="text"
               label="Email"
               {...register("email")}
               error={errors.email?.message}
@@ -263,8 +292,9 @@ export default function ProfileForm({
           </div>
           {/* MARK: enable only if there is change in any of the value */}
           <Button
-            type="submit"
             size="lg"
+            type="submit"
+            disabled={!updateButtonDisable}
             className="md:col-span-2 w-fit justify-self-center-safe cursor-pointer order-7"
           >
             Update
