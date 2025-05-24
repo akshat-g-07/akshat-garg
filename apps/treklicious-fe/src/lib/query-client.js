@@ -1,3 +1,4 @@
+import defaultMutationFn from "@/apis/defaultMutationFn";
 import defaultQueryFn from "@/apis/defaultQueryFn";
 import { QueryClient } from "@tanstack/react-query";
 
@@ -11,6 +12,9 @@ globalThis.queryClient =
         refetchOnWindowFocus: false,
         refetchOnReconnect: true,
         refetchOnMount: false,
+      },
+      mutations: {
+        mutationFn: defaultMutationFn,
       },
     },
   });
