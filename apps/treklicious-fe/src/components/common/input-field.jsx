@@ -16,7 +16,7 @@ export default function InputField({
   return (
     <div
       className={cn(
-        "w-full font-[Tajawal,sans-serif] h-fit max-w-[200px] font-semibold space-y-2 flex flex-col items-center-safe md:items-start",
+        "w-full font-[Tajawal,sans-serif] h-fit max-w-[250px] font-semibold space-y-2 flex flex-col items-center-safe md:items-start",
         className
       )}
     >
@@ -24,7 +24,7 @@ export default function InputField({
         {label}
         {required && <span className="text-red-500 ml-1">*</span>}
       </label>
-      <div className={cn("relative mt-2", inputClassName)}>
+      <div className={cn("relative mt-2 w-full", inputClassName)}>
         <input
           id={id}
           type={type}
