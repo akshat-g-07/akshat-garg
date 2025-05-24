@@ -1,3 +1,4 @@
+import { APIs } from "@/apis";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -6,11 +7,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
-
-import { useForm, Controller } from "react-hook-form";
-
-import Treks from "@/assets/Treks.json";
+import { useForm, Controller, useWatch } from "react-hook-form";
 
 export default function PreferencesForm({
   defaultState,
@@ -25,15 +24,33 @@ export default function PreferencesForm({
     },
   });
 
-  // Example data - replace with your actual options
-  const stateOptions = useMemo(
-    () => [...new Set(Treks.map((trek) => trek.state))],
-    [Treks]
-  );
+  const trekQueryKey = "all-treks";
+  const { queryOptions } = APIs[trekQueryKey];
+  const { data: Treks } = useQuery({
+    queryKey: [trekQueryKey],
+    ...queryOptions,
+  });
+
+  const stateOptions = useMemo(() => {
+    if (Treks && Treks.length)
+      return [...new Set(Treks.map((trek) => trek.state))];
+    else return [];
+  }, [Treks]);
 
   const seasonOptions = ["Summer", "Monsoon", "Winter"];
 
   const difficultyOptions = ["Easy", "Medium", "Hard"];
+
+  const watchedValues = useWatch({ control });
+  const updateButtonDisable = useMemo(() => {
+    const currentValues = watchedValues;
+
+    const isStateChanged = currentValues.state !== defaultState;
+    const isSeasonChanged = currentValues.season !== defaultSeason;
+    const isDifficultyChanged = currentValues.difficulty !== defaultDifficulty;
+
+    return isStateChanged || isSeasonChanged || isDifficultyChanged;
+  }, [watchedValues, defaultState, defaultSeason, defaultDifficulty]);
 
   const onSubmit = (data) => {
     console.log(data);
@@ -123,8 +140,9 @@ export default function PreferencesForm({
             )}
           />
           <Button
-            type="submit"
             size="lg"
+            type="submit"
+            disabled={!updateButtonDisable}
             className="md:col-span-2 w-fit justify-self-center-safe cursor-pointer mt-4 md:mt-0"
           >
             Update
