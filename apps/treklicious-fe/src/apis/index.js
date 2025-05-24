@@ -104,6 +104,30 @@ export const APIs = {
       refetchOnMount: true,
     },
   },
+  "post-favorite": {
+    baseURL,
+    apiVersion: "/v1",
+    route: "/favorites",
+    baseRoute: USER_ROUTE,
+    authorization: true,
+    method: "POST",
+    queryInvalidate: ["check-favorite"],
+    mutationOptions: {
+      retry: 2,
+    },
+  },
+  "delete-favorite": {
+    baseURL,
+    apiVersion: "/v1",
+    route: "/favorites",
+    baseRoute: USER_ROUTE,
+    authorization: true,
+    method: "DELETE",
+    queryInvalidate: ["check-favorite"],
+    mutationOptions: {
+      retry: 2,
+    },
+  },
   // dummy below
   "with-headers": {
     baseURL,

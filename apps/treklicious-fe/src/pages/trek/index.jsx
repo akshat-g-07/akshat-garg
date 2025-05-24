@@ -1,14 +1,15 @@
+import { queryClient } from "@/lib/query-client";
 import { APIs } from "@/apis";
 import BackButton from "@/components/common/back-button";
 import { Preferences } from "@/components/preferences/preferences";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { Heart } from "lucide-react";
 import { useLoaderData } from "react-router";
+import { cn } from "@/lib/utils";
 
 export default function Trek() {
   const data = useLoaderData();
   const { _id, name, season, difficulty, state, img, description } = data.trek;
-  console.log("id", _id);
 
   const checkQueryKey = "check-favorite";
   const { queryOptions: checkQueryOptions } = APIs[checkQueryKey];
@@ -19,6 +20,32 @@ export default function Trek() {
   } = useQuery({
     queryKey: [checkQueryKey, `/${_id}`],
     ...checkQueryOptions,
+  });
+
+  const postFavorite = "post-favorite";
+  const {
+    mutationOptions: postFavoriteOptions,
+    queryInvalidate: postQueryInvalidate,
+  } = APIs[postFavorite];
+  const { isPending: postPending, mutate: postMutate } = useMutation({
+    mutationKey: [postFavorite],
+    ...postFavoriteOptions,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: postQueryInvalidate });
+    },
+  });
+
+  const deleteFavorite = "delete-favorite";
+  const {
+    mutationOptions: deleteFavoriteOptions,
+    queryInvalidate: deleteQueryInvalidate,
+  } = APIs[deleteFavorite];
+  const { isPending: deletePending, mutate: deleteMutate } = useMutation({
+    mutationKey: [deleteFavorite],
+    ...deleteFavoriteOptions,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: deleteQueryInvalidate });
+    },
   });
 
   return (
@@ -32,6 +59,7 @@ export default function Trek() {
           <h1 className="text-2xl md:text-5xl font-[Alegreya_SC,serif] font-bold">
             {name}
           </h1>
+
           {isCheckLoading ? (
             <></>
           ) : (
@@ -43,7 +71,25 @@ export default function Trek() {
                   <Heart
                     fill={CheckFavorite ? "red" : "transparent"}
                     strokeWidth={CheckFavorite ? 0 : 2}
-                    className="size-6 md:size-10 font-bold"
+                    className={cn(
+                      "size-6 md:size-10 font-bold",
+                      deletePending || postPending
+                        ? "opacity-75"
+                        : "opacity-100"
+                    )}
+                    onClick={() => {
+                      if (CheckFavorite)
+                        deleteMutate({
+                          queryKey: [deleteFavorite, `/${_id}`],
+                        });
+                      else
+                        postMutate({
+                          queryKey: [postFavorite],
+                          data: {
+                            favorite: _id,
+                          },
+                        });
+                    }}
                   />
                 </p>
               )}
