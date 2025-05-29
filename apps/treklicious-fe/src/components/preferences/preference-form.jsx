@@ -1,7 +1,9 @@
-import Treks from "@/assets/Treks.json";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Preferences } from "./preferences";
 import { BadgeCheck, ChevronDown, ChevronUp } from "lucide-react";
+import { APIs } from "@/apis";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../common/loading";
 
 export default function PreferenceForm({
   answers,
@@ -9,10 +11,21 @@ export default function PreferenceForm({
   activeIndx,
   handleAnswerSelect,
 }) {
+  const queryKey = "all-treks";
+  const { queryOptions } = APIs[queryKey];
+  const {
+    isLoading,
+    error,
+    data: Treks,
+  } = useQuery({
+    queryKey: [queryKey],
+    ...queryOptions,
+  });
+
   const FilteredTrekNames = useMemo(
     () => [
       ...new Set(
-        Treks.filter(
+        Treks?.filter(
           (trek) =>
             trek.state !== "Uttarakhand" &&
             trek.state !== "Himachal Pradesh" &&
@@ -20,8 +33,13 @@ export default function PreferenceForm({
         ).map((trek) => trek.state)
       ),
     ],
-    []
+    [Treks]
   );
+
+  if (error) {
+    console.log("Error in PreferenceForm", error);
+    return <></>;
+  }
 
   return (
     <div className="text-white font-[Tajawal,sans-serif] rounded overflow-hidden">
@@ -35,6 +53,7 @@ export default function PreferenceForm({
         >
           {option === "Other:" ? (
             <OtherOption
+              isLoading={isLoading}
               filteredTrekNames={FilteredTrekNames}
               handleAnswerSelect={handleAnswerSelect}
             />
@@ -57,7 +76,7 @@ export default function PreferenceForm({
   );
 }
 
-const OtherOption = ({ filteredTrekNames, handleAnswerSelect }) => {
+const OtherOption = ({ filteredTrekNames, handleAnswerSelect, isLoading }) => {
   const searchRef = useRef(null);
   const [isFocused, setIsFocused] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -111,21 +130,27 @@ const OtherOption = ({ filteredTrekNames, handleAnswerSelect }) => {
           )}
         </div>
         {isFocused && filteredSuggestions.length > 0 && (
-          <div className="absolute z-50 w-[90%] max-w-60 rounded-b-md bg-white shadow-lg max-h-[300px] overflow-y-auto">
-            {filteredSuggestions.map((suggestion, index) => (
-              <div
-                key={index}
-                className="flex items-center px-4 py-2 odd:bg-[#303030] even:bg-[#1E1E1E] odd:hover:bg-[#303030]/90 even:hover:bg-[#1E1E1E]/90 cursor-pointer"
-                onClick={() => {
-                  handleAnswerSelect(`Other: ${suggestion}`);
-                  setSearchTerm(suggestion);
-                  setIsFocused(false);
-                }}
-              >
-                <span>{suggestion}</span>
+          <>
+            {isLoading ? (
+              <Loading />
+            ) : (
+              <div className="absolute z-50 w-[90%] max-w-60 rounded-b-md bg-white shadow-lg max-h-[150px] overflow-y-auto">
+                {filteredSuggestions.map((suggestion, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center px-4 py-2 odd:bg-[#303030] even:bg-[#1E1E1E] odd:hover:bg-[#303030]/90 even:hover:bg-[#1E1E1E]/90 cursor-pointer"
+                    onClick={() => {
+                      handleAnswerSelect(`Other: ${suggestion}`);
+                      setSearchTerm(suggestion);
+                      setIsFocused(false);
+                    }}
+                  >
+                    <span>{suggestion}</span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            )}
+          </>
         )}
       </div>
     </div>

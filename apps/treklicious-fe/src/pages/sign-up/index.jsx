@@ -163,7 +163,9 @@ export default function SignUp() {
     ...mutationOptions,
     onSuccess: (data) => {
       setAccessToken(data.accessToken);
-      navigate("/preferences");
+      navigate("/preferences", {
+        state: { user: data.user },
+      });
     },
   });
 
