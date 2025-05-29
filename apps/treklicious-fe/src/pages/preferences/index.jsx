@@ -10,7 +10,6 @@ import { useLocation, useNavigate } from "react-router";
 export default function Preferences() {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log("location", location);
   const { user } = location.state;
 
   const mutationKey = "put-profile";
