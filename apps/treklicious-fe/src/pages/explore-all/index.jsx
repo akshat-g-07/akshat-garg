@@ -24,7 +24,7 @@ export default function ExploreAll() {
     if (filterParam === "Recommended" && filterVal === "Recommendations")
       return "";
     else
-      return `/filterParam/${filterParam.toLowerCase()}/filterValue/${filterVal}`;
+      return `filterParam/${filterParam.toLowerCase()}/filterValue/${filterVal}`;
   });
 
   const { queryOptions } = APIs[queryKey];
@@ -46,7 +46,7 @@ export default function ExploreAll() {
     } else {
       setQueryKey("category-treks");
       setQueryKeyID(
-        `/filterParam/${filterParam.toLowerCase()}/filterValue/${filterVal}`
+        `filterParam/${filterParam.toLowerCase()}/filterValue/${filterVal}`
       );
     }
   }, [filterParam, filterVal]);
