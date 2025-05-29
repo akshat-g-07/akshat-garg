@@ -39,7 +39,7 @@ async function Login(req, res) {
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
-    res.status(201).json({ accessToken });
+    res.status(200).json({ accessToken });
   } catch (error) {
     logger.log("Error in Login");
     logger.log(error);

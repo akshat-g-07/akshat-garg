@@ -6,6 +6,10 @@ import normalSrc from "../../assets/profile-normal.png";
 import passwordSrc from "../../assets/profile-password.png";
 import usernameSrc from "../../assets/profile-username.png";
 import { Auth, AuthBody, AuthFooter } from "@/components/common/auth-setup";
+import { useNavigate } from "react-router";
+import { APIs } from "@/apis";
+import { useMutation } from "@tanstack/react-query";
+import { setAccessToken } from "@/lib/access-token";
 
 export default function LogIn() {
   const {
@@ -49,10 +53,25 @@ export default function LogIn() {
     },
   });
 
+  const navigate = useNavigate();
+  const mutationKey = "log-in";
+  const { mutationOptions } = APIs[mutationKey];
+  const { isPending, mutate } = useMutation({
+    mutationKey: [mutationKey],
+    ...mutationOptions,
+    onSuccess: (data) => {
+      setAccessToken(data.accessToken);
+      navigate("/dashboard");
+    },
+  });
+
   const [headerImg, setHeaderImg] = useState(normalSrc);
 
   const onSubmit = (data) => {
-    console.log("data", data);
+    mutate({
+      queryKey: [mutationKey],
+      data,
+    });
   };
 
   return (
@@ -76,6 +95,7 @@ export default function LogIn() {
             onBlur={() => {
               setHeaderImg(normalSrc);
             }}
+            disabled={isPending}
           />
           <InputField
             type="password"
@@ -90,12 +110,14 @@ export default function LogIn() {
             onBlur={() => {
               setHeaderImg(normalSrc);
             }}
+            disabled={isPending}
           />
 
           <Button
             type="submit"
             size="lg"
             className="md:col-span-2 w-fit justify-self-center-safe cursor-pointer"
+            disabled={isPending}
           >
             Log In
           </Button>

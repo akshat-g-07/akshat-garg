@@ -139,6 +139,16 @@ export const APIs = {
       retry: 2,
     },
   },
+  "log-in": {
+    baseURL,
+    apiVersion: "/v1",
+    route: "/login",
+    baseRoute: AUTH_ROUTE,
+    method: "POST",
+    mutationOptions: {
+      retry: 2,
+    },
+  },
   // dummy below
   "with-headers": {
     baseURL,
