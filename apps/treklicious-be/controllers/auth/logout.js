@@ -2,7 +2,7 @@ async function Logout(req, res) {
   const cookies = req.cookies;
 
   if (!cookies?.jwt) {
-    return res.sendStatus(204);
+    return res.status(200).json({ message: "OK" });
   }
 
   res.clearCookie("jwt", {
@@ -10,8 +10,7 @@ async function Logout(req, res) {
     secure: true,
     sameSite: "None",
   });
-
-  return res.sendStatus(204);
+  res.status(200).json({ message: "OK" });
 }
 
 module.exports = Logout;

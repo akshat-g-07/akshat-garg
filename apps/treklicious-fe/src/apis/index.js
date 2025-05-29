@@ -149,6 +149,12 @@ export const APIs = {
       retry: 2,
     },
   },
+  "log-out": {
+    baseURL,
+    apiVersion: "/v1",
+    route: "/logout",
+    baseRoute: AUTH_ROUTE,
+  },
   // dummy below
   "with-headers": {
     baseURL,

@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import normalSrc from "../../assets/profile-normal.png";
 import {
   Popover,
@@ -9,10 +9,13 @@ import { Heart, LogOut, Settings } from "lucide-react";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { APIs } from "@/apis";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import Loading from "../common/loading";
+import { setAccessToken } from "@/lib/access-token";
 
 export default function ProfileButton({ isFocused }) {
+  const navigate = useNavigate();
+
   const queryKey = "get-profile";
   const { queryOptions } = APIs[queryKey];
   const {
@@ -22,6 +25,15 @@ export default function ProfileButton({ isFocused }) {
   } = useQuery({
     queryKey: [queryKey],
     ...queryOptions,
+  });
+
+  const mutationKey = "log-out";
+  const { mutate } = useMutation({
+    mutationKey: [mutationKey],
+    onSuccess: () => {
+      setAccessToken("");
+      navigate("/");
+    },
   });
 
   const options = [
@@ -44,7 +56,11 @@ export default function ProfileButton({ isFocused }) {
       divider: true,
     },
     {
-      link: "/log-out",
+      onClick: () => {
+        mutate({
+          queryKey: [mutationKey],
+        });
+      },
       text: "Logout",
       icon: <LogOut className="size-4" />,
       divider: false,
@@ -71,10 +87,11 @@ export default function ProfileButton({ isFocused }) {
         </div>
       </PopoverTrigger>
       <PopoverContent className="w-60 space-y-1">
-        {options.map(({ link, text, icon, divider }, index) => (
+        {options.map(({ link, text, icon, divider, onClick }, index) => (
           <React.Fragment key={index}>
             <Link
               to={link}
+              onClick={onClick}
               className={cn(
                 "flex items-center-safe gap-x-2 p-2 hover:bg-gray-300 rounded"
               )}
