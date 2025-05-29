@@ -1,11 +1,7 @@
-// MARK: if this doesnt work out proprly use globalThis.accessToken
-
-let accessToken = "";
-
 export function getAccessToken() {
-  return accessToken;
+  return localStorage.getItem("accessToken") || "";
 }
 
 export function setAccessToken(token) {
-  accessToken = `Bearer ${token}`;
+  localStorage.setItem("accessToken", `Bearer ${token}`);
 }
