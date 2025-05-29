@@ -16,6 +16,13 @@ export default function RestBody() {
     ...queryOptions,
   });
 
+  const recommendedQueryKey = "recommended-treks";
+  const { queryOptions: recommendedQueryOptions } = APIs[recommendedQueryKey];
+  const { data: RecommendedTreks } = useQuery({
+    queryKey: [recommendedQueryKey],
+    ...recommendedQueryOptions,
+  });
+
   if (allTreksError) {
     console.log("Error in RestBody All Treks", allTreksError);
     return <></>;
@@ -27,14 +34,16 @@ export default function RestBody() {
 
   const trekDetailComponents = ComponentGenerator(allTreks);
 
-  // pull the array of recommended treks from api here
-  const recommendedTreks = allTreks.slice(0, 10);
-  trekDetailComponents.push({
-    sectionHead: "Recommended For You",
-    sectionArray: recommendedTreks.sort(() => Math.random() - 0.5).slice(0, 10),
-    filterParameter: "Recommended",
-    filterValue: "Recommendations",
-  });
+  if (RecommendedTreks)
+    trekDetailComponents.push({
+      sectionHead: "Recommended For You",
+      sectionArray: RecommendedTreks.sort(() => Math.random() - 0.5).slice(
+        0,
+        10
+      ),
+      filterParameter: "Recommended",
+      filterValue: "Recommendations",
+    });
 
   return (
     <section className="py-10 px-4 space-y-8">
