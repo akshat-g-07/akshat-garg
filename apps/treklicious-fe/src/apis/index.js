@@ -1,4 +1,8 @@
-import { TREK_ROUTE, USER_ROUTE } from "@repo/treklicious-constants";
+import {
+  TREK_ROUTE,
+  USER_ROUTE,
+  AUTH_ROUTE,
+} from "@repo/treklicious-constants";
 import { queryOptions } from "@tanstack/react-query";
 
 const baseURL = import.meta.env.VITE_API_HOST;
@@ -121,6 +125,16 @@ export const APIs = {
     authorization: true,
     method: "DELETE",
     queryInvalidate: ["check-favorite", "get-favorites"],
+    mutationOptions: {
+      retry: 2,
+    },
+  },
+  "sign-up": {
+    baseURL,
+    apiVersion: "/v1",
+    route: "/signup",
+    baseRoute: AUTH_ROUTE,
+    method: "POST",
     mutationOptions: {
       retry: 2,
     },

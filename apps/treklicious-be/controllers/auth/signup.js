@@ -37,6 +37,7 @@ async function Signup(req, res) {
       userName,
       email,
       profile,
+      preferences: {},
     };
 
     const userDetailCreated = await userDetailsModel.create(userDetailsObject);

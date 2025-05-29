@@ -1,6 +1,7 @@
 // ROUTES
 export const TREK_ROUTE = "/trek";
 export const USER_ROUTE = "/user";
+export const AUTH_ROUTE = "/auth";
 
 // RESPONSES
 export const BAD_REQUEST_RESPONSE = "Bad request";

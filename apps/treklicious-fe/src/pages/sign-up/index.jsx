@@ -16,6 +16,11 @@ import { useState } from "react";
 import profilePlaceholderSrc from "../../assets/profile-placeholder.png";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
+import { APIs } from "@/apis";
+import { useMutation } from "@tanstack/react-query";
+import { setAccessToken } from "@/lib/access-token";
+import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router";
 
 export default function SignUp() {
   const {
@@ -150,6 +155,18 @@ export default function SignUp() {
     },
   });
 
+  const navigate = useNavigate();
+  const mutationKey = "sign-up";
+  const { mutationOptions } = APIs[mutationKey];
+  const { isPending, mutate } = useMutation({
+    mutationKey: [mutationKey],
+    ...mutationOptions,
+    onSuccess: (data) => {
+      setAccessToken(data.accessToken);
+      navigate("/preferences");
+    },
+  });
+
   const [profileImg, setProfileImg] = useState(null);
   const [tempProfileImg, setTempProfileImg] = useState(null);
   const [profileImgError, setProfileImgError] = useState(false);
@@ -168,8 +185,14 @@ export default function SignUp() {
       return;
     }
     setProfileImgError(false);
-    console.log("data", data);
-    console.log("profileImg", profileImg);
+
+    mutate({
+      queryKey: [mutationKey],
+      data: {
+        ...data,
+        profile: profileImg,
+      },
+    });
   };
 
   return (
@@ -178,7 +201,12 @@ export default function SignUp() {
         <AuthBody>
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <div className="h-10 relative md:col-span-2 *:left-1/2 *:-translate-1/2 cursor-grab rounded-full *:absolute *:-top-full mb-4">
+              <div
+                className={cn(
+                  "h-10 relative md:col-span-2 *:left-1/2 *:-translate-1/2 cursor-grab rounded-full *:absolute *:-top-full mb-4",
+                  isPending && "pointer-events-none"
+                )}
+              >
                 <img
                   className="size-37 object-fill hover:opacity-25"
                   src={profileImg ? profileImg : profilePlaceholderSrc}
@@ -226,6 +254,7 @@ export default function SignUp() {
             </p>
           )}
           <InputField
+            disabled={isPending}
             type="text"
             id="firstName"
             label="First Name"
@@ -234,6 +263,7 @@ export default function SignUp() {
             className="justify-self-center-safe"
           />
           <InputField
+            disabled={isPending}
             type="text"
             id="lastName"
             label="Last Name"
@@ -242,6 +272,7 @@ export default function SignUp() {
             className="justify-self-center-safe"
           />
           <InputField
+            disabled={isPending}
             type="text"
             id="email"
             label="Email"
@@ -250,6 +281,7 @@ export default function SignUp() {
             className="justify-self-center-safe"
           />
           <InputField
+            disabled={isPending}
             type="text"
             id="userName"
             label="Username"
@@ -258,6 +290,7 @@ export default function SignUp() {
             className="justify-self-center-safe"
           />
           <InputField
+            disabled={isPending}
             type="password"
             id="password"
             label="Password"
@@ -266,6 +299,7 @@ export default function SignUp() {
             className="justify-self-center-safe"
           />
           <InputField
+            disabled={isPending}
             type="password"
             id="confirmPassword"
             label="Confirm Password"
@@ -274,6 +308,7 @@ export default function SignUp() {
             className="justify-self-center-safe"
           />
           <Button
+            disabled={isPending}
             type="submit"
             size="lg"
             className="md:col-span-2 w-fit justify-self-center-safe cursor-pointer"
