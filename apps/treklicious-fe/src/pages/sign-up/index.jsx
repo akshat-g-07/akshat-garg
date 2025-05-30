@@ -22,6 +22,10 @@ import { getAccessToken, setAccessToken } from "@/lib/access-token";
 import { cn } from "@/lib/utils";
 import { useNavigate } from "react-router";
 import { Loader } from "lucide-react";
+import {
+  EMAIL_EXISTS_RESPONSE,
+  USERNAME_EXISTS_RESPONSE,
+} from "@repo/treklicious-constants";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -168,6 +172,21 @@ export default function SignUp() {
     mutationKey: [mutationKey],
     ...mutationOptions,
     onSuccess: (data) => {
+      if (data.message === USERNAME_EXISTS_RESPONSE) {
+        errors.userName = {
+          type: "validation",
+          message: `${USERNAME_EXISTS_RESPONSE}. Please choose another username.`,
+        };
+        return;
+      }
+
+      if (data.message === EMAIL_EXISTS_RESPONSE) {
+        errors.email = {
+          type: "validation",
+          message: `${EMAIL_EXISTS_RESPONSE}. Please choose another email.`,
+        };
+        return;
+      }
       setAccessToken(data.accessToken);
       navigate("/preferences", {
         state: { user: data.user },

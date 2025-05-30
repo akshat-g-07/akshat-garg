@@ -12,6 +12,10 @@ import { APIs } from "@/apis";
 import { useMutation } from "@tanstack/react-query";
 import { getAccessToken, setAccessToken } from "@/lib/access-token";
 import { Loader } from "lucide-react";
+import {
+  PASSWORDS_DONT_MATCH_RESPONSE,
+  USER_NOT_FOUND_RESPONSE,
+} from "@repo/treklicious-constants";
 
 export default function LogIn() {
   const navigate = useNavigate();
@@ -66,6 +70,21 @@ export default function LogIn() {
     mutationKey: [mutationKey],
     ...mutationOptions,
     onSuccess: (data) => {
+      if (data.message === USER_NOT_FOUND_RESPONSE) {
+        errors.userName = {
+          type: "validation",
+          message: USER_NOT_FOUND_RESPONSE,
+        };
+        return;
+      }
+
+      if (data.message === PASSWORDS_DONT_MATCH_RESPONSE) {
+        errors.password = {
+          type: "validation",
+          message: PASSWORDS_DONT_MATCH_RESPONSE,
+        };
+        return;
+      }
       queryClient.invalidateQueries({ queryKey: queryInvalidate });
       setAccessToken(data.accessToken);
       navigate("/dashboard");

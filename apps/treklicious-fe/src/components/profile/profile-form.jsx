@@ -20,6 +20,7 @@ import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "@/lib/query-client";
 import { Loader } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { USERNAME_EXISTS_RESPONSE } from "@repo/treklicious-constants";
 
 export default function ProfileForm({
   preferences,
@@ -149,7 +150,14 @@ export default function ProfileForm({
   const { isPending, mutate } = useMutation({
     mutationKey: [mutationKey],
     ...mutationOptions,
-    onSuccess: () => {
+    onSuccess: (data) => {
+      if (data.message === USERNAME_EXISTS_RESPONSE) {
+        errors.userName = {
+          type: "validation",
+          message: `${USERNAME_EXISTS_RESPONSE}. Please choose another username.`,
+        };
+        return;
+      }
       queryClient.invalidateQueries({ queryKey: queryInvalidate });
     },
   });

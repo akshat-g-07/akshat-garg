@@ -29,9 +29,7 @@ async function PUTProfile(req, res) {
     req.body;
 
   try {
-    const duplicateUserName = await userDetailsModel
-      .findOne({ userName })
-      .lean();
+    const duplicateUserName = await userDetailsModel.find({ userName }).lean();
     if (
       duplicateUserName &&
       duplicateUserName.length > 0 &&
