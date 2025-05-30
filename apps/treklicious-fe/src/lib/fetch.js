@@ -30,8 +30,10 @@ export default async function fetchFunction(url, options = {}) {
 
       setAccessToken(data.accessToken);
       options.headers["Authorization"] = getAccessToken();
+      return fetchFunction(url, options);
+    } else {
+      return await refreshResponse.json();
     }
-    return fetchFunction(url, options);
   }
 
   return await res.json();
