@@ -62,6 +62,9 @@ export default function Preferences() {
     <>
       <Auth>
         <AuthBody>
+          <h1 className="text-4xl font-semibold leading-relaxed text-white">
+            Hello{user.firstName && `, ${user.firstName}!`}
+          </h1>
           <Stepper activeIndx={activeIndx} />
           <FormParent
             answers={answers}
