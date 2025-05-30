@@ -12,17 +12,19 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import Avatar from "react-avatar-edit";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import profilePlaceholderSrc from "../../assets/profile-placeholder.png";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { APIs } from "@/apis";
 import { useMutation } from "@tanstack/react-query";
-import { setAccessToken } from "@/lib/access-token";
+import { getAccessToken, setAccessToken } from "@/lib/access-token";
 import { cn } from "@/lib/utils";
 import { useNavigate } from "react-router";
 
 export default function SignUp() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -155,7 +157,10 @@ export default function SignUp() {
     },
   });
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (getAccessToken()) navigate("/dashboard");
+  }, [navigate]);
+
   const mutationKey = "sign-up";
   const { mutationOptions } = APIs[mutationKey];
   const { isPending, mutate } = useMutation({

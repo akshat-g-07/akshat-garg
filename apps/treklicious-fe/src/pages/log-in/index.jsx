@@ -1,6 +1,6 @@
 import { queryClient } from "@/lib/query-client";
 import InputField from "@/components/common/input-field";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import normalSrc from "../../assets/profile-normal.png";
@@ -10,9 +10,10 @@ import { Auth, AuthBody, AuthFooter } from "@/components/common/auth-setup";
 import { useNavigate } from "react-router";
 import { APIs } from "@/apis";
 import { useMutation } from "@tanstack/react-query";
-import { setAccessToken } from "@/lib/access-token";
+import { getAccessToken, setAccessToken } from "@/lib/access-token";
 
 export default function LogIn() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -54,7 +55,10 @@ export default function LogIn() {
     },
   });
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (getAccessToken()) navigate("/dashboard");
+  }, [navigate]);
+
   const mutationKey = "log-in";
   const { mutationOptions, queryInvalidate } = APIs[mutationKey];
   const { isPending, mutate } = useMutation({
