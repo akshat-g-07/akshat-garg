@@ -7,6 +7,7 @@ import ShowTreks from "@/components/common/show-treks";
 import { APIs } from "@/apis";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "@/components/common/loading";
+import Error from "@/components/common/error";
 
 export default function ExploreAll() {
   const location = useLocation();
@@ -59,13 +60,14 @@ export default function ExploreAll() {
           <BackButton />
 
           <Filters
+            isLoading={isLoading}
             filterParam={filterParam}
             filterVal={filterVal}
             setFilters={setFilters}
           />
         </header>
         {error ? (
-          <>Please Try Again</>
+          <Error />
         ) : (
           <>{isLoading ? <Loading /> : <ShowTreks treks={Treks} />}</>
         )}

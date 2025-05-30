@@ -1,6 +1,7 @@
 import { APIs } from "@/apis";
 import AuthAlert from "@/components/common/auth-alert";
 import Loading from "@/components/common/loading";
+import Error from "@/components/common/error";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
@@ -29,7 +30,7 @@ export default function Protected({ children }) {
   }, [data, navigate]);
 
   if (isLoading) return <Loading />;
-  if (error) return <>Something went wrong</>;
+  if (error) return <Error />;
 
   if (!data._id) return <AuthAlert />;
 

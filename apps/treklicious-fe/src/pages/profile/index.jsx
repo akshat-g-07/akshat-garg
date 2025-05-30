@@ -40,9 +40,9 @@ export default function Profile() {
             />
             <PreferencesForm
               profile={Profile}
-              defaultState={Profile.preferences.state}
-              defaultSeason={Profile.preferences.season}
-              defaultDifficulty={Profile.preferences.difficulty}
+              defaultState={Profile.preferences?.state}
+              defaultSeason={Profile.preferences?.season}
+              defaultDifficulty={Profile.preferences?.difficulty}
             />
           </>
         )}

@@ -11,6 +11,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { useForm, Controller, useWatch } from "react-hook-form";
 import { queryClient } from "@/lib/query-client";
+import Loading from "../common/loading";
 
 export default function PreferencesForm({
   profile,
@@ -28,7 +29,7 @@ export default function PreferencesForm({
 
   const queryKey = "all-treks";
   const { queryOptions } = APIs[queryKey];
-  const { data: Treks } = useQuery({
+  const { isLoading, data: Treks } = useQuery({
     queryKey: [queryKey],
     ...queryOptions,
   });
@@ -101,11 +102,17 @@ export default function PreferencesForm({
                   <SelectValue placeholder="Select a state" />
                 </SelectTrigger>
                 <SelectContent>
-                  {stateOptions.map((option) => (
-                    <SelectItem key={option} value={option}>
-                      {option}
-                    </SelectItem>
-                  ))}
+                  {isLoading ? (
+                    <Loading />
+                  ) : (
+                    <>
+                      {stateOptions.map((option) => (
+                        <SelectItem key={option} value={option}>
+                          {option}
+                        </SelectItem>
+                      ))}
+                    </>
+                  )}
                 </SelectContent>
               </Select>
             )}

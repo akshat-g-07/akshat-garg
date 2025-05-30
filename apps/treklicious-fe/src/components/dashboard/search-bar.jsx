@@ -21,7 +21,7 @@ export default function SearchBar({ isFocused, setIsFocused }) {
     ...queryOptions,
   });
 
-  const [filteredSuggestions, setFilteredSuggestions] = useState(Treks);
+  const [filteredSuggestions, setFilteredSuggestions] = useState(Treks || []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -43,12 +43,13 @@ export default function SearchBar({ isFocused, setIsFocused }) {
 
   useEffect(() => {
     if (searchTerm) {
-      const filtered = Treks.filter((suggestion) =>
-        suggestion.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+      const filtered =
+        Treks?.filter((suggestion) =>
+          suggestion.name.toLowerCase().includes(searchTerm.toLowerCase())
+        ) || [];
       setFilteredSuggestions(filtered);
     } else {
-      setFilteredSuggestions(Treks);
+      setFilteredSuggestions(Treks || []);
     }
   }, [searchTerm, Treks]);
 
@@ -83,7 +84,7 @@ export default function SearchBar({ isFocused, setIsFocused }) {
           onFocus={() => setIsFocused(true)}
         />
       </div>
-      {isFocused && filteredSuggestions.length > 0 && (
+      {isFocused && (filteredSuggestions.length > 0 || isLoading) && (
         <div className="absolute bottom-0 translate-y-[97.5%] z-50 w-[90%] max-w-60 md:max-w-70 rounded-b-md bg-white shadow-lg max-h-[300px] overflow-y-auto">
           {isLoading ? (
             <Loading />

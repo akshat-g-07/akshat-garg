@@ -2,6 +2,7 @@ import SettingSetup from "@/components/common/setting-setup";
 import ShowTreks from "@/components/common/show-treks";
 import { APIs } from "@/apis";
 import Loading from "@/components/common/loading";
+import Error from "@/components/common/error";
 import { useQuery } from "@tanstack/react-query";
 import Protected from "@/components/common/protected";
 
@@ -37,11 +38,19 @@ export default function Favorites() {
               Your favorites are:
             </h2>
             {favError || trekError ? (
-              <>Something went wrong</>
+              <Error />
             ) : (
-              <ShowTreks
-                treks={Treks.filter((trek) => Favorites.includes(trek._id))}
-              />
+              <>
+                {Favorites.length > 0 ? (
+                  <ShowTreks
+                    treks={Treks.filter((trek) => Favorites.includes(trek._id))}
+                  />
+                ) : (
+                  <p className="py-8 opacity-80 font-semibold">
+                    You have no favorite trek yet!
+                  </p>
+                )}
+              </>
             )}
           </>
         )}
