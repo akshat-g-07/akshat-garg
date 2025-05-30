@@ -5,7 +5,7 @@ import FormParent from "@/components/preferences/form-parent";
 import PreferenceFooter from "@/components/preferences/preference-footer";
 import Stepper from "@/components/preferences/stepper";
 import { useMutation } from "@tanstack/react-query";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 
 export default function Preferences() {
@@ -22,6 +22,17 @@ export default function Preferences() {
       navigate("/dashboard");
     },
   });
+
+  useEffect(() => {
+    if (user._id) {
+      if (
+        user.preferences.difficulty !== "NA" &&
+        user.preferences.state !== "NA" &&
+        user.preferences.season !== "NA"
+      )
+        navigate("/dashboard");
+    }
+  }, [user, navigate]);
 
   const [answers, setAnswers] = useState({
     state: "NA",

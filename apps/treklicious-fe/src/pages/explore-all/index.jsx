@@ -1,3 +1,4 @@
+import Protected from "@/components/common/protected";
 import BackButton from "@/components/common/back-button";
 import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
@@ -52,21 +53,23 @@ export default function ExploreAll() {
   }, [filterParam, filterVal]);
 
   return (
-    <section>
-      <header className="w-full h-fit bg-[cornflowerblue] flex py-6 px-8 flex-col md:flex-row">
-        <BackButton />
+    <Protected>
+      <section>
+        <header className="w-full h-fit bg-[cornflowerblue] flex py-6 px-8 flex-col md:flex-row">
+          <BackButton />
 
-        <Filters
-          filterParam={filterParam}
-          filterVal={filterVal}
-          setFilters={setFilters}
-        />
-      </header>
-      {error ? (
-        <>Please Try Again</>
-      ) : (
-        <>{isLoading ? <Loading /> : <ShowTreks treks={Treks} />}</>
-      )}
-    </section>
+          <Filters
+            filterParam={filterParam}
+            filterVal={filterVal}
+            setFilters={setFilters}
+          />
+        </header>
+        {error ? (
+          <>Please Try Again</>
+        ) : (
+          <>{isLoading ? <Loading /> : <ShowTreks treks={Treks} />}</>
+        )}
+      </section>
+    </Protected>
   );
 }
