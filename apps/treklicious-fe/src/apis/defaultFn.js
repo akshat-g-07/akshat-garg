@@ -1,4 +1,4 @@
-import fetch from "@/lib/fetch";
+import fetchFunction from "@/lib/fetch";
 import { getAccessToken } from "@/lib/access-token";
 
 import { APIs } from ".";
@@ -25,6 +25,7 @@ export default async function ({ queryKey, data }) {
     options.body = JSON.stringify(data);
   }
 
-  const res = await fetch(url, options);
+  const res = await fetchFunction(url, options);
+
   return res;
 }
