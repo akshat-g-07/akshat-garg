@@ -1,4 +1,5 @@
 import { APIs } from "@/apis";
+import AuthAlert from "@/components/common/auth-alert";
 import { Auth, AuthBody } from "@/components/common/auth-setup";
 import FormParent from "@/components/preferences/form-parent";
 import PreferenceFooter from "@/components/preferences/preference-footer";
@@ -10,7 +11,7 @@ import { useLocation, useNavigate } from "react-router";
 export default function Preferences() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user } = location.state;
+  const { user } = location.state || {};
 
   const mutationKey = "put-profile";
   const { mutationOptions } = APIs[mutationKey];
@@ -61,26 +62,32 @@ export default function Preferences() {
   return (
     <>
       <Auth>
-        <AuthBody>
-          <h1 className="text-4xl font-semibold leading-relaxed text-white">
-            Hello{user.firstName && `, ${user.firstName}!`}
-          </h1>
-          <Stepper activeIndx={activeIndx} />
-          <FormParent
-            answers={answers}
-            question={question}
-            direction={direction}
-            activeIndx={activeIndx}
-            handleAnswerSelect={handleAnswerSelect}
-          />
-          <PreferenceFooter
-            answers={answers}
-            question={question}
-            isPending={isPending}
-            activeIndx={activeIndx}
-            handleClick={handleClick}
-          />
-        </AuthBody>
+        {user ? (
+          <AuthBody>
+            <h1 className="text-4xl font-semibold leading-relaxed text-white">
+              Hello{user.firstName && `, ${user.firstName}!`}
+            </h1>
+            <Stepper activeIndx={activeIndx} />
+            <FormParent
+              answers={answers}
+              question={question}
+              direction={direction}
+              activeIndx={activeIndx}
+              handleAnswerSelect={handleAnswerSelect}
+            />
+            <PreferenceFooter
+              answers={answers}
+              question={question}
+              isPending={isPending}
+              activeIndx={activeIndx}
+              handleClick={handleClick}
+            />
+          </AuthBody>
+        ) : (
+          <>
+            <AuthAlert />
+          </>
+        )}
       </Auth>
     </>
   );
