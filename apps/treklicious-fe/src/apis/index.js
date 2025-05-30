@@ -152,6 +152,7 @@ export const APIs = {
     mutationOptions: {
       retry: 2,
     },
+    queryInvalidate: ["get-profile"],
   },
   "log-out": {
     baseURL,

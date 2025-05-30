@@ -1,3 +1,4 @@
+import { queryClient } from "@/lib/query-client";
 import InputField from "@/components/common/input-field";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -55,11 +56,12 @@ export default function LogIn() {
 
   const navigate = useNavigate();
   const mutationKey = "log-in";
-  const { mutationOptions } = APIs[mutationKey];
+  const { mutationOptions, queryInvalidate } = APIs[mutationKey];
   const { isPending, mutate } = useMutation({
     mutationKey: [mutationKey],
     ...mutationOptions,
     onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: queryInvalidate });
       setAccessToken(data.accessToken);
       navigate("/dashboard");
     },

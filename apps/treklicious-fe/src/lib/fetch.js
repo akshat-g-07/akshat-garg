@@ -8,6 +8,7 @@ export default async function fetchFunction(url, options = {}) {
 
   const res = await fetch(url, {
     ...options,
+    credentials: url.includes(AUTH_ROUTE) ? "include" : "omit",
     headers: {
       ...(options.headers || {}),
       "request-id": requestID,
