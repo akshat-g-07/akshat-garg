@@ -21,6 +21,7 @@ import { useMutation } from "@tanstack/react-query";
 import { getAccessToken, setAccessToken } from "@/lib/access-token";
 import { cn } from "@/lib/utils";
 import { useNavigate } from "react-router";
+import { Loader } from "lucide-react";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -320,7 +321,11 @@ export default function SignUp() {
             size="lg"
             className="md:col-span-2 w-fit justify-self-center-safe cursor-pointer"
           >
-            Sign Up
+            {isPending ? (
+              <Loader className="animate-spin size-4 mx-7" />
+            ) : (
+              "Sign Up"
+            )}
           </Button>
 
           <AuthFooter

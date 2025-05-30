@@ -159,5 +159,6 @@ export const APIs = {
     apiVersion: "/v1",
     route: "/logout",
     baseRoute: AUTH_ROUTE,
+    queryInvalidate: ["get-profile"],
   },
 };

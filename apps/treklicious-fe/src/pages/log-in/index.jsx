@@ -11,6 +11,7 @@ import { useNavigate } from "react-router";
 import { APIs } from "@/apis";
 import { useMutation } from "@tanstack/react-query";
 import { getAccessToken, setAccessToken } from "@/lib/access-token";
+import { Loader } from "lucide-react";
 
 export default function LogIn() {
   const navigate = useNavigate();
@@ -125,7 +126,11 @@ export default function LogIn() {
             className="md:col-span-2 w-fit justify-self-center-safe cursor-pointer"
             disabled={isPending}
           >
-            Log In
+            {isPending ? (
+              <Loader className="animate-spin size-4 mx-7" />
+            ) : (
+              "Log In"
+            )}
           </Button>
 
           <AuthFooter

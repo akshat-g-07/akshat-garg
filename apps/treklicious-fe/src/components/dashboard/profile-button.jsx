@@ -1,3 +1,4 @@
+import { queryClient } from "@/lib/query-client";
 import { Link, useNavigate } from "react-router";
 import normalSrc from "../../assets/profile-normal.png";
 import {
@@ -11,7 +12,6 @@ import { cn } from "@/lib/utils";
 import { APIs } from "@/apis";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import Loading from "../common/loading";
-import { setAccessToken } from "@/lib/access-token";
 
 export default function ProfileButton({ isFocused }) {
   const navigate = useNavigate();
@@ -28,10 +28,12 @@ export default function ProfileButton({ isFocused }) {
   });
 
   const mutationKey = "log-out";
+  const { queryInvalidate } = APIs[mutationKey];
   const { mutate } = useMutation({
     mutationKey: [mutationKey],
     onSuccess: () => {
-      setAccessToken("");
+      localStorage.removeItem("accessToken");
+      queryClient.invalidateQueries({ queryKey: queryInvalidate });
       navigate("/");
     },
   });

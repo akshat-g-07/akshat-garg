@@ -12,6 +12,7 @@ import { useMemo } from "react";
 import { useForm, Controller, useWatch } from "react-hook-form";
 import { queryClient } from "@/lib/query-client";
 import Loading from "../common/loading";
+import { Loader } from "lucide-react";
 
 export default function PreferencesForm({
   profile,
@@ -94,7 +95,11 @@ export default function PreferencesForm({
             name="state"
             control={control}
             render={({ field }) => (
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select
+                disabled={isPending}
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+              >
                 <SelectTrigger
                   id="state"
                   className=" text-lg w-full max-w-65 justify-self-center-safe"
@@ -124,7 +129,11 @@ export default function PreferencesForm({
             name="season"
             control={control}
             render={({ field }) => (
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select
+                disabled={isPending}
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+              >
                 <SelectTrigger
                   id="season"
                   className=" text-lg w-full max-w-65 justify-self-center-safe"
@@ -148,7 +157,11 @@ export default function PreferencesForm({
             name="difficulty"
             control={control}
             render={({ field }) => (
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select
+                disabled={isPending}
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+              >
                 <SelectTrigger
                   id="difficulty"
                   className=" text-lg w-full max-w-65 justify-self-center-safe"
@@ -168,10 +181,14 @@ export default function PreferencesForm({
           <Button
             size="lg"
             type="submit"
-            disabled={!updateButtonDisable}
+            disabled={!updateButtonDisable || isPending}
             className="md:col-span-2 w-fit justify-self-center-safe cursor-pointer mt-4 md:mt-0"
           >
-            {isPending ? "Updating" : "Update"}
+            {isPending ? (
+              <Loader className="animate-spin size-4 mx-7" />
+            ) : (
+              "Update"
+            )}
           </Button>
         </div>
       </form>

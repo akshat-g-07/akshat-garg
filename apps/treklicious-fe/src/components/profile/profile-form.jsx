@@ -18,6 +18,8 @@ import { useForm, useWatch } from "react-hook-form";
 import { APIs } from "@/apis";
 import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "@/lib/query-client";
+import { Loader } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function ProfileForm({
   preferences,
@@ -212,6 +214,7 @@ export default function ProfileForm({
         <div className="grid grid-cols-1 md:grid-cols-2 *:py-6">
           <div className="order-2 md:order-1">
             <InputField
+              disabled={isPending}
               type="text"
               id="firstName"
               label="First Name"
@@ -222,7 +225,12 @@ export default function ProfileForm({
           <div className="md:row-span-2 order-1 md:order-2 h-fit w-full flex justify-center-safe">
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <div className="cursor-grab rounded-full relative overflow-hidden">
+                <div
+                  className={cn(
+                    "cursor-grab rounded-full relative overflow-hidden",
+                    isPending && "pointer-events-none"
+                  )}
+                >
                   <img
                     className="size-37 object-fill hover:opacity-25"
                     src={profileImg ? profileImg : profilePlaceholderSrc}
@@ -272,6 +280,7 @@ export default function ProfileForm({
           </div>
           <div className="order-3">
             <InputField
+              disabled={isPending}
               type="text"
               id="lastName"
               label="Last Name"
@@ -281,6 +290,7 @@ export default function ProfileForm({
           </div>
           <div className="order-4">
             <InputField
+              disabled={isPending}
               readOnly
               id="email"
               type="text"
@@ -291,6 +301,7 @@ export default function ProfileForm({
           </div>
           <div className="order-5">
             <InputField
+              disabled={isPending}
               type="text"
               id="userName"
               label="Username"
@@ -300,6 +311,7 @@ export default function ProfileForm({
           </div>
           <div className="order-6">
             <InputField
+              disabled={isPending}
               type="newPassword"
               id="newPassword"
               label="New Password"
@@ -311,10 +323,14 @@ export default function ProfileForm({
           <Button
             size="lg"
             type="submit"
-            disabled={!updateButtonDisable}
+            disabled={!updateButtonDisable || isPending}
             className="md:col-span-2 w-fit justify-self-center-safe cursor-pointer order-7"
           >
-            {isPending ? "Updating" : "Update"}
+            {isPending ? (
+              <Loader className="animate-spin size-4 mx-7" />
+            ) : (
+              "Update"
+            )}
           </Button>
         </div>
       </form>

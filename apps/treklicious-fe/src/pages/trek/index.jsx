@@ -81,7 +81,7 @@ export default function Trek() {
                         className={cn(
                           "size-6 md:size-10 font-bold cursor-pointer",
                           deletePending || postPending
-                            ? "opacity-75"
+                            ? "opacity-75 pointer-events-none"
                             : "opacity-100"
                         )}
                         onClick={() => {
