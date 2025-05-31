@@ -5,6 +5,7 @@ import Error from "@/components/common/error";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 export default function Protected({ children }) {
   const navigate = useNavigate();
@@ -34,5 +35,5 @@ export default function Protected({ children }) {
 
   if (!data._id) return <AuthAlert />;
 
-  return <>{children}</>;
+  return <ThemeProvider>{children}</ThemeProvider>;
 }

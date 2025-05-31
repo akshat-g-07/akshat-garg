@@ -3,14 +3,17 @@ import { useState } from "react";
 import Switch from "./switch";
 import ProfileButton from "./profile-button";
 import SearchBar from "./search-bar";
+import { useTheme } from "@/providers/theme-provider";
 
 export default function Header() {
+  const { setTheme } = useTheme();
   // true mean light mode false means dark mode
   const [displayMode, setDisplayMode] = useState(true);
   const [isFocused, setIsFocused] = useState(false);
 
   const handleClick = () => {
     setDisplayMode((prev) => !prev);
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
   return (
