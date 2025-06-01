@@ -14,7 +14,7 @@ const rateLimiter = rateLimit({
     logger.log(
       `Too many requests: ${options.message.error}\t${req.url}\t${req.headers.origin}`
     );
-    res.status(options.statusCode).send(options.message);
+    return res.status(options.statusCode).send(options.message);
   },
   standardHeaders: true,
   legacyHeaders: false,
