@@ -10,7 +10,6 @@ export default function VideoSection() {
   const navigate = useNavigate();
   const queryKey = "random-trek";
   const { queryOptions } = APIs[queryKey];
-  console.log("vidSrc", vidSrc);
 
   const {
     isLoading,

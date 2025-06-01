@@ -335,7 +335,7 @@ export default function ProfileForm({
               error={errors.newPassword?.message}
             />
           </div>
-          {/* MARK: enable only if there is change in any of the value */}
+
           <Button
             size="lg"
             type="submit"
