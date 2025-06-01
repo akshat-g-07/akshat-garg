@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-const { USER_ROUTE } = require("@repo/treklicious-constants");
-
 const NODE_ENV = process.env.NODE_ENV;
 const ADMIN_CODE = process.env.ADMIN_CODE;
 
@@ -11,6 +9,7 @@ const logRequest = require("./log-request");
 const rateLimiter = require("./rate-limiter");
 
 const openRoutes = require("../config/open-routes");
+const CheckProtectedRoute = require("../config/protected-routes");
 
 const adminRoutes = openRoutes.map((route) => route.route);
 adminRoutes.push("/");
