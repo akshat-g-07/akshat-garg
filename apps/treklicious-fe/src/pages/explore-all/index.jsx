@@ -37,6 +37,7 @@ export default function ExploreAll() {
   } = useQuery({
     queryKey: [queryKey, queryKeyID],
     ...queryOptions,
+    enabled: !!filterParam && !!filterVal,
   });
 
   useEffect(() => {
@@ -66,10 +67,16 @@ export default function ExploreAll() {
             setFilters={setFilters}
           />
         </header>
-        {error ? (
+        {isLoading ? (
+          <Loading />
+        ) : error ? (
           <Error />
+        ) : Treks ? (
+          <ShowTreks treks={Treks} />
         ) : (
-          <>{isLoading ? <Loading /> : <ShowTreks treks={Treks} />}</>
+          <p className="opacity-50 font-semibold w-full text-center text-lg py-4">
+            Please select filters to know more about treks.
+          </p>
         )}
       </section>
     </Protected>
