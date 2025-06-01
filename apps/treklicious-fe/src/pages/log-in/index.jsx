@@ -1,4 +1,3 @@
-import { queryClient } from "@/lib/query-client";
 import InputField from "@/components/common/input-field";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -9,7 +8,7 @@ import usernameSrc from "../../assets/profile-username.png";
 import { Auth, AuthBody, AuthFooter } from "@/components/common/auth-setup";
 import { useNavigate } from "react-router";
 import { APIs } from "@/apis";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { getAccessToken, setAccessToken } from "@/lib/access-token";
 import { Loader } from "lucide-react";
 import {
@@ -18,6 +17,7 @@ import {
 } from "@repo/treklicious-constants";
 
 export default function LogIn() {
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
   const {
     register,

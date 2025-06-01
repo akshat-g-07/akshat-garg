@@ -87,7 +87,7 @@ export const APIs = {
     baseRoute: USER_ROUTE,
     authorization: true,
     method: "PUT",
-    queryInvalidate: ["get-profile"],
+    queryInvalidate: ["get-profile", "recommended-treks"],
     mutationOptions: {
       retry: 2,
     },

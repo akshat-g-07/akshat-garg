@@ -1,4 +1,3 @@
-import { queryClient } from "@/lib/query-client";
 import { Link, useNavigate } from "react-router";
 import normalSrc from "../../assets/profile-normal.png";
 import {
@@ -10,10 +9,11 @@ import { Heart, LogOut, Settings } from "lucide-react";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { APIs } from "@/apis";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import Loading from "../common/loading";
 
 export default function ProfileButton({ isFocused }) {
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
 
   const queryKey = "get-profile";

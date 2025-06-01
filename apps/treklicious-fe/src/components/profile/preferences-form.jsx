@@ -7,10 +7,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { useForm, Controller, useWatch } from "react-hook-form";
-import { queryClient } from "@/lib/query-client";
 import Loading from "../common/loading";
 import { Loader } from "lucide-react";
 
@@ -28,6 +27,7 @@ export default function PreferencesForm({
     },
   });
 
+  const queryClient = useQueryClient();
   const queryKey = "all-treks";
   const { queryOptions } = APIs[queryKey];
   const { isLoading, data: Treks } = useQuery({
@@ -40,8 +40,15 @@ export default function PreferencesForm({
   const { isPending, mutate } = useMutation({
     mutationKey: [mutationKey],
     ...mutationOptions,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: queryInvalidate });
+    onSuccess: async () => {
+      await Promise.all(
+        queryInvalidate.map((query) =>
+          queryClient.invalidateQueries({
+            queryKey: [query],
+            refetchType: "all",
+          })
+        )
+      );
     },
   });
 

@@ -4,7 +4,7 @@ import { Auth, AuthBody } from "@/components/common/auth-setup";
 import FormParent from "@/components/preferences/form-parent";
 import PreferenceFooter from "@/components/preferences/preference-footer";
 import Stepper from "@/components/preferences/stepper";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 
@@ -12,13 +12,23 @@ export default function Preferences() {
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = location.state || {};
+  const queryClient = useQueryClient();
 
   const mutationKey = "put-profile";
-  const { mutationOptions } = APIs[mutationKey];
+  const { mutationOptions, queryInvalidate } = APIs[mutationKey];
   const { isPending, mutate } = useMutation({
     mutationKey: [mutationKey],
     ...mutationOptions,
-    onSuccess: () => {
+    onSuccess: async () => {
+      await Promise.all(
+        queryInvalidate.map((query) =>
+          queryClient.invalidateQueries({
+            queryKey: [query],
+            refetchType: "all",
+          })
+        )
+      );
+
       navigate("/dashboard");
     },
   });

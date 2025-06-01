@@ -16,8 +16,7 @@ import profilePlaceholderSrc from "../../assets/profile-placeholder.png";
 import { Button } from "@/components/ui/button";
 import { useForm, useWatch } from "react-hook-form";
 import { APIs } from "@/apis";
-import { useMutation } from "@tanstack/react-query";
-import { queryClient } from "@/lib/query-client";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Loader } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { USERNAME_EXISTS_RESPONSE } from "@repo/treklicious-constants";
@@ -141,6 +140,7 @@ export default function ProfileForm({
     },
   });
 
+  const queryClient = useQueryClient();
   const [tempProfileImg, setTempProfileImg] = useState(null);
   const [profileImgError, setProfileImgError] = useState(false);
   const [profileImg, setProfileImg] = useState(defaultProfilePic);
@@ -150,7 +150,7 @@ export default function ProfileForm({
   const { isPending, mutate } = useMutation({
     mutationKey: [mutationKey],
     ...mutationOptions,
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
       if (data.message === USERNAME_EXISTS_RESPONSE) {
         errors.userName = {
           type: "validation",
@@ -158,7 +158,15 @@ export default function ProfileForm({
         };
         return;
       }
-      queryClient.invalidateQueries({ queryKey: queryInvalidate });
+
+      await Promise.all(
+        queryInvalidate.map((query) =>
+          queryClient.invalidateQueries({
+            queryKey: [query],
+            refetchType: "all",
+          })
+        )
+      );
     },
   });
 

@@ -34,7 +34,7 @@ export default function RestBody() {
 
   const trekDetailComponents = ComponentGenerator(allTreks);
 
-  if (RecommendedTreks)
+  if (RecommendedTreks && RecommendedTreks.length > 0)
     trekDetailComponents.push({
       sectionHead: "Recommended For You",
       sectionArray: RecommendedTreks.sort(() => Math.random() - 0.5).slice(

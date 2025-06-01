@@ -1,14 +1,14 @@
-import { queryClient } from "@/lib/query-client";
 import { APIs } from "@/apis";
 import BackButton from "@/components/common/back-button";
 import { Preferences } from "@/components/preferences/preferences";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Heart } from "lucide-react";
 import { useLoaderData } from "react-router";
 import { cn } from "@/lib/utils";
 import AuthAlert from "@/components/common/auth-alert";
 
 export default function Trek() {
+  const queryClient = useQueryClient();
   const data = useLoaderData();
   const { _id, name, season, difficulty, state, img, description } = data.trek;
 
@@ -31,9 +31,14 @@ export default function Trek() {
   const { isPending: postPending, mutate: postMutate } = useMutation({
     mutationKey: [postFavorite],
     ...postFavoriteOptions,
-    onSuccess: () => {
-      postQueryInvalidate.forEach((query) =>
-        queryClient.invalidateQueries({ queryKey: [query] })
+    onSuccess: async () => {
+      await Promise.all(
+        postQueryInvalidate.map((query) =>
+          queryClient.invalidateQueries({
+            queryKey: [query],
+            refetchType: "all",
+          })
+        )
       );
     },
   });
@@ -46,9 +51,14 @@ export default function Trek() {
   const { isPending: deletePending, mutate: deleteMutate } = useMutation({
     mutationKey: [deleteFavorite],
     ...deleteFavoriteOptions,
-    onSuccess: () => {
-      deleteQueryInvalidate.forEach((query) =>
-        queryClient.invalidateQueries({ queryKey: [query] })
+    onSuccess: async () => {
+      await Promise.all(
+        deleteQueryInvalidate.map((query) =>
+          queryClient.invalidateQueries({
+            queryKey: [query],
+            refetchType: "all",
+          })
+        )
       );
     },
   });
