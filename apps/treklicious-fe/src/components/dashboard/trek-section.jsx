@@ -10,7 +10,7 @@ export default function TrekSection({
 }) {
   return (
     <section className="w-full h-fit">
-      <div className="group/sectionHead flex items-baseline-last transition-all ease-in-out duration-300 cursor-default text-2xl text-shadow-md text-shadow-white space-x-2">
+      <div className="group/sectionHead flex items-baseline-last transition-all ease-in-out duration-300 cursor-default text-2xl text-shadow-md text-shadow-white dark:text-shadow-none space-x-2">
         <span>{sectionHead}</span>
         <Link
           to="/explore-all"
@@ -21,7 +21,7 @@ export default function TrekSection({
         </Link>
       </div>
 
-      <div className="h-1 w-full bg-gradient-to-r from-black to-black/10 to-30%" />
+      <div className="h-1 w-full bg-gradient-to-r from-black to-black/10 dark:from-white dark:to-white/10 to-30%" />
 
       <TileRow treks={sectionArray} />
     </section>

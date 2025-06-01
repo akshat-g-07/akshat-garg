@@ -140,3 +140,13 @@
 .hide-x-scrollbar::-webkit-scrollbar {
   height: 0px;
 }
+
+.search-bar-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+.search-bar-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 100, 100, 0.4) transparent;
+}

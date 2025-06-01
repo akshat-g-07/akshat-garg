@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-export default function Switch({ isFocused, handleClick, displayMode }) {
+export default function Switch({ isFocused, handleClick }) {
   return (
     <div
       className={cn(
@@ -10,8 +10,7 @@ export default function Switch({ isFocused, handleClick, displayMode }) {
     >
       <div
         className={cn(
-          "flex flex-col h-fit w-fit transition-all duration-700 ease-in-out",
-          displayMode ? "translate-y-0" : "-translate-y-1/2"
+          "flex flex-col h-fit w-fit transition-all duration-700 ease-in-out translate-y-0 dark:-translate-y-1/2"
         )}
       >
         <MoonSVG onClick={handleClick} />

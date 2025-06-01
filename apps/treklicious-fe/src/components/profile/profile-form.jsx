@@ -215,7 +215,7 @@ export default function ProfileForm({
 
   return (
     <>
-      <h2 className="pb-2 border-b-2 border-black w-full text-3xl font-semibold cursor-default">
+      <h2 className="pb-2 border-b-2 border-black dark:border-white w-full text-3xl font-semibold cursor-default">
         Profile
       </h2>
       <form onSubmit={handleSubmit(onSubmit)}>

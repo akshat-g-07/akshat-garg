@@ -33,7 +33,7 @@ export default function InputField({
           className="peer text-lg bg-transparent outline-none border-none h-9 px-2 w-full"
           {...props}
         />
-        <div className="w-full h-0 border-b-2 border-black absolute bottom-0 -z-10 origin-bottom transition-all duration-300 ease-in-out rounded-t-xl peer-focus:h-10 bg-[#b9b9b9bf]" />
+        <div className="w-full h-0 border-b-2 border-black dark:border-white absolute bottom-0 -z-10 origin-bottom transition-all duration-300 ease-in-out rounded-t-xl peer-focus:h-10 bg-[#b9b9b9bf]" />
       </div>
       {error && (
         <p className={cn("text-red-500 whitespace-pre-wrap", errorClassName)}>

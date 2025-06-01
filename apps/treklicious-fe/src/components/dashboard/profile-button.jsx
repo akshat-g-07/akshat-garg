@@ -95,7 +95,7 @@ export default function ProfileButton({ isFocused }) {
               to={link}
               onClick={onClick}
               className={cn(
-                "flex items-center-safe gap-x-2 p-2 hover:bg-gray-300 rounded"
+                "flex items-center-safe gap-x-2 p-2 hover:bg-gray-300 dark:hover:bg-input/50 rounded"
               )}
             >
               {icon}

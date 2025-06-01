@@ -107,21 +107,21 @@ export default function Trek() {
             <div className="flex flex-col lg:flex-row justify-around items-center-safe *:flex *:items-center-safe space-y-3">
               <div>
                 <p className="size-6 mr-1">{Preferences[0].svg}</p>
-                <p className="text-white text-lg md:text-2xl font-semibold">
+                <p className="text-lg md:text-2xl font-semibold">
                   State:&nbsp;
                   <span className="text-black">{state}</span>
                 </p>
               </div>
               <div>
                 <p className="size-6 mr-1">{Preferences[1].svg}</p>
-                <p className="text-white text-lg md:text-2xl font-semibold">
+                <p className="text-lg md:text-2xl font-semibold">
                   Season:&nbsp;
                   <span className="text-black">{season}</span>
                 </p>
               </div>
               <div>
                 <p className="size-6 mr-1">{Preferences[2].svg}</p>
-                <p className="text-white text-lg md:text-2xl font-semibold">
+                <p className="text-lg md:text-2xl font-semibold">
                   Difficulty:&nbsp;
                   <span className="text-black">{difficulty}</span>
                 </p>

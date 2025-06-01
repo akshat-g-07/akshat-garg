@@ -85,7 +85,7 @@ export default function SearchBar({ isFocused, setIsFocused }) {
         />
       </div>
       {isFocused && (filteredSuggestions.length > 0 || isLoading) && (
-        <div className="absolute bottom-0 translate-y-[97.5%] z-50 w-[90%] max-w-60 md:max-w-70 rounded-b-md bg-white shadow-lg max-h-[300px] overflow-y-auto">
+        <div className="absolute bottom-0 translate-y-[97.5%] z-50 w-[90%] max-w-60 md:max-w-70 rounded-b-md bg-white dark:bg-neutral-900 shadow-lg max-h-[300px] overflow-y-auto search-bar-scrollbar">
           {isLoading ? (
             <Loading />
           ) : (
@@ -93,7 +93,7 @@ export default function SearchBar({ isFocused, setIsFocused }) {
               {filteredSuggestions.map((suggestion, index) => (
                 <div
                   key={index}
-                  className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-300"
+                  className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-300 dark:hover:bg-input/50"
                   onClick={() => {
                     navigate(`/trek/${suggestion._id}`);
                   }}

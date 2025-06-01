@@ -34,7 +34,7 @@ export default function Favorites() {
           <Loading />
         ) : (
           <>
-            <h2 className="pb-2 border-b-2 border-black w-full text-3xl font-semibold cursor-default">
+            <h2 className="pb-2 border-b-2 border-black dark:border-white w-full text-3xl font-semibold cursor-default">
               Your favorites are:
             </h2>
             {favError || trekError ? (
