@@ -6,9 +6,11 @@ import Loading from "../common/loading";
 import { useNavigate } from "react-router";
 
 export default function VideoSection() {
+  const vidSrc = import.meta.env.VITE_DASHBOARD_VIDEO;
   const navigate = useNavigate();
   const queryKey = "random-trek";
   const { queryOptions } = APIs[queryKey];
+  console.log("vidSrc", vidSrc);
 
   const {
     isLoading,
@@ -21,14 +23,13 @@ export default function VideoSection() {
 
   return (
     <section className="w-full h-[calc(100vh-56px)] md:h-[calc(100vh-64px)] relative">
-      <div className="absolute bg-red-500 -z-10 size-full overflow-hidden object-center object-cover">
-        {/* MARK: vid and all other images will upload at cloudinary and then from FE make a request to BE check cors and on BE pull from cloudinary and send back to FE */}
+      <div className="absolute -z-10 size-full overflow-hidden object-center object-cover">
         <video
-          src={"vidSrc"}
+          src={vidSrc}
           muted
           autoPlay
           loop
-          className="size-full bg-yellow-500"
+          className="size-full object-cover"
         />
       </div>
       {error ? (
