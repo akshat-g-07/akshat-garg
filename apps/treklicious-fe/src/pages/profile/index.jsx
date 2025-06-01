@@ -5,8 +5,11 @@ import SettingSetup from "@/components/common/setting-setup";
 import PreferencesForm from "@/components/profile/preferences-form";
 import ProfileForm from "@/components/profile/profile-form";
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { useLocation } from "react-router";
 
 export default function Profile() {
+  const location = useLocation();
   const queryKey = "get-profile";
   const { queryOptions } = APIs[queryKey];
   const {
@@ -17,6 +20,15 @@ export default function Profile() {
     queryKey: [queryKey],
     ...queryOptions,
   });
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location.hash]);
 
   if (error) {
     console.log("Error in Profile", error);
