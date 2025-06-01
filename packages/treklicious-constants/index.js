@@ -1,3 +1,9 @@
+// ROUTES
+export const TREK_ROUTE = "/trek";
+export const USER_ROUTE = "/user";
+export const AUTH_ROUTE = "/auth";
+
+// RESPONSES
 export const BAD_REQUEST_RESPONSE = "Bad request";
 export const UNAUTHORIZED_RESPONSE = "Unauthorized";
 export const PLEASE_LOGIN_RESPONSE = "Please Log in";

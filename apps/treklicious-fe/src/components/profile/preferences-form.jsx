@@ -1,3 +1,4 @@
+import { APIs } from "@/apis";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -6,13 +7,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
-
-import { useForm, Controller } from "react-hook-form";
-
-import Treks from "@/assets/Treks.json";
+import { useForm, Controller, useWatch } from "react-hook-form";
+import Loading from "../common/loading";
+import { Loader } from "lucide-react";
 
 export default function PreferencesForm({
+  profile,
   defaultState,
   defaultSeason,
   defaultDifficulty,
@@ -25,26 +27,69 @@ export default function PreferencesForm({
     },
   });
 
-  // Example data - replace with your actual options
-  const stateOptions = useMemo(
-    () => [...new Set(Treks.map((trek) => trek.state))],
-    [Treks]
-  );
+  const queryClient = useQueryClient();
+  const queryKey = "all-treks";
+  const { queryOptions } = APIs[queryKey];
+  const { isLoading, data: Treks } = useQuery({
+    queryKey: [queryKey],
+    ...queryOptions,
+  });
+
+  const mutationKey = "put-profile";
+  const { mutationOptions, queryInvalidate } = APIs[mutationKey];
+  const { isPending, mutate } = useMutation({
+    mutationKey: [mutationKey],
+    ...mutationOptions,
+    onSuccess: async () => {
+      await Promise.all(
+        queryInvalidate.map((query) =>
+          queryClient.invalidateQueries({
+            queryKey: [query],
+            refetchType: "all",
+          })
+        )
+      );
+    },
+  });
+
+  const stateOptions = useMemo(() => {
+    if (Treks && Treks.length)
+      return [...new Set(Treks.map((trek) => trek.state))];
+    else return [];
+  }, [Treks]);
 
   const seasonOptions = ["Summer", "Monsoon", "Winter"];
 
   const difficultyOptions = ["Easy", "Medium", "Hard"];
 
+  const watchedValues = useWatch({ control });
+  const updateButtonDisable = useMemo(() => {
+    const currentValues = watchedValues;
+
+    const isStateChanged = currentValues.state !== defaultState;
+    const isSeasonChanged = currentValues.season !== defaultSeason;
+    const isDifficultyChanged = currentValues.difficulty !== defaultDifficulty;
+
+    return isStateChanged || isSeasonChanged || isDifficultyChanged;
+  }, [watchedValues, defaultState, defaultSeason, defaultDifficulty]);
+
   const onSubmit = (data) => {
-    console.log(data);
-    // Handle form submission
+    mutate({
+      queryKey: [mutationKey],
+      data: {
+        ...profile,
+        preferences: {
+          ...data,
+        },
+      },
+    });
   };
 
   return (
     <>
       <h2
         id="preferences"
-        className="pb-2 border-b-2 border-black w-full text-3xl font-semibold cursor-default mt-12"
+        className="pb-2 border-b-2 border-black dark:border-white w-full text-3xl font-semibold cursor-default mt-12"
       >
         Preferences
       </h2>
@@ -57,7 +102,11 @@ export default function PreferencesForm({
             name="state"
             control={control}
             render={({ field }) => (
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select
+                disabled={isPending}
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+              >
                 <SelectTrigger
                   id="state"
                   className=" text-lg w-full max-w-65 justify-self-center-safe"
@@ -65,11 +114,17 @@ export default function PreferencesForm({
                   <SelectValue placeholder="Select a state" />
                 </SelectTrigger>
                 <SelectContent>
-                  {stateOptions.map((option) => (
-                    <SelectItem key={option} value={option}>
-                      {option}
-                    </SelectItem>
-                  ))}
+                  {isLoading ? (
+                    <Loading />
+                  ) : (
+                    <>
+                      {stateOptions.map((option) => (
+                        <SelectItem key={option} value={option}>
+                          {option}
+                        </SelectItem>
+                      ))}
+                    </>
+                  )}
                 </SelectContent>
               </Select>
             )}
@@ -81,7 +136,11 @@ export default function PreferencesForm({
             name="season"
             control={control}
             render={({ field }) => (
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select
+                disabled={isPending}
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+              >
                 <SelectTrigger
                   id="season"
                   className=" text-lg w-full max-w-65 justify-self-center-safe"
@@ -105,7 +164,11 @@ export default function PreferencesForm({
             name="difficulty"
             control={control}
             render={({ field }) => (
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select
+                disabled={isPending}
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+              >
                 <SelectTrigger
                   id="difficulty"
                   className=" text-lg w-full max-w-65 justify-self-center-safe"
@@ -123,11 +186,16 @@ export default function PreferencesForm({
             )}
           />
           <Button
-            type="submit"
             size="lg"
+            type="submit"
+            disabled={!updateButtonDisable || isPending}
             className="md:col-span-2 w-fit justify-self-center-safe cursor-pointer mt-4 md:mt-0"
           >
-            Update
+            {isPending ? (
+              <Loader className="animate-spin size-4 mx-7" />
+            ) : (
+              "Update"
+            )}
           </Button>
         </div>
       </form>

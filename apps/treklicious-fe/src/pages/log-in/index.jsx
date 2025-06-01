@@ -1,13 +1,24 @@
 import InputField from "@/components/common/input-field";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import normalSrc from "../../assets/profile-normal.png";
 import passwordSrc from "../../assets/profile-password.png";
 import usernameSrc from "../../assets/profile-username.png";
 import { Auth, AuthBody, AuthFooter } from "@/components/common/auth-setup";
+import { useNavigate } from "react-router";
+import { APIs } from "@/apis";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { getAccessToken, setAccessToken } from "@/lib/access-token";
+import { Loader } from "lucide-react";
+import {
+  PASSWORDS_DONT_MATCH_RESPONSE,
+  USER_NOT_FOUND_RESPONSE,
+} from "@repo/treklicious-constants";
 
 export default function LogIn() {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -49,10 +60,44 @@ export default function LogIn() {
     },
   });
 
+  useEffect(() => {
+    if (getAccessToken()) navigate("/dashboard");
+  }, [navigate]);
+
+  const mutationKey = "log-in";
+  const { mutationOptions, queryInvalidate } = APIs[mutationKey];
+  const { isPending, mutate } = useMutation({
+    mutationKey: [mutationKey],
+    ...mutationOptions,
+    onSuccess: (data) => {
+      if (data.message === USER_NOT_FOUND_RESPONSE) {
+        errors.userName = {
+          type: "validation",
+          message: USER_NOT_FOUND_RESPONSE,
+        };
+        return;
+      }
+
+      if (data.message === PASSWORDS_DONT_MATCH_RESPONSE) {
+        errors.password = {
+          type: "validation",
+          message: PASSWORDS_DONT_MATCH_RESPONSE,
+        };
+        return;
+      }
+      queryClient.invalidateQueries({ queryKey: queryInvalidate });
+      setAccessToken(data.accessToken);
+      navigate("/dashboard");
+    },
+  });
+
   const [headerImg, setHeaderImg] = useState(normalSrc);
 
   const onSubmit = (data) => {
-    console.log("data", data);
+    mutate({
+      queryKey: [mutationKey],
+      data,
+    });
   };
 
   return (
@@ -76,6 +121,7 @@ export default function LogIn() {
             onBlur={() => {
               setHeaderImg(normalSrc);
             }}
+            disabled={isPending}
           />
           <InputField
             type="password"
@@ -90,14 +136,20 @@ export default function LogIn() {
             onBlur={() => {
               setHeaderImg(normalSrc);
             }}
+            disabled={isPending}
           />
 
           <Button
             type="submit"
             size="lg"
             className="md:col-span-2 w-fit justify-self-center-safe cursor-pointer"
+            disabled={isPending}
           >
-            Log In
+            {isPending ? (
+              <Loader className="animate-spin size-4 mx-7" />
+            ) : (
+              "Log In"
+            )}
           </Button>
 
           <AuthFooter

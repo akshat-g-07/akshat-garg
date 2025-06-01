@@ -23,6 +23,27 @@ async function GETFavorite(req, res) {
   }
 }
 
+async function CheckFavorite(req, res) {
+  const { favID } = req.params;
+  const userIDModel_id = req.userIDModel_id;
+
+  try {
+    const user = await userDetailsModel
+      .findOne({ userIDModel_id }, { favorites: 1 })
+      .lean();
+
+    if (!user) return res.sendStatus(400);
+
+    if (user.favorites.includes(favID)) res.status(200).send(true);
+    else res.status(200).send(false);
+  } catch (error) {
+    logger.log("Error in CheckFavorite");
+    logger.log(error);
+
+    res.sendStatus(500);
+  }
+}
+
 async function POSTFavorite(req, res) {
   const userIDModel_id = req.userIDModel_id;
   const { favorite } = req.body;
@@ -31,9 +52,10 @@ async function POSTFavorite(req, res) {
     return res.sendStatus(400).json({ message: BAD_REQUEST_RESPONSE });
 
   try {
-    const user = await userDetailsModel
-      .findOne({ userIDModel_id }, { favorites: 1 })
-      .lean();
+    const user = await userDetailsModel.findOne(
+      { userIDModel_id },
+      { favorites: 1 }
+    );
 
     if (!user)
       return res.sendStatus(400).json({ message: USER_NOT_FOUND_RESPONSE });
@@ -48,7 +70,7 @@ async function POSTFavorite(req, res) {
     const userUpdated = await user.save();
 
     if (userUpdated) {
-      res.sendStatus(200);
+      res.status(200).json({ message: "OK" });
     } else {
       res.sendStatus(400);
     }
@@ -68,9 +90,10 @@ async function DELETEFavorite(req, res) {
     return res.sendStatus(400).json({ message: BAD_REQUEST_RESPONSE });
 
   try {
-    const user = await userDetailsModel
-      .findOne({ userIDModel_id }, { favorites: 1 })
-      .lean();
+    const user = await userDetailsModel.findOne(
+      { userIDModel_id },
+      { favorites: 1 }
+    );
 
     if (!user)
       return res.sendStatus(400).json({ message: USER_NOT_FOUND_RESPONSE });
@@ -85,7 +108,7 @@ async function DELETEFavorite(req, res) {
     const userUpdated = await user.save();
 
     if (userUpdated) {
-      res.sendStatus(200);
+      res.status(200).json({ message: "OK" });
     } else {
       res.sendStatus(400);
     }
@@ -97,4 +120,4 @@ async function DELETEFavorite(req, res) {
   }
 }
 
-module.exports = { GETFavorite, POSTFavorite, DELETEFavorite };
+module.exports = { GETFavorite, POSTFavorite, DELETEFavorite, CheckFavorite };

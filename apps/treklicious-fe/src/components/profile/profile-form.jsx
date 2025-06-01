@@ -11,20 +11,26 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import Avatar from "react-avatar-edit";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import profilePlaceholderSrc from "../../assets/profile-placeholder.png";
 import { Button } from "@/components/ui/button";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
+import { APIs } from "@/apis";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Loader } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { USERNAME_EXISTS_RESPONSE } from "@repo/treklicious-constants";
 
-// MARK: user details in props
-// put those details as default values of form
 export default function ProfileForm({
-  defaultFirstName,
-  defaultLastName,
+  preferences,
   defaultEmail,
   defaultUserName,
+  defaultLastName,
+  defaultFirstName,
+  defaultProfilePic,
 }) {
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -115,20 +121,18 @@ export default function ProfileForm({
           message: "Password should be at least 8 characters long.",
         },
       ];
-      const failedRules = rules.filter((rule) => !rule.regex.test(newPassword));
+      if (newPassword) {
+        const failedRules = rules.filter(
+          (rule) => !rule.regex.test(newPassword)
+        );
 
-      if (!newPassword) {
-        errors.newPassword = {
-          type: "required",
-          message: "Please choose a passsword.",
-        };
-      } else if (failedRules.length > 0) {
-        errors.newPassword = {
-          type: "validation",
-          message: failedRules.map((rule) => rule.message).join("\n"),
-        };
+        if (failedRules.length > 0) {
+          errors.newPassword = {
+            type: "validation",
+            message: failedRules.map((rule) => rule.message).join("\n"),
+          };
+        }
       }
-
       return {
         errors: errors,
         values: values,
@@ -136,9 +140,61 @@ export default function ProfileForm({
     },
   });
 
-  const [profileImg, setProfileImg] = useState(null);
+  const queryClient = useQueryClient();
   const [tempProfileImg, setTempProfileImg] = useState(null);
   const [profileImgError, setProfileImgError] = useState(false);
+  const [profileImg, setProfileImg] = useState(defaultProfilePic);
+
+  const mutationKey = "put-profile";
+  const { mutationOptions, queryInvalidate } = APIs[mutationKey];
+  const { isPending, mutate } = useMutation({
+    mutationKey: [mutationKey],
+    ...mutationOptions,
+    onSuccess: async (data) => {
+      if (data.message === USERNAME_EXISTS_RESPONSE) {
+        errors.userName = {
+          type: "validation",
+          message: `${USERNAME_EXISTS_RESPONSE}. Please choose another username.`,
+        };
+        return;
+      }
+
+      await Promise.all(
+        queryInvalidate.map((query) =>
+          queryClient.invalidateQueries({
+            queryKey: [query],
+            refetchType: "all",
+          })
+        )
+      );
+    },
+  });
+
+  const watchedValues = useWatch({ control });
+  const updateButtonDisable = useMemo(() => {
+    const currentValues = watchedValues;
+
+    const isPasswordChanged = currentValues.newPassword !== "";
+    const isProfilePicChanged = profileImg !== defaultProfilePic;
+    const isLastNameChanged = currentValues.lastName !== defaultLastName;
+    const isUserNameChanged = currentValues.userName !== defaultUserName;
+    const isFirstNameChanged = currentValues.firstName !== defaultFirstName;
+
+    return (
+      isLastNameChanged ||
+      isUserNameChanged ||
+      isFirstNameChanged ||
+      isProfilePicChanged ||
+      isPasswordChanged
+    );
+  }, [
+    profileImg,
+    watchedValues,
+    defaultLastName,
+    defaultUserName,
+    defaultFirstName,
+    defaultProfilePic,
+  ]);
 
   const avatarOnClose = () => {
     setTempProfileImg(null);
@@ -154,19 +210,27 @@ export default function ProfileForm({
       return;
     }
     setProfileImgError(false);
-    console.log("data", data);
-    console.log("profileImg", profileImg);
+
+    mutate({
+      queryKey: [mutationKey],
+      data: {
+        ...data,
+        profile: profileImg,
+        preferences,
+      },
+    });
   };
 
   return (
     <>
-      <h2 className="pb-2 border-b-2 border-black w-full text-3xl font-semibold cursor-default">
+      <h2 className="pb-2 border-b-2 border-black dark:border-white w-full text-3xl font-semibold cursor-default">
         Profile
       </h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 md:grid-cols-2 *:py-6">
           <div className="order-2 md:order-1">
             <InputField
+              disabled={isPending}
               type="text"
               id="firstName"
               label="First Name"
@@ -177,7 +241,12 @@ export default function ProfileForm({
           <div className="md:row-span-2 order-1 md:order-2 h-fit w-full flex justify-center-safe">
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <div className="cursor-grab rounded-full relative">
+                <div
+                  className={cn(
+                    "cursor-grab rounded-full relative overflow-hidden",
+                    isPending && "pointer-events-none"
+                  )}
+                >
                   <img
                     className="size-37 object-fill hover:opacity-25"
                     src={profileImg ? profileImg : profilePlaceholderSrc}
@@ -227,6 +296,7 @@ export default function ProfileForm({
           </div>
           <div className="order-3">
             <InputField
+              disabled={isPending}
               type="text"
               id="lastName"
               label="Last Name"
@@ -236,8 +306,10 @@ export default function ProfileForm({
           </div>
           <div className="order-4">
             <InputField
-              type="text"
+              disabled={isPending}
+              readOnly
               id="email"
+              type="text"
               label="Email"
               {...register("email")}
               error={errors.email?.message}
@@ -245,6 +317,7 @@ export default function ProfileForm({
           </div>
           <div className="order-5">
             <InputField
+              disabled={isPending}
               type="text"
               id="userName"
               label="Username"
@@ -254,6 +327,7 @@ export default function ProfileForm({
           </div>
           <div className="order-6">
             <InputField
+              disabled={isPending}
               type="newPassword"
               id="newPassword"
               label="New Password"
@@ -261,13 +335,18 @@ export default function ProfileForm({
               error={errors.newPassword?.message}
             />
           </div>
-          {/* MARK: enable only if there is change in any of the value */}
+
           <Button
-            type="submit"
             size="lg"
+            type="submit"
+            disabled={!updateButtonDisable || isPending}
             className="md:col-span-2 w-fit justify-self-center-safe cursor-pointer order-7"
           >
-            Update
+            {isPending ? (
+              <Loader className="animate-spin size-4 mx-7" />
+            ) : (
+              "Update"
+            )}
           </Button>
         </div>
       </form>

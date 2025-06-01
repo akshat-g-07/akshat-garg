@@ -8,7 +8,7 @@ import ExploreAll from "@/pages/explore-all";
 import Profile from "@/pages/profile";
 import Favorites from "@/pages/favorites";
 import Trek from "@/pages/trek";
-import GetTrekByID from "@/apis/Trek/GetTrekByID";
+import { queryClient } from "@/lib/query-client";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +46,14 @@ export const router = createBrowserRouter([
   {
     path: "/trek/:trekID",
     Component: Trek,
-    loader: async ({ params }) => ({ trek: await GetTrekByID(params.trekID) }),
+    loader: async ({ params }) => {
+      const trekID = params.trekID;
+
+      const data = await queryClient.ensureQueryData({
+        queryKey: ["trek-by-trekID", trekID],
+      });
+
+      return { trek: data };
+    },
   },
 ]);

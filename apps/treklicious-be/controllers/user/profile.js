@@ -29,10 +29,9 @@ async function PUTProfile(req, res) {
     req.body;
 
   try {
-    const duplicateUserName = await userDetailsModel
-      .findOne({ userName })
-      .lean();
+    const duplicateUserName = await userDetailsModel.find({ userName }).lean();
     if (
+      duplicateUserName &&
       duplicateUserName.length > 0 &&
       duplicateUserName.some(
         (user) => user.userIDModel_id.toString() !== userIDModel_id
@@ -58,7 +57,7 @@ async function PUTProfile(req, res) {
     const userIDUpdated = await userIDObject.save();
 
     if (userDetailUpdated && userIDUpdated) {
-      res.sendStatus(200);
+      res.status(200).json({ message: "OK" });
     } else {
       res.sendStatus(400);
     }

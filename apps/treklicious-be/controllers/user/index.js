@@ -1,4 +1,9 @@
-const { GETFavorite, POSTFavorite, DELETEFavorite } = require("./favorite");
+const {
+  GETFavorite,
+  POSTFavorite,
+  DELETEFavorite,
+  CheckFavorite,
+} = require("./favorite");
 const { GETProfile, PUTProfile } = require("./profile");
 const Recommended = require("./recommended");
 
@@ -8,5 +13,6 @@ module.exports = {
   GETFavorite,
   POSTFavorite,
   DELETEFavorite,
+  CheckFavorite,
   Recommended,
 };

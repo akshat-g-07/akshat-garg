@@ -4,6 +4,7 @@ const {
 } = require("@repo/treklicious-constants");
 const { userIDModel } = require("../../models");
 const jwt = require("jsonwebtoken");
+const { getAccessToken } = require("../../utils/tokens");
 
 async function Refresh(req, res) {
   const cookies = req.cookies;
@@ -19,7 +20,7 @@ async function Refresh(req, res) {
 
     async (err, decoded) => {
       if (err) {
-        return res.sendStatus(403);
+        return res.status(401).json({ message: UNAUTHORIZED_RESPONSE });
       }
 
       const foundUser = await userIDModel.findById(decoded.userIDModel_id);

@@ -37,6 +37,7 @@ async function Signup(req, res) {
       userName,
       email,
       profile,
+      preferences: {},
     };
 
     const userDetailCreated = await userDetailsModel.create(userDetailsObject);
@@ -53,7 +54,7 @@ async function Signup(req, res) {
         maxAge: 7 * 24 * 60 * 60 * 1000,
       });
 
-      res.status(201).json({ accessToken });
+      res.status(201).json({ accessToken, user: userDetailsObject });
     } else {
       res.sendStatus(500);
     }

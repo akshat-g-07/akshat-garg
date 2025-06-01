@@ -1,15 +1,60 @@
 import SettingSetup from "@/components/common/setting-setup";
-import Treks from "@/assets/Treks.json";
 import ShowTreks from "@/components/common/show-treks";
+import { APIs } from "@/apis";
+import Loading from "@/components/common/loading";
+import Error from "@/components/common/error";
+import { useQuery } from "@tanstack/react-query";
+import Protected from "@/components/common/protected";
 
 export default function Favorites() {
-  return (
-    <SettingSetup>
-      <h2 className="pb-2 border-b-2 border-black w-full text-3xl font-semibold cursor-default">
-        Your favorites are:
-      </h2>
+  const trekQueryKey = "all-treks";
+  const { queryOptions: trekQueryOptions } = APIs[trekQueryKey];
+  const {
+    isLoading: isTrekLoading,
+    error: trekError,
+    data: Treks,
+  } = useQuery({
+    queryKey: [trekQueryKey],
+    ...trekQueryOptions,
+  });
 
-      <ShowTreks treks={Treks} />
-    </SettingSetup>
+  const favQueryKey = "get-favorites";
+  const {
+    isLoading: isFavLoading,
+    error: favError,
+    data: Favorites,
+  } = useQuery({
+    queryKey: [favQueryKey],
+  });
+
+  return (
+    <Protected>
+      <SettingSetup>
+        {isFavLoading || isTrekLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <h2 className="pb-2 border-b-2 border-black dark:border-white w-full text-3xl font-semibold cursor-default">
+              Your favorites are:
+            </h2>
+            {favError || trekError ? (
+              <Error />
+            ) : (
+              <>
+                {Favorites.length > 0 ? (
+                  <ShowTreks
+                    treks={Treks.filter((trek) => Favorites.includes(trek._id))}
+                  />
+                ) : (
+                  <p className="py-8 opacity-80 font-semibold">
+                    You have no favorite trek yet!
+                  </p>
+                )}
+              </>
+            )}
+          </>
+        )}
+      </SettingSetup>
+    </Protected>
   );
 }

@@ -1,6 +1,4 @@
-import Treks from "@/assets/Treks.json";
-
-// MARK: create a utility to calculate state and cache it for really long time as its coming from DB only right so it wont change for long time hence so no need to calculate it again and again and so cache it on both FE and BE, BE pr isiliye qki different FE can be requesting and all wont have cached live-11 1-02
+import { APIs } from "@/apis";
 import {
   Select,
   SelectContent,
@@ -8,10 +6,23 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useQuery } from "@tanstack/react-query";
 
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
-export default function Filters({ filterParam, filterVal, setFilters }) {
+export default function Filters({
+  isLoading,
+  filterParam,
+  filterVal,
+  setFilters,
+}) {
+  const queryKey = "all-treks";
+  const { queryOptions } = APIs[queryKey];
+  const { data: Treks } = useQuery({
+    queryKey: [queryKey],
+    ...queryOptions,
+  });
+
   const filterParamOptions = ["Recommended", "Season", "State", "Difficulty"];
 
   const filterValueOptions = useMemo(() => {
@@ -23,15 +34,25 @@ export default function Filters({ filterParam, filterVal, setFilters }) {
       case "Difficulty":
         return ["Easy", "Medium", "Hard"];
       case "State":
-        return [...new Set(Treks.map((trek) => trek.state))];
+        return [...new Set(Treks?.map((trek) => trek.state) || [])];
 
       default:
         return [];
     }
-  }, [filterParam]);
+  }, [filterParam, Treks]);
+
+  useEffect(() => {
+    if (filterParam === "Recommended")
+      setFilters((prev) => ({
+        ...prev,
+        filterVal: "Recommendations",
+      }));
+  }, [filterParam, setFilters]);
+
   return (
     <div className="flex-1 flex flex-col md:flex-row justify-evenly w-full items-center-safe gap-y-4 mt-8 md:mt-0">
       <Select
+        disabled={isLoading}
         value={filterParam}
         onValueChange={(val) => {
           setFilters({
@@ -53,8 +74,8 @@ export default function Filters({ filterParam, filterVal, setFilters }) {
       </Select>
 
       <Select
-        disabled={!filterValueOptions.length}
-        value={filterParam === "Recommended" ? "Recommendations" : filterVal}
+        disabled={!filterValueOptions.length || isLoading}
+        value={filterVal}
         onValueChange={(val) => {
           setFilters((prev) => ({
             ...prev,

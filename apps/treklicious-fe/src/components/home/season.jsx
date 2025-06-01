@@ -1,14 +1,28 @@
 import imgSrc from "../../assets/season-bg.jpg";
 import SectionTemplate from "./section-template";
-import Treks from "@/assets/Treks.json";
 import TileRow from "@/components/common/tile-row";
 
-export default function Season() {
+import Loading from "@/components/common/loading";
+import { useMemo } from "react";
+
+export default function Season({ Treks, isLoading }) {
   const rotatingPartDescriptions = ["Summer", "Monsoon", "Winter"];
-  // MARK: fetch treks from backend, summer array, monsoon array, winter array
-  const summerTreks = Treks.filter((trek) => trek.season === "Summer");
-  const monsoonTreks = Treks.filter((trek) => trek.season === "Monsoon");
-  const winterTreks = Treks.filter((trek) => trek.season === "Winter");
+
+  const summerTreks = useMemo(
+    () => Treks?.filter((trek) => trek.season === "Summer") ?? [],
+    [Treks]
+  );
+
+  const monsoonTreks = useMemo(
+    () => Treks?.filter((trek) => trek.season === "Monsoon") ?? [],
+    [Treks]
+  );
+
+  const winterTreks = useMemo(
+    () => Treks?.filter((trek) => trek.season === "Winter") ?? [],
+    [Treks]
+  );
+
   return (
     <SectionTemplate
       bgImgUrl={imgSrc}
@@ -18,9 +32,17 @@ export default function Season() {
       speed={0.75}
       className="px-0 bg-contain bg-[#A1D2CE] bg-right"
     >
-      {[summerTreks, monsoonTreks, winterTreks].map((seasonTreks, index) => (
-        <TileRow key={index} treks={seasonTreks} />
-      ))}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          {[summerTreks, monsoonTreks, winterTreks].map(
+            (seasonTreks, index) => (
+              <TileRow key={index} treks={seasonTreks} />
+            )
+          )}
+        </>
+      )}
     </SectionTemplate>
   );
 }
