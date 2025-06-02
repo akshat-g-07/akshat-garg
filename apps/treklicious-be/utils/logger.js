@@ -153,8 +153,6 @@ class logger {
   }
 
   static async log(message) {
-    console.log(process.env.NODE_ENV);
-    console.log(this.#dirPath);
     await this.#checkLatestLogFile();
 
     await fs.appendFile(
