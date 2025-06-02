@@ -8,7 +8,18 @@ router
   })
   .get("/:index", async (req, res) => {
     const { index } = req.params;
-    res.status(200).send(await logger.getLogFileContent(index));
+
+    const content = await logger.getLogFileContent(Number(index));
+
+    console.log("content in route");
+    console.log(content);
+
+    if (!content) {
+      return res.status(404).send("Log file not found");
+    }
+
+    res.setHeader("Content-Type", "text/html");
+    res.status(200).send(content);
   })
   .get("/delete/:index", async (req, res) => {
     const { index } = req.params;
