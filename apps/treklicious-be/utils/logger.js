@@ -7,8 +7,10 @@ const { GetDateTime } = require("./date-time");
 class logger {
   static #maxSizeBytes = 100 * 1024; // 100kB default
   static #backupCount = 5;
-  static #cwd = process.env.NODE_ENV === "production" ? "/tmp/" : __dirname;
-  static #dirPath = path.join(this.#cwd, "../logs");
+  static #cwd = process.env.NODE_ENV === "production" ? "/tmp" : __dirname;
+  static #logFolder =
+    process.env.NODE_ENV === "production" ? "/logs" : "../logs";
+  static #dirPath = path.join(this.#cwd, this.#logFolder);
   static #currentLogFile = "";
   static #logFilesCache = {};
   static #logFilesStatsCache = {};
@@ -152,6 +154,7 @@ class logger {
 
   static async log(message) {
     console.log(process.env.NODE_ENV);
+    console.log(this.#dirPath);
     await this.#checkLatestLogFile();
 
     await fs.appendFile(
