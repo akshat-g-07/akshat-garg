@@ -12,7 +12,7 @@ export default function Landing() {
   ];
   return (
     <>
-      <section className="space-y-16 p-10">
+      <section className="space-y-16">
         <div className="space-y-4">
           <h1 className="text-5xl md:text-7xl font-extrabold">RatVenture</h1>
           <p className="w-1/2 text-3xl">
