@@ -19,7 +19,7 @@ export default function Tile({
         src={src}
         alt={alt}
         className={cn(
-          "object-fit opacity-0 group-hover/tile:opacity-75",
+          "object-contain opacity-0 group-hover/tile:opacity-75 size-full",
           highlighted && "opacity-100 group-hover/tile:opacity-100"
         )}
       />
