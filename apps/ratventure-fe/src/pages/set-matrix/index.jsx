@@ -86,7 +86,7 @@ export default function SetMatrix() {
           variant="contained"
           endIcon={<ArrowForwardIos />}
           onClick={() => {
-            navigate("starting-point", {
+            navigate("/starting-point", {
               state: {
                 matrixSize,
               },
