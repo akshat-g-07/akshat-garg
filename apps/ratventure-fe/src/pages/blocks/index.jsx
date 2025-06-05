@@ -22,10 +22,12 @@ export default function Blocks() {
     if (!matrixSize) {
       alert("Please choose matrix size first!");
       navigate("/set-matrix");
+      return;
     }
     if (!startingPoint) {
       alert("Please choose starting point first!");
       navigate("/starting-point");
+      return;
     }
   }, [matrixSize, navigate, startingPoint]);
 
@@ -92,7 +94,11 @@ export default function Blocks() {
           variant="outlined"
           startIcon={<ArrowBackIosNew />}
           onClick={() => {
-            navigate("/starting-point");
+            navigate("/starting-point", {
+              state: {
+                matrixSize,
+              },
+            });
           }}
         >
           Back
@@ -103,7 +109,7 @@ export default function Blocks() {
           variant="contained"
           endIcon={<ArrowForwardIos />}
           onClick={() => {
-            navigate("/set-ending", {
+            navigate("/ending-point", {
               state: {
                 matrixSize,
                 startingPoint,
