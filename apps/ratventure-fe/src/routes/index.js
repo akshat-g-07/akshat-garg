@@ -1,5 +1,6 @@
 import Landing from "@/pages/landing";
 import SetMatrix from "@/pages/set-matrix";
+import StartingPoint from "@/pages/starting-point";
 import { createBrowserRouter } from "react-router";
 
 export const router = createBrowserRouter([
@@ -10,5 +11,9 @@ export const router = createBrowserRouter([
   {
     path: "/set-matrix",
     Component: SetMatrix,
+  },
+  {
+    path: "/starting-point",
+    Component: StartingPoint,
   },
 ]);
