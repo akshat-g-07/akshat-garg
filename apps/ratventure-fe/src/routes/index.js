@@ -1,3 +1,4 @@
+import Blocks from "@/pages/blocks";
 import Landing from "@/pages/landing";
 import SetMatrix from "@/pages/set-matrix";
 import StartingPoint from "@/pages/starting-point";
@@ -15,5 +16,9 @@ export const router = createBrowserRouter([
   {
     path: "/starting-point",
     Component: StartingPoint,
+  },
+  {
+    path: "/blocks",
+    Component: Blocks,
   },
 ]);
