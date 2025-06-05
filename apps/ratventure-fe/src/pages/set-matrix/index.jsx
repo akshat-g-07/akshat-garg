@@ -76,7 +76,7 @@ export default function SetMatrix() {
           variant="outlined"
           startIcon={<ArrowBackIosNew />}
           onClick={() => {
-            navigate(-1);
+            navigate("/");
           }}
         >
           Back
