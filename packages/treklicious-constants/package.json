@@ -10,5 +10,9 @@
   "scripts": {
     "dev": "npx tsup --watch",
     "build": "echo 'Running Build 3' && npx tsup"
+  },
+  "devDependencies": {
+    "tsup": "*",
+    "typescript": "*"
   }
 }
