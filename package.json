@@ -4,9 +4,9 @@
   "scripts": {
     "build:macos-portfolio": "turbo build --filter=macos-portfolio",
     "build:threejs-portfolio": "turbo build --filter=threejs-portfolio",
-    "build:treklicious-fe": "turbo build --filter=treklicious-constants --filter=treklicious-fe",
-    "build:treklicious-be": "echo 'Running Build 2' && turbo build --filter=treklicious-constants",
-    "build:treklicious": "turbo build --filter=*treklicious-*",
+    "build:treklicious-fe": "turbo build --filter=treklicious-fe",
+    "build:treklicious-be": "echo 'Running Build 2' && turbo build --filter=treklicious-be",
+    "build:treklicious": "turbo build --filter=treklicious-*",
     "build:noteworthy-ninja-privacy-policy": "turbo build --filter=noteworthy-ninja-privacy-policy",
     "build": "turbo build",
     "dev:macos-portfolio": "turbo dev --filter=macos-portfolio",
