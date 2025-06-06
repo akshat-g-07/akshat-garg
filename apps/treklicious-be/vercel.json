@@ -2,6 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [{ "source": "/(.*)", "destination": "/api" }],
   "outputDirectory": ".",
-  "buildCommand": "cd ../.. && npx turbo run build --filter=treklicious-be...",
+  "buildCommand": "cd ../.. && npm run build:treklicious-be...",
   "installCommand": "npm install --prefix=../.."
 }
