@@ -1,11 +1,4 @@
 {
-  "version": 2,
-  "buildCommand": "echo 'Running Build 1' && npm run build:repo",
-  "builds": [{ "src": "index.js", "use": "@vercel/node" }],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "index.js"
-    }
-  ]
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
 }

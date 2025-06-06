@@ -62,3 +62,5 @@ mongoose.connection.on("error", async (err) => {
   await logger.log(`Error in mongoose connection: ${err}`);
   console.log(`Error in mongoose connection: ${err}`);
 });
+
+module.exports = app
