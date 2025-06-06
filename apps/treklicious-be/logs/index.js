@@ -9,10 +9,14 @@ router
   .get("/:index", async (req, res) => {
     const { index } = req.params;
     res.status(200).send(await logger.getLogFileContent(index));
+    // demo commit
   })
   .get("/delete/:index", async (req, res) => {
     const { index } = req.params;
-    res.status(200).send(await logger.deleteLogFile(index));
+    res
+      .setHeader("Content-Type", "text/html")
+      .status(200)
+      .send(await logger.deleteLogFile(index));
   });
 
 module.exports = router;

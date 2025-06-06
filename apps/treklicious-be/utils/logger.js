@@ -7,7 +7,10 @@ const { GetDateTime } = require("./date-time");
 class logger {
   static #maxSizeBytes = 100 * 1024; // 100kB default
   static #backupCount = 5;
-  static #dirPath = path.join(__dirname, "../logs");
+  static #cwd = process.env.NODE_ENV === "production" ? "/tmp" : __dirname;
+  static #logFolder =
+    process.env.NODE_ENV === "production" ? "/logs" : "../logs";
+  static #dirPath = path.join(this.#cwd, this.#logFolder);
   static #currentLogFile = "";
   static #logFilesCache = {};
   static #logFilesStatsCache = {};
@@ -188,7 +191,8 @@ class logger {
       }
       const logFile = logFiles[index];
       const logFilePath = path.join(this.#dirPath, logFile);
-      const content = await fs.readFile(logFilePath, "utf8");
+      const content = fsSync.readFileSync(logFilePath, "utf8");
+
       return `<h1>File: ${logFile}</h1>${content.replace(/\n/g, "<br>")}`;
     } catch (err) {
       console.error("Error in getLogFileContent:", err);

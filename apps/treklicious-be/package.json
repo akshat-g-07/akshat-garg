@@ -7,6 +7,8 @@
     "dev": "nodemon --env-file=.env.dev index.js",
     "start": "node --env-file=.env.prod index.js",
     "seed-db": "node --env-file=.env.dev scripts/seed-db.js",
+    "build": "echo 'Build Success'",
+    "build:repo": "cd ../.. && npm run build:treklicious-be",
     "sync-indexes": "node --env-file=.env.dev scripts/sync-indexes.js"
   },
   "author": "Akshat Garg",
