@@ -2,6 +2,7 @@
   "name": "treklicious-be",
   "version": "1.0.0",
   "description": "backend of treklicious",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --env-file=.env.dev index.js",
