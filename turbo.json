@@ -6,7 +6,7 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**"]
     },
-    "treklicious-be": {
+    "treklicious-be#build": {
       "cache": false,
       "env": [
         "PORT",
