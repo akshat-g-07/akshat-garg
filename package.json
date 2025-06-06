@@ -23,7 +23,8 @@
     "@repo/eslint-config": "*",
     "prettier": "^3.2.5",
     "tsup": "^8.5.0",
-    "turbo": "^2.5.4"
+    "turbo": "^2.5.4",
+    "typescript": "^5.0.0"
   },
   "engines": {
     "node": ">=18"

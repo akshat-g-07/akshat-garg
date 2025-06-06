@@ -8,8 +8,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "npx tsup --watch",
-    "build": "echo 'Running Build 3' && npx tsup"
+    "dev": "tsup --watch",
+    "build": "echo 'Running Build 3' && tsup"
   },
   "devDependencies": {
     "tsup": "*",
