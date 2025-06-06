@@ -18,6 +18,9 @@
         "DATABASE_URI"
       ]
     },
+    "@repo/treklicious-constants#build": {
+      "outputs": ["dist/**"]
+    },
     "lint": {
       "dependsOn": ["^lint"]
     },
