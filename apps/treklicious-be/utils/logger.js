@@ -195,7 +195,14 @@ class logger {
       const logFilePath = path.join(this.#dirPath, logFile);
       console.log("logFilePath Present");
       console.log(logFilePath);
-      const content = await fs.readFile(logFilePath, "utf8");
+      // const content = await fs.readFile(logFilePath, "utf8");
+
+      if (!fsSync.existsSync(logFilePath)) {
+        return `File not found: ${logFile}`;
+      }
+
+      const content = fsSync.readFileSync(logFilePath, "utf8");
+
       console.log("content Present");
       console.log(content);
       return `<h1>File: ${logFile}</h1>${content.replace(/\n/g, "<br>")}`;

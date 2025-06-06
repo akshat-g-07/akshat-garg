@@ -9,6 +9,7 @@ router
   .get("/:index", async (req, res) => {
     const { index } = req.params;
 
+    console.log(`Attempting to get log file with index: ${index}`);
     const content = await logger.getLogFileContent(Number(index));
 
     console.log("content in route");
