@@ -12,7 +12,7 @@
     "build": "echo 'Running Build 3' && npx tsup"
   },
   "devDependencies": {
-    "tsup": "*",
-    "typescript": "*"
+    "tsup": "^8.5.0",
+    "typescript": "^5.0.0"
   }
 }
