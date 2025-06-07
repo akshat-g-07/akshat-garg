@@ -5,7 +5,7 @@
     "build:macos-portfolio": "turbo build --filter=macos-portfolio",
     "build:threejs-portfolio": "turbo build --filter=threejs-portfolio",
     "build:treklicious-fe": "turbo build --filter=treklicious-fe",
-    "build:treklicious-be": "echo 'Running Build 2' && turbo build --filter=treklicious-be",
+    "build:treklicious-be": "turbo build --filter=treklicious-be...",
     "build:treklicious": "turbo build --filter=treklicious-*",
     "build:noteworthy-ninja-privacy-policy": "turbo build --filter=noteworthy-ninja-privacy-policy",
     "build": "turbo build",
@@ -23,7 +23,8 @@
     "@repo/eslint-config": "*",
     "prettier": "^3.2.5",
     "tsup": "^8.5.0",
-    "turbo": "^1"
+    "turbo": "^2.5.4",
+    "typescript": "^5.0.0"
   },
   "engines": {
     "node": ">=18"

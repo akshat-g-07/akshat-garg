@@ -9,6 +9,10 @@
   ],
   "scripts": {
     "dev": "tsup --watch",
-    "build": "echo 'Running Build 3' && tsup"
+    "build": "tsup"
+  },
+  "dependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.0.0"
   }
 }
