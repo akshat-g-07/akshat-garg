@@ -4,8 +4,8 @@
   "description": "backend of treklicious",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --env-file=.env.dev api/index.js",
-    "start": "node --env-file=.env.prod api/index.js",
+    "dev": "nodemon --env-file=.env.dev index.js",
+    "start": "node --env-file=.env.prod index.js",
     "seed-db": "node --env-file=.env.dev scripts/seed-db.js",
     "build": "echo 'Build Success'",
     "sync-indexes": "node --env-file=.env.dev scripts/sync-indexes.js"
