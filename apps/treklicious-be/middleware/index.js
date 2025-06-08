@@ -25,7 +25,10 @@ router.use(logRequest, (req, res, next) => {
 
   console.log("3");
   if (NODE_ENV === "production") {
-    rateLimiter(req, res, next);
+    console.log("3.5");
+    console.log("HEADERS SENT?1", res.headersSent);
+    return rateLimiter(req, res, next);
+    console.log("HEADERS SENT?2", res.headersSent);
   }
   console.log("4");
 
