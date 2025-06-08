@@ -9,7 +9,6 @@ router
   .get("/:index", async (req, res) => {
     const { index } = req.params;
     res.status(200).send(await logger.getLogFileContent(index));
-    // demo commit
   })
   .get("/delete/:index", async (req, res) => {
     const { index } = req.params;
