@@ -4,12 +4,13 @@ const { trekDetailsModel } = require("../../models");
 async function AllTreks(req, res) {
   try {
     const trekList = await trekDetailsModel.find().lean();
-    res.status(200).send(trekList);
+
+    return res.status(200).send(trekList);
   } catch (error) {
     logger.log("Error in AllTreks");
     logger.log(error);
 
-    res.sendStatus(500);
+    return res.sendStatus(500);
   }
 }
 

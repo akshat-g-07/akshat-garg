@@ -10,5 +10,9 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup"
+  },
+  "dependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.0.0"
   }
 }

@@ -1,10 +1,25 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env.*local"],
-  "pipeline": {
+  "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+    },
+    "treklicious-be#build": {
+      "cache": false,
+      "env": [
+        "PORT",
+        "NODE_ENV",
+        "REFRESH_TOKEN_SECRET",
+        "ACCESS_TOKEN_SECRET",
+        "ADMIN_CODE",
+        "UI-ORIGIN",
+        "DATABASE_URI"
+      ]
+    },
+    "@repo/treklicious-constants#build": {
+      "outputs": ["dist/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]

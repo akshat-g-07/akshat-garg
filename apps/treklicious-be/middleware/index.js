@@ -22,7 +22,7 @@ router.use(logRequest, (req, res, next) => {
   }
 
   if (NODE_ENV === "production") {
-    rateLimiter(req, res, next);
+    return rateLimiter(req, res, next);
   }
 
   if (CheckProtectedRoute(req.url)) return verifyJWT(req, res, next);
