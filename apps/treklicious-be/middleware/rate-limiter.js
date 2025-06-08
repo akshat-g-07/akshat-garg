@@ -11,14 +11,10 @@ const rateLimiter = rateLimit({
     error: `Too Many Requests! Please try again after sometime.`,
   },
   handler: (req, res, next, options) => {
-    console.log("7");
-
     logger.log(
       `Too many requests: ${options.message.error}\t${req.url}\t${req.headers.origin}`
     );
-    console.log("8");
     return res.status(options.statusCode).send(options.message);
-    console.log("9");
   },
   standardHeaders: true,
   legacyHeaders: false,

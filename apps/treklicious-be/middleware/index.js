@@ -15,28 +15,19 @@ const adminRoutes = openRoutes.map((route) => route.route);
 adminRoutes.push("/");
 
 router.use(logRequest, (req, res, next) => {
-  console.log("2");
-
   if (adminRoutes.includes(req.path)) {
     const code = req.query.code;
     if (code !== ADMIN_CODE) return res.status(401).send("Unauthorized");
     return next();
   }
 
-  console.log("3");
   if (NODE_ENV === "production") {
-    console.log("3.5");
-    console.log("HEADERS SENT?1", res.headersSent);
     return rateLimiter(req, res, next);
-    console.log("HEADERS SENT?2", res.headersSent);
   }
-  console.log("4");
 
   if (CheckProtectedRoute(req.url)) return verifyJWT(req, res, next);
-  console.log("5");
 
   next();
-  console.log("6");
 });
 
 module.exports = router;
