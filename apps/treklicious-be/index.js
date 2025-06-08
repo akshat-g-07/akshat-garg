@@ -28,6 +28,7 @@ app.use(cookieParser());
 app.use(middleware);
 
 app.get("/", (req, res) => {
+  console.log("1");
   const ADMIN_CODE = process.env.ADMIN_CODE;
 
   const response = openRoutes
