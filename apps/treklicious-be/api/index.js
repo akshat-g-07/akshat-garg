@@ -4,16 +4,16 @@ const port = process.env.PORT || 3400;
 
 const mongoose = require("mongoose");
 cookieParser = require("cookie-parser");
-const dbConnect = require("./config/db-connect");
-const logger = require("./utils/logger");
+const dbConnect = require("../config/db-connect");
+const logger = require("../utils/logger");
 
-const middleware = require("./middleware");
+const middleware = require("../middleware");
 
-const openRoutes = require("./config/open-routes");
-const routes = require("./routes");
+const openRoutes = require("../config/open-routes");
+const routes = require("../routes");
 
 const cors = require("cors");
-const corsOptions = require("./config/cors-options");
+const corsOptions = require("../config/cors-options");
 
 app.use(cors(corsOptions));
 
@@ -28,6 +28,7 @@ app.use(cookieParser());
 app.use(middleware);
 
 app.get("/", (req, res) => {
+  console.log("1");
   const ADMIN_CODE = process.env.ADMIN_CODE;
 
   const response = openRoutes
@@ -43,8 +44,8 @@ app.get("/", (req, res) => {
     .join("");
   res.status(200).send(response);
 });
-app.use("/health", require("./health"));
-app.use("/logs", require("./logs"));
+app.use("/health", require("../health"));
+app.use("/logs", require("../logs"));
 
 app.use("/api", routes);
 
@@ -62,3 +63,5 @@ mongoose.connection.on("error", async (err) => {
   await logger.log(`Error in mongoose connection: ${err}`);
   console.log(`Error in mongoose connection: ${err}`);
 });
+
+module.exports = app;
