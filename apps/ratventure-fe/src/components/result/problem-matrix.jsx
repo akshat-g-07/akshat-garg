@@ -22,14 +22,18 @@ export default function ProblemMatrix({
                   ? jerry
                   : blocks?.includes(`${indx}_${i}`)
                     ? block
-                    : `${indx}_${i}` === endingPoint && cheese
+                    : `${indx}_${i}` === endingPoint
+                      ? cheese
+                      : undefined
               }
               alt={
                 `${indx}_${i}` === startingPoint
                   ? "jerry"
                   : blocks?.includes(`${indx}_${i}`)
                     ? "block"
-                    : `${indx}_${i}` === endingPoint && "cheese"
+                    : `${indx}_${i}` === endingPoint
+                      ? "cheese"
+                      : undefined
               }
               highlighted={
                 `${indx}_${i}` === startingPoint ||
