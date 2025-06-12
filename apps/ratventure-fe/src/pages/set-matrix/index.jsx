@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "@mui/material/Input";
 import Slider from "@mui/material/Slider";
 import Button from "@mui/material/Button";
@@ -9,6 +9,7 @@ import {
   WifiProtectedSetup,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router";
+import WakeUp from "@/apis/wake-up";
 
 export default function SetMatrix() {
   const navigate = useNavigate();
@@ -29,6 +30,10 @@ export default function SetMatrix() {
       setMatrixSize(9);
     }
   };
+
+  useEffect(() => {
+    WakeUp();
+  }, []);
 
   return (
     <Wrapper>
