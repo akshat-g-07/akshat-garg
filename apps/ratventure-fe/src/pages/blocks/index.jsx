@@ -38,7 +38,7 @@ export default function Blocks() {
         <div key={indx} className="flex">
           {[...new Array(matrixSize)].map((_, i) => (
             <Tile
-              alt="jerry"
+              alt={startingPoint === `${indx}_${i}` ? "jerry" : "block"}
               key={`${indx}_${i}`}
               src={startingPoint === `${indx}_${i}` ? jerry : block}
               className={

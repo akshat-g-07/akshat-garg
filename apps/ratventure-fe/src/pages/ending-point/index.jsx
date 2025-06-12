@@ -52,7 +52,13 @@ export default function EndingPoint() {
                     ? block
                     : cheese
               }
-              alt="jerry"
+              alt={
+                `${indx}_${i}` === startingPoint
+                  ? "jerry"
+                  : blocks?.includes(`${indx}_${i}`)
+                    ? "block"
+                    : "cheese"
+              }
               highlighted={
                 `${indx}_${i}` === startingPoint ||
                 blocks?.includes(`${indx}_${i}`) ||
