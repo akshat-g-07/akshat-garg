@@ -13,8 +13,8 @@ function SolveRecursion({
   visitedCol,
 }) {
   if (startRow === endRow && startCol === endCol) {
-    solution.solutionRow.push(visitedRow.slice());
-    solution.solutionCol.push(visitedCol.slice());
+    solution.solutionRows.push(visitedRow.slice());
+    solution.solutionCols.push(visitedCol.slice());
     return true;
   }
 

@@ -5,6 +5,7 @@ import ProblemMatrix from "@/components/result/problem-matrix";
 import CircularProgress from "@mui/material/CircularProgress";
 import SolutionMatrix from "@/components/result/solution-matrix";
 import NoSolution from "@/components/result/no-solution";
+import Solve from "@/apis/solve";
 
 export default function Result() {
   const navigate = useNavigate();
@@ -36,7 +37,17 @@ export default function Result() {
       return;
     }
 
-    // MARK: API call
+    const fetchSolution = async () => {
+      const response = await Solve({
+        matrixSize,
+        startingPoint,
+        blocks,
+        endingPoint,
+      });
+      setSolvedMatrix(response);
+    };
+
+    fetchSolution();
   }, [matrixSize, navigate, startingPoint, blocks, endingPoint]);
 
   return (
@@ -50,8 +61,11 @@ export default function Result() {
       />
 
       {solvedMatrix ? (
-        solvedMatrix.length > 0 ? (
-          <SolutionMatrix />
+        solvedMatrix.solution.solutionCols &&
+        solvedMatrix.solution.solutionCols.length > 0 &&
+        solvedMatrix.solution.solutionRows &&
+        solvedMatrix.solution.solutionRows.length > 0 ? (
+          <SolutionMatrix solution={solvedMatrix.solution} />
         ) : (
           <NoSolution />
         )

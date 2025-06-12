@@ -6,8 +6,12 @@ export default function AgainButton() {
 
   return (
     <Button
+      variant="contained"
       onClick={() => {
         navigate("/set-matrix");
+      }}
+      style={{
+        marginTop: "50px",
       }}
     >
       Let's Do It Again

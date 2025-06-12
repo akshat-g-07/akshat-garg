@@ -9,7 +9,7 @@ function SolveEngine({
   endRow,
   endCol,
 }) {
-  const solution = { solutionRow: [], solutionCol: [] };
+  const solution = { solutionRows: [], solutionCols: [] };
   const visitedRow = [];
   const visitedCol = [];
 
