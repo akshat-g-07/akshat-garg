@@ -1,0 +1,20 @@
+{
+  "name": "ratventure-be",
+  "version": "1.0.0",
+  "description": "backend of ratventure",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --env-file=.env.dev index.js",
+    "start": "node --env-file=.env.prod index.js",
+    "start:onrender": "node index.js"
+  },
+  "author": "Akshat Garg",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}

@@ -1,0 +1,12 @@
+import AgainButton from "./again-button";
+import sadJerry from "../../assets/sad-jerry.png";
+
+export default function NoSolution() {
+  return (
+    <>
+      <p className="font-bold text-lg"> There are no solutions!</p>
+      <img src={sadJerry} className="h-50" />
+      <AgainButton />
+    </>
+  );
+}

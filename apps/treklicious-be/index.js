@@ -17,8 +17,6 @@ const corsOptions = require("./config/cors-options");
 
 app.use(cors(corsOptions));
 
-app.set("trust proxy", 1);
-
 dbConnect();
 
 app.use(express.json({ limit: "50mb" }));
