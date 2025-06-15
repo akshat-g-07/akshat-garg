@@ -1,13 +1,14 @@
 import { useState } from "react";
-import copy from "copy-to-clipboard";
 import emailjs from "@emailjs/browser";
-import TextField from "@mui/material/TextField";
-import Tooltip from "@mui/material/Tooltip";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import SendIcon from "@mui/icons-material/Send";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
-import SendIcon from "@mui/icons-material/Send";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import TextField from "@mui/material/TextField";
+import Tooltip from "@mui/material/Tooltip";
+import copy from "copy-to-clipboard";
 import { motion } from "framer-motion";
+
 import IncomingAnimation from "../../globalComps/IncomingAnimation";
 
 const ContactSection = () => {

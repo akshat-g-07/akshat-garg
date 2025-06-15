@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
 import NextPrevButton from "../globalComps/NextPrevButton";
 import SocialHandles from "../globalComps/SocialHandles";
-import LandingSection from "./landingSection/LandingSection";
-import SkillSection from "./skillSection/SkillSection";
-import ProjectSection from "./projectSection/ProjectSection";
-import ExperienceSection from "./experienceSection/ExperienceSection";
-import EducationSection from "./educationSection/EducationSection";
-import HobbySection from "./hobbySection/HobbySection";
 import ContactSection from "./contactSection/ContactSection";
-import { AnimatePresence, motion } from "framer-motion";
+import EducationSection from "./educationSection/EducationSection";
+import ExperienceSection from "./experienceSection/ExperienceSection";
+import HobbySection from "./hobbySection/HobbySection";
+import LandingSection from "./landingSection/LandingSection";
+import ProjectSection from "./projectSection/ProjectSection";
+import SkillSection from "./skillSection/SkillSection";
 
 const AllSections = () => {
   const [sectionIndex, setSectionIndex] = useState(0);

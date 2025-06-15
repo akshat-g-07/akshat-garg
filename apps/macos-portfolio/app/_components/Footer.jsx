@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { createRoot } from "react-dom/client";
-import TerminalWindow from "./Terminal-Window";
+
 import NotesWindow from "./Notes-Window";
+import TerminalWindow from "./Terminal-Window";
 
 export default function Footer() {
   return (

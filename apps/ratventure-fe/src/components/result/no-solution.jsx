@@ -1,5 +1,5 @@
-import AgainButton from "./again-button";
 import sadJerry from "../../assets/sad-jerry.png";
+import AgainButton from "./again-button";
 
 export default function NoSolution() {
   return (

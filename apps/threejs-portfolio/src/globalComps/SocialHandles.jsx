@@ -1,6 +1,7 @@
-import SocialHandlesList from "./SocialHandlesList";
-import { motion } from "framer-motion";
 import Tooltip from "@mui/material/Tooltip";
+import { motion } from "framer-motion";
+
+import SocialHandlesList from "./SocialHandlesList";
 
 const SocialHandles = () => {
   return (

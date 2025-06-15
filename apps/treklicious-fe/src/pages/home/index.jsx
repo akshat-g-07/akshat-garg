@@ -1,11 +1,12 @@
 import { APIs } from "@/apis";
+import { useQuery } from "@tanstack/react-query";
+
 import Footer from "@/components/common/footer";
 import CallToAction from "@/components/home/call-to-action";
 import HeroSection from "@/components/home/hero-section";
 import Season from "@/components/home/season";
 import State from "@/components/home/state";
 import Testimonial from "@/components/home/testimonial";
-import { useQuery } from "@tanstack/react-query";
 
 export default function Home() {
   const queryKey = "all-treks";

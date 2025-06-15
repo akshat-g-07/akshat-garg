@@ -1,5 +1,6 @@
-import { cn } from "@/lib/utils";
 import { TriangleAlert } from "lucide-react";
+
+import { cn } from "@/lib/utils";
 
 export default function Error({ className }) {
   return (

@@ -1,6 +1,6 @@
 /* eslint-disable no-unexpected-multiline */
-import { motion } from "framer-motion";
 import { Skills } from "@repo/portfolio-details";
+import { motion } from "framer-motion";
 
 const SkillBody = () => {
   return (

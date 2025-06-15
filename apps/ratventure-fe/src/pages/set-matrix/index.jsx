@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
-import Input from "@mui/material/Input";
-import Slider from "@mui/material/Slider";
-import Button from "@mui/material/Button";
-import Wrapper from "@/components/common/wrapper";
+import WakeUp from "@/apis/wake-up";
 import {
   ArrowBackIosNew,
   ArrowForwardIos,
   WifiProtectedSetup,
 } from "@mui/icons-material";
+import Button from "@mui/material/Button";
+import Input from "@mui/material/Input";
+import Slider from "@mui/material/Slider";
 import { useNavigate } from "react-router";
-import WakeUp from "@/apis/wake-up";
+
+import Wrapper from "@/components/common/wrapper";
 
 export default function SetMatrix() {
   const navigate = useNavigate();

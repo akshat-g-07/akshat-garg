@@ -1,6 +1,7 @@
-import { Info, ArrowForwardIos } from "@mui/icons-material";
+import { ArrowForwardIos, Info } from "@mui/icons-material";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router";
+
 import Footer from "@/components/common/footer";
 
 export default function Landing() {

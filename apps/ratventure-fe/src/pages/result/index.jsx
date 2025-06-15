@@ -1,11 +1,12 @@
-import Wrapper from "@/components/common/wrapper";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
-import ProblemMatrix from "@/components/result/problem-matrix";
-import CircularProgress from "@mui/material/CircularProgress";
-import SolutionMatrix from "@/components/result/solution-matrix";
-import NoSolution from "@/components/result/no-solution";
 import Solve from "@/apis/solve";
+import CircularProgress from "@mui/material/CircularProgress";
+import { useLocation, useNavigate } from "react-router";
+
+import Wrapper from "@/components/common/wrapper";
+import NoSolution from "@/components/result/no-solution";
+import ProblemMatrix from "@/components/result/problem-matrix";
+import SolutionMatrix from "@/components/result/solution-matrix";
 
 export default function Result() {
   const navigate = useNavigate();

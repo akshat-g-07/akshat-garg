@@ -1,4 +1,13 @@
-import InputField from "@/components/common/input-field";
+import { useMemo, useState } from "react";
+import { APIs } from "@/apis";
+import { USERNAME_EXISTS_RESPONSE } from "@repo/treklicious-constants";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Loader } from "lucide-react";
+import Avatar from "react-avatar-edit";
+import { useForm, useWatch } from "react-hook-form";
+
+import { cn } from "@/lib/utils";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,16 +19,10 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import Avatar from "react-avatar-edit";
-import { useMemo, useState } from "react";
-import profilePlaceholderSrc from "../../assets/profile-placeholder.png";
 import { Button } from "@/components/ui/button";
-import { useForm, useWatch } from "react-hook-form";
-import { APIs } from "@/apis";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Loader } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { USERNAME_EXISTS_RESPONSE } from "@repo/treklicious-constants";
+import InputField from "@/components/common/input-field";
+
+import profilePlaceholderSrc from "../../assets/profile-placeholder.png";
 
 export default function ProfileForm({
   preferences,

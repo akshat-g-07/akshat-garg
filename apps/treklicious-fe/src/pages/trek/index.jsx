@@ -1,11 +1,13 @@
 import { APIs } from "@/apis";
-import BackButton from "@/components/common/back-button";
-import { Preferences } from "@/components/preferences/preferences";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Heart } from "lucide-react";
 import { useLoaderData } from "react-router";
+
 import { cn } from "@/lib/utils";
+
 import AuthAlert from "@/components/common/auth-alert";
+import BackButton from "@/components/common/back-button";
+import { Preferences } from "@/components/preferences/preferences";
 
 export default function Trek() {
   const queryClient = useQueryClient();

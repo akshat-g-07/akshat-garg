@@ -1,8 +1,10 @@
-import jerry from "../../assets/jerry.png";
+import { cn } from "@/lib/utils";
+
+import Tile from "@/components/common/tile";
+
 import block from "../../assets/block.png";
 import cheese from "../../assets/cheese.png";
-import Tile from "@/components/common/tile";
-import { cn } from "@/lib/utils";
+import jerry from "../../assets/jerry.png";
 
 export default function ProblemMatrix({
   matrixSize,

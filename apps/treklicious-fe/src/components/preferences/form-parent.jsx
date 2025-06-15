@@ -1,4 +1,5 @@
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
+
 import PreferenceForm from "./preference-form";
 
 const variants = {

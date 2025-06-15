@@ -1,9 +1,10 @@
-import imgSrc from "../../assets/season-bg.jpg";
-import SectionTemplate from "./section-template";
-import TileRow from "@/components/common/tile-row";
+import { useMemo } from "react";
 
 import Loading from "@/components/common/loading";
-import { useMemo } from "react";
+import TileRow from "@/components/common/tile-row";
+
+import imgSrc from "../../assets/season-bg.jpg";
+import SectionTemplate from "./section-template";
 
 export default function Season({ Treks, isLoading }) {
   const rotatingPartDescriptions = ["Summer", "Monsoon", "Winter"];

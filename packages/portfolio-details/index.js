@@ -1,7 +1,7 @@
-import Skills from "./Skills";
+import Achievements from "./Achievements";
+import Education from "./Education";
 import Experience from "./Experience";
 import Projects from "./Projects";
-import Education from "./Education";
-import Achievements from "./Achievements";
+import Skills from "./Skills";
 
 export { Skills, Experience, Projects, Education, Achievements };

@@ -1,20 +1,23 @@
-import InputField from "@/components/common/input-field";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { useForm } from "react-hook-form";
-import normalSrc from "../../assets/profile-normal.png";
-import passwordSrc from "../../assets/profile-password.png";
-import usernameSrc from "../../assets/profile-username.png";
-import { Auth, AuthBody, AuthFooter } from "@/components/common/auth-setup";
-import { useNavigate } from "react-router";
 import { APIs } from "@/apis";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { getAccessToken, setAccessToken } from "@/lib/access-token";
-import { Loader } from "lucide-react";
 import {
   PASSWORDS_DONT_MATCH_RESPONSE,
   USER_NOT_FOUND_RESPONSE,
 } from "@repo/treklicious-constants";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Loader } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+
+import { getAccessToken, setAccessToken } from "@/lib/access-token";
+
+import { Button } from "@/components/ui/button";
+import { Auth, AuthBody, AuthFooter } from "@/components/common/auth-setup";
+import InputField from "@/components/common/input-field";
+
+import normalSrc from "../../assets/profile-normal.png";
+import passwordSrc from "../../assets/profile-password.png";
+import usernameSrc from "../../assets/profile-username.png";
 
 export default function LogIn() {
   const queryClient = useQueryClient();

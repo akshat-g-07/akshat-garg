@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
+
+import DescriptionPart from "./DescriptionPart";
 import ImagesPart from "./ImagesPart";
 import NameLinkPart from "./NameLinkPart";
 import SkillPart from "./SkillPart";
-import DescriptionPart from "./DescriptionPart";
 
 const ProjectCard = ({ project }) => {
   return (

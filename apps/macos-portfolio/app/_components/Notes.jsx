@@ -1,7 +1,7 @@
 "use client";
 
-import Draggable from "react-draggable";
 import { useRef } from "react";
+import Draggable from "react-draggable";
 
 export default function Notes() {
   const notesNodeRef = useRef(null);

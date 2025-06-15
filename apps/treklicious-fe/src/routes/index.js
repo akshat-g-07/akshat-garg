@@ -1,13 +1,14 @@
-import { createBrowserRouter } from "react-router";
-import Home from "@/pages/home";
-import SignUp from "@/pages/sign-up";
-import LogIn from "@/pages/log-in";
-import Preferences from "@/pages/preferences";
 import Dashboard from "@/pages/dashboard";
 import ExploreAll from "@/pages/explore-all";
-import Profile from "@/pages/profile";
 import Favorites from "@/pages/favorites";
+import Home from "@/pages/home";
+import LogIn from "@/pages/log-in";
+import Preferences from "@/pages/preferences";
+import Profile from "@/pages/profile";
+import SignUp from "@/pages/sign-up";
 import Trek from "@/pages/trek";
+import { createBrowserRouter } from "react-router";
+
 import { queryClient } from "@/lib/query-client";
 
 export const router = createBrowserRouter([

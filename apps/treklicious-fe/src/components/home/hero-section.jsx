@@ -1,4 +1,6 @@
 import { useRef } from "react";
+import { useScroll } from "motion/react";
+
 import src01 from "../../assets/01.png";
 import src02 from "../../assets/02.png";
 import src03 from "../../assets/03.png";
@@ -6,7 +8,6 @@ import src04 from "../../assets/04.png";
 import src05 from "../../assets/05.png";
 import src06 from "../../assets/06.png";
 import src07 from "../../assets/07.png";
-import { useScroll } from "motion/react";
 import HeroSectionImageHolder from "./hero-section-image-holder";
 
 export default function HeroSection() {

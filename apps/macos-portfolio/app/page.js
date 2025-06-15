@@ -1,8 +1,9 @@
 "use client";
 
-import LockScreen from "./_components/Lock-Screen";
-import Body from "./_components/Body";
 import { useEffect, useState } from "react";
+
+import Body from "./_components/Body";
+import LockScreen from "./_components/Lock-Screen";
 
 export default function Home() {
   const [unlocked, setUnlocked] = useState(false);

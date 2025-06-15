@@ -1,11 +1,12 @@
-import { APIs } from "@/apis";
-import AuthAlert from "@/components/common/auth-alert";
-import Loading from "@/components/common/loading";
-import Error from "@/components/common/error";
-import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { APIs } from "@/apis";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router";
+
+import AuthAlert from "@/components/common/auth-alert";
+import Error from "@/components/common/error";
+import Loading from "@/components/common/loading";
 
 export default function Protected({ children }) {
   const navigate = useNavigate();

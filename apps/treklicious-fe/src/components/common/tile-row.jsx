@@ -1,4 +1,5 @@
 import { ChevronLeft } from "lucide-react";
+
 import Tile from "@/components/common/tile";
 
 export default function TileRow({ treks }) {

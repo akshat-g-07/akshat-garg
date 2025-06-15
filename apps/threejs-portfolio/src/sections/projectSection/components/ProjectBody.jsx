@@ -1,4 +1,5 @@
 import { Projects } from "@repo/portfolio-details";
+
 import ProjectCard from "./ProjectCard";
 
 const ProjectBody = () => {

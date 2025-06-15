@@ -1,5 +1,5 @@
-import fetchFunction from "@/lib/fetch";
 import { getAccessToken } from "@/lib/access-token";
+import fetchFunction from "@/lib/fetch";
 
 import { APIs } from ".";
 

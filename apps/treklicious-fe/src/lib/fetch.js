@@ -1,6 +1,7 @@
-import { customAlphabet } from "nanoid";
-import { getAccessToken, setAccessToken } from "./access-token";
 import { AUTH_ROUTE } from "@repo/treklicious-constants";
+import { customAlphabet } from "nanoid";
+
+import { getAccessToken, setAccessToken } from "./access-token";
 
 export default async function fetchFunction(url, options = {}) {
   const nanoid = customAlphabet("1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5);

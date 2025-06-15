@@ -1,4 +1,5 @@
 import AllSections from "./sections/AllSections";
+
 import "./App.css";
 
 function App() {

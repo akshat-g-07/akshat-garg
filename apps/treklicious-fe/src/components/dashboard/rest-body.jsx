@@ -1,8 +1,10 @@
-import ComponentGenerator from "@/lib/component-generator";
-import TrekSection from "./trek-section";
 import { APIs } from "@/apis";
 import { useQuery } from "@tanstack/react-query";
+
+import ComponentGenerator from "@/lib/component-generator";
+
 import Loading from "../common/loading";
+import TrekSection from "./trek-section";
 
 export default function RestBody() {
   const queryKey = "all-treks";
