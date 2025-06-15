@@ -1,6 +1,7 @@
 import { Info, ArrowForwardIos } from "@mui/icons-material";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router";
+import Footer from "@/components/common/footer";
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export default function Landing() {
   ];
   return (
     <>
-      <section className="space-y-16">
+      <section className="space-y-16 pt-5 pb-30">
         <div className="space-y-4">
           <h1 className="text-5xl md:text-7xl font-extrabold">RatVenture</h1>
           <p className="w-1/2 text-3xl">
@@ -43,6 +44,7 @@ export default function Landing() {
           Let the Ratventure begin!
         </Button>
       </section>
+      <Footer />
     </>
   );
 }
