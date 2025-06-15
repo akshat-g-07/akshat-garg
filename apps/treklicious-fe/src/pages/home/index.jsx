@@ -1,4 +1,5 @@
 import { APIs } from "@/apis";
+import Footer from "@/components/common/footer";
 import CallToAction from "@/components/home/call-to-action";
 import HeroSection from "@/components/home/hero-section";
 import Season from "@/components/home/season";
@@ -27,6 +28,7 @@ export default function Home() {
         {!error && <Season Treks={Treks} isLoading={isLoading} />}
         {!error && <State Treks={Treks} isLoading={isLoading} />}
         <Testimonial />
+        <Footer />
       </section>
     </>
   );
