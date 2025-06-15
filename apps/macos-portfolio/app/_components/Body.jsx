@@ -1,9 +1,10 @@
 import Image from "next/image";
+
 import DateTime from "./Date-Time";
 import Footer from "./Footer";
-import Terminal from "./Terminal";
-import PDFIcon from "./PDF-Icon";
 import Notes from "./Notes";
+import PDFIcon from "./PDF-Icon";
+import Terminal from "./Terminal";
 
 export default function Body() {
   return (

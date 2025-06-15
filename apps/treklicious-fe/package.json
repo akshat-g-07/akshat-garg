@@ -23,6 +23,7 @@
     "lucide-react": "^0.488.0",
     "motion": "^12.6.5",
     "nanoid": "^5.1.5",
+    "nookies": "^2.5.2",
     "react": "^19.0.0",
     "react-avatar-edit": "^1.2.0",
     "react-dom": "^19.0.0",

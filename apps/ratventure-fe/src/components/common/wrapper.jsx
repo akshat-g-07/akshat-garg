@@ -1,3 +1,5 @@
+import Footer from "@/components/common/footer";
+
 export default function Wrapper({ children }) {
   return (
     <>
@@ -8,6 +10,7 @@ export default function Wrapper({ children }) {
 
         <div className="flex flex-col items-center-safe py-8">{children}</div>
       </section>
+      <Footer />
     </>
   );
 }

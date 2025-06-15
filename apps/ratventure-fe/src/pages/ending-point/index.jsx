@@ -1,16 +1,18 @@
-import jerry from "../../assets/jerry.png";
-import block from "../../assets/block.png";
-import cheese from "../../assets/cheese.png";
-import Tile from "@/components/common/tile";
-import Wrapper from "@/components/common/wrapper";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
-import Button from "@mui/material/Button";
 import {
   ArrowBackIosNew,
   ArrowForwardIos,
   WifiProtectedSetup,
 } from "@mui/icons-material";
+import Button from "@mui/material/Button";
+import { useLocation, useNavigate } from "react-router";
+
+import Tile from "@/components/common/tile";
+import Wrapper from "@/components/common/wrapper";
+
+import block from "../../assets/block.png";
+import cheese from "../../assets/cheese.png";
+import jerry from "../../assets/jerry.png";
 
 export default function EndingPoint() {
   const navigate = useNavigate();

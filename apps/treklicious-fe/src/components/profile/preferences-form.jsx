@@ -1,4 +1,9 @@
+import { useMemo } from "react";
 import { APIs } from "@/apis";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Loader } from "lucide-react";
+import { Controller, useForm, useWatch } from "react-hook-form";
+
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -7,11 +12,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useMemo } from "react";
-import { useForm, Controller, useWatch } from "react-hook-form";
+
 import Loading from "../common/loading";
-import { Loader } from "lucide-react";
 
 export default function PreferencesForm({
   profile,

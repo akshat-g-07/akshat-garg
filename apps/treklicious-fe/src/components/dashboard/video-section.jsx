@@ -1,9 +1,11 @@
-import { Button } from "@/components/ui/button";
-import { Info } from "lucide-react";
 import { APIs } from "@/apis";
 import { useQuery } from "@tanstack/react-query";
-import Loading from "../common/loading";
+import { Info } from "lucide-react";
 import { useNavigate } from "react-router";
+
+import { Button } from "@/components/ui/button";
+
+import Loading from "../common/loading";
 
 export default function VideoSection() {
   const vidSrc = import.meta.env.VITE_DASHBOARD_VIDEO;

@@ -1,12 +1,14 @@
-import jerry from "../../assets/jerry.png";
-import block from "../../assets/block.png";
-import path from "../../assets/path.png";
-import cheese from "../../assets/cheese.png";
+import { useLocation } from "react-router";
+
+import IsPath from "@/lib/is-path";
+import { cn } from "@/lib/utils";
 
 import Tile from "@/components/common/tile";
-import { useLocation } from "react-router";
-import { cn } from "@/lib/utils";
-import IsPath from "@/lib/is-path";
+
+import block from "../../assets/block.png";
+import cheese from "../../assets/cheese.png";
+import jerry from "../../assets/jerry.png";
+import path from "../../assets/path.png";
 
 export default function IndividualMatrix({ title, colArray, rowArray }) {
   const location = useLocation();

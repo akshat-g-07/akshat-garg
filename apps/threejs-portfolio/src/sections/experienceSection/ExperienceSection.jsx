@@ -1,6 +1,7 @@
-import ExperienceBody from "./components/ExperienceBody";
-import IncomingAnimation from "../../globalComps/IncomingAnimation";
 import { motion } from "framer-motion";
+
+import IncomingAnimation from "../../globalComps/IncomingAnimation";
+import ExperienceBody from "./components/ExperienceBody";
 
 const ExperienceSection = () => {
   return (

@@ -1,6 +1,8 @@
-import ProjectBody from "./components/ProjectBody";
-import IncomingAnimation from "../../globalComps/IncomingAnimation";
 import { motion } from "framer-motion";
+
+import IncomingAnimation from "../../globalComps/IncomingAnimation";
+import ProjectBody from "./components/ProjectBody";
+
 const ProjectSection = () => {
   return (
     <div className="w-screen h-auto absolute top-16 flex flex-col select-none pl-10 pr-3 lg:pr-40 md:px-14">

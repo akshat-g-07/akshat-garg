@@ -1,3 +1,5 @@
+import { useLocation, useNavigate } from "react-router";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -8,7 +10,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { useLocation, useNavigate } from "react-router";
 
 export default function AuthAlert() {
   const navigate = useNavigate();

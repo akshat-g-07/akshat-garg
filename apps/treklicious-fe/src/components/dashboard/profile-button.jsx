@@ -1,15 +1,18 @@
+import React from "react";
+import { APIs } from "@/apis";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Heart, LogOut, Settings } from "lucide-react";
 import { Link, useNavigate } from "react-router";
-import normalSrc from "../../assets/profile-normal.png";
+
+import { cn } from "@/lib/utils";
+
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Heart, LogOut, Settings } from "lucide-react";
-import React from "react";
-import { cn } from "@/lib/utils";
-import { APIs } from "@/apis";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+
+import normalSrc from "../../assets/profile-normal.png";
 import Loading from "../common/loading";
 
 export default function ProfileButton({ isFocused }) {

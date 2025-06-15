@@ -1,4 +1,4 @@
-import { seasonLines, stateLines, difficultyLines } from "./section-heading";
+import { difficultyLines, seasonLines, stateLines } from "./section-heading";
 import TrekCategoryGenerator from "./trek-category-generator";
 
 const usedSectionHeads = [];

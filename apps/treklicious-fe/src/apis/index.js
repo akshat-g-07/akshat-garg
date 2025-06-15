@@ -1,7 +1,7 @@
 import {
+  AUTH_ROUTE,
   TREK_ROUTE,
   USER_ROUTE,
-  AUTH_ROUTE,
 } from "@repo/treklicious-constants";
 import { queryOptions } from "@tanstack/react-query";
 

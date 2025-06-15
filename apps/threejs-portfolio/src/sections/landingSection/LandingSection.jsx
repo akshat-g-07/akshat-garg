@@ -1,8 +1,9 @@
+import { motion } from "framer-motion";
+
+import IncomingAnimation from "../../globalComps/IncomingAnimation";
 import HelloWords from "./components/HelloWords";
 import NameDesc from "./components/NameDesc";
 import ResumeButton from "./components/ResumeButton";
-import { motion } from "framer-motion";
-import IncomingAnimation from "../../globalComps/IncomingAnimation";
 
 const LandingSection = () => {
   return (

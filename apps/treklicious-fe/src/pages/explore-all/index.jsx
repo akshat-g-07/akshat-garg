@@ -1,13 +1,14 @@
-import Protected from "@/components/common/protected";
-import BackButton from "@/components/common/back-button";
-import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
-import Filters from "@/components/explore-all/filters";
-import ShowTreks from "@/components/common/show-treks";
 import { APIs } from "@/apis";
 import { useQuery } from "@tanstack/react-query";
-import Loading from "@/components/common/loading";
+import { useLocation } from "react-router";
+
+import BackButton from "@/components/common/back-button";
 import Error from "@/components/common/error";
+import Loading from "@/components/common/loading";
+import Protected from "@/components/common/protected";
+import ShowTreks from "@/components/common/show-treks";
+import Filters from "@/components/explore-all/filters";
 
 export default function ExploreAll() {
   const location = useLocation();

@@ -6,8 +6,8 @@ const ImagesPart = ({ images, name }) => {
     name === "TrekLicious"
       ? "projectImageCarouselChild flex animate-projectSlideAnimationtreklicious"
       : name === "RatVenture"
-      ? "projectImageCarouselChild flex animate-projectSlideAnimationratventure"
-      : "projectImageCarouselChild flex animate-projectSlideAnimationgrillzilla";
+        ? "projectImageCarouselChild flex animate-projectSlideAnimationratventure"
+        : "projectImageCarouselChild flex animate-projectSlideAnimationgrillzilla";
   const divWidth = window.innerWidth < 768 ? "18rem" : "20rem";
   useEffect(() => {
     const copy = document

@@ -1,6 +1,7 @@
-import SkillBody from "./components/SkillBody";
 import { motion } from "framer-motion";
+
 import IncomingAnimation from "../../globalComps/IncomingAnimation";
+import SkillBody from "./components/SkillBody";
 
 const SkillSection = () => {
   return (

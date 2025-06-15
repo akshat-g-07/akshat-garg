@@ -1,6 +1,8 @@
-import HobbyBody from "./components/HobbyBody";
-import IncomingAnimation from "../../globalComps/IncomingAnimation";
 import { motion } from "framer-motion";
+
+import IncomingAnimation from "../../globalComps/IncomingAnimation";
+import HobbyBody from "./components/HobbyBody";
+
 const HobbySection = () => {
   return (
     <div className="w-screen h-auto absolute top-44 flex flex-col select-none pl-16 pr-3 md:px-14 lg:px-28 pb-12">

@@ -1,6 +1,7 @@
 import { Avatar } from "@mui/material";
-import IncomingAnimation from "../../globalComps/IncomingAnimation";
 import { motion } from "framer-motion";
+
+import IncomingAnimation from "../../globalComps/IncomingAnimation";
 
 const EducationSection = () => {
   return (

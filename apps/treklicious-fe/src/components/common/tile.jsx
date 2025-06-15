@@ -1,5 +1,6 @@
-import { cn } from "@/lib/utils";
 import { Link } from "react-router";
+
+import { cn } from "@/lib/utils";
 
 export default function Tile({ imgSrc, alt, title, link, className }) {
   return (

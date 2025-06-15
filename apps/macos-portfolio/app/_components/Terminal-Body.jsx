@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+
 import OnKeyDown from "./EventListener";
 
 export default function TerminalBody() {

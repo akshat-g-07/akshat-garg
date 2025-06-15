@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import Button from "@mui/material/Button";
-import PublicIcon from "@mui/icons-material/Public";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import PublicIcon from "@mui/icons-material/Public";
+import Button from "@mui/material/Button";
 
 const NameLinkPart = ({ name, github, live }) => {
   return (

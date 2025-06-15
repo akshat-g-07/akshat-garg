@@ -1,10 +1,12 @@
-import { cn } from "@/lib/utils";
-import { Search } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { APIs } from "@/apis";
 import { useQuery } from "@tanstack/react-query";
-import Loading from "../common/loading";
+import { Search } from "lucide-react";
 import { useNavigate } from "react-router";
+
+import { cn } from "@/lib/utils";
+
+import Loading from "../common/loading";
 
 export default function SearchBar({ isFocused, setIsFocused }) {
   const navigate = useNavigate();

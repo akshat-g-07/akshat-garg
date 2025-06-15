@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Preferences } from "./preferences";
-import { BadgeCheck, ChevronDown, ChevronUp } from "lucide-react";
 import { APIs } from "@/apis";
 import { useQuery } from "@tanstack/react-query";
+import { BadgeCheck, ChevronDown, ChevronUp } from "lucide-react";
+
 import Loading from "../common/loading";
+import { Preferences } from "./preferences";
 
 export default function PreferenceForm({
   answers,

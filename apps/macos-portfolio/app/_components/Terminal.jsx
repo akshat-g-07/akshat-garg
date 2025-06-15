@@ -1,7 +1,8 @@
 "use client";
 
-import Draggable from "react-draggable";
 import { useRef } from "react";
+import Draggable from "react-draggable";
+
 import TerminalWindow from "./Terminal-Window";
 
 export default function Terminal() {

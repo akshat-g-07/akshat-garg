@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Treklicious from "./Treklicious";
-import Ratventure from "./Ratventure";
+
 import Grillzilla from "./Grillzilla";
+import Ratventure from "./Ratventure";
+import Treklicious from "./Treklicious";
 
 export default function NotesBody() {
   const [projectToShow, setProjectToShow] = useState();

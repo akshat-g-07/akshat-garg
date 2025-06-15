@@ -1,12 +1,12 @@
 import {
-  HelpFunction,
   AboutFunction,
-  SkillsFunction,
+  AchievementsFunction,
   EducationFunction,
   ExperienceFunction,
-  ProjectsFunction,
-  AchievementsFunction,
+  HelpFunction,
   MailFunction,
+  ProjectsFunction,
+  SkillsFunction,
 } from "./Command-Values";
 import OnKeyDown from "./EventListener";
 

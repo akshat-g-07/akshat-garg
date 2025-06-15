@@ -1,8 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { ChevronLeft } from "lucide-react";
-
 import { useNavigate } from "react-router";
+
+import { cn } from "@/lib/utils";
+
+import { Button } from "@/components/ui/button";
 
 export default function BackButton({ className }) {
   const navigate = useNavigate();

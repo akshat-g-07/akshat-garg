@@ -1,10 +1,11 @@
+import { APIs } from "@/apis";
+import { useQuery } from "@tanstack/react-query";
+
+import Error from "@/components/common/error";
+import Loading from "@/components/common/loading";
+import Protected from "@/components/common/protected";
 import SettingSetup from "@/components/common/setting-setup";
 import ShowTreks from "@/components/common/show-treks";
-import { APIs } from "@/apis";
-import Loading from "@/components/common/loading";
-import Error from "@/components/common/error";
-import { useQuery } from "@tanstack/react-query";
-import Protected from "@/components/common/protected";
 
 export default function Favorites() {
   const trekQueryKey = "all-treks";

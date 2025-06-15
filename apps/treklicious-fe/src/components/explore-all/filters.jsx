@@ -1,4 +1,7 @@
+import { useEffect, useMemo } from "react";
 import { APIs } from "@/apis";
+import { useQuery } from "@tanstack/react-query";
+
 import {
   Select,
   SelectContent,
@@ -6,9 +9,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useQuery } from "@tanstack/react-query";
-
-import { useEffect, useMemo } from "react";
 
 export default function Filters({
   isLoading,

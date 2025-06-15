@@ -1,12 +1,13 @@
+import { useEffect, useMemo, useState } from "react";
 import { APIs } from "@/apis";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useLocation, useNavigate } from "react-router";
+
 import AuthAlert from "@/components/common/auth-alert";
 import { Auth, AuthBody } from "@/components/common/auth-setup";
 import FormParent from "@/components/preferences/form-parent";
 import PreferenceFooter from "@/components/preferences/preference-footer";
 import Stepper from "@/components/preferences/stepper";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useEffect, useMemo, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
 
 export default function Preferences() {
   const navigate = useNavigate();

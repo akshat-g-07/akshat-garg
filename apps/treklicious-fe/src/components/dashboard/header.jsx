@@ -1,9 +1,11 @@
-import { cn } from "@/lib/utils";
 import { useState } from "react";
-import Switch from "./switch";
+import { useTheme } from "@/providers/theme-provider";
+
+import { cn } from "@/lib/utils";
+
 import ProfileButton from "./profile-button";
 import SearchBar from "./search-bar";
-import { useTheme } from "@/providers/theme-provider";
+import Switch from "./switch";
 
 export default function Header() {
   const { setTheme } = useTheme();

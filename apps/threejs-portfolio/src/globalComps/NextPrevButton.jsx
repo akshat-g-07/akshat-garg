@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import { motion } from "framer-motion";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
+import { motion } from "framer-motion";
 
 const NextPrevButton = ({ sectionArray, setSectionIndex, sectionIndex }) => {
   return (

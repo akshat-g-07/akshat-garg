@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-import * as THREE from "three";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { FBXLoader } from "three/addons/loaders/FBXLoader.js";
 import gsap from "gsap";
+import * as THREE from "three";
+import { FBXLoader } from "three/addons/loaders/FBXLoader.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 let scene,
   renderer,
@@ -28,24 +28,24 @@ let scene,
           { x: -0.75, y: 1.5, z: 10 },
         ]
       : window.innerWidth < 1024
-      ? [
-          { x: 1, y: 2.5, z: 4 },
-          { x: 1, y: 2.5, z: 8 },
-          { x: -0.5, y: 3, z: 8 },
-          { x: -0.75, y: 1.5, z: 7.5 },
-          { x: 0, y: 1, z: 6.5 },
-          { x: -0.75, y: 2, z: 8 },
-          { x: -1, y: 2, z: 8 },
-        ]
-      : [
-          { x: 1, y: 2.5, z: 3.5 },
-          { x: 2.5, y: 1.5, z: 4.5 },
-          { x: -1.5, y: 1.5, z: 5 },
-          { x: -2, y: 1.5, z: 6 },
-          { x: 1.5, y: 1.5, z: 6.5 },
-          { x: 1.5, y: 1.5, z: 6.5 },
-          { x: -1.5, y: 1.5, z: 5 },
-        ];
+        ? [
+            { x: 1, y: 2.5, z: 4 },
+            { x: 1, y: 2.5, z: 8 },
+            { x: -0.5, y: 3, z: 8 },
+            { x: -0.75, y: 1.5, z: 7.5 },
+            { x: 0, y: 1, z: 6.5 },
+            { x: -0.75, y: 2, z: 8 },
+            { x: -1, y: 2, z: 8 },
+          ]
+        : [
+            { x: 1, y: 2.5, z: 3.5 },
+            { x: 2.5, y: 1.5, z: 4.5 },
+            { x: -1.5, y: 1.5, z: 5 },
+            { x: -2, y: 1.5, z: 6 },
+            { x: 1.5, y: 1.5, z: 6.5 },
+            { x: 1.5, y: 1.5, z: 6.5 },
+            { x: -1.5, y: 1.5, z: 5 },
+          ];
 
 init();
 
@@ -139,24 +139,24 @@ function onWindowResize() {
           { x: -0.75, y: 1.5, z: 10 },
         ]
       : window.innerWidth < 1024
-      ? [
-          { x: 1, y: 2.5, z: 4 },
-          { x: 1, y: 2.5, z: 8 },
-          { x: -0.5, y: 3, z: 8 },
-          { x: -0.75, y: 1.5, z: 7.5 },
-          { x: 0, y: 1, z: 6.5 },
-          { x: -0.75, y: 2, z: 8 },
-          { x: -1, y: 2, z: 8 },
-        ]
-      : [
-          { x: 1, y: 2.5, z: 3.5 },
-          { x: 2.5, y: 1.5, z: 4.5 },
-          { x: -1.5, y: 1.5, z: 5 },
-          { x: -2, y: 1.5, z: 6 },
-          { x: 1.5, y: 1.5, z: 6.5 },
-          { x: 1.5, y: 1.5, z: 6.5 },
-          { x: -1.5, y: 1.5, z: 5 },
-        ];
+        ? [
+            { x: 1, y: 2.5, z: 4 },
+            { x: 1, y: 2.5, z: 8 },
+            { x: -0.5, y: 3, z: 8 },
+            { x: -0.75, y: 1.5, z: 7.5 },
+            { x: 0, y: 1, z: 6.5 },
+            { x: -0.75, y: 2, z: 8 },
+            { x: -1, y: 2, z: 8 },
+          ]
+        : [
+            { x: 1, y: 2.5, z: 3.5 },
+            { x: 2.5, y: 1.5, z: 4.5 },
+            { x: -1.5, y: 1.5, z: 5 },
+            { x: -2, y: 1.5, z: 6 },
+            { x: 1.5, y: 1.5, z: 6.5 },
+            { x: 1.5, y: 1.5, z: 6.5 },
+            { x: -1.5, y: 1.5, z: 5 },
+          ];
   camera.position.set(
     timelineArray[timelineIndex].x,
     timelineArray[timelineIndex].y,

@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { Collapse } from "@chakra-ui/react";
-import { ListItem, UnorderedList } from "@chakra-ui/react";
+import { Collapse, ListItem, UnorderedList } from "@chakra-ui/react";
 
 const DescriptionPart = ({ description }) => {
   const [show, setShow] = useState(false);

@@ -1,5 +1,7 @@
+import { Link, useLocation } from "react-router";
+
 import { cn } from "@/lib/utils";
-import { useLocation, Link } from "react-router";
+
 import BackButton from "./back-button";
 
 export default function Sidebar() {

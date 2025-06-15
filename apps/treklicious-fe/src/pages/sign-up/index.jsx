@@ -1,5 +1,18 @@
-import { Auth, AuthBody, AuthFooter } from "@/components/common/auth-setup";
-import InputField from "@/components/common/input-field";
+import { useEffect, useState } from "react";
+import { APIs } from "@/apis";
+import {
+  EMAIL_EXISTS_RESPONSE,
+  USERNAME_EXISTS_RESPONSE,
+} from "@repo/treklicious-constants";
+import { useMutation } from "@tanstack/react-query";
+import { Loader } from "lucide-react";
+import Avatar from "react-avatar-edit";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+
+import { getAccessToken, setAccessToken } from "@/lib/access-token";
+import { cn } from "@/lib/utils";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,21 +24,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import Avatar from "react-avatar-edit";
-import { useEffect, useState } from "react";
-import profilePlaceholderSrc from "../../assets/profile-placeholder.png";
 import { Button } from "@/components/ui/button";
-import { useForm } from "react-hook-form";
-import { APIs } from "@/apis";
-import { useMutation } from "@tanstack/react-query";
-import { getAccessToken, setAccessToken } from "@/lib/access-token";
-import { cn } from "@/lib/utils";
-import { useNavigate } from "react-router";
-import { Loader } from "lucide-react";
-import {
-  EMAIL_EXISTS_RESPONSE,
-  USERNAME_EXISTS_RESPONSE,
-} from "@repo/treklicious-constants";
+import { Auth, AuthBody, AuthFooter } from "@/components/common/auth-setup";
+import InputField from "@/components/common/input-field";
+
+import profilePlaceholderSrc from "../../assets/profile-placeholder.png";
 
 export default function SignUp() {
   const navigate = useNavigate();

@@ -1,8 +1,11 @@
-import { useEffect, useState, useMemo } from "react";
-import SectionTemplate from "./section-template";
+import { useEffect, useMemo, useState } from "react";
+
 import { cn } from "@/lib/utils";
-import Tile from "@/components/common/tile";
+
 import Loading from "@/components/common/loading";
+import Tile from "@/components/common/tile";
+
+import SectionTemplate from "./section-template";
 
 export default function State({ Treks, isLoading }) {
   const imgSrc =
