@@ -33,7 +33,7 @@ export default function Footer() {
   ];
 
   const config =
-    ref === "rec" ? globalConfig.slice(0, 1) : globalConfig.slice(1);
+  ref === "rec" ? globalConfig.slice(0, 1) : ref === "oth" ? globalConfig.slice(1) : [];
 
   return (
     <footer className="w-full left-0 !h-fit border-t border-grid px-8 sm:px-6 md:px-12 py-5 justify-center fixed bottom-0 bg-gray-800 text-white z-50">
