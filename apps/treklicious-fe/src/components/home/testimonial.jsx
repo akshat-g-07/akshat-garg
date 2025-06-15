@@ -31,7 +31,7 @@ const testimonials = [
 export default function Testimonial() {
   return (
     <SectionTemplate subTitle="for all!" speed={0}>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 auto-rows-[minmax(270px,auto)] items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-2 gap-16 auto-rows-[minmax(270px,auto)] items-center mb-25">
         {testimonials.map((item, index) => (
           <TestimonialTile key={index} text={item.text} name={item.name} />
         ))}
