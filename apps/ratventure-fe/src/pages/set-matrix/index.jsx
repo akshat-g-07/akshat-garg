@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import WakeUp from "@/apis/wake-up";
+import { useState } from "react";
 import {
   ArrowBackIosNew,
   ArrowForwardIos,
@@ -31,10 +30,6 @@ export default function SetMatrix() {
       setMatrixSize(9);
     }
   };
-
-  useEffect(() => {
-    WakeUp();
-  }, []);
 
   return (
     <Wrapper>

@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import WakeUp from "@/apis/wake-up";
 import { ArrowForwardIos, Info } from "@mui/icons-material";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router";
@@ -5,6 +7,7 @@ import { useNavigate } from "react-router";
 import Footer from "@/components/common/footer";
 
 export default function Landing() {
+  const [response, setResponse] = useState();
   const navigate = useNavigate();
   const rules = [
     "Pick the size of matrix.",
@@ -12,6 +15,20 @@ export default function Landing() {
     "Pick the blocks positions'.",
     "Pick the ending point.",
   ];
+
+  useEffect(() => {
+    async function CallWakeUp() {
+      const response = await WakeUp();
+      console.log("14", response);
+      console.log("15", response.ok);
+      console.log("16", response.status);
+      setResponse(response.ok);
+    }
+    CallWakeUp();
+  }, []);
+
+  console.log(response);
+
   return (
     <>
       <section className="space-y-16 pt-5 pb-30">
@@ -45,7 +62,7 @@ export default function Landing() {
           Let the Ratventure begin!
         </Button>
       </section>
-      <Footer />
+      <Footer response={response} />
     </>
   );
 }
