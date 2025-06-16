@@ -31,6 +31,7 @@ export default function Ref({ children }) {
     const windowURL = window.location.origin + window.location.pathname;
     console.log("6", windowURL);
     window.history.replaceState({}, document.title, windowURL);
+    window.location.reload();
   }, [ref, refVal]);
 
   return <>{children}</>;
