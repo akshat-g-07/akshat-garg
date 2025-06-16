@@ -19,15 +19,10 @@ export default function Landing() {
   useEffect(() => {
     async function CallWakeUp() {
       const response = await WakeUp();
-      console.log("14", response);
-      console.log("15", response.ok);
-      console.log("16", response.status);
       setResponse(response.ok);
     }
     CallWakeUp();
   }, []);
-
-  console.log(response);
 
   return (
     <>
