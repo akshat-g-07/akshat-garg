@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import WakeUp from "@/apis/wake-up";
 import { ArrowForwardIos, Info } from "@mui/icons-material";
 import Button from "@mui/material/Button";
@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import Footer from "@/components/common/footer";
 
 export default function Landing() {
+  const [response, setResponse] = useState();
   const navigate = useNavigate();
   const rules = [
     "Pick the size of matrix.",
@@ -21,9 +22,12 @@ export default function Landing() {
       console.log("14", response);
       console.log("15", response.ok);
       console.log("16", response.status);
+      setResponse(response.ok);
     }
     CallWakeUp();
   }, []);
+
+  console.log(response);
 
   return (
     <>
