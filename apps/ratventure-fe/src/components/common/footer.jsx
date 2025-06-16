@@ -6,11 +6,31 @@ import { cn } from "@/lib/utils";
 
 export default function Footer() {
   const [config, setConfig] = useState([]);
-  const cookies = parseCookies();
-  console.log("7", cookies);
+  const [ref, setRef] = useState([]);
+  // const cookies = parseCookies();
+  // console.log("7", cookies);
 
-  const ref = cookies.ref;
+  // const ref = cookies.ref;
   console.log("8", ref);
+
+  useEffect(() => {
+    console.log("11");
+
+    function updateRef(testVal) {
+      console.log("12");
+      if (testVal) console.log("13");
+      const cookies = parseCookies();
+      setRef(cookies.ref);
+    }
+
+    updateRef("testVal");
+
+    window.addEventListener("cookiechange", updateRef);
+
+    return () => {
+      window.removeEventListener("cookiechange", updateRef);
+    };
+  }, []);
 
   useEffect(() => {
     console.log("10");
@@ -42,6 +62,7 @@ export default function Footer() {
     if (ref === "rec") setConfig(globalConfig.slice(0, 1));
     if (ref === "oth") setConfig(globalConfig.slice());
   }, [ref]);
+
   console.log("9", config);
 
   return (
