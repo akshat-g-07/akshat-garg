@@ -13,6 +13,7 @@ export default function Footer() {
   console.log("8", ref);
 
   useEffect(() => {
+    console.log("10");
     const AG_URL = import.meta.env.VITE_AG_URL || "https://akshat-garg.com";
     const PV_URL = import.meta.env.VITE_PV_URL || "https://pixelventurers.com";
     const IJ_URL = import.meta.env.VITE_IJ_URL || "https://initiatejs.dev";
