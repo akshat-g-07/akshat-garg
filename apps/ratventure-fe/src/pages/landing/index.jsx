@@ -62,7 +62,7 @@ export default function Landing() {
           Let the Ratventure begin!
         </Button>
       </section>
-      <Footer />
+      <Footer response={response} />
     </>
   );
 }

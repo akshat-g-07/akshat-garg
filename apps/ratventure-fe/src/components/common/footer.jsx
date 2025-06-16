@@ -4,35 +4,38 @@ import { parseCookies } from "nookies";
 
 import { cn } from "@/lib/utils";
 
-export default function Footer() {
+export default function Footer({ response }) {
   const [config, setConfig] = useState([]);
-  const [ref, setRef] = useState([]);
+  // const [ref, setRef] = useState([]);
   // const cookies = parseCookies();
   // console.log("7", cookies);
 
   // const ref = cookies.ref;
-  console.log("8", ref);
+  // console.log("8", ref);
+
+  // useEffect(() => {
+  //   console.log("11");
+
+  //   function updateRef(testVal) {
+  //     console.log("12");
+  //     if (testVal) console.log("13");
+  //     const cookies = parseCookies();
+  //     setRef(cookies.ref);
+  //   }
+
+  //   updateRef("testVal");
+
+  //   window.addEventListener("cookiechange", updateRef);
+
+  //   return () => {
+  //     window.removeEventListener("cookiechange", updateRef);
+  //   };
+  // }, []);
 
   useEffect(() => {
-    console.log("11");
+    const cookies = parseCookies();
+    const ref = cookies.ref;
 
-    function updateRef(testVal) {
-      console.log("12");
-      if (testVal) console.log("13");
-      const cookies = parseCookies();
-      setRef(cookies.ref);
-    }
-
-    updateRef("testVal");
-
-    window.addEventListener("cookiechange", updateRef);
-
-    return () => {
-      window.removeEventListener("cookiechange", updateRef);
-    };
-  }, []);
-
-  useEffect(() => {
     console.log("10");
     const AG_URL = import.meta.env.VITE_AG_URL || "https://akshat-garg.com";
     const PV_URL = import.meta.env.VITE_PV_URL || "https://pixelventurers.com";
@@ -61,7 +64,7 @@ export default function Footer() {
 
     if (ref === "rec") setConfig(globalConfig.slice(0, 1));
     if (ref === "oth") setConfig(globalConfig.slice());
-  }, [ref]);
+  }, [response]);
 
   console.log("9", config);
 
