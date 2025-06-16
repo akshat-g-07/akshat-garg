@@ -1,46 +1,46 @@
+import { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { parseCookies } from "nookies";
 
 import { cn } from "@/lib/utils";
 
 export default function Footer() {
+  const [config, setConfig] = useState([]);
   const cookies = parseCookies();
   console.log("7", cookies);
 
   const ref = cookies.ref;
   console.log("8", ref);
 
-  const AG_URL = import.meta.env.VITE_AG_URL || "https://akshat-garg.com";
-  const PV_URL = import.meta.env.VITE_PV_URL || "https://pixelventurers.com";
-  const IJ_URL = import.meta.env.VITE_IJ_URL || "https://initiatejs.dev";
+  useEffect(() => {
+    const AG_URL = import.meta.env.VITE_AG_URL || "https://akshat-garg.com";
+    const PV_URL = import.meta.env.VITE_PV_URL || "https://pixelventurers.com";
+    const IJ_URL = import.meta.env.VITE_IJ_URL || "https://initiatejs.dev";
 
-  const globalConfig = [
-    {
-      label: "Made By",
-      name: "Akshat Garg",
-      url: AG_URL,
-      className: "text-blue-500",
-    },
-    {
-      label: "Made By",
-      name: "Pixel Venturers",
-      url: PV_URL,
-      className: "text-blue-500",
-    },
-    {
-      label: "Powered By",
-      name: "InitiateJS",
-      url: IJ_URL,
-      className: "text-yellow-500",
-    },
-  ];
+    const globalConfig = [
+      {
+        label: "Made By",
+        name: "Akshat Garg",
+        url: AG_URL,
+        className: "text-blue-500",
+      },
+      {
+        label: "Made By",
+        name: "Pixel Venturers",
+        url: PV_URL,
+        className: "text-blue-500",
+      },
+      {
+        label: "Powered By",
+        name: "InitiateJS",
+        url: IJ_URL,
+        className: "text-yellow-500",
+      },
+    ];
 
-  const config =
-    ref === "rec"
-      ? globalConfig.slice(0, 1)
-      : ref === "oth"
-        ? globalConfig.slice(1)
-        : [];
+    if (ref === "rec") setConfig(globalConfig.slice(0, 1));
+    if (ref === "oth") setConfig(globalConfig.slice());
+  }, [ref]);
   console.log("9", config);
 
   return (
