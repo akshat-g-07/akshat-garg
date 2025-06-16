@@ -49,3 +49,23 @@ This is a monorepo (Turborepo) containing all my projects and portfolios.
    </p>
 
    ![Project Image](./apps/threejs-portfolio/snaps/landingsection.png)
+
+3. [TrekLicious](./apps/treklicious-fe/README.md) :
+   A full stack application built for trek lovers built using MERN.
+   <p align="right">
+      <a rel="noopener noreferrer" target="_blank" href="https://treklicious.akshat-garg.com/?ref=rec">
+      (Live Link)
+      </a>
+   </p>
+
+   ![Project Image](./apps/treklicious-fe/snaps/landing.png)
+
+3. [RatVenture](./apps/ratventure-fe/README.md) :
+   Visualization of Rat In A Maze Problem.
+   <p align="right">
+      <a rel="noopener noreferrer" target="_blank" href="https://ratventure.akshat-garg.com/?ref=rec">
+      (Live Link)
+      </a>
+   </p>
+
+   ![Project Image](./apps/ratventure-fe/snaps/ending.png)
