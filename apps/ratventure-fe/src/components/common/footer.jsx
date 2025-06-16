@@ -5,7 +5,10 @@ import { cn } from "@/lib/utils";
 
 export default function Footer() {
   const cookies = parseCookies();
+  console.log("7", cookies);
+
   const ref = cookies.ref;
+  console.log("8", ref);
 
   const AG_URL = import.meta.env.VITE_AG_URL || "https://akshat-garg.com";
   const PV_URL = import.meta.env.VITE_PV_URL || "https://pixelventurers.com";
@@ -33,7 +36,12 @@ export default function Footer() {
   ];
 
   const config =
-  ref === "rec" ? globalConfig.slice(0, 1) : ref === "oth" ? globalConfig.slice(1) : [];
+    ref === "rec"
+      ? globalConfig.slice(0, 1)
+      : ref === "oth"
+        ? globalConfig.slice(1)
+        : [];
+  console.log("9", config);
 
   return (
     <footer className="w-full left-0 !h-fit border-t border-grid px-8 sm:px-6 md:px-12 py-5 justify-center fixed bottom-0 bg-gray-800 text-white z-50">
