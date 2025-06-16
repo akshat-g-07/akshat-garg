@@ -1,12 +1,40 @@
-# React + Vite
+<h1 align="center">
+<a rel="noopener noreferrer" target="_blank" href="https://ratventure.akshat-garg.com/?ref=rec">
+RatVenture
+</a>
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+ Visualization of Rat In A Maze Problem.<br/>This is frontend code, backend code is available <a href="../ratventure-be/README.md">here</a>.
+</p>
 
-Currently, two official plugins are available:
+<hr />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Tech Used:
 
-## Expanding the ESLint configuration
+- Vite v6
+- React v19
+- Tailwind v4
+- React Router v7
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+<hr />
+
+### Features:
+
+- Set the size of matrix.<br/>
+  ![Matrix](./snaps/matrix.png)
+
+- Set the starting point.<br/>
+  ![Starting](./snaps/starting.png)
+
+- Set the blocks.<br/>
+  ![Blocks](./snaps/blocks.png)
+
+- Set the ending point.<br/>
+  ![Ending](./snaps/ending.png)
+
+- User can randomly generate above parameters.<br/>
+  ![Random](./snaps/random.png)
+
+- After setting all parameters, the user can see the result(s).<br/>
+  ![Result](./snaps/result.png)
