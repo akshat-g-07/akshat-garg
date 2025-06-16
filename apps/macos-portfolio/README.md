@@ -12,19 +12,19 @@ MacOS Portfolio
 
 ### Features:
 
-- A Lock Screen where user puts his name to Sign In.
+- A Lock Screen where user puts his name to Sign In.<br/>
   ![Lock Screen](./snaps/lockscreen.png)
 
-- User can enter various commands in terminal to get desired output.
+- User can enter various commands in terminal to get desired output.<br/>
   ![Home Screen](./snaps/homescreen.png)
 
 - There's a Resume icon on home screen for user to download my resume directly.<br/>
   ![Resume](./snaps/resume.png)
 
-- There's a responsive footer as well. Different Icons perform different sections.
+- There's a responsive footer as well. Different Icons perform different sections.<br/>
   ![Footer](./snaps/footer.png)
 
-- From Notes App Icon, user can open an interface showing all of my projects.
+- From Notes App Icon, user can open an interface showing all of my projects.<br/>
   ![Projects](./snaps/projects.png)
 
 - There's a dynamic clock at top left corner of screen.<br/>
