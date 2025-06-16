@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import WakeUp from "@/apis/wake-up";
 import { ArrowForwardIos, Info } from "@mui/icons-material";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router";
@@ -12,6 +14,17 @@ export default function Landing() {
     "Pick the blocks positions'.",
     "Pick the ending point.",
   ];
+
+  useEffect(() => {
+    async function CallWakeUp() {
+      const response = await WakeUp();
+      console.log("14", response);
+      console.log("15", response.ok);
+      console.log("16", response.status);
+    }
+    CallWakeUp();
+  }, []);
+
   return (
     <>
       <section className="space-y-16 pt-5 pb-30">
