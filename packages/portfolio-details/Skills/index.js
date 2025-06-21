@@ -1,26 +1,26 @@
 const Skills = [
   {
-    name: "Dot Net Core",
-    imgName: "netcore.png",
+    name: "NextJS",
+    imgName: "nextjs.png",
   },
   {
-    name: "Entity Framework Core",
-    imgName: "efcore.png",
-  },
-  {
-    name: "C#",
-    imgName: "csharp.png",
-  },
-  {
-    name: "SQL",
-    imgName: "sql.png",
-  },
-  {
-    name: "React JS",
+    name: "ReactJS",
     imgName: "reactjs.png",
   },
   {
-    name: "JS/CSS/HTML",
+    name: "Tailwind CSS",
+    imgName: "tailwind.png",
+  },
+  {
+    name: "Express",
+    imgName: "expressjs.png",
+  },
+  {
+    name: "NodeJS",
+    imgName: "nodejs.png",
+  },
+  {
+    name: "Javascript/CSS/HTML",
     imgName: "javascript.png",
   },
 ];
