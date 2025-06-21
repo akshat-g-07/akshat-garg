@@ -1,4 +1,4 @@
-import { About, Skills } from "@repo/portfolio-details";
+import { About, Education, Skills } from "@repo/portfolio-details";
 
 export function HelpFunction() {
   return `<table style="width:50%; text-align: left;">
@@ -62,7 +62,6 @@ export function HelpFunction() {
 }
 
 export function AboutFunction() {
-  console.log("About", About);
   return About;
 }
 
@@ -87,7 +86,18 @@ export function SkillsFunction() {
 }
 
 export function EducationFunction() {
-  return "I'm proud to be an alumnus of NIT Patna, where I completed my B.Tech degree from 2017 to 2021.";
+  const educationNode = document.createElement("div");
+  educationNode.classList = "w-full h-fit";
+  educationNode.innerHTML = `
+  <h3 class="font-semibold text-lg">
+    ${Education.instituteFullName}
+  </h3>
+  <div class="w-full flex justify-between items-center">
+    <p>${Education.degree}</p>
+    <p>(${Education.duration})</p>
+  </div>
+  `;
+  return educationNode;
 }
 
 export function ExperienceFunction() {

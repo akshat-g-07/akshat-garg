@@ -42,7 +42,7 @@ export default function EnterKey(event) {
       commandOutputNode.appendChild(SkillsFunction());
       break;
     case "education":
-      commandOutputNode.innerText = EducationFunction();
+      commandOutputNode.appendChild(EducationFunction());
       break;
     case "experience":
       commandOutputNode.innerText = ExperienceFunction();
