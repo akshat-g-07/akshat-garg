@@ -51,10 +51,6 @@ export function HelpFunction() {
     <td>Open LinkedIn</td>
   </tr>
   <tr>
-    <td>x</td>
-    <td>Open X (Twitter)</td>
-  </tr>
-  <tr>
     <td>mail</td>
     <td>Show e-mail</td>
   </tr>

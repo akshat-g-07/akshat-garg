@@ -158,29 +158,6 @@ export default function Footer() {
               }, 1500);
             });
             event.target.classList.remove("animate-bounce");
-            window.open("https://twitter.com/akku_g__", "_blank");
-          }}
-        >
-          <span className="absolute scale-0 bottom-20 font-semibold mb-1">
-            X(Twitter)
-          </span>
-          <Image
-            src={"/footer/x.png"}
-            width={42.5}
-            height={42.5}
-            alt="X(Twitter)"
-          />
-        </div>
-        <div
-          className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom"
-          onClick={async (event) => {
-            await new Promise((resolve) => {
-              event.target.classList.add("animate-bounce");
-              setTimeout(() => {
-                resolve();
-              }, 1500);
-            });
-            event.target.classList.remove("animate-bounce");
             window.open("https://github.com/akshat-g-07", "_blank");
           }}
         >
