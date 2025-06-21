@@ -1,4 +1,4 @@
-import { About, Education, Skills } from "@repo/portfolio-details";
+import { About, Education, Experience, Skills } from "@repo/portfolio-details";
 
 export function HelpFunction() {
   return `<table style="width:50%; text-align: left;">
@@ -101,7 +101,22 @@ export function EducationFunction() {
 }
 
 export function ExperienceFunction() {
-  return "-> I have been making a difference at Infosys Limited on the role of Specialist Programmer since Aug'21.";
+  const experienceNode = document.createElement("div");
+  experienceNode.classList = "w-full h-fit";
+  experienceNode.innerHTML = Experience.map(
+    (experience, indx) => `
+  <div key={${indx}}>
+    <h3 class="font-semibold text-lg">
+      ${experience.role}
+    </h3>
+    <p class="font-medium mt-2 mb-4">
+      ${experience.company} | ${experience.duration}
+    </p>
+    ${experience.description.map((item, index) => `<p key={${index} class="my-1"}>• ${item}</p>`).join("")}
+  </div>
+  `
+  );
+  return experienceNode;
 }
 
 export function ProjectsFunction() {

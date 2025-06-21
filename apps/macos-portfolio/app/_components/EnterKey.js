@@ -45,7 +45,7 @@ export default function EnterKey(event) {
       commandOutputNode.appendChild(EducationFunction());
       break;
     case "experience":
-      commandOutputNode.innerText = ExperienceFunction();
+      commandOutputNode.appendChild(ExperienceFunction());
       break;
     case "projects":
       commandOutputNode.appendChild(ProjectsFunction());
