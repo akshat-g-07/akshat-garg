@@ -1,4 +1,4 @@
-import { Skills } from "@repo/portfolio-details";
+import { About, Skills } from "@repo/portfolio-details";
 
 export function HelpFunction() {
   return `<table style="width:50%; text-align: left;">
@@ -62,7 +62,8 @@ export function HelpFunction() {
 }
 
 export function AboutFunction() {
-  return "Hey there!\nI am Akshat Garg, alumnus of NIT Patna. I am an experienced full stack developer proficient with Dot Net Tech Stack. I really thrive to develop something meaningful!";
+  console.log("About", About);
+  return About;
 }
 
 export function SkillsFunction() {
