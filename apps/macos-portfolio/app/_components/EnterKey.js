@@ -87,8 +87,8 @@ export default function EnterKey(event) {
   terminalNode.innerHTML = `
     <div class="w-fit flex items-center mr-4">
       <div class="w-fit min-w-28 text-black bg-yellow-400 px-2 font-semibold font-tInput">akshat-garg</div>
-      <div class="h-6 w-5 relative">
-        <img src="/triangle.png" fill={true} alt="Terminal Triangle" />
+      <div class="h-fit relative text-3xl font-bold text-yellow-500 flex items-center">
+        >
       </div>
     </div>
     <input
