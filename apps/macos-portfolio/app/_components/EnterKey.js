@@ -86,7 +86,7 @@ export default function EnterKey(event) {
   terminalNode.classList = "w-[98%] h-fit flex flex-start py-2";
   terminalNode.innerHTML = `
     <div class="w-fit flex items-center mr-4">
-      <div class="w-fit min-w-28 text-black bg-yellow-400 px-2 font-semibold font-tInput">akshat-garg</div>
+      <div class="w-fit min-w-28 text-black bg-yellow-400 px-2 font-semibold font-tInput text-nowrap">akshat-garg</div>
       <div class="h-fit relative text-3xl font-bold text-yellow-500 flex items-center">
         >
       </div>
