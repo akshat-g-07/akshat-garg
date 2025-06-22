@@ -1,4 +1,10 @@
-import { About, Education, Experience, Skills } from "@repo/portfolio-details";
+import {
+  About,
+  Education,
+  Experience,
+  Projects,
+  Skills,
+} from "@repo/portfolio-details";
 
 export function HelpFunction() {
   return `<table style="width:50%; text-align: left;">
@@ -122,103 +128,24 @@ export function ExperienceFunction() {
 export function ProjectsFunction() {
   const projectsNode = document.createElement("div");
   projectsNode.classList = "w-full h-fit";
-  projectsNode.innerHTML = ` <div class="w-full h-fit">
-  <div class="w-full h-fit flex items-center">
-    <div class="w-10/12 h-fit flex">
-      =========================================
-      <br />
-      TrekLicious | ReactJS, NodeJS, Express, MongoDB, MUI
-      <br />
-      =========================================
-    </div>
-    <div class="w-2/12 h-fit flex">
-      <a href="https://treklicious.onrender.com/" class="font-bold target="_blank">
-        (Live)
-      </a>
-    </div>
-  </div>
-  <div class="w-full h-fit">
-    <ul class="list-disc list-inside">
-      <li>
-      Developed a preference-based full-stack web application with a user-friendly interface that caters to trek lovers.
-      </li>
-      <li>
-      Implemented user authentication system using JWT, allowing users to securely signup, login and update their profiles.
-      </li>
-      <li>
-        The website’s main objective is to assist trek lovers in determining
-        the appropriate treks for themselves.
-      </li>
-      <li>
-        User can also create a favorite list and add/remove items from their
-        list.
-      </li>
-    </ul>
-  </div>
-</div>
-<div class="w-full h-fit">
-<div class="w-full h-fit flex items-center">
-    <div class="w-10/12 h-fit flex">
-      =========================================
-      <br />
-      RatVenture | ReactJs, NodeJS, Express, Javascript
-      <br />
-      =========================================
-    </div>
-    <div class="w-2/12 h-fit flex">
-      <a href="https://rat-frontend.onrender.com/" class="font-bold target="_blank">
-        (Live)
-      </a>
-    </div>
-  </div>
-  <div class="w-full h-fit">
-    <ul class="list-disc list-inside">
-      <li>
-      Visualization of famous Rat-In-A-Maze problem.
-      </li>
-      <li>
-      Engineered an interactive interface empowering users to dynamically configure matrix dimensions, starting point, blocks, and destination point.
-      </li>
-      <li>
-      Incorporated functionality for users to opt for random generation of the aforementioned parameters, enhancing flexibility and user experience.
-      </li>
-      <li>
-      User will be able to see all the viable routes from starting point to destination point.
-      </li>
-    </ul>
-  </div>
-</div>
-</div>
-<div class="w-full h-fit">
-<div class="w-full h-fit flex items-center">
-    <div class="w-10/12 h-fit flex">
-      =========================================
-      <br />
-      GrillZilla | ReactJs, API, Axios
-      <br />
-      =========================================
-    </div>
-    <div class="w-2/12 h-fit flex">
-      <a href="https://restaurant-bulc.onrender.com/" class="font-bold target="_blank">
-        (Live)
-      </a>
-    </div>
-  </div>
-  <div class="w-full h-fit">
-    <ul class="list-disc list-inside">
-      <li>
-      A frontend application to show the menu of the restaurant incorporating API integration.
-      </li>
-      <li>
-      Implemented Axios API to acquire user’s location and show him the restaurants closest to him.
-      </li>
-      <li>
-      Using Google Maps API user can see the directions to the restaurant location from his/her.
-      </li>
-    </ul>
-  </div>
-</div>
-</div>
+  projectsNode.innerHTML = ` 
+  ${Projects.map(
+    (project, index) =>
+      `<div key={${index}} class="text-zinc-400">
+      <div class="flex justify-between">
+        <div class="flex">
+        <p class="font-semibold text-xl text-white">${project.name}</p>
+        <p>&nbsp;|</p>
+        ${project.skills.map((skill, indx) => `<p key=${indx} class="text-xs flex items-center">&nbsp;${skill}</p>`).join(",")}
+        </div>
+        <a href=${project.live} target="_blank">(Live)</a>
+      </div>
+      <p>=========================================</p>
+      <ul class="list-disc list-inside">
+      ${project.description.map((point, indx) => `<li key={${indx}} class="text-gray-400">${point}</li>`).join("")}
+      </ul>
+    </div>`
+  ).join("")}
    `;
   return projectsNode;
 }
