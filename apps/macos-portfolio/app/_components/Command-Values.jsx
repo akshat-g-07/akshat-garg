@@ -115,10 +115,12 @@ export function ExperienceFunction() {
     <h3 class="font-semibold text-lg">
       ${experience.role}
     </h3>
-    <p class="font-medium mt-2 mb-4">
+    <p class="font-medium mt-2 mb-4 text-gray-400">
       ${experience.company} | ${experience.duration}
     </p>
-    ${experience.description.map((item, index) => `<p key={${index} class="my-1"}>• ${item}</p>`).join("")}
+    <ul class="list-disc list-inside">
+    ${experience.description.map((item, index) => `<li key=${index} class="my-1 text-gray-200">${item}</li>`).join("")}
+    </ul>
   </div>
   `
   );
