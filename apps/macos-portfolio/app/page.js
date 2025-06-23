@@ -13,7 +13,8 @@ export default function Home() {
       alert(
         "This particular portfolio is best viewed in bigger screens (Laptop/PC/Tablet). Redirecting you to secondary portfolio."
       );
-      window.location.href = "https://threejs-portfolio.akshat-garg.com/";
+      window.location.href =
+        "https://threejs-portfolio.akshat-garg.com/?ref=rec";
     }
   }, []);
   return (
