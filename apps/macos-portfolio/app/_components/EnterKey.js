@@ -51,7 +51,7 @@ export default function EnterKey(event) {
       commandOutputNode.appendChild(ProjectsFunction());
       break;
     case "achievements":
-      commandOutputNode.innerText = AchievementsFunction();
+      commandOutputNode.appendChild(AchievementsFunction());
       break;
     case "resume":
       const resumeLink = document.createElement("a");

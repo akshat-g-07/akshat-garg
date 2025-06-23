@@ -1,5 +1,6 @@
 import {
   About,
+  Achievements,
   Education,
   Experience,
   Projects,
@@ -129,11 +130,11 @@ export function ExperienceFunction() {
 
 export function ProjectsFunction() {
   const projectsNode = document.createElement("div");
-  projectsNode.classList = "w-full h-fit";
+  projectsNode.classList = "w-full h-fit space-y-4";
   projectsNode.innerHTML = ` 
   ${Projects.map(
     (project, index) =>
-      `<div key={${index}} class="text-zinc-400">
+      `<div key=${index} class="text-zinc-400">
       <div class="flex justify-between">
         <div class="flex">
         <p class="font-semibold text-xl text-white">${project.name}</p>
@@ -153,15 +154,25 @@ export function ProjectsFunction() {
 }
 
 export function AchievementsFunction() {
-  return `↪ Make-a-thon 16 | Finalists
-  ≕ Successfully led a team of 4 to the finals of Infosys’s prestigious Hackathon event where brightest minds showcase their skills.
-  ≕ Leveraged expertise in full-stack development and picked a PS where we had to develop a Bidding Platform from scratch, showcasing proficiency in both frontend and backend.
-  ≕ Designed and implemented the platform using a Microservices architecture to build a robust product.
-  ↪ Make-a-thon 17 | Semi-Finalists
-  ≕ Created a team of 5 and led them from the front to the semi-finals of the event.
-  ≕ This time picked a PS where we had to develop a Copilot for the Insurance Domain, to help the testers with their monotonous tasks.
-  ≕ Applied prompt engineering techniques to train the model, translating natural language inputs into user-friendly actions.
-  `;
+  const achievementsNode = document.createElement("div");
+  achievementsNode.classList = "w-full h-fit space-y-4";
+  achievementsNode.innerHTML = ` 
+  ${Achievements.map(
+    (achievement, index) =>
+      `<div key=${index} class="text-zinc-400">
+        <div class="flex">
+        <p class="font-semibold text-xl text-white">${achievement.title}</p>
+        <p>&nbsp;|&nbsp;</p>
+        <p class="text-xs flex items-center font-medium text-white">${achievement.position}</p>
+        </div>
+      <p>=========================================</p>
+      <ul class="list-disc list-inside">
+      ${achievement.details.map((point, indx) => `<li key={${indx}} class="text-gray-400">${point}</li>`).join("")}
+      </ul>
+    </div>`
+  ).join("")}
+   `;
+  return achievementsNode;
 }
 
 export function MailFunction() {
