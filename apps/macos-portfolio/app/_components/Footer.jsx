@@ -1,12 +1,22 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import { parseCookies } from "nookies";
 import { createRoot } from "react-dom/client";
 
 import NotesWindow from "./Notes-Window";
 import TerminalWindow from "./Terminal-Window";
 
 export default function Footer() {
+  // initially false, false if rec, true generally
+  const [refType, setRefType] = useState(true);
+  useEffect(() => {
+    const cookies = parseCookies();
+    const ref = cookies.ref;
+
+    setRefType(ref !== "rec");
+  }, []);
   return (
     <>
       <div
@@ -148,29 +158,31 @@ export default function Footer() {
             alt="LinkedIn"
           />
         </div>
-        <div
-          className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom"
-          onClick={async (event) => {
-            await new Promise((resolve) => {
-              event.target.classList.add("animate-bounce");
-              setTimeout(() => {
-                resolve();
-              }, 1500);
-            });
-            event.target.classList.remove("animate-bounce");
-            window.open("https://twitter.com/akku_g__", "_blank");
-          }}
-        >
-          <span className="absolute scale-0 bottom-20 font-semibold mb-1">
-            X(Twitter)
-          </span>
-          <Image
-            src={"/footer/x.png"}
-            width={42.5}
-            height={42.5}
-            alt="X(Twitter)"
-          />
-        </div>
+        {refType && (
+          <div
+            className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom"
+            onClick={async (event) => {
+              await new Promise((resolve) => {
+                event.target.classList.add("animate-bounce");
+                setTimeout(() => {
+                  resolve();
+                }, 1500);
+              });
+              event.target.classList.remove("animate-bounce");
+              window.open("https://twitter.com/akku_g__", "_blank");
+            }}
+          >
+            <span className="absolute scale-0 bottom-20 font-semibold mb-1">
+              X(Twitter)
+            </span>
+            <Image
+              src={"/footer/x.png"}
+              width={42.5}
+              height={42.5}
+              alt="X(Twitter)"
+            />
+          </div>
+        )}
         <div
           className="*:hover:scale-[2] *:duration-200 hover:px-6 *:origin-bottom"
           onClick={async (event) => {

@@ -6,8 +6,11 @@ import {
   Projects,
   Skills,
 } from "@repo/portfolio-details";
+import { parseCookies } from "nookies";
 
 export function HelpFunction() {
+  const cookies = parseCookies();
+  const ref = cookies.ref;
   return `<table style="width:50%; text-align: left;">
   <tr>
     <th>Command</th>
@@ -57,10 +60,13 @@ export function HelpFunction() {
     <td>linkedin</td>
     <td>Open LinkedIn</td>
   </tr>
-  <tr>
-    <td>x</td>
-    <td>Open X (Twitter)</td>
-  </tr>
+  ${
+    ref !== "rec" &&
+    `<tr>
+        <td>x</td>
+        <td>Open X (Twitter)</td>
+      </tr>`
+  }
   <tr>
     <td>mail</td>
     <td>Show e-mail</td>
