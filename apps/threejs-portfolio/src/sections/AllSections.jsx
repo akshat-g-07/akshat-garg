@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import NextPrevButton from "../globalComps/NextPrevButton";
@@ -13,7 +13,6 @@ import SkillSection from "./skillSection/SkillSection";
 
 const AllSections = () => {
   const [sectionIndex, setSectionIndex] = useState(0);
-  const [loaded, setLoaded] = useState(false);
   const sectionArray = [
     <LandingSection key="landing" />,
     <SkillSection key="skills" />,
@@ -24,40 +23,28 @@ const AllSections = () => {
     <ContactSection key="contact" />,
   ];
 
-  useEffect(() => {
-    async function apiCall() {
-      await fetch("https://mail-sender-exby.onrender.com");
-    }
-    apiCall();
-    setTimeout(() => {
-      setLoaded(true);
-    }, 1000);
-  }, []);
-
   return (
-    loaded && (
-      <>
-        <NextPrevButton
-          sectionArray={sectionArray}
-          setSectionIndex={setSectionIndex}
-          sectionIndex={sectionIndex}
-        />
-        <SocialHandles />
-        <AnimatePresence initial={false} mode="wait">
-          <motion.div
-            key={sectionArray[sectionIndex].key}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 0.3,
-            }}
-            exit={{ opacity: 0 }}
-          >
-            {sectionArray[sectionIndex]}
-          </motion.div>
-        </AnimatePresence>
-      </>
-    )
+    <>
+      <NextPrevButton
+        sectionArray={sectionArray}
+        setSectionIndex={setSectionIndex}
+        sectionIndex={sectionIndex}
+      />
+      <SocialHandles />
+      <AnimatePresence initial={false} mode="wait">
+        <motion.div
+          key={sectionArray[sectionIndex].key}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.3,
+          }}
+          exit={{ opacity: 0 }}
+        >
+          {sectionArray[sectionIndex]}
+        </motion.div>
+      </AnimatePresence>
+    </>
   );
 };
 
