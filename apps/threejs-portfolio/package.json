@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@repo/portfolio-details": "^1.0.0",
     "@chakra-ui/icons": "^2.1.0",
     "@chakra-ui/react": "^2.8.0",
     "@emailjs/browser": "^4.3.3",
@@ -19,9 +18,11 @@
     "@mui/icons-material": "^5.14.8",
     "@mui/material": "^5.14.8",
     "@mui/styled-engine-sc": "^5.14.8",
+    "@repo/portfolio-details": "^1.0.0",
     "copy-to-clipboard": "^3.3.3",
     "framer-motion": "^10.16.4",
     "gsap": "^3.12.2",
+    "nookies": "^2.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.11",

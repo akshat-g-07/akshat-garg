@@ -3,6 +3,18 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import XIcon from "@mui/icons-material/X";
 import { Contact } from "@repo/portfolio-details";
+import { parseCookies } from "nookies";
+
+const cookies = parseCookies();
+const ref = cookies.ref;
+
+// Check both cookie and URL param for 'rec'
+let isRec = ref === "rec";
+if (typeof window !== "undefined") {
+  const urlParams = new URLSearchParams(window.location.search);
+  const refVal = urlParams.get("ref");
+  if (refVal === "rec") isRec = true;
+}
 
 const SocialHandlesList = [
   {
@@ -27,4 +39,4 @@ const SocialHandlesList = [
   },
 ];
 
-export default SocialHandlesList;
+export default isRec ? SocialHandlesList.slice(0, 3) : SocialHandlesList;
