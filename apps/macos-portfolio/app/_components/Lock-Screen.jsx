@@ -20,10 +20,6 @@ export default function LockScreen({ setUnlocked }) {
       return;
     }
 
-    (async function apiCall() {
-      await fetch(`https://mail-sender-exby.onrender.com?user=${userName}`);
-    })();
-
     const lockScreen = document.getElementById("lock-screen");
     lockScreen.style.transform = "translate(0px,-100%)";
     setUnlocked(true);
@@ -40,7 +36,7 @@ export default function LockScreen({ setUnlocked }) {
       id="lock-screen"
       className="absolute ease-in-out z-50 h-screen w-screen duration-[2000ms] flex flex-col items-center justify-center"
       style={{
-        background: 'url("./lock-screen.jpg")',
+        background: 'url("/lock-screen.jpg")',
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",

@@ -1,6 +1,16 @@
-import { Skills } from "@repo/portfolio-details";
+import {
+  About,
+  Achievements,
+  Education,
+  Experience,
+  Projects,
+  Skills,
+} from "@repo/portfolio-details";
+import { parseCookies } from "nookies";
 
 export function HelpFunction() {
+  const cookies = parseCookies();
+  const ref = cookies.ref;
   return `<table style="width:50%; text-align: left;">
   <tr>
     <th>Command</th>
@@ -50,10 +60,13 @@ export function HelpFunction() {
     <td>linkedin</td>
     <td>Open LinkedIn</td>
   </tr>
-  <tr>
-    <td>x</td>
-    <td>Open X (Twitter)</td>
-  </tr>
+  ${
+    ref !== "rec" &&
+    `<tr>
+        <td>x</td>
+        <td>Open X (Twitter)</td>
+      </tr>`
+  }
   <tr>
     <td>mail</td>
     <td>Show e-mail</td>
@@ -62,7 +75,7 @@ export function HelpFunction() {
 }
 
 export function AboutFunction() {
-  return "Hey there!\nI am Akshat Garg, alumnus of NIT Patna. I am an experienced full stack developer proficient with Dot Net Tech Stack. I really thrive to develop something meaningful!";
+  return About;
 }
 
 export function SkillsFunction() {
@@ -86,127 +99,86 @@ export function SkillsFunction() {
 }
 
 export function EducationFunction() {
-  return "I'm proud to be an alumnus of NIT Patna, where I completed my B.Tech degree from 2017 to 2021.";
+  const educationNode = document.createElement("div");
+  educationNode.classList = "w-full h-fit";
+  educationNode.innerHTML = `
+  <h3 class="font-semibold text-lg">
+    ${Education.instituteFullName}
+  </h3>
+  <div class="w-full flex justify-between items-center">
+    <p>${Education.degree}</p>
+    <p>(${Education.duration})</p>
+  </div>
+  `;
+  return educationNode;
 }
 
 export function ExperienceFunction() {
-  return "-> I have been making a difference at Infosys Limited on the role of Specialist Programmer since Aug'21.";
+  const experienceNode = document.createElement("div");
+  experienceNode.classList = "w-full h-fit";
+  experienceNode.innerHTML = Experience.map(
+    (experience, indx) => `
+  <div key={${indx}}>
+    <h3 class="font-semibold text-lg">
+      ${experience.role}
+    </h3>
+    <p class="font-medium mt-2 mb-4 text-gray-400">
+      ${experience.company} | ${experience.duration}
+    </p>
+    <ul class="list-disc list-inside">
+    ${experience.description.map((item, index) => `<li key=${index} class="my-1 text-gray-200">${item}</li>`).join("")}
+    </ul>
+  </div>
+  `
+  );
+  return experienceNode;
 }
 
 export function ProjectsFunction() {
   const projectsNode = document.createElement("div");
-  projectsNode.classList = "w-full h-fit";
-  projectsNode.innerHTML = ` <div class="w-full h-fit">
-  <div class="w-full h-fit flex items-center">
-    <div class="w-10/12 h-fit flex">
-      =========================================
-      <br />
-      TrekLicious | ReactJS, NodeJS, Express, MongoDB, MUI
-      <br />
-      =========================================
-    </div>
-    <div class="w-2/12 h-fit flex">
-      <a href="https://treklicious.onrender.com/" class="font-bold target="_blank">
-        (Live)
-      </a>
-    </div>
-  </div>
-  <div class="w-full h-fit">
-    <ul class="list-disc list-inside">
-      <li>
-      Developed a preference-based full-stack web application with a user-friendly interface that caters to trek lovers.
-      </li>
-      <li>
-      Implemented user authentication system using JWT, allowing users to securely signup, login and update their profiles.
-      </li>
-      <li>
-        The website’s main objective is to assist trek lovers in determining
-        the appropriate treks for themselves.
-      </li>
-      <li>
-        User can also create a favorite list and add/remove items from their
-        list.
-      </li>
-    </ul>
-  </div>
-</div>
-<div class="w-full h-fit">
-<div class="w-full h-fit flex items-center">
-    <div class="w-10/12 h-fit flex">
-      =========================================
-      <br />
-      RatVenture | ReactJs, NodeJS, Express, Javascript
-      <br />
-      =========================================
-    </div>
-    <div class="w-2/12 h-fit flex">
-      <a href="https://rat-frontend.onrender.com/" class="font-bold target="_blank">
-        (Live)
-      </a>
-    </div>
-  </div>
-  <div class="w-full h-fit">
-    <ul class="list-disc list-inside">
-      <li>
-      Visualization of famous Rat-In-A-Maze problem.
-      </li>
-      <li>
-      Engineered an interactive interface empowering users to dynamically configure matrix dimensions, starting point, blocks, and destination point.
-      </li>
-      <li>
-      Incorporated functionality for users to opt for random generation of the aforementioned parameters, enhancing flexibility and user experience.
-      </li>
-      <li>
-      User will be able to see all the viable routes from starting point to destination point.
-      </li>
-    </ul>
-  </div>
-</div>
-</div>
-<div class="w-full h-fit">
-<div class="w-full h-fit flex items-center">
-    <div class="w-10/12 h-fit flex">
-      =========================================
-      <br />
-      GrillZilla | ReactJs, API, Axios
-      <br />
-      =========================================
-    </div>
-    <div class="w-2/12 h-fit flex">
-      <a href="https://restaurant-bulc.onrender.com/" class="font-bold target="_blank">
-        (Live)
-      </a>
-    </div>
-  </div>
-  <div class="w-full h-fit">
-    <ul class="list-disc list-inside">
-      <li>
-      A frontend application to show the menu of the restaurant incorporating API integration.
-      </li>
-      <li>
-      Implemented Axios API to acquire user’s location and show him the restaurants closest to him.
-      </li>
-      <li>
-      Using Google Maps API user can see the directions to the restaurant location from his/her.
-      </li>
-    </ul>
-  </div>
-</div>
-</div>
+  projectsNode.classList = "w-full h-fit space-y-4";
+  projectsNode.innerHTML = ` 
+  ${Projects.map(
+    (project, index) =>
+      `<div key=${index} class="text-zinc-400">
+      <div class="flex justify-between">
+        <div class="flex">
+        <p class="font-semibold text-xl text-white">${project.name}</p>
+        <p>&nbsp;|</p>
+        ${project.skills.map((skill, indx) => `<p key=${indx} class="text-xs flex items-center">&nbsp;${skill}</p>`).join(",")}
+        </div>
+        <a href=${project.live} target="_blank">(Live)</a>
+      </div>
+      <p>=========================================</p>
+      <ul class="list-disc list-inside">
+      ${project.description.map((point, indx) => `<li key={${indx}} class="text-gray-400">${point}</li>`).join("")}
+      </ul>
+    </div>`
+  ).join("")}
    `;
   return projectsNode;
 }
 
 export function AchievementsFunction() {
-  return `↪ Make-a-thon 16 | Finalists
-  ≕ Successfully led a team of 4 to the finals of Infosys’s prestigious Hackathon event where brightest minds showcase their skills.
-  ≕ Leveraged expertise in full-stack development and picked a PS where we had to develop a Bidding Platform from scratch, showcasing proficiency in both frontend and backend.
-  ≕ Designed and implemented the platform using a Microservices architecture to build a robust product.
-  ↪ Make-a-thon 17 | Semi-Finalists
-  ≕ Created a team of 5 and led them from the front to the semi-finals of the event.
-  ≕ This time picked a PS where we had to develop a Copilot for the Insurance Domain, to help the testers with their monotonous tasks.
-  ≕ Applied prompt engineering techniques to train the model, translating natural language inputs into user-friendly actions.
-  `;
+  const achievementsNode = document.createElement("div");
+  achievementsNode.classList = "w-full h-fit space-y-4";
+  achievementsNode.innerHTML = ` 
+  ${Achievements.map(
+    (achievement, index) =>
+      `<div key=${index} class="text-zinc-400">
+        <div class="flex">
+        <p class="font-semibold text-xl text-white">${achievement.title}</p>
+        <p>&nbsp;|&nbsp;</p>
+        <p class="text-xs flex items-center font-medium text-white">${achievement.position}</p>
+        </div>
+      <p>=========================================</p>
+      <ul class="list-disc list-inside">
+      ${achievement.details.map((point, indx) => `<li key={${indx}} class="text-gray-400">${point}</li>`).join("")}
+      </ul>
+    </div>`
+  ).join("")}
+   `;
+  return achievementsNode;
 }
 
 export function MailFunction() {

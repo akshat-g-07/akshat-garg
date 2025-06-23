@@ -42,21 +42,21 @@ export default function EnterKey(event) {
       commandOutputNode.appendChild(SkillsFunction());
       break;
     case "education":
-      commandOutputNode.innerText = EducationFunction();
+      commandOutputNode.appendChild(EducationFunction());
       break;
     case "experience":
-      commandOutputNode.innerText = ExperienceFunction();
+      commandOutputNode.appendChild(ExperienceFunction());
       break;
     case "projects":
       commandOutputNode.appendChild(ProjectsFunction());
       break;
     case "achievements":
-      commandOutputNode.innerText = AchievementsFunction();
+      commandOutputNode.appendChild(AchievementsFunction());
       break;
     case "resume":
       const resumeLink = document.createElement("a");
-      resumeLink.href = "/resume/Akshat_Dot_Net_Resume.pdf";
-      resumeLink.download = "Akshat_Dot_Net_Resume";
+      resumeLink.href = "/resume/Akshat_Garg_Resume.pdf";
+      resumeLink.download = "Akshat_Garg_Resume";
       resumeLink.click();
       break;
     case "github":
@@ -86,9 +86,9 @@ export default function EnterKey(event) {
   terminalNode.classList = "w-[98%] h-fit flex flex-start py-2";
   terminalNode.innerHTML = `
     <div class="w-fit flex items-center mr-4">
-      <div class="w-fit min-w-28 text-black bg-yellow-400 px-2 font-semibold font-tInput">akshat-garg</div>
-      <div class="h-6 w-5 relative">
-        <img src="/triangle.png" fill={true} alt="Terminal Triangle" />
+      <div class="w-fit min-w-28 text-black bg-yellow-400 px-2 font-semibold font-tInput text-nowrap">akshat-garg</div>
+      <div class="h-fit relative text-3xl font-bold text-yellow-500 flex items-center">
+        >
       </div>
     </div>
     <input
