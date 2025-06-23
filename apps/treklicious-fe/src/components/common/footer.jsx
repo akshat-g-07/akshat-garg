@@ -4,8 +4,12 @@ import { parseCookies } from "nookies";
 import { cn } from "@/lib/utils";
 
 export default function Footer() {
+  let config = [];
   const cookies = parseCookies();
   const ref = cookies.ref;
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const refVal = urlParams.get("ref");
 
   const AG_URL = import.meta.env.VITE_AG_URL || "https://akshat-garg.com";
   const PV_URL = import.meta.env.VITE_PV_URL || "https://pixelventurers.com";
@@ -32,8 +36,8 @@ export default function Footer() {
     },
   ];
 
-  const config =
-  ref === "rec" ? globalConfig.slice(0, 1) : ref === "oth" ? globalConfig.slice(1) : [];
+  if (ref === "rec" || refVal === "rec") config = globalConfig.slice(0, 1);
+  else config = globalConfig.slice(1);
 
   return (
     <footer className="w-full left-0 !h-fit border-t border-grid px-8 sm:px-6 md:px-12 py-5 justify-center fixed bottom-0 bg-gray-800 text-white z-50">
