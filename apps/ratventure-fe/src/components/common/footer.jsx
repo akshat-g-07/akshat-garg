@@ -1,44 +1,43 @@
-import { useEffect, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { parseCookies } from "nookies";
 
 import { cn } from "@/lib/utils";
 
-export default function Footer({ response }) {
-  const [config, setConfig] = useState([]);
+export default function Footer() {
+  let config = [];
+  const cookies = parseCookies();
+  const ref = cookies.ref;
 
-  useEffect(() => {
-    const cookies = parseCookies();
-    const ref = cookies.ref;
+  const urlParams = new URLSearchParams(window.location.search);
+  const refVal = urlParams.get("ref");
 
-    const AG_URL = import.meta.env.VITE_AG_URL || "https://akshat-garg.com";
-    const PV_URL = import.meta.env.VITE_PV_URL || "https://pixelventurers.com";
-    const IJ_URL = import.meta.env.VITE_IJ_URL || "https://initiatejs.dev";
+  const AG_URL = import.meta.env.VITE_AG_URL || "https://akshat-garg.com";
+  const PV_URL = import.meta.env.VITE_PV_URL || "https://pixelventurers.com";
+  const IJ_URL = import.meta.env.VITE_IJ_URL || "https://initiatejs.dev";
 
-    const globalConfig = [
-      {
-        label: "Made By",
-        name: "Akshat Garg",
-        url: AG_URL,
-        className: "text-blue-500",
-      },
-      {
-        label: "Made By",
-        name: "Pixel Venturers",
-        url: PV_URL,
-        className: "text-blue-500",
-      },
-      {
-        label: "Powered By",
-        name: "InitiateJS",
-        url: IJ_URL,
-        className: "text-yellow-500",
-      },
-    ];
+  const globalConfig = [
+    {
+      label: "Made By",
+      name: "Akshat Garg",
+      url: AG_URL,
+      className: "text-blue-500",
+    },
+    {
+      label: "Made By",
+      name: "Pixel Venturers",
+      url: PV_URL,
+      className: "text-blue-500",
+    },
+    {
+      label: "Powered By",
+      name: "InitiateJS",
+      url: IJ_URL,
+      className: "text-yellow-500",
+    },
+  ];
 
-    if (ref === "rec") setConfig(globalConfig.slice(0, 1));
-    if (ref === "oth") setConfig(globalConfig.slice(1));
-  }, [response]);
+  if (ref === "rec" || refVal === "rec") config = globalConfig.slice(0, 1);
+  else config = globalConfig.slice(1);
 
   return (
     <footer className="w-full left-0 !h-fit border-t border-grid px-8 sm:px-6 md:px-12 py-5 justify-center fixed bottom-0 bg-gray-800 text-white z-50">
