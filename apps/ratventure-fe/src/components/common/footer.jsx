@@ -37,7 +37,7 @@ export default function Footer({ response }) {
     ];
 
     if (ref === "rec") setConfig(globalConfig.slice(0, 1));
-    if (ref === "oth") setConfig(globalConfig.slice());
+    if (ref === "oth") setConfig(globalConfig.slice(1));
   }, [response]);
 
   return (
