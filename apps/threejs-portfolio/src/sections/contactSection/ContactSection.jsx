@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
+import { Contact } from "@repo/portfolio-details";
 import copy from "copy-to-clipboard";
 import { motion } from "framer-motion";
 
@@ -123,7 +124,7 @@ const ContactSection = () => {
             sx={{ marginY: 1 }}
           />
         </div>
-        <div className="pb-6 border-b-4 border-zinc-600">
+        <div className="pb-6 border-b-4 border-zinc-600 justify-end flex">
           {processing ? (
             <CircularProgress color="secondary" />
           ) : (
@@ -143,13 +144,13 @@ const ContactSection = () => {
             <p>
               @&nbsp;
               <span className="underline decoration-2 underline-offset-4 cursor-pointer hover:text-[#9c27b0]">
-                <a href="mailto:akshatg805@gmail.com">akshatg805@gmail.com</a>
+                <a href={`mailto:${Contact}`}>{Contact}</a>
               </span>
               <Tooltip title="Copy">
                 <span
                   className="cursor-pointer hover:text-[#9c27b0]"
                   onClick={() => {
-                    copy("akshatg805@gmail.com");
+                    copy(Contact);
                     alert("Copied!");
                   }}
                 >
