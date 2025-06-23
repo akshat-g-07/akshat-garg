@@ -1,6 +1,7 @@
 import {
   About,
   Achievements,
+  Contact,
   Education,
   Experience,
   Projects,
@@ -182,5 +183,5 @@ export function AchievementsFunction() {
 }
 
 export function MailFunction() {
-  return "akshatg805@gmail.com";
+  return Contact;
 }

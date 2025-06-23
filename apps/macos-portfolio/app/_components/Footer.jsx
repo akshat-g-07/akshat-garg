@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { Contact } from "@repo/portfolio-details";
 import { parseCookies } from "nookies";
 import { createRoot } from "react-dom/client";
 
@@ -216,7 +217,7 @@ export default function Footer() {
               }, 1500);
             });
             event.target.classList.remove("animate-bounce");
-            window.open("mailto:akshatg805@gmail.com", "_blank");
+            window.open(`mailto:${Contact}`, "_blank");
           }}
         >
           <span className="absolute scale-0 bottom-20 font-semibold mb-1">
