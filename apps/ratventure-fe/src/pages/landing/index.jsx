@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import WakeUp from "@/apis/wake-up";
 import { ArrowForwardIos, Info } from "@mui/icons-material";
 import Button from "@mui/material/Button";
@@ -7,7 +7,6 @@ import { useNavigate } from "react-router";
 import Footer from "@/components/common/footer";
 
 export default function Landing() {
-  const [response, setResponse] = useState();
   const navigate = useNavigate();
   const rules = [
     "Pick the size of matrix.",
@@ -17,11 +16,7 @@ export default function Landing() {
   ];
 
   useEffect(() => {
-    async function CallWakeUp() {
-      const response = await WakeUp();
-      setResponse(response.ok);
-    }
-    CallWakeUp();
+    WakeUp();
   }, []);
 
   return (
@@ -57,7 +52,7 @@ export default function Landing() {
           Let the Ratventure begin!
         </Button>
       </section>
-      <Footer response={response} />
+      <Footer />
     </>
   );
 }
