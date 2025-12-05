@@ -62,11 +62,12 @@ export function HelpFunction() {
     <td>Open LinkedIn</td>
   </tr>
   ${
-    ref !== "rec" &&
-    `<tr>
+    ref !== "rec"
+      ? `<tr>
         <td>x</td>
         <td>Open X (Twitter)</td>
       </tr>`
+      : ``
   }
   <tr>
     <td>mail</td>
