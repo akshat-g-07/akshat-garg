@@ -30,7 +30,7 @@ async function PUTProfile(req, res) {
   const { firstName, lastName, userName, password, profile, preferences } =
     req.body;
   logger.log(
-    `PUTProfile 02=> ${firstName}, ${lastName}, ${userName}, ${password}, ${profile}, ${preferences},`
+    `PUTProfile 02=> ${firstName}, ${lastName}, ${userName}, ${password}, ${profile}, ${JSON.stringify(preferences)},`
   );
 
   try {
