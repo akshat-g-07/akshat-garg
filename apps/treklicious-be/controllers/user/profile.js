@@ -25,8 +25,13 @@ async function GETProfile(req, res) {
 
 async function PUTProfile(req, res) {
   const userIDModel_id = req.userIDModel_id;
+  logger.log(`PUTProfile 01=> ${userIDModel_id}`);
+
   const { firstName, lastName, userName, password, profile, preferences } =
     req.body;
+  logger.log(
+    `PUTProfile 02=> ${firstName}, ${lastName}, ${userName}, ${password}, ${profile}, ${preferences},`
+  );
 
   try {
     const duplicateUserName = await userDetailsModel
@@ -35,6 +40,8 @@ async function PUTProfile(req, res) {
         userIDModel_id: { $ne: userIDModel_id },
       })
       .lean();
+
+    logger.log(`PUTProfile 03=> ${JSON.stringify(duplicateUserName)}`);
 
     if (duplicateUserName) {
       return res.status(409).json({ message: USERNAME_EXISTS_RESPONSE });

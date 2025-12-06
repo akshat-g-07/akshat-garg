@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
+const logger = require("./logger");
 
 function getAccessToken(userID) {
+  logger.log(`getAccessToken=> ${userID}`);
   return jwt.sign(
     {
       userIDModel_id: userID,
@@ -11,6 +13,8 @@ function getAccessToken(userID) {
 }
 
 function getRefreshToken(userID) {
+  logger.log(`getRefreshToken=> ${userID}`);
+
   return jwt.sign(
     {
       userIDModel_id: userID,
