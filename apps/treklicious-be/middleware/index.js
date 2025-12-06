@@ -10,6 +10,7 @@ const rateLimiter = require("./rate-limiter");
 
 const openRoutes = require("../config/open-routes");
 const CheckProtectedRoute = require("../config/protected-routes");
+const logger = require("../utils/logger");
 
 const adminRoutes = openRoutes.map((route) => route.route);
 adminRoutes.push("/");
@@ -24,6 +25,10 @@ router.use(logRequest, (req, res, next) => {
   if (NODE_ENV === "production") {
     return rateLimiter(req, res, next);
   }
+
+  logger.log(`mw 03=> ${CheckProtectedRoute(req.url)}`);
+  logger.log(`mw 01=> ${req.url} || ${req.path}`);
+  logger.log(`mw 02=> ${req.url.includes("/user")}`);
 
   if (CheckProtectedRoute(req.url)) return verifyJWT(req, res, next);
 

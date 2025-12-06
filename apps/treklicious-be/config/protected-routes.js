@@ -1,6 +1,8 @@
 const { USER_ROUTE } = require("@repo/treklicious-constants");
+const logger = require("../utils/logger");
 
 function CheckProtectedRoute(url) {
+  logger.log("inside CheckProtectedRoute");
   if (url.includes(USER_ROUTE)) return true;
   if (url.includes("/allNames")) return true;
   if (url.includes("/random")) return true;
