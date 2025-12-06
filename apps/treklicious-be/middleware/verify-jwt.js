@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const logger = require("../utils/logger");
 
 function verifyJWT(req, res, next) {
   const authHeader = req.headers.authorization || req.headers.Authorization;
@@ -13,6 +14,7 @@ function verifyJWT(req, res, next) {
     if (err) {
       return res.sendStatus(403);
     }
+    logger.log(`jwt.verify=> ${decoded.userIDModel_id}`);
     req.userIDModel_id = decoded.userIDModel_id;
     next();
   });
