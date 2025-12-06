@@ -29,15 +29,16 @@ async function PUTProfile(req, res) {
     req.body;
 
   try {
-    const duplicateUserName = await userDetailsModel.find({ userName }).lean();
-    if (
-      duplicateUserName &&
-      duplicateUserName.length > 0 &&
-      duplicateUserName.some(
-        (user) => user.userIDModel_id.toString() !== userIDModel_id
-      )
-    )
+    const duplicateUserName = await userDetailsModel
+      .findOne({
+        userName,
+        userIDModel_id: { $ne: userIDModel_id },
+      })
+      .lean();
+
+    if (duplicateUserName) {
       return res.status(409).json({ message: USERNAME_EXISTS_RESPONSE });
+    }
 
     const userDetailsObject = await userDetailsModel.findOne({
       userIDModel_id,
