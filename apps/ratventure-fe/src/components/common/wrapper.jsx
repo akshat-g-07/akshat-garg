@@ -8,7 +8,9 @@ export default function Wrapper({ children }) {
           RatVenture
         </h1>
 
-        <div className="flex flex-col items-center-safe py-8">{children}</div>
+        <div className="flex flex-col items-center-safe pt-8 pb-24">
+          {children}
+        </div>
       </section>
       <Footer />
     </>

@@ -77,7 +77,7 @@ export default function SearchBar({ isFocused, setIsFocused }) {
         <input
           type="text"
           className={cn(
-            "h-10 w-full text-base focus:outline-none",
+            "h-10 w-full text-base focus:outline-hidden",
             isFocused ? "block" : "hidden"
           )}
           placeholder="Search Trek Name"

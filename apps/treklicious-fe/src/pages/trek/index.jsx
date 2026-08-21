@@ -73,7 +73,7 @@ export default function Trek() {
           <div className="w-full h-[50vh]">
             <img src={img} className="size-full object-cover object-center" />
           </div>
-          <div className="absolute z-10 h-fit w-4/5 left-1/2 -translate-x-1/2 -mt-50 backdrop-blur-sm rounded [box-shadow:0_0_40px_rgba(8,7,16,.6)] [border:2px_solid_hsla(0,0%,100%,.1)] bg-[#ffffff2d] *:w-full py-15 px-10">
+          <div className="absolute z-10 h-fit w-4/5 left-1/2 -translate-x-1/2 -mt-50 backdrop-blur-xs rounded-sm [box-shadow:0_0_40px_rgba(8,7,16,.6)] [border:2px_solid_hsla(0,0%,100%,.1)] bg-[#ffffff2d] *:w-full py-15 px-10">
             <div className="flex justify-between items-center-safe">
               <h1 className="text-2xl md:text-5xl font-[Alegreya_SC,serif] font-bold">
                 {name}

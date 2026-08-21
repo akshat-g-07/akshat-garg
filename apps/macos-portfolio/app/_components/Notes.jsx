@@ -7,7 +7,7 @@ export default function Notes() {
   const notesNodeRef = useRef(null);
   return (
     <>
-      <Draggable notesNodeRef={notesNodeRef} handle="#notes-title-bar">
+      <Draggable nodeRef={notesNodeRef} handle="#notes-title-bar">
         <div
           id="notesParent"
           ref={notesNodeRef}

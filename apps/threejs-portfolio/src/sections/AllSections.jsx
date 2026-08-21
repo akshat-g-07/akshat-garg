@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 
 import NextPrevButton from "../globalComps/NextPrevButton";
 import SocialHandles from "../globalComps/SocialHandles";
@@ -31,7 +31,7 @@ const AllSections = () => {
         sectionIndex={sectionIndex}
       />
       <SocialHandles />
-      <AnimatePresence initial={false} mode="wait">
+      <AnimatePresence mode="wait">
         <motion.div
           key={sectionArray[sectionIndex].key}
           initial={{ opacity: 0 }}

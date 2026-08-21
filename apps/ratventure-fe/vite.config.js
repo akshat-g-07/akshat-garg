@@ -7,9 +7,25 @@ import { defineConfig } from "vite";
 export default defineConfig({
   server: { port: 3500 },
   plugins: [react(), tailwindcss()],
+  optimizeDeps: {
+    include: ["components"],
+  },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(import.meta.dirname, "./src"),
+      // react: path.resolve(import.meta.dirname, "./node_modules/react"),
+      // "react-dom": path.resolve(
+      //   import.meta.dirname,
+      //   "./node_modules/react-dom"
+      // ),
+      // "react/jsx-runtime": path.resolve(
+      //   import.meta.dirname,
+      //   "./node_modules/react/jsx-runtime.js"
+      // ),
+      // "react/jsx-dev-runtime": path.resolve(
+      //   import.meta.dirname,
+      //   "./node_modules/react/jsx-dev-runtime.js"
+      // ),
     },
   },
 });

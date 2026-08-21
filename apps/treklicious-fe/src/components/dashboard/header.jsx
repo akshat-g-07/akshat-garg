@@ -23,7 +23,7 @@ export default function Header() {
     >
       <h1
         className={cn(
-          "text-2xl md:text-5xl text-shadow-white dark:text-shadow-black text-shadow-sm font-[Alegreya_SC,serif]",
+          "text-2xl md:text-5xl text-shadow-white dark:text-shadow-black text-shadow-xs font-[Alegreya_SC,serif]",
           isFocused && "hidden md:block"
         )}
       >

@@ -1,6 +1,6 @@
 /* eslint-disable no-unexpected-multiline */
 import { Skills } from "@repo/portfolio-details";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const SkillBody = () => {
   return (
@@ -31,7 +31,7 @@ const SkillBody = () => {
               style={{ backgroundImage: `url('./skills/${skill.imgName}')` }}
               className="h-3/4 bg-no-repeat bg-contain bg-center bg-stone-600 skillChild01"
             />
-            <div className="text-center text-sm md:text-base lg:text-lg font-firstDescription bg-[rgb(53,50,48)] skillChild02 break-words">
+            <div className="text-center text-sm md:text-base lg:text-lg font-firstDescription bg-[rgb(53,50,48)] skillChild02 wrap-break-word">
               {skill.name}
             </div>
           </motion.div>

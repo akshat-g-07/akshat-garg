@@ -31,12 +31,12 @@ export default function CallToAction() {
       </p>
       <div className="w-full flex items-center justify-evenly my-20">
         <Link to="/sign-up">
-          <button className="py-3 px-6 text-xl border border-white rounded-lg outline-none bg-transparent text-white duration-300 cursor-pointer hover:text-black hover:bg-white/80 hover:border-black transition-all font-semibold">
+          <button className="py-3 px-6 text-xl border border-white rounded-lg outline-hidden bg-transparent text-white duration-300 cursor-pointer hover:text-black hover:bg-white/80 hover:border-black transition-all font-semibold">
             Sign Up
           </button>
         </Link>
         <Link to="/log-in">
-          <button className="py-3 px-6 text-xl border border-white rounded-lg outline-none bg-transparent text-white duration-300 cursor-pointer hover:text-black hover:bg-white/80 hover:border-black transition-all font-semibold">
+          <button className="py-3 px-6 text-xl border border-white rounded-lg outline-hidden bg-transparent text-white duration-300 cursor-pointer hover:text-black hover:bg-white/80 hover:border-black transition-all font-semibold">
             Log In
           </button>
         </Link>

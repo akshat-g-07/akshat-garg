@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 import Tooltip from "@mui/material/Tooltip";
 import { Contact } from "@repo/portfolio-details";
 import copy from "copy-to-clipboard";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import IncomingAnimation from "../../globalComps/IncomingAnimation";
 
@@ -20,7 +20,7 @@ const ContactSection = () => {
     setProcessing(true);
 
     let emailValue = document.querySelector("#email").value;
-    var validRegex =
+    const validRegex =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     if (!emailValue.match(validRegex)) {
@@ -82,7 +82,7 @@ const ContactSection = () => {
         <div className="text-left w-max font-sectionHeading text-2xl md:text-5xl text-white">
           Let's get {window.innerWidth < 768 && <br />} in TOUCH!
           <div className="font-sectionDescription flex items-center text-sm md:text-2xl lg:text-3xl my-1 lg:my-5">
-            <div className="w-[20px] h-0.5 mr-2 bg-white" />
+            <div className="w-5 h-0.5 mr-2 bg-white" />
             Contact Me
           </div>
         </div>
@@ -144,13 +144,13 @@ const ContactSection = () => {
             <p>
               @&nbsp;
               <span className="underline decoration-2 underline-offset-4 cursor-pointer hover:text-[#9c27b0]">
-                <a href={`mailto:${Contact}`}>{Contact}</a>
+                <a href={`mailto:${Contact.email}`}>{Contact.email}</a>
               </span>
               <Tooltip title="Copy">
                 <span
                   className="cursor-pointer hover:text-[#9c27b0]"
-                  onClick={() => {
-                    copy(Contact);
+                  onClick={async () => {
+                    await copy(Contact.email);
                     alert("Copied!");
                   }}
                 >

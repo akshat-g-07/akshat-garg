@@ -9,7 +9,6 @@
     "build:treklicious-be": "turbo build --filter=treklicious-be...",
     "build:treklicious": "turbo build --filter=treklicious-*",
     "build:ratventure": "turbo build --filter=ratventure-fe",
-    "build:noteworthy-ninja-privacy-policy": "turbo build --filter=noteworthy-ninja-privacy-policy",
     "build": "turbo build",
     "dev:macos-portfolio": "turbo dev --filter=macos-portfolio",
     "dev:treklicious-fe": "turbo dev --filter=treklicious-constants --filter=treklicious-fe",
@@ -19,23 +18,25 @@
     "dev:treklicious": "turbo dev --filter=*treklicious-*",
     "dev:ratventure": "turbo dev --filter=ratventure-*",
     "dev:threejs-portfolio": "turbo dev --filter=threejs-portfolio",
-    "dev:noteworthy-ninja-privacy-policy": "turbo dev --filter=noteworthy-ninja-privacy-policy",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format:write": "prettier --write \"**/*.{js,jsx,mdx}\" --cache"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@ianvs/prettier-plugin-sort-imports": "^4.4.2",
-    "prettier": "^3.5.3",
-    "tsup": "^8.5.0",
-    "turbo": "^2.5.4",
-    "typescript": "^5.0.0"
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
+    "prettier": "^3.9.6",
+    "tsup": "^8.5.1",
+    "turbo": "^2.10.9"
+  },
+  "overrides": {
+    "react-avatar-edit": {
+      "react": "^19.2.8"
+    }
   },
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "npm@10.1.0",
+  "packageManager": "npm@12.0.2",
   "workspaces": [
     "apps/*",
     "packages/*"

@@ -19,7 +19,7 @@ export default function NotesProject({
           </a>
         </p>
       </div>
-      <ul class="list-disc list-inside">
+      <ul className="list-disc list-inside">
         {description.map((item, indx) => (
           <li key={indx} className="py-2">
             {item}
