@@ -5,19 +5,15 @@ import Footer from "./Footer";
 import Notes from "./Notes";
 import PDFIcon from "./PDF-Icon";
 import Terminal from "./Terminal";
+import WifiStatus from "./Wifi-Status";
 
 export default function Body() {
   return (
     <>
       <main className="h-screen overflow-hidden w-screen static">
         <header className="h-[5%] rounded-t-md w-full flex justify-end px-4 bg-gray-500 items-center">
-          <div className="size-6 flex justify-center items-center">
-            <Image
-              src={"/header/wifi.png"}
-              width={100}
-              height={100}
-              alt="wifi"
-            />
+          <div className="size-6 flex justify-center items-center mb-2">
+            <WifiStatus />
           </div>
           <div className="size-5 flex justify-center items-center mx-2">
             <Image
