@@ -42,5 +42,8 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "components": "git+https://github.com/pixel-venturers/components.git#semver:*"
+  }
 }
