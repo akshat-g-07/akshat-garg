@@ -13,6 +13,7 @@ export default function NotesBody() {
         <div className="h-full w-1/3 bg-gray-200 pl-4 border-black border-r py-2">
           {Projects.map((project, indx) => (
             <div
+              key={indx}
               id={project.name}
               className="border-black border-b w-full h-fit p-2 cursor-pointer"
               onClick={(event) => {

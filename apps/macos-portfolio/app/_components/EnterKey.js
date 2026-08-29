@@ -92,7 +92,7 @@ export default function EnterKey(event) {
       </div>
     </div>
     <input
-      class="w-4/5 bg-slate-700 focus:outline-none border-none text-green-500 font-normal font-tInput"
+      class="w-4/5 bg-slate-700 focus:outline-hidden border-none text-green-500 font-normal font-tInput"
       type="text"
          />
  `;

@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
-import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
-import { motion } from "framer-motion";
+import { ChevronsLeft, ChevronsRight } from "lucide-react";
+import { motion } from "motion/react";
 
 const NextPrevButton = ({ sectionArray, setSectionIndex, sectionIndex }) => {
   return (
@@ -36,9 +35,9 @@ const NextPrevButton = ({ sectionArray, setSectionIndex, sectionIndex }) => {
             animate={{ x: [-10, 0, -10], y: [-1] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
           >
-            <ArrowLeftIcon boxSize={12} />
+            <ChevronsLeft />
           </motion.div>
-          &nbsp;Previous
+          Previous
         </motion.div>
         <motion.div
           id="nextAnimButton"
@@ -63,12 +62,12 @@ const NextPrevButton = ({ sectionArray, setSectionIndex, sectionIndex }) => {
             window.playAnimation(1, sectionArray[indexVal].key);
           }}
         >
-          Next&nbsp;
+          Next
           <motion.div
             animate={{ x: [10, 0, 10], y: [-1] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
           >
-            <ArrowRightIcon boxSize={12} />
+            <ChevronsRight />
           </motion.div>
         </motion.div>
       </motion.div>

@@ -7,11 +7,8 @@ import {
   Projects,
   Skills,
 } from "@repo/portfolio-details";
-import { parseCookies } from "nookies";
 
 export function HelpFunction() {
-  const cookies = parseCookies();
-  const ref = cookies.ref;
   return `<table style="width:50%; text-align: left;">
   <tr>
     <th>Command</th>
@@ -61,14 +58,10 @@ export function HelpFunction() {
     <td>linkedin</td>
     <td>Open LinkedIn</td>
   </tr>
-  ${
-    ref !== "rec"
-      ? `<tr>
-        <td>x</td>
-        <td>Open X (Twitter)</td>
-      </tr>`
-      : ``
-  }
+  <tr>
+    <td>x</td>
+    <td>Open X (Twitter)</td>
+  </tr>
   <tr>
     <td>mail</td>
     <td>Show e-mail</td>
@@ -119,8 +112,8 @@ export function ExperienceFunction() {
   const experienceNode = document.createElement("div");
   experienceNode.classList = "w-full h-fit";
   experienceNode.innerHTML = Experience.map(
-    (experience, indx) => `
-  <div key={${indx}}>
+    (experience) => `
+  <div>
     <h3 class="font-semibold text-lg">
       ${experience.role}
     </h3>
@@ -128,10 +121,12 @@ export function ExperienceFunction() {
       ${experience.company} | ${experience.duration}
     </p>
     <ul class="list-disc list-inside">
-    ${experience.description.map((item, index) => `<li key=${index} class="my-1 text-gray-200">${item}</li>`).join("")}
+    ${experience.description.map((item) => `<li class="my-1 text-gray-200">${item}</li>`).join("")}
     </ul>
   </div>
   `
+  ).join(
+    "========================================================================================================"
   );
   return experienceNode;
 }

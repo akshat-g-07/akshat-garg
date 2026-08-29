@@ -44,7 +44,7 @@ export default function State({ Treks, isLoading }) {
               <div
                 key={indx}
                 className={cn(
-                  "rounded px-4 py-2 border text-white border-white/75 cursor-pointer",
+                  "rounded-sm px-4 py-2 border text-white border-white/75 cursor-pointer",
                   index === indx &&
                     "font-medium border-amber-500 text-amber-500",
                   "hover:border-amber-500 hover:text-amber-500"

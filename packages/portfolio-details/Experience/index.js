@@ -1,8 +1,14 @@
 const Experience = [
   {
+    company: "Cimpress Technology",
+    role: "Senior Software Engineer",
+    duration: "Mar 2026 - Present",
+    description: ["Getting the hang of the place."],
+  },
+  {
     company: "Infosys Limited",
     role: "Specialist Programmer",
-    duration: "2021-Present",
+    duration: "Aug 2021 - Feb 2026",
     description: [
       "Led team of 5 to develop and build new feature - Bracket Challenge.",
       "Used best practices of React like Pagination, memorization, semantic HTML to build Text Based Gen AI Commentary feature.",

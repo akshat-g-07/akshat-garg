@@ -9,13 +9,9 @@ import { RouterProvider } from "react-router";
 
 import { queryClient } from "@/lib/query-client";
 
-import Ref from "@/components/common/ref";
-
 createRoot(document.getElementById("root")).render(
-  <Ref>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-      <ReactQueryDevtools />
-    </QueryClientProvider>
-  </Ref>
+  <QueryClientProvider client={queryClient}>
+    <RouterProvider router={router} />
+    <ReactQueryDevtools />
+  </QueryClientProvider>
 );

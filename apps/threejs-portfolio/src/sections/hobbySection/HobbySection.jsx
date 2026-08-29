@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import IncomingAnimation from "../../globalComps/IncomingAnimation";
 import HobbyBody from "./components/HobbyBody";

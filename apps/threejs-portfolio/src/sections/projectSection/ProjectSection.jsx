@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import IncomingAnimation from "../../globalComps/IncomingAnimation";
 import ProjectBody from "./components/ProjectBody";
@@ -15,7 +15,7 @@ const ProjectSection = () => {
         <div className="text-left w-max font-sectionHeading text-2xl md:text-5xl text-white">
           Some things {window.innerWidth < 768 && <br />} I've BUILT
           <div className="font-sectionDescription flex items-center text-sm md:text-2xl lg:text-3xl my-1 lg:my-5">
-            <div className="w-[20px] h-0.5 mr-2 bg-white" />
+            <div className="w-5 h-0.5 mr-2 bg-white" />
             Projects
           </div>
         </div>
