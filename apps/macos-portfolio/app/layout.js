@@ -16,6 +16,7 @@ export const metadata = {
   publisher: "Pixel Venturers",
   metadataBase: new URL("https://akshat-garg.com"),
   authors: [{ name: "Pixel Venturers", url: "https://webdesignagencylab.com" }],
+  other: { "google-adsense-account": "ca-pub-6878576258513373" },
   openGraph: {
     type: "website",
     locale: "en_US",
