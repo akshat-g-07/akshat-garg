@@ -179,5 +179,5 @@ export function AchievementsFunction() {
 }
 
 export function MailFunction() {
-  return Contact;
+  return Contact.email;
 }
